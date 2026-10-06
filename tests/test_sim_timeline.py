@@ -132,12 +132,16 @@ class SimTimelineTests(unittest.TestCase):
         target = [0.5, 0.0, 0.5]
         controller = Mock()
         controller.reset.return_value = True
-        controller.forward.return_value = None
+        positions = Mock()
+        positions.numpy.return_value.reshape.return_value.tolist.return_value = [0.0]*6
+        controller.forward.return_value = SimpleNamespace(joints=SimpleNamespace(
+            positions=positions, position_indices=list(range(6))))
         articulation = Mock()
+        articulation.dof_names = [f"joint_{i}" for i in range(8)]
         articulation.get_dof_positions.return_value.numpy.return_value.reshape.return_value.tolist.return_value = [0.0]*8
         self.scene.scenario = SimpleNamespace(
             _phase_ee_target=Mock(return_value=SimpleNamespace(tolist=lambda: target)),
-            _articulation=articulation, _controller=controller,
+            _articulation=articulation, _controller=controller, _finger_idx=6,
             _estimated_state=Mock(), _make_setpoint=Mock(), _set_gripper=Mock())
         self.scene._sync_world = Mock()
         self.scene.proprioception = Mock(return_value={

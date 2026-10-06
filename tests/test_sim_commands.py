@@ -129,6 +129,19 @@ class SimCommandTests(unittest.TestCase):
         self.assertEqual(self.articulation.positions[6], 0.5)
         self.assertEqual(len(self.articulation.writes), 1)
 
+    def test_reordered_controller_indices_keep_their_target_mapping(self):
+        self.controller.forward.return_value = SimpleNamespace(joints=SimpleNamespace(
+            positions=Array(reversed(self.arm_targets)), position_indices=Array(reversed(range(6)))))
+        result = self.scene.execute("pre_grasp")
+        self.assertEqual(result["status"], "reached")
+        self.assertEqual(self.articulation.positions[:6], self.arm_targets)
+
+    def test_uncommanded_joint_keeps_its_existing_target(self):
+        self.articulation.positions[7] = 0.9
+        self.articulation.targets[7] = 0.9
+        self.scene.execute("pre_grasp")
+        self.assertEqual(self.articulation.positions[7], 0.9)
+
     def test_controller_without_output_fails_before_physics(self):
         self.controller.forward.return_value = None
         with self.assertRaisesRegex(LabError, "no joint position command"):
@@ -162,6 +175,8 @@ class SimCommandTests(unittest.TestCase):
         self.assertEqual(result["joint_positions_start_rad"], [0.0]*8)
         self.assertEqual(result["joint_positions_end_rad"][:6], self.arm_targets)
         self.assertAlmostEqual(result["max_joint_displacement_rad"], 0.6)
+        self.assertEqual(result["last_joint_command"]["dof_indices"], list(range(7)))
+        self.assertEqual(result["last_joint_command"]["positions_rad"], self.arm_targets + [0.0])
 
 
 if __name__ == "__main__":

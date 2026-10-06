@@ -136,6 +136,45 @@ class IsaacScene:
         s._world_binding.get_world_interface().update_world_to_robot_root_transforms(s._articulation.get_world_poses())
         s._world_binding.synchronize_transforms()
 
+    def _write_joint_targets(self, positions, dof_indices=None):
+        """Merge the arm and finger command before one articulation target write.
+
+        The tensor subset setter reads and rewrites the full target vector. Two
+        setters in one frame can lose an earlier pending arm command if the read
+        exposes committed rather than pending targets.
+        """
+        def flat(data):
+            if hasattr(data, "numpy"):
+                data = data.numpy()
+            if hasattr(data, "reshape"):
+                data = data.reshape(-1)
+            if hasattr(data, "tolist"):
+                data = data.tolist()
+            return list(data)
+
+        s = self.scenario
+        dofs = len(s._articulation.dof_names)
+        values = flat(positions)
+        indices = list(range(dofs)) if dof_indices is None else flat(dof_indices)
+        if not values or len(values) != len(indices):
+            raise LabError("Joint target values must be nonempty and match their indices")
+        if any(isinstance(i, bool) or not isinstance(i, int) or not 0 <= i < dofs for i in indices):
+            raise LabError("Joint target index is invalid for this articulation")
+        if len(set(indices)) != len(indices):
+            raise LabError("Joint target indices contain duplicates")
+        if any(isinstance(v, bool) or not isinstance(v, (int, float)) or not math.isfinite(v) for v in values):
+            raise LabError("Joint target values must be finite numbers")
+        finger = s._finger_idx
+        if not isinstance(finger, int) or not 0 <= finger < dofs:
+            raise LabError("Gripper joint index is invalid")
+        if not math.isfinite(self.gripper_command):
+            raise LabError("Gripper command must be finite")
+        merged = dict(zip(indices, values))
+        merged[finger] = self.gripper_command
+        s._articulation.set_dof_position_targets(
+            positions=list(merged.values()), dof_indices=list(merged))
+        return {"dof_indices": list(merged), "positions_rad": list(merged.values())}
+
     def execute(self, action: str) -> dict:
         if action not in PHASES:
             raise LabError(f"Cannot execute {action}")
@@ -148,6 +187,7 @@ class IsaacScene:
             raise LabError(f"Configured skill target outside the demo guard box: {xyz}")
         is_gripper = action in {"grasp", "release"}
         held_joints = s._articulation.get_dof_positions().numpy().reshape(-1).tolist()
+        start_ee = self.proprioception()["ee_world_position_m"]
         if is_gripper:
             self.gripper_command = float(s._CLOSED_POS if action == "grasp" else s._OPEN_POS)
         else:
@@ -159,18 +199,18 @@ class IsaacScene:
         self.timeline.play()
         status = None
         ee_error = gripper_error = 0.0
+        controller_command_frames = 0
         for frame in range(1, maximum + 1):
             if is_gripper:
                 # Hold the arm, but not the gripper DOF, while opening/closing.
-                s._articulation.set_dof_position_targets(held_joints)
+                last_joint_command = self._write_joint_targets(held_joints)
             else:
                 self._sync_world()
                 desired = s._controller.forward(s._estimated_state(), s._make_setpoint(target), (frame-1)*self.c["physics_dt"])
-                if desired is not None and desired.joints.positions is not None:
-                    s._articulation.set_dof_position_targets(positions=desired.joints.positions,
-                                                            dof_indices=desired.joints.position_indices)
-            # Preserve the gripper command across motions; do not let arm targets reopen it.
-            s._set_gripper(self.gripper_command)
+                if desired is None or desired.joints is None or desired.joints.positions is None:
+                    raise LabError(f"RMPflow returned no joint position command for {action} at frame {frame}")
+                last_joint_command = self._write_joint_targets(desired.joints.positions, desired.joints.position_indices)
+                controller_command_frames += 1
             self._physics_step()
             observed = self.proprioception()
             ee_error = math.dist(observed["ee_world_position_m"], xyz)
@@ -179,9 +219,16 @@ class IsaacScene:
             if status:
                 break
         self.timeline.pause()
+        final_joints = s._articulation.get_dof_positions().numpy().reshape(-1).tolist()
         return {"action": action, "status": status, "frames": frame,
                 "target_world_position_m": xyz, "ee_error_m": ee_error,
-                "gripper_target_rad": self.gripper_command, "gripper_error_rad": gripper_error}
+                "gripper_target_rad": self.gripper_command, "gripper_error_rad": gripper_error,
+                "controller_command_frames": controller_command_frames,
+                "last_joint_command": last_joint_command,
+                "ee_world_position_start_m": start_ee,
+                "ee_world_position_end_m": observed["ee_world_position_m"],
+                "joint_positions_start_rad": held_joints, "joint_positions_end_rad": final_joints,
+                "max_joint_displacement_rad": max((abs(a-b) for a, b in zip(held_joints, final_joints)), default=0.0)}
 
     def settle(self):
         """Both baseline and model get the same fixed post-retract settling interval."""
