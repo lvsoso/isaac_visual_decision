@@ -77,7 +77,10 @@ def main() -> int:
         except importlib.metadata.PackageNotFoundError:
             runtime_version = "not exposed by this standalone distribution; see Isaac startup log"
         log.event("runtime", isaac_distribution_version=runtime_version, source=metadata,
-                  physics_pose_sync=scene.physics_pose_sync)
+                  physics_pose_sync=scene.physics_pose_sync,
+                  motion_convergence_reference={"tool_frame": scene.scenario._tool_frame,
+                      "position_source": "controller_model_fk_from_measured_joints",
+                      "physical_proprioception_reference": scene.scenario._EE_LINK_NAME})
         result = run_episode(scene, config, a.mode, log, client, allow_mock=a.mode == "mock")
         print(json.dumps(result, ensure_ascii=False, indent=2), flush=True)
         print(f"Artifacts: {log.root}", flush=True)

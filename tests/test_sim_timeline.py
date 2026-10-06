@@ -141,11 +141,12 @@ class SimTimelineTests(unittest.TestCase):
         articulation.get_dof_positions.return_value.numpy.return_value.reshape.return_value.tolist.return_value = [0.0]*8
         self.scene.scenario = SimpleNamespace(
             _phase_ee_target=Mock(return_value=SimpleNamespace(tolist=lambda: target)),
-            _articulation=articulation, _controller=controller, _finger_idx=6,
+            _articulation=articulation, _controller=controller, _finger_idx=6, _tool_frame="tool0",
             _estimated_state=Mock(), _make_setpoint=Mock(), _set_gripper=Mock())
         self.scene._sync_world = Mock()
         self.scene.proprioception = Mock(return_value={
             "ee_world_position_m": target, "finger_joint_position_rad": 0.0})
+        self.scene._controller_tool_world_position = lambda: list(target)
         self.scene.frames = 120
         result = self.scene.execute("pre_grasp")
         self.assertEqual(result["status"], "reached")

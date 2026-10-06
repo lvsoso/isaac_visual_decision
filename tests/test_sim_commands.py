@@ -73,7 +73,7 @@ class SimCommandTests(unittest.TestCase):
         self.controller.forward.return_value = SimpleNamespace(joints=SimpleNamespace(
             positions=Array(self.arm_targets), position_indices=Array(range(6))))
         self.scene.scenario = SimpleNamespace(
-            _articulation=self.articulation, _finger_idx=6, _controller=self.controller,
+            _articulation=self.articulation, _finger_idx=6, _controller=self.controller, _tool_frame="tool0",
             _phase_ee_target=lambda: Array(self.target), _estimated_state=Mock(),
             _make_setpoint=Mock(), _OPEN_POS=0.0, _CLOSED_POS=0.5,
             _set_gripper=lambda pos: self.articulation.set_dof_position_targets([pos], dof_indices=[6]))
@@ -102,6 +102,7 @@ class SimCommandTests(unittest.TestCase):
                     "finger_joint_position_rad": self.articulation.positions[6]}
 
         self.scene.proprioception = proprioception
+        self.scene._controller_tool_world_position = lambda: proprioception()["ee_world_position_m"]
 
     def test_arm_command_survives_gripper_preservation(self):
         result = self.scene.execute("pre_grasp")

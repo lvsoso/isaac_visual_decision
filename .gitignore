@@ -7,3 +7,4 @@ models/
 *.mp4
 # Uploaded run diagnostics are local artifacts, not source code.
 /summary.json
+/events.jsonl

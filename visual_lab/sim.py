@@ -155,6 +155,31 @@ class IsaacScene:
         s._world_binding.get_world_interface().update_world_to_robot_root_transforms(s._articulation.get_world_poses())
         s._world_binding.synchronize_transforms()
 
+    def _controller_tool_world_position(self):
+        """Evaluate the controller's tool FK from measured, not commanded, joints.
+
+        This is a position in the controller model, not a measured grasp center
+        or proof that the URDF matches the physical asset. Finger telemetry and
+        final physical cube scoring remain separate.
+        """
+        import cumotion
+        s = self.scenario
+        robot = s._cumotion_robot
+        names = s._articulation.dof_names
+        if any(name not in names for name in robot.controlled_joint_names):
+            raise LabError("Controller FK controlled joint is missing from the articulation")
+        measured = s._articulation.get_dof_positions().numpy().reshape(-1).tolist()
+        q = self.np.array([measured[names.index(name)] for name in robot.controlled_joint_names], dtype=float).reshape(-1, 1)
+        local = vector3(robot.kinematics.position(q, s._tool_frame).reshape(-1).tolist(), "controller_tool_position")
+        positions, orientations = s._articulation.get_world_poses()
+        origin = vector3(positions.numpy().reshape(-1).tolist(), "robot_base_position")
+        quaternion = orientations.numpy().reshape(-1).tolist()  # Isaac and Rotation3 use wxyz.
+        if len(quaternion) != 4 or not all(math.isfinite(v) for v in quaternion):
+            raise LabError("Invalid robot base quaternion for controller FK")
+        rotation = cumotion.Rotation3(*quaternion).matrix().tolist()
+        return vector3([origin[i] + sum(rotation[i][j]*local[j] for j in range(3)) for i in range(3)],
+                       "controller_tool_world_position")
+
     def _write_joint_targets(self, positions, dof_indices=None):
         """Merge the arm and finger command before one articulation target write.
 
@@ -233,14 +258,19 @@ class IsaacScene:
             self._physics_step()
             observed = self.proprioception()
             ee_error = math.dist(observed["ee_world_position_m"], xyz)
+            tool_position = self._controller_tool_world_position()
+            tool_error = math.dist(tool_position, xyz)
             gripper_error = abs(observed["finger_joint_position_rad"] - self.gripper_command)
-            status = phase_result(action, frame, ee_error, gripper_error, self.c)
+            status = phase_result(action, frame, tool_error, gripper_error, self.c)
             if status:
                 break
         self.timeline.pause()
         final_joints = s._articulation.get_dof_positions().numpy().reshape(-1).tolist()
         return {"action": action, "status": status, "frames": frame,
                 "target_world_position_m": xyz, "ee_error_m": ee_error,
+                "convergence_position_source": "controller_model_fk_from_measured_joints",
+                "controller_tool_frame": s._tool_frame,
+                "controller_tool_world_position_m": tool_position, "controller_tool_error_m": tool_error,
                 "gripper_target_rad": self.gripper_command, "gripper_error_rad": gripper_error,
                 "controller_command_frames": controller_command_frames,
                 "last_joint_command": last_joint_command,
