@@ -144,3 +144,10 @@ ffmpeg 的真实 Isaac 视频编码未执行；本次没有提供真实相机截
 - 两个额外冻结场景GPU诊断：USD颜色设置正确、dispatcher渲染计数增加，但额外app更新和重建render product均未稳定消除旧颜色影响。没有盲目改光照/渲染设置；原因尚未定位到具体RTX/Replicator机制。诊断源代码、图片与JSON留在远端 `ivd-ops/20261006/render_refresh_diagnosis` / `render_fresh_products_diagnosis`。
 - 恢复策略：分别在场景创建时固定蓝/黄色（默认原蓝色不变），不再live改色；同一固定技能轨迹执行两次，严格核对七阶段全部物理状态、本体状态及工具目标完全相同，再验证14对实际目标ROI颜色变化，原像素配对后进行56次真实重放。不提供方块真值、不调整物理评分或提示词，也不启动visual；新的静态GPU结果仍待执行。
 - 失败与两次GPU诊断原始摘要/来源哈希归档于 `test_reports/gpu_factorial_recovery_20261006.json`。静态颜色/严格状态配对九项RED实际失败、GREEN通过，记录见 `test_reports/unittest_static_color_red_20261006.txt` / `unittest_static_color_green_20261006.txt`；失效源拒绝见 `unittest_invalid_capture_red_20261006.txt` / `unittest_invalid_capture_green_20261006.txt`。补充路径/覆盖保护与像素拒绝测试后，全套 **200 / 200 CPU测试通过**，所选18个函数均≥80%CPU行覆盖，见 `unittest_static_recovery_20261006.txt` / `coverage_static_recovery_20261006.json`；仍不代表GPU或模型判断质量。
+
+### 静态颜色GPU配对验证（正式推理进行中）
+
+- 采集源码提交 `9fb6bf9`。`23_static_blue_capture` / `24_static_yellow_capture` 均在L40完成：各776次物理更新、七个同步双视图观测、无超时、最终XY误差0.0219928092m，方块最终坐标完全相同。七个对应阶段的全部关节、机器人根/方块位姿、仿真时间、本体状态和目标工具信息**逐项完全一致**，不是只对比最终成功。
+- `25_static_paired_capture` 合并原始28PNG，哈希与来源一致；14对目标ROI暖色变化176–673像素，均超过最低20像素门槛。额外逐对目视核验可见框边缘确实蓝/黄不同，阶段1第一视图有机械臂遮挡但仍可见对应边缘。批准凭据绑定snapshots和28图哈希，不以ROI阈值替代实际框边缘确认。
+- 证据摘要见 `test_reports/gpu_static_capture_20261006.json`；全部目标框放大对照见 `factorial_goal_color_review_20261006.png`；下降/释放前的两相机原始图见 `factorial_lower_release_views_20261006.png`（仅加展示标签，不作为模型输入）。模型接收原640×480 PNG，不接收拼图/裁剪/标注。
+- 正式 `26_static_factorial_replay` 已启动，仍需完成全部56次响应和因子/图片/来源核验后才能报告八组模型结果。上述两次物理成功来自固定执行器；模型没有控制权。

@@ -1,0 +1,504 @@
+{
+  "kind": "real_gpu_static_capture_validation",
+  "capture_commit": "9fb6bf9f3b53311f666ceb9d0ee41f22cd16b3d9",
+  "model_had_control": false,
+  "model_called_in_capture": false,
+  "formal_model_replay_completed_at_this_record": false,
+  "all_seven_matched_states_exactly_equal": true,
+  "source_sha256": {
+    "23_static_blue_capture": {
+      "summary.json": "8fe2ed487bcb3fd9e9e44089926393147b10cc25566de012386173b542f08fd7",
+      "snapshots.json": "78b01e460c95cc0c85dc5b122fc1677845ca4b59c63daa3ab0317169e03dcdbc",
+      "events.jsonl": "3d597e0f93f493484d58b58ba2e94104c7c6ed604d2b40087fdd4ab8429ffb0c",
+      "manifest.json": "ade71626f3173e57eec9308081237999ff4a15c3ef14eaab0d3f9bd93733f521"
+    },
+    "24_static_yellow_capture": {
+      "summary.json": "8fe2ed487bcb3fd9e9e44089926393147b10cc25566de012386173b542f08fd7",
+      "snapshots.json": "ee539c9c1c2385885ad7fb427a01e58fe8588456cc64235eaf246a920680fdea",
+      "events.jsonl": "7fb75cb641a36c734968ddbc2198e54473fc185257dca7f0ea522e02ed3dfe97",
+      "manifest.json": "ea678a07b014b9a98c26330428668ea4bf109535f0d9cf89a340a3eb8a7a846e"
+    },
+    "25_static_paired_capture": {
+      "summary.json": "596a4fbfe57817a46058c00855393f8d5237fb64442b8d58818f26d006221799",
+      "snapshots.json": "88ff6365c8173f6da3303a3ed17e79efc29fa43718bfe87342322c2573025c6d",
+      "render_review.json": "ab53badbc43d53efbf50f3bd4869c03cd8a466cdb750dd10895f955a02d04d0f",
+      "manifest.json": "31f383c540afa83c11d0f315ce78f346f88e8f974f5fb39eb7ee65cd677ed7e1"
+    }
+  },
+  "source_summaries": {
+    "23_static_blue_capture": {
+      "physical_completion": true,
+      "strict_success": true,
+      "final_cube_position_m": [
+        0.47915345430374146,
+        0.49299249053001404,
+        0.024999940767884254
+      ],
+      "final_xy_error_m": 0.02199280919842071,
+      "final_z_error_m": 5.923211574693221e-08,
+      "release_reached": true,
+      "timeout_occurred": false,
+      "termination_reason": "completed",
+      "mode": "static_color_capture",
+      "complete": true,
+      "error": null,
+      "physics_updates": 776,
+      "num_observations": 7,
+      "model_had_control": false,
+      "model_called": false,
+      "real_model_evaluated": false
+    },
+    "24_static_yellow_capture": {
+      "physical_completion": true,
+      "strict_success": true,
+      "final_cube_position_m": [
+        0.47915345430374146,
+        0.49299249053001404,
+        0.024999940767884254
+      ],
+      "final_xy_error_m": 0.02199280919842071,
+      "final_z_error_m": 5.923211574693221e-08,
+      "release_reached": true,
+      "timeout_occurred": false,
+      "termination_reason": "completed",
+      "mode": "static_color_capture",
+      "complete": true,
+      "error": null,
+      "physics_updates": 776,
+      "num_observations": 7,
+      "model_had_control": false,
+      "model_called": false,
+      "real_model_evaluated": false
+    },
+    "25_static_paired_capture": {
+      "complete": true,
+      "strict_success": true,
+      "model_had_control": false,
+      "all_physical_states_exactly_equal": true,
+      "render_color_pairs_validated": 14,
+      "source_summaries": {
+        "blue": {
+          "physical_completion": true,
+          "strict_success": true,
+          "final_cube_position_m": [
+            0.47915345430374146,
+            0.49299249053001404,
+            0.024999940767884254
+          ],
+          "final_xy_error_m": 0.02199280919842071,
+          "final_z_error_m": 5.923211574693221e-08,
+          "release_reached": true,
+          "timeout_occurred": false,
+          "termination_reason": "completed",
+          "mode": "static_color_capture",
+          "complete": true,
+          "error": null,
+          "physics_updates": 776,
+          "num_observations": 7,
+          "model_had_control": false,
+          "model_called": false,
+          "real_model_evaluated": false
+        },
+        "yellow": {
+          "physical_completion": true,
+          "strict_success": true,
+          "final_cube_position_m": [
+            0.47915345430374146,
+            0.49299249053001404,
+            0.024999940767884254
+          ],
+          "final_xy_error_m": 0.02199280919842071,
+          "final_z_error_m": 5.923211574693221e-08,
+          "release_reached": true,
+          "timeout_occurred": false,
+          "termination_reason": "completed",
+          "mode": "static_color_capture",
+          "complete": true,
+          "error": null,
+          "physics_updates": 776,
+          "num_observations": 7,
+          "model_had_control": false,
+          "model_called": false,
+          "real_model_evaluated": false
+        }
+      },
+      "scope": "Two fixed-policy runs, no model control"
+    }
+  },
+  "paired_manifest": {
+    "kind": "paired_factorial_capture",
+    "synthetic_fixture": false,
+    "pairing_method": "two static-color processes; exact frozen state equality at all seven decisions",
+    "source_captures": {
+      "blue": {
+        "path": "/root/gpufree-share/isaac_visual_decision/runs/23_static_blue_capture",
+        "manifest.json_sha256": "ade71626f3173e57eec9308081237999ff4a15c3ef14eaab0d3f9bd93733f521",
+        "snapshots.json_sha256": "78b01e460c95cc0c85dc5b122fc1677845ca4b59c63daa3ab0317169e03dcdbc",
+        "summary.json_sha256": "8fe2ed487bcb3fd9e9e44089926393147b10cc25566de012386173b542f08fd7",
+        "events.jsonl_sha256": "3d597e0f93f493484d58b58ba2e94104c7c6ed604d2b40087fdd4ab8429ffb0c"
+      },
+      "yellow": {
+        "path": "/root/gpufree-share/isaac_visual_decision/runs/24_static_yellow_capture",
+        "manifest.json_sha256": "ea678a07b014b9a98c26330428668ea4bf109535f0d9cf89a340a3eb8a7a846e",
+        "snapshots.json_sha256": "ee539c9c1c2385885ad7fb427a01e58fe8588456cc64235eaf246a920680fdea",
+        "summary.json_sha256": "8fe2ed487bcb3fd9e9e44089926393147b10cc25566de012386173b542f08fd7",
+        "events.jsonl_sha256": "7fb75cb641a36c734968ddbc2198e54473fc185257dca7f0ea522e02ed3dfe97"
+      }
+    },
+    "config": {
+      "schema_version": 1,
+      "cube_position_m": [
+        0.5,
+        0.0,
+        0.025
+      ],
+      "target_position_m": [
+        0.5,
+        0.5,
+        0.05
+      ],
+      "cube_size_m": 0.05,
+      "physics_dt": 0.016666666666666666,
+      "camera": {
+        "position": [
+          1.8,
+          -1.6,
+          1.5
+        ],
+        "look_at": [
+          0.65,
+          0.25,
+          0.2
+        ],
+        "resolution": [
+          640,
+          480
+        ],
+        "focal_length_mm": 18.0,
+        "rt_subframes": 4
+      },
+      "tutorial_phase_limits": [
+        250,
+        150,
+        100,
+        50,
+        150,
+        100,
+        100,
+        100
+      ],
+      "frame_scale": 4,
+      "arm_min_frames": 1,
+      "gripper_min_frames": 60,
+      "ee_tolerance_m": 0.02,
+      "near_pose_tolerance_m": 0.005,
+      "near_pose_stable_frames": 12,
+      "gripper_tolerance_rad": 0.04,
+      "max_decisions": 16,
+      "warmup_frames": 120,
+      "settle_frames": 120,
+      "success_xy_tolerance_m": 0.05,
+      "success_z_tolerance_m": 0.015,
+      "endpoint": "http://127.0.0.1:8765/v1/decisions",
+      "http_timeout_seconds": 180.0
+    },
+    "cameras": [
+      {
+        "position": [
+          1.8,
+          -1.6,
+          1.5
+        ],
+        "look_at": [
+          0.65,
+          0.25,
+          0.2
+        ],
+        "resolution": [
+          640,
+          480
+        ],
+        "focal_length_mm": 18.0,
+        "rt_subframes": 4
+      },
+      {
+        "position": [
+          1.7,
+          1.4,
+          1.3
+        ],
+        "look_at": [
+          0.65,
+          0.25,
+          0.2
+        ],
+        "resolution": [
+          640,
+          480
+        ],
+        "focal_length_mm": 18.0,
+        "rt_subframes": 4
+      }
+    ],
+    "source_sha256": {
+      "collect_factorial.py": "e4ef81da368225a8be91c3dd246bf12aa3e54e11cc8f6c1bc64034a21b7283c2",
+      "visual_lab/__init__.py": "ee35301b55f5da7f6a1f412279bccc541e0a9111df8941996db9cef1a871a75b",
+      "visual_lab/audit.py": "9b0ab935c222b2316ff1e6ea3ab10969b9ed1904a0db1319ceca3464680f4ca6",
+      "visual_lab/capture.py": "4efdfb9287fd2e00769991e0d0e0f0aa8b376e9f6d4c8c635957a70baff5d328",
+      "visual_lab/client.py": "7abd9923ceb75d748b18517d90e79624a40f81417673fe03869d87db7f27685f",
+      "visual_lab/core.py": "21f9991aa3a62cc49580b863fd14e50f884ec93f6ed557165747512618089471",
+      "visual_lab/factorial.py": "ee8cf74b76a8f08849ca8e3a2bec4d2fa5453fac1c8cc8e837c91e7bf85d2b77",
+      "visual_lab/png.py": "da421559b77b50a365721ae1c89e0688c6f1e67a56c6024ad9a2169185bce9c4",
+      "visual_lab/protocol.py": "516f7a424420c394fdc82ed015e7e3932becac4105e066de5f50d34b2b87e0a2",
+      "visual_lab/runner.py": "4fae7f9cf2830f80c0948ca68d7aeae4f821b196f1c9c6ec2f1e224a758d7dff",
+      "visual_lab/server.py": "4d6502ef7a672fbfba8aa53b310fd3fffd061a87266ecd913c22e643b5f29cc6",
+      "visual_lab/sim.py": "83eef33e2c73c30fdc9e4f4b0b68a1992841e127eab3d94985b9632fbf120fa2",
+      "visual_lab/upstream.py": "663662e902b65dd8799e2a81e7e6e91e927c848e1ac3b468fcbd224d285f87ba"
+    },
+    "pairing_source_sha256": "ee8cf74b76a8f08849ca8e3a2bec4d2fa5453fac1c8cc8e837c91e7bf85d2b77",
+    "model_had_control": false,
+    "render_color_checks": [
+      {
+        "decision_id": 1,
+        "view": 1,
+        "roi_xyxy": [
+          295,
+          229,
+          346,
+          260
+        ],
+        "warm_shift_pixels": 176,
+        "minimum_pixels": 20,
+        "signed_channel_threshold": 8,
+        "scope": "Rendered treatment sanity check, not calibrated contrast or perception accuracy"
+      },
+      {
+        "decision_id": 1,
+        "view": 2,
+        "roi_xyxy": [
+          362,
+          275,
+          435,
+          326
+        ],
+        "warm_shift_pixels": 673,
+        "minimum_pixels": 20,
+        "signed_channel_threshold": 8,
+        "scope": "Rendered treatment sanity check, not calibrated contrast or perception accuracy"
+      },
+      {
+        "decision_id": 2,
+        "view": 1,
+        "roi_xyxy": [
+          295,
+          229,
+          346,
+          260
+        ],
+        "warm_shift_pixels": 313,
+        "minimum_pixels": 20,
+        "signed_channel_threshold": 8,
+        "scope": "Rendered treatment sanity check, not calibrated contrast or perception accuracy"
+      },
+      {
+        "decision_id": 2,
+        "view": 2,
+        "roi_xyxy": [
+          362,
+          275,
+          435,
+          326
+        ],
+        "warm_shift_pixels": 663,
+        "minimum_pixels": 20,
+        "signed_channel_threshold": 8,
+        "scope": "Rendered treatment sanity check, not calibrated contrast or perception accuracy"
+      },
+      {
+        "decision_id": 3,
+        "view": 1,
+        "roi_xyxy": [
+          295,
+          229,
+          346,
+          260
+        ],
+        "warm_shift_pixels": 293,
+        "minimum_pixels": 20,
+        "signed_channel_threshold": 8,
+        "scope": "Rendered treatment sanity check, not calibrated contrast or perception accuracy"
+      },
+      {
+        "decision_id": 3,
+        "view": 2,
+        "roi_xyxy": [
+          362,
+          275,
+          435,
+          326
+        ],
+        "warm_shift_pixels": 661,
+        "minimum_pixels": 20,
+        "signed_channel_threshold": 8,
+        "scope": "Rendered treatment sanity check, not calibrated contrast or perception accuracy"
+      },
+      {
+        "decision_id": 4,
+        "view": 1,
+        "roi_xyxy": [
+          295,
+          229,
+          346,
+          260
+        ],
+        "warm_shift_pixels": 288,
+        "minimum_pixels": 20,
+        "signed_channel_threshold": 8,
+        "scope": "Rendered treatment sanity check, not calibrated contrast or perception accuracy"
+      },
+      {
+        "decision_id": 4,
+        "view": 2,
+        "roi_xyxy": [
+          362,
+          275,
+          435,
+          326
+        ],
+        "warm_shift_pixels": 657,
+        "minimum_pixels": 20,
+        "signed_channel_threshold": 8,
+        "scope": "Rendered treatment sanity check, not calibrated contrast or perception accuracy"
+      },
+      {
+        "decision_id": 5,
+        "view": 1,
+        "roi_xyxy": [
+          295,
+          229,
+          346,
+          260
+        ],
+        "warm_shift_pixels": 282,
+        "minimum_pixels": 20,
+        "signed_channel_threshold": 8,
+        "scope": "Rendered treatment sanity check, not calibrated contrast or perception accuracy"
+      },
+      {
+        "decision_id": 5,
+        "view": 2,
+        "roi_xyxy": [
+          362,
+          275,
+          435,
+          326
+        ],
+        "warm_shift_pixels": 658,
+        "minimum_pixels": 20,
+        "signed_channel_threshold": 8,
+        "scope": "Rendered treatment sanity check, not calibrated contrast or perception accuracy"
+      },
+      {
+        "decision_id": 6,
+        "view": 1,
+        "roi_xyxy": [
+          295,
+          229,
+          346,
+          260
+        ],
+        "warm_shift_pixels": 277,
+        "minimum_pixels": 20,
+        "signed_channel_threshold": 8,
+        "scope": "Rendered treatment sanity check, not calibrated contrast or perception accuracy"
+      },
+      {
+        "decision_id": 6,
+        "view": 2,
+        "roi_xyxy": [
+          362,
+          275,
+          435,
+          326
+        ],
+        "warm_shift_pixels": 658,
+        "minimum_pixels": 20,
+        "signed_channel_threshold": 8,
+        "scope": "Rendered treatment sanity check, not calibrated contrast or perception accuracy"
+      },
+      {
+        "decision_id": 7,
+        "view": 1,
+        "roi_xyxy": [
+          295,
+          229,
+          346,
+          260
+        ],
+        "warm_shift_pixels": 242,
+        "minimum_pixels": 20,
+        "signed_channel_threshold": 8,
+        "scope": "Rendered treatment sanity check, not calibrated contrast or perception accuracy"
+      },
+      {
+        "decision_id": 7,
+        "view": 2,
+        "roi_xyxy": [
+          362,
+          275,
+          435,
+          326
+        ],
+        "warm_shift_pixels": 579,
+        "minimum_pixels": 20,
+        "signed_channel_threshold": 8,
+        "scope": "Rendered treatment sanity check, not calibrated contrast or perception accuracy"
+      }
+    ]
+  },
+  "render_review": {
+    "approved": true,
+    "reviewed_color_pairs": 14,
+    "reviewer": "assistant actual RGB visual inspection",
+    "reviewed_at_utc": "2026-10-06T17:23:10.943528+00:00",
+    "snapshots_sha256": "88ff6365c8173f6da3303a3ed17e79efc29fa43718bfe87342322c2573025c6d",
+    "contact_sheet_sha256": "3742724dd5c933c0dcb7bf69d2afce339a2f4d4dc90e61b48b6b78fe32b5af52",
+    "method": "All 7 stages x 2 views inspected in enlarged goal-ROI sheet; visible blue/yellow outline edges verified independently of warm-shift count; full stage6/7 camera images also inspected.",
+    "source_images_sha256": {
+      "images/decision_001_blue_view1.png": "f1885e0503931d0d91b628f9cd8c62d074343c3b90df9edf57de790650cf48fc",
+      "images/decision_001_blue_view2.png": "9f3ff60657b1a209c61f3db964426b3a5d781a8ab8d98af894de4a8e2251bede",
+      "images/decision_001_yellow_view1.png": "4fc9733a07b34a02229d8f8df187a7339c623da7ffaec5a7956ecfce547df081",
+      "images/decision_001_yellow_view2.png": "0f2e62cf9cbddc88573069b79122e937575e028d437c76c48b2a82e8a9636b72",
+      "images/decision_002_blue_view1.png": "f8fa5b606bc56f89fc509fe3350e1a7d596257e64118520c7dc9a0485bbce092",
+      "images/decision_002_blue_view2.png": "4a912daf9df389f0eb5df0577453307f332f6534f1de81d39863302e7be6d2a1",
+      "images/decision_002_yellow_view1.png": "1b22101c4ba750094098569f9f5bc290da5cbd1f4df610d72d330bc2413e9ec6",
+      "images/decision_002_yellow_view2.png": "dcd8f5dcbc20a8ad13fafc497f3d375831bbfd620ac557d2c30694ece216cd90",
+      "images/decision_003_blue_view1.png": "2a66e24d6e3d7d4b7c63842d4ce9a4b64cad74170df55d1fffb320dab8300d9b",
+      "images/decision_003_blue_view2.png": "f25de64cb622419860c649ee7d491bc60a0db6eba069f2f9e90366a51b5db3c5",
+      "images/decision_003_yellow_view1.png": "ad5829c8111fd65879ed1bd98d8259e1afc367f5e60d9d42ac55fa3ff9e50aa1",
+      "images/decision_003_yellow_view2.png": "106af1745195a3d206de61c899303959d220e04644ee4f9b62587c3241786e24",
+      "images/decision_004_blue_view1.png": "6540bb9b30cec64c0b31dd933e3e806cb2cb9262f4921f3c1978df7233154553",
+      "images/decision_004_blue_view2.png": "e7758a36fc992b4807c17a1e7c50f700df67ac67d3f10327d26a5f6dad600296",
+      "images/decision_004_yellow_view1.png": "0db7d2bea302f8bdfe42517cc9efab384d5024d994ef002291ccadda89a2f81d",
+      "images/decision_004_yellow_view2.png": "534c65f8447373ce2df41f359771f7f47112692ee4539d6eab12fdbed9687cc9",
+      "images/decision_005_blue_view1.png": "c6b79ef67069123769809e7e23143a674e9c78121f0da5c2fadb8f37e680a1fa",
+      "images/decision_005_blue_view2.png": "b2c3615006c39946383b54a74cda87b717e3539a899dff7aee576fc8333e04f5",
+      "images/decision_005_yellow_view1.png": "d5485b1c85ee99eec12b001939c403b0dfca90026e4e209bc0de64a28d1dcd4c",
+      "images/decision_005_yellow_view2.png": "fb588c99e42b036fb86d23e7f70b5d612a594c414dfd71f86eebc232aa10c1c2",
+      "images/decision_006_blue_view1.png": "ce4be0168dd27b6e30e238b57571e433b7848ffad237972b93974f7dffa58acb",
+      "images/decision_006_blue_view2.png": "0aa8920b9ab8d7fefa145306098f3c8da1bb4ed404a4aea8a946900dc7cec51d",
+      "images/decision_006_yellow_view1.png": "e1f8057a01fc413988e1681b04800887469a5e91a373af800b7fd595f4479c9c",
+      "images/decision_006_yellow_view2.png": "9a141dc46e03789d35f42a88b5c9dbcc7e64ae485d6c71ac18ff00265a7d0822",
+      "images/decision_007_blue_view1.png": "15437cfa084ef5e69f3b2055910a8de4051901895da86d2d95b25b92c4716667",
+      "images/decision_007_blue_view2.png": "81eb282d7002416f0dc2723541cf1f13684d9fdac4207e45385139a87aee55ff",
+      "images/decision_007_yellow_view1.png": "a1190792fb1211e304a543030f010b95dd6344560b907bc7637bb1c929787823",
+      "images/decision_007_yellow_view2.png": "ec6cee0b581100c985ffbef0e4c9b08281bb1f3e5d46c32cce8e287b3249a6a3"
+    },
+    "scope": "Approval only of color treatment and image validity; not model quality, geometric calibration or autonomous robot success."
+  },
+  "example_images": {
+    "test_reports/factorial_goal_color_review_20261006.png": "3742724dd5c933c0dcb7bf69d2afce339a2f4d4dc90e61b48b6b78fe32b5af52",
+    "test_reports/factorial_lower_release_views_20261006.png": "d6eea90413eedd56ccb291951416e4e506e8576fbd3ad1b1b9ac89943265cd71"
+  },
+  "scope": "GPU captures/color treatment validated, not eight-group real-model decision results."
+}
