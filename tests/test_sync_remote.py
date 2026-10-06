@@ -163,6 +163,40 @@ class SyncRemoteTests(unittest.TestCase):
                 self.assertEqual(transport.call_args.args[3], "inspect")
                 transfer.assert_not_called()
 
+    def local_transport(self, host, port, directory, action, *args):
+        result = self.remote_call(action, *args, directory=Path(directory))
+        if result.returncode:
+            raise self.sync.SyncError(result.stderr)
+        return json.loads(result.stdout.strip().splitlines()[-1])
+
+    def test_complete_sync_with_local_transport(self):
+        def transfer(host, port, bundle, staging):
+            Path(staging, "update.bundle").write_bytes(Path(bundle).read_bytes())
+
+        with patch.object(self.sync, "remote_call", side_effect=self.local_transport):
+            with patch.object(self.sync, "copy_bundle", side_effect=transfer):
+                self.sync.sync(self.source, "root@example.invalid", 22, str(self.remote))
+        self.assertEqual(self.git(self.remote, "rev-parse", "HEAD"), self.new_head)
+        self.assertEqual(self.git(self.remote, "status", "--porcelain"), "")
+        for repo in (self.source, self.remote):
+            self.assertEqual(list((repo / ".git").glob("isaac-sync-*")), [])
+
+    def test_failed_transfer_cleans_staging_without_changing_checkout(self):
+        with patch.object(self.sync, "remote_call", side_effect=self.local_transport):
+            with patch.object(self.sync, "copy_bundle", side_effect=self.sync.SyncError("transfer failed")):
+                with self.assertRaisesRegex(self.sync.SyncError, "transfer failed"):
+                    self.sync.sync(self.source, "root@example.invalid", 22, str(self.remote))
+        self.assertEqual(self.git(self.remote, "rev-parse", "HEAD"), self.old_head)
+        for repo in (self.source, self.remote):
+            self.assertEqual(list((repo / ".git").glob("isaac-sync-*")), [])
+
+    def test_already_current_does_not_transfer(self):
+        with patch.object(self.sync, "remote_call", return_value={"head": self.new_head}) as transport:
+            with patch.object(self.sync, "copy_bundle") as transfer:
+                self.sync.sync(self.source, "root@example.invalid", 22, str(self.remote))
+                self.assertEqual(transport.call_count, 1)
+                transfer.assert_not_called()
+
 
 if __name__ == "__main__":
     unittest.main()
