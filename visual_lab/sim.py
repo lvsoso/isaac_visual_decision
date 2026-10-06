@@ -6,7 +6,7 @@ frame accounting, timeouts, camera and evaluator are this kit's own code.
 from __future__ import annotations
 import math
 from pathlib import Path
-from .core import LabError, PHASES, phase_result, vector3
+from .core import LabError, PHASES, NEAR_POSE_PHASES, phase_result, vector3
 from .upstream import load_tutorial
 from .capture import SceneCamera
 
@@ -244,6 +244,10 @@ class IsaacScene:
         status = None
         ee_error = gripper_error = 0.0
         controller_command_frames = 0
+        near_pose = action in NEAR_POSE_PHASES
+        position_tolerance = self.c["near_pose_tolerance_m"] if near_pose else self.c["ee_tolerance_m"]
+        required_stable_frames = self.c["near_pose_stable_frames"] if near_pose else 0
+        near_stable_frames = 0
         for frame in range(1, maximum + 1):
             if is_gripper:
                 # Hold the arm, but not the gripper DOF, while opening/closing.
@@ -261,7 +265,10 @@ class IsaacScene:
             tool_position = self._controller_tool_world_position()
             tool_error = math.dist(tool_position, xyz)
             gripper_error = abs(observed["finger_joint_position_rad"] - self.gripper_command)
-            status = phase_result(action, frame, tool_error, gripper_error, self.c)
+            if near_pose:
+                near_stable_frames = near_stable_frames + 1 if tool_error <= position_tolerance else 0
+            status = phase_result(action, frame, tool_error, gripper_error, self.c,
+                                  near_stable_frames=near_stable_frames)
             if status:
                 break
         self.timeline.pause()
@@ -271,6 +278,9 @@ class IsaacScene:
                 "convergence_position_source": "controller_model_fk_from_measured_joints",
                 "controller_tool_frame": s._tool_frame,
                 "controller_tool_world_position_m": tool_position, "controller_tool_error_m": tool_error,
+                "motion_position_tolerance_m": position_tolerance,
+                "near_pose_stable_frames": near_stable_frames,
+                "required_near_pose_stable_frames": required_stable_frames,
                 "gripper_target_rad": self.gripper_command, "gripper_error_rad": gripper_error,
                 "controller_command_frames": controller_command_frames,
                 "last_joint_command": last_joint_command,

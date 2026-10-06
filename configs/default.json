@@ -16,6 +16,8 @@
   "arm_min_frames": 1,
   "gripper_min_frames": 60,
   "ee_tolerance_m": 0.02,
+  "near_pose_tolerance_m": 0.005,
+  "near_pose_stable_frames": 12,
   "gripper_tolerance_rad": 0.04,
   "max_decisions": 16,
   "warmup_frames": 120,

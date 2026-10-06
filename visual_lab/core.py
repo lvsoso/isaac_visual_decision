@@ -9,6 +9,7 @@ from typing import Any
 ACTIONS = ("pre_grasp", "approach", "grasp", "lift", "transport", "lower", "release", "abort")
 PHASES = ACTIONS[:-1] + ("retract",)
 GRIPPER_PHASES = {"grasp", "release"}
+NEAR_POSE_PHASES = {"approach", "lower"}
 
 class LabError(RuntimeError):
     """需要终止回合、不能偷偷切换到规则策略的错误。"""
@@ -36,14 +37,19 @@ def load_config(path: str | Path) -> dict[str, Any]:
     c = json.loads(Path(path).read_text(encoding="utf-8"))
     if c.get("schema_version") != 1:
         raise ProtocolError("Unsupported config schema_version")
+    # Resolve older config files to explicit values recorded in the run manifest.
+    c.setdefault("near_pose_tolerance_m", 0.005)
+    c.setdefault("near_pose_stable_frames", 12)
     for key in ("cube_position_m", "target_position_m"):
         c[key] = vector3(c[key], key)
-    for key in ("frame_scale", "arm_min_frames", "gripper_min_frames", "max_decisions", "warmup_frames", "settle_frames"):
+    for key in ("frame_scale", "arm_min_frames", "gripper_min_frames", "max_decisions", "warmup_frames", "settle_frames", "near_pose_stable_frames"):
         if type(c[key]) is not int or c[key] < 1:
             raise ProtocolError(f"{key} must be a positive integer")
-    for key in ("physics_dt", "cube_size_m", "ee_tolerance_m", "gripper_tolerance_rad", "success_xy_tolerance_m", "success_z_tolerance_m", "http_timeout_seconds"):
+    for key in ("physics_dt", "cube_size_m", "ee_tolerance_m", "near_pose_tolerance_m", "gripper_tolerance_rad", "success_xy_tolerance_m", "success_z_tolerance_m", "http_timeout_seconds"):
         if finite_number(c[key], key) <= 0:
             raise ProtocolError(f"{key} must be > 0")
+    if c["near_pose_tolerance_m"] > c["ee_tolerance_m"]:
+        raise ProtocolError("near_pose_tolerance_m must not exceed ee_tolerance_m")
     if abs(c["cube_size_m"] - 0.05) > 1e-9:
         raise ProtocolError("Installed tutorial uses a 0.05 m cube; changing this field alone does not resize the USD")
     limits = c["tutorial_phase_limits"]
@@ -67,19 +73,24 @@ def load_config(path: str | Path) -> dict[str, Any]:
 def validate_timing(c: dict) -> None:
     for i, action in enumerate(PHASES):
         minimum = c["gripper_min_frames"] if action in GRIPPER_PHASES else c["arm_min_frames"]
+        if action in NEAR_POSE_PHASES:
+            minimum = max(minimum, c["near_pose_stable_frames"])
         if minimum > c["tutorial_phase_limits"][i] * c["frame_scale"]:
             raise ProtocolError(f"{action}: minimum frames exceeds timeout; fix the protocol before running")
 
 
-def phase_result(action: str, frames: int, ee_error: float, gripper_error: float, c: dict) -> str | None:
+def phase_result(action: str, frames: int, ee_error: float, gripper_error: float, c: dict,
+                 *, near_stable_frames: int = 0) -> str | None:
     """到位优先于同一帧超时；末端到位 ≠ 抓取成功。"""
     if action not in PHASES:
         raise ProtocolError(f"Unknown phase {action}")
     gripper = action in GRIPPER_PHASES
     minimum = c["gripper_min_frames"] if gripper else c["arm_min_frames"]
     error = finite_number(gripper_error if gripper else ee_error, "phase error")
-    tolerance = c["gripper_tolerance_rad"] if gripper else c["ee_tolerance_m"]
-    if frames >= minimum and error <= tolerance:
+    tolerance = (c["gripper_tolerance_rad"] if gripper else
+                 c["near_pose_tolerance_m"] if action in NEAR_POSE_PHASES else c["ee_tolerance_m"])
+    stable = action not in NEAR_POSE_PHASES or near_stable_frames >= c["near_pose_stable_frames"]
+    if frames >= minimum and error <= tolerance and stable:
         return "reached"
     maximum = c["tutorial_phase_limits"][PHASES.index(action)] * c["frame_scale"]
     if frames >= maximum:
