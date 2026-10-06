@@ -55,7 +55,7 @@ class CameraFramingTests(unittest.TestCase):
 
     def test_default_camera_frames_goal_outline(self):
         x, y, _ = self.config["target_position_m"]
-        self.assert_box_framed((x, y, 0.0005), (0.062, 0.062, 0.0005))
+        self.assert_box_framed((x, y, 0.0005), (0.07, 0.07, 0.0005))
 
     def test_default_camera_frames_observed_initial_gripper_region(self):
         # Leave 8 cm around right_inner_finger, not just its point coordinate.

@@ -93,8 +93,9 @@ class IsaacScene:
             raise LabError("Tutorial cube was not created")
         UsdGeom.Gprim(cube).GetDisplayColorAttr().Set([Gf.Vec3f(0.85, 0.04, 0.04)])
         tx, ty, _ = self.c["target_position_m"]
-        # 12 cm outline; score still uses center <= 5 cm, not the outline geometry.
-        half, width, height = 0.06, 0.004, 0.001
+        # 12 cm between edge centers, 2 cm strokes (~2-3 px at the default camera).
+        # Visual only: score still uses center <= 5 cm, not outline geometry.
+        half, width, height = 0.06, 0.02, 0.001
         strips = [([tx-half,ty,height/2],[width,2*half,height]),
                   ([tx+half,ty,height/2],[width,2*half,height]),
                   ([tx,ty-half,height/2],[2*half,width,height]),

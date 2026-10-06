@@ -96,3 +96,11 @@ ffmpeg 的真实 Isaac 视频编码未执行；本次没有提供真实相机截
 - 配置加载会为旧文件填入明确的新默认值，检查正数、整数、近接触阈值不能比普通运动更宽、稳定窗口能否容纳在预算中。阶段日志记录实际阈值及连续达标帧数；baseline 和模型模式使用相同规则，未添加基于私有方块真值的控制分支或掉落恢复。
 - 新增 13 项 CPU 回归测试，覆盖 19 mm 过早结束、连续窗口/越界重置、最后一帧到位与超时、错误配置/旧配置、保持原运输容差和控制目标。最新 CPU 测试 **126 / 126 通过**，原始输出见 `test_reports/unittest_near_pose_20261006.txt`。
 - **调整后的抓取深度、接触、搬运保持和完整物理抓放仍待真实 GPU 复跑验证。** CPU 替身没有模拟指垫、摩擦或刚体抓持；真实模型仍未验证。
+
+### 真实 GPU 基线、模型链路与目标框可见性试验
+
+- 在远端 L40 / Isaac Sim 6.0.1，提交 `748f144` 的 `runs/02_baseline` 成功；随后 `runs/13_baseline_repeat` 与 `14_baseline_repeat` 两轮自动 headless GPU 复跑均退出 0、`strict_success=true`，最终 XY 误差约 0.021993 m，776 次物理更新，所有八个阶段到位。它们是同一个固定场景的重复运行，不证明随机场景泛化或真机安全。
+- 自动运行前为 Isaac 设置 `OMNI_KIT_ALLOW_ROOT=1`、`LD_LIBRARY_PATH=""`。此前未清空的 SSH 环境优先加载系统 Python 3.12.3 动态库、混用 Isaac 扩展，在 Kit async_engine 启动阶段崩溃；该启动失败记录保留在 `runs/12_baseline_repeat`，不能算作抓持回归。清空后实际解释器为 Isaac 自带 3.12.13。
+- 独立 Conda 模型环境 `/root/gpufree-data/envs/ivd-model`（Python 3.12.14）安装固定 Torch 2.9.1 / Torchvision 0.24.1 / Transformers 5.14.1，`pip check` 和 L40 上实际 BF16 CUDA 矩阵运算通过。完整模型快照及小文件哈希已核对，服务仅绑定 loopback，加载的官方 inference.py SHA256 为 `c904e2c67ca0775621a22375ee373d2ba30b52117cda870c6c9ef74143b29863`。
+- `runs/15_model_probe` 完成一次真实相机图片推理，约 9 秒；`runs/16_shadow` 的七次真实模型调用全部完成，约 7.8–8.8 秒/次，物理抓放仍成功。但建议为 `[approach, approach, grasp, lift, lift, grasp, lift]`，仅 3/7 与固定序列一致；后半段在抬起、到目标上方、放低后仍选 lift/grasp/lift，不满足当前 visual 接管门槛。图片 SHA256 和对应状态已核对，未给模型私有方块/目标坐标。shadow 成功不是模型控制成功。
+- 本轮先只把非碰撞目标框线由 4 mm 加宽到 20 mm，边中心、颜色、相机、动作描述、物理参数与成功阈值均不变。新增五项 CPU 检查，覆盖 USD 几何、投影宽度、配置/颜色不变、自定义目标和缺失方块；RED 有两个预期失败，旧框线默认投影不足 1 像素。GREEN 全部 **131 / 131 CPU 测试通过**，原始输出见 `test_reports/unittest_goal_visibility_20261006.txt`，装饰方法可执行行覆盖 20/20；编译与 diff 检查通过。**本轮加宽后的 GPU 可见性、baseline 和 shadow 效果仍待复跑；不预先宣称已修复模型判断。**
