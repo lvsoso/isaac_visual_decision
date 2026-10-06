@@ -8,3 +8,5 @@ models/
 # Uploaded run diagnostics are local artifacts, not source code.
 /summary.json
 /events.jsonl
+# Jupyter's generated copies of offline HTML reports; preserve them locally.
+/docs/reports/.ipynb_checkpoints/
