@@ -1,0 +1,101 @@
+test_existing_report_is_never_overwritten (tests.test_factorial_report.FactorialReportTests.test_existing_report_is_never_overwritten) ... ERROR
+test_hostile_metadata_does_not_break_out_of_data_script (tests.test_factorial_report.FactorialReportTests.test_hostile_metadata_does_not_break_out_of_data_script) ... ERROR
+test_incomplete_experiment_cannot_be_reported_as_complete (tests.test_factorial_report.FactorialReportTests.test_incomplete_experiment_cannot_be_reported_as_complete) ... ERROR
+test_real_mode_cannot_label_mock_results_as_real (tests.test_factorial_report.FactorialReportTests.test_real_mode_cannot_label_mock_results_as_real) ... ERROR
+test_self_contained_all_images_and_probabilities_with_mock_warning (tests.test_factorial_report.FactorialReportTests.test_self_contained_all_images_and_probabilities_with_mock_warning) ... ERROR
+test_tampered_image_or_response_refuses_report (tests.test_factorial_report.FactorialReportTests.test_tampered_image_or_response_refuses_report) ... ERROR
+
+======================================================================
+ERROR: test_existing_report_is_never_overwritten (tests.test_factorial_report.FactorialReportTests.test_existing_report_is_never_overwritten)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_factorial_report.py", line 35, in setUp
+    self.builder = importlib.import_module('tools.make_factorial_report')
+                   ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'tools.make_factorial_report'
+
+======================================================================
+ERROR: test_hostile_metadata_does_not_break_out_of_data_script (tests.test_factorial_report.FactorialReportTests.test_hostile_metadata_does_not_break_out_of_data_script)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_factorial_report.py", line 35, in setUp
+    self.builder = importlib.import_module('tools.make_factorial_report')
+                   ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'tools.make_factorial_report'
+
+======================================================================
+ERROR: test_incomplete_experiment_cannot_be_reported_as_complete (tests.test_factorial_report.FactorialReportTests.test_incomplete_experiment_cannot_be_reported_as_complete)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_factorial_report.py", line 35, in setUp
+    self.builder = importlib.import_module('tools.make_factorial_report')
+                   ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'tools.make_factorial_report'
+
+======================================================================
+ERROR: test_real_mode_cannot_label_mock_results_as_real (tests.test_factorial_report.FactorialReportTests.test_real_mode_cannot_label_mock_results_as_real)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_factorial_report.py", line 35, in setUp
+    self.builder = importlib.import_module('tools.make_factorial_report')
+                   ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'tools.make_factorial_report'
+
+======================================================================
+ERROR: test_self_contained_all_images_and_probabilities_with_mock_warning (tests.test_factorial_report.FactorialReportTests.test_self_contained_all_images_and_probabilities_with_mock_warning)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_factorial_report.py", line 35, in setUp
+    self.builder = importlib.import_module('tools.make_factorial_report')
+                   ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'tools.make_factorial_report'
+
+======================================================================
+ERROR: test_tampered_image_or_response_refuses_report (tests.test_factorial_report.FactorialReportTests.test_tampered_image_or_response_refuses_report)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_factorial_report.py", line 35, in setUp
+    self.builder = importlib.import_module('tools.make_factorial_report')
+                   ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'tools.make_factorial_report'
+
+----------------------------------------------------------------------
+Ran 6 tests in 1.012s
+
+FAILED (errors=6)
