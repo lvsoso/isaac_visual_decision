@@ -1,0 +1,800 @@
+{
+  "collected_utc": "2026-10-06T15:50:43.276591+00:00",
+  "remote_project": "/root/gpufree-share/isaac_visual_decision",
+  "scope": "Fixed-scene goal-width and prompt ablations; agreement with baseline is not generalization accuracy or model-control success",
+  "model_had_control": false,
+  "visual_mode_run": false,
+  "same_simulation_config": true,
+  "changed_runtime_sources_18_to_20": [
+    "visual_lab/protocol.py"
+  ],
+  "model_health_at_replay": {
+    "status": "ok",
+    "bridge_schema": 1,
+    "supports_images": true,
+    "busy": false,
+    "requests_completed": 15,
+    "uptime_seconds": 1629.599,
+    "is_mock": false,
+    "checkpoint": "/root/gpufree-data/models/Intern-Decision-4B",
+    "inference_py_sha256": "c904e2c67ca0775621a22375ee373d2ba30b52117cda870c6c9ef74143b29863",
+    "config_sha256": "ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670",
+    "device": "cuda",
+    "dtype": "bfloat16",
+    "max_length": 8192,
+    "temperature": 1.99241824
+  },
+  "runs": {
+    "17_goal_baseline": {
+      "source_file_sha256": {
+        "manifest.json": "fe72db47ee487b64db166329c3faead13dd9bd9af93fa16d685b63088811b136",
+        "summary.json": "630b31bd211a07de0f97ae57b87184db890ef0d74a4cafd8395e0461b8779672",
+        "events.jsonl": "59065e74e93b0c6d43f059d28645fd61491804c8ca59d6a2cd056be6d16f55c3"
+      },
+      "summary": {
+        "physical_completion": true,
+        "strict_success": true,
+        "final_cube_position_m": [
+          0.47915345430374146,
+          0.49299249053001404,
+          0.024999940767884254
+        ],
+        "final_xy_error_m": 0.02199280919842071,
+        "final_z_error_m": 5.923211574693221e-08,
+        "release_reached": true,
+        "timeout_occurred": false,
+        "termination_reason": "completed",
+        "mode": "baseline",
+        "num_decisions": 7,
+        "api_attempts": 0,
+        "api_completed": 0,
+        "model_called": false,
+        "real_model_evaluated": false,
+        "model_had_control": false,
+        "mock_backend": false,
+        "wall_seconds": 19.655665524071082,
+        "physics_updates": 776,
+        "recorded_frames": 21,
+        "executed_actions": [
+          "pre_grasp",
+          "approach",
+          "grasp",
+          "lift",
+          "transport",
+          "lower",
+          "release"
+        ],
+        "proposed_actions": [],
+        "error": null,
+        "controller_target_source": "configured_world_coordinates",
+        "end_to_end_visual_localization": false
+      },
+      "created_utc": "2026-10-06T15:34:16.882135+00:00",
+      "source_sha256": {
+        "run_isaac.py": "e7876d4cb250e72398a50778c4c29e0d6af96804cab32ed3401373eedb070e84",
+        "visual_lab/__init__.py": "ee35301b55f5da7f6a1f412279bccc541e0a9111df8941996db9cef1a871a75b",
+        "visual_lab/audit.py": "9b0ab935c222b2316ff1e6ea3ab10969b9ed1904a0db1319ceca3464680f4ca6",
+        "visual_lab/capture.py": "d736c299e444c1e001d1cebc3fae5af912a9be96e00300144dbabd351fc83b5c",
+        "visual_lab/client.py": "7abd9923ceb75d748b18517d90e79624a40f81417673fe03869d87db7f27685f",
+        "visual_lab/core.py": "21f9991aa3a62cc49580b863fd14e50f884ec93f6ed557165747512618089471",
+        "visual_lab/png.py": "da421559b77b50a365721ae1c89e0688c6f1e67a56c6024ad9a2169185bce9c4",
+        "visual_lab/protocol.py": "4e1d152a0cedb50187a9dd4f3cb266476ba1102da7374852b50a3669ef284deb",
+        "visual_lab/runner.py": "4fae7f9cf2830f80c0948ca68d7aeae4f821b196f1c9c6ec2f1e224a758d7dff",
+        "visual_lab/server.py": "ccf7f5d4be9054050d899bf15a3177aa23632e8c0e13d72f6cefa8cdcae1abfe",
+        "visual_lab/sim.py": "30ed6e7081d929d6e17e1b42c1efc85b469941ed96381b04182121867d570304",
+        "visual_lab/upstream.py": "663662e902b65dd8799e2a81e7e6e91e927c848e1ac3b468fcbd224d285f87ba"
+      },
+      "decisions": [
+        {
+          "decision_id": 1,
+          "proposed_action": null,
+          "executed_action": "pre_grasp",
+          "probabilities": null,
+          "confidence": null,
+          "http_latency_ms": null,
+          "image_sha256": "d3144d40f60632c306fd531f458e14f6f2e2f7b7a069231ff05c304fe4fde8f6"
+        },
+        {
+          "decision_id": 2,
+          "proposed_action": null,
+          "executed_action": "approach",
+          "probabilities": null,
+          "confidence": null,
+          "http_latency_ms": null,
+          "image_sha256": "2bdbcea912c63c971cc5603d7113947f5ffbc459b9c674b76ceb9a0934d35f4d"
+        },
+        {
+          "decision_id": 3,
+          "proposed_action": null,
+          "executed_action": "grasp",
+          "probabilities": null,
+          "confidence": null,
+          "http_latency_ms": null,
+          "image_sha256": "d4f7cef73879115fd6b656c4f9810f4141f91b03771a4f220b2c609db03890ce"
+        },
+        {
+          "decision_id": 4,
+          "proposed_action": null,
+          "executed_action": "lift",
+          "probabilities": null,
+          "confidence": null,
+          "http_latency_ms": null,
+          "image_sha256": "eed86dadb80cc01faab6275bc5d85deac88a5b8980eec4c63649674ac79b2cf6"
+        },
+        {
+          "decision_id": 5,
+          "proposed_action": null,
+          "executed_action": "transport",
+          "probabilities": null,
+          "confidence": null,
+          "http_latency_ms": null,
+          "image_sha256": "b05b644299bed9a4358e524da8c55c0cd0b7308c279371526b3a747f858df53b"
+        },
+        {
+          "decision_id": 6,
+          "proposed_action": null,
+          "executed_action": "lower",
+          "probabilities": null,
+          "confidence": null,
+          "http_latency_ms": null,
+          "image_sha256": "65ba42776e37fdfea4da62b3520727bd8391b0d479b4e29cbe01e69b342ec43e"
+        },
+        {
+          "decision_id": 7,
+          "proposed_action": null,
+          "executed_action": "release",
+          "probabilities": null,
+          "confidence": null,
+          "http_latency_ms": null,
+          "image_sha256": "e6543981136a1189f3f94dcd62181f359b68715dd192defd77e4c6f7982714a9"
+        }
+      ],
+      "baseline_agreement_count": null
+    },
+    "18_goal_shadow": {
+      "source_file_sha256": {
+        "manifest.json": "faaa8e66c0e6285976fa81b43489b690ff315dfd5dabbe8ed7222fe6ec24bef1",
+        "summary.json": "9f3f468c84c2cf1cca514a0abe29474ca9d95bfefb3f8dad40cbb1b8f172b548",
+        "events.jsonl": "c267d9c547ad8b39f8c6aede60ff47601db549de4def3556eac1858404a9d3cb"
+      },
+      "summary": {
+        "physical_completion": true,
+        "strict_success": true,
+        "final_cube_position_m": [
+          0.47915345430374146,
+          0.49299249053001404,
+          0.024999940767884254
+        ],
+        "final_xy_error_m": 0.02199280919842071,
+        "final_z_error_m": 5.923211574693221e-08,
+        "release_reached": true,
+        "timeout_occurred": false,
+        "termination_reason": "completed",
+        "mode": "shadow",
+        "num_decisions": 7,
+        "api_attempts": 7,
+        "api_completed": 7,
+        "model_called": true,
+        "real_model_evaluated": true,
+        "model_had_control": false,
+        "mock_backend": false,
+        "wall_seconds": 76.0290618930012,
+        "physics_updates": 776,
+        "recorded_frames": 21,
+        "executed_actions": [
+          "pre_grasp",
+          "approach",
+          "grasp",
+          "lift",
+          "transport",
+          "lower",
+          "release"
+        ],
+        "proposed_actions": [
+          "approach",
+          "approach",
+          "grasp",
+          "lift",
+          "lift",
+          "grasp",
+          "lift"
+        ],
+        "error": null,
+        "controller_target_source": "configured_world_coordinates",
+        "end_to_end_visual_localization": false
+      },
+      "created_utc": "2026-10-06T15:35:56.539386+00:00",
+      "source_sha256": {
+        "run_isaac.py": "e7876d4cb250e72398a50778c4c29e0d6af96804cab32ed3401373eedb070e84",
+        "visual_lab/__init__.py": "ee35301b55f5da7f6a1f412279bccc541e0a9111df8941996db9cef1a871a75b",
+        "visual_lab/audit.py": "9b0ab935c222b2316ff1e6ea3ab10969b9ed1904a0db1319ceca3464680f4ca6",
+        "visual_lab/capture.py": "d736c299e444c1e001d1cebc3fae5af912a9be96e00300144dbabd351fc83b5c",
+        "visual_lab/client.py": "7abd9923ceb75d748b18517d90e79624a40f81417673fe03869d87db7f27685f",
+        "visual_lab/core.py": "21f9991aa3a62cc49580b863fd14e50f884ec93f6ed557165747512618089471",
+        "visual_lab/png.py": "da421559b77b50a365721ae1c89e0688c6f1e67a56c6024ad9a2169185bce9c4",
+        "visual_lab/protocol.py": "4e1d152a0cedb50187a9dd4f3cb266476ba1102da7374852b50a3669ef284deb",
+        "visual_lab/runner.py": "4fae7f9cf2830f80c0948ca68d7aeae4f821b196f1c9c6ec2f1e224a758d7dff",
+        "visual_lab/server.py": "ccf7f5d4be9054050d899bf15a3177aa23632e8c0e13d72f6cefa8cdcae1abfe",
+        "visual_lab/sim.py": "30ed6e7081d929d6e17e1b42c1efc85b469941ed96381b04182121867d570304",
+        "visual_lab/upstream.py": "663662e902b65dd8799e2a81e7e6e91e927c848e1ac3b468fcbd224d285f87ba"
+      },
+      "decisions": [
+        {
+          "decision_id": 1,
+          "proposed_action": "approach",
+          "executed_action": "pre_grasp",
+          "probabilities": {
+            "pre_grasp": 0.22547806096490888,
+            "approach": 0.39657427983687343,
+            "grasp": 0.17543550842067748,
+            "lift": 0.02844221365970637,
+            "transport": 0.005926469101834363,
+            "lower": 0.0029722298734124178,
+            "release": 0.010423564907813022,
+            "abort": 0.15474767323477406
+          },
+          "confidence": 0.39657427983687343,
+          "http_latency_ms": 7871.763912029564,
+          "image_sha256": "2ddacca715e283d96bd6ef50ec5875eec8e90138c5c4eca9b19662756b89d28a",
+          "request_sha256": "4aa2ed329b061983dc80dc942e8aaafba08087057302f1b7c7ccf09d4d3f49b1",
+          "response_sha256": "8895773721776d9fdada3ff7619d1ff7a019bfb004e23241d4dc502b5f6b47f6",
+          "evidence_link_verified": true
+        },
+        {
+          "decision_id": 2,
+          "proposed_action": "approach",
+          "executed_action": "approach",
+          "probabilities": {
+            "pre_grasp": 0.13158767879617206,
+            "approach": 0.4070574716812053,
+            "grasp": 0.3590561144731759,
+            "lift": 0.0748160842669748,
+            "transport": 0.0060831314934049335,
+            "lower": 0.0023737053233050406,
+            "release": 0.006896371054753373,
+            "abort": 0.01212944291100862
+          },
+          "confidence": 0.4070574716812053,
+          "http_latency_ms": 7920.782132074237,
+          "image_sha256": "d51e15f493476c9a7c40996b4bb169359dc8bd8ade2b3383e2b5de83274d2c8b",
+          "request_sha256": "bf385044b04cd681f2a7f432908bccb46da36e395175c0d7699e1d64e6f47e0c",
+          "response_sha256": "9c71f3818fdf0b15a582a3a37d5f7ffbeb840a2b2990504b76d4bdd6523b13ae",
+          "evidence_link_verified": true
+        },
+        {
+          "decision_id": 3,
+          "proposed_action": "grasp",
+          "executed_action": "grasp",
+          "probabilities": {
+            "pre_grasp": 0.07279932267591559,
+            "approach": 0.1363308860070516,
+            "grasp": 0.5420277686617618,
+            "lift": 0.21150524123276276,
+            "transport": 0.007607576776665029,
+            "lower": 0.002968560741002699,
+            "release": 0.013380321952420216,
+            "abort": 0.013380321952420216
+          },
+          "confidence": 0.5420277686617618,
+          "http_latency_ms": 7851.538948016241,
+          "image_sha256": "22c35d32d9325da396b269a3293874a61b16d31f0f6556758c563786f3e92803",
+          "request_sha256": "a67640f809bec3daf9f81150f9f4e0394cd8a0244f3f400f4a1e0d714a59a036",
+          "response_sha256": "24f3c80462cda8e57592f29f4abbb882e7726c6a87a756b08814f38ede1408f6",
+          "evidence_link_verified": true
+        },
+        {
+          "decision_id": 4,
+          "proposed_action": "lift",
+          "executed_action": "lift",
+          "probabilities": {
+            "pre_grasp": 0.08694204193069821,
+            "approach": 0.0318627115040074,
+            "grasp": 0.22280772612142172,
+            "lift": 0.5709928385754249,
+            "transport": 0.015007985223790156,
+            "lower": 0.005500159715435279,
+            "release": 0.0436029824226628,
+            "abort": 0.023283554506559445
+          },
+          "confidence": 0.5709928385754249,
+          "http_latency_ms": 8148.901607841253,
+          "image_sha256": "871262daa95a1632bd39fa0948276fead6a23f6a08ab439cd9606aa03c50c8c1",
+          "request_sha256": "4410fdbafeed94efc4dbb5bdbc4312ef4d9df99b7c52cf292180dafb82ffc407",
+          "response_sha256": "503c611cc69d8b8fa782f0bd27af1df2a30242fd78504ab9a2013454f407e75f",
+          "evidence_link_verified": true
+        },
+        {
+          "decision_id": 5,
+          "proposed_action": "lift",
+          "executed_action": "transport",
+          "probabilities": {
+            "pre_grasp": 0.06599525846604079,
+            "approach": 0.09615965765977505,
+            "grasp": 0.16912708638197446,
+            "lift": 0.3590653428643312,
+            "transport": 0.1588424011117885,
+            "lower": 0.05134828774981923,
+            "release": 0.08482024545704915,
+            "abort": 0.014641720309221574
+          },
+          "confidence": 0.3590653428643312,
+          "http_latency_ms": 7868.067800998688,
+          "image_sha256": "020b9687397ccecf444f3e3f8a880ea34fa4173b9330a32f0889ebdd04c58b12",
+          "request_sha256": "932979e83097b524de9e5094ac165eb134ab055d07a6780a9e4c9ff23df85904",
+          "response_sha256": "522c090078a063b46eb3520bc55e54645c643fc1ffd840f23aba54065118b836",
+          "evidence_link_verified": true
+        },
+        {
+          "decision_id": 6,
+          "proposed_action": "grasp",
+          "executed_action": "lower",
+          "probabilities": {
+            "pre_grasp": 0.09815288524855043,
+            "approach": 0.13431871388185138,
+            "grasp": 0.36650814502088713,
+            "lift": 0.3232884886748672,
+            "transport": 0.02318617411088117,
+            "lower": 0.013182836094094949,
+            "release": 0.03172945057673572,
+            "abort": 0.009633306392132106
+          },
+          "confidence": 0.36650814502088713,
+          "http_latency_ms": 8483.150651911274,
+          "image_sha256": "66ae92d7e0a4152c2e81633c7267c51727f5364491a53daad3f98af26ad16bf6",
+          "request_sha256": "5e20531d2ee2f6e3a85460f63b6093b61ee92a771fa5880561d83b45f1829f85",
+          "response_sha256": "c2cb90883a07b0edfa3edd4a8163d68dafda6c2c205da59085c90560bd1063bc",
+          "evidence_link_verified": true
+        },
+        {
+          "decision_id": 7,
+          "proposed_action": "lift",
+          "executed_action": "release",
+          "probabilities": {
+            "pre_grasp": 0.055337360529672495,
+            "approach": 0.02606502393700133,
+            "grasp": 0.28276944489790623,
+            "lift": 0.49733924723135187,
+            "transport": 0.008425925795420496,
+            "lower": 0.009552367542924057,
+            "release": 0.11033976937873134,
+            "abort": 0.010170860686992123
+          },
+          "confidence": 0.49733924723135187,
+          "http_latency_ms": 7923.106241039932,
+          "image_sha256": "f5c562561814966c8b1500ff4a54cb3ceec3d829f875d4c2c16953b93171c773",
+          "request_sha256": "71bf2fa518a3a8ead6992fe04dcb4f0db766f45b71f8aa9eccc6291b98512c41",
+          "response_sha256": "eff9aa58001888f041118d3b7728d6888ec9762a4a928fa748e33ac1ad9dd3fa",
+          "evidence_link_verified": true
+        }
+      ],
+      "baseline_agreement_count": 3
+    },
+    "19_prompt_replay": {
+      "source_file_sha256": {
+        "manifest.json": "e2bf9e3a66395f3087ac0ba2a1c7a93bb18e14f919a40585757622c4ef413689",
+        "summary.json": "64b922c2041a83053ad31dcabb2ad11d42e1febb5bceae60bf3fdbe9d67add83"
+      },
+      "summary": {
+        "kind": "offline_real_model_replay",
+        "robot_was_moved": false,
+        "api_completed": 7,
+        "old_baseline_agreement": 3,
+        "new_baseline_agreement": 5,
+        "num_images": 7,
+        "agreement_is_not_generalization_accuracy": true,
+        "comparison": [
+          {
+            "id": 1,
+            "baseline_action": "pre_grasp",
+            "old_proposed": "approach",
+            "new_proposed": "pre_grasp",
+            "confidence": 0.45535088391543377,
+            "latency_ms": 7924.5976659003645,
+            "image_sha256": "2ddacca715e283d96bd6ef50ec5875eec8e90138c5c4eca9b19662756b89d28a",
+            "same_image_and_state": true,
+            "probabilities": {
+              "pre_grasp": 0.45535088391543377,
+              "approach": 0.21447954248944157,
+              "grasp": 0.13824804332350382,
+              "lift": 0.04758446834889294,
+              "transport": 0.011240644698081908,
+              "lower": 0.0041194963498914095,
+              "release": 0.014447011537699412,
+              "abort": 0.11452990933705524
+            }
+          },
+          {
+            "id": 2,
+            "baseline_action": "approach",
+            "old_proposed": "approach",
+            "new_proposed": "approach",
+            "confidence": 0.3033723849799329,
+            "latency_ms": 7927.076938096434,
+            "image_sha256": "d51e15f493476c9a7c40996b4bb169359dc8bd8ade2b3383e2b5de83274d2c8b",
+            "same_image_and_state": true,
+            "probabilities": {
+              "pre_grasp": 0.26759786497173327,
+              "approach": 0.3033723849799329,
+              "grasp": 0.26759786497173327,
+              "lift": 0.10441965132786236,
+              "transport": 0.01317168489610204,
+              "lower": 0.004257952834037987,
+              "release": 0.01161844334032098,
+              "abort": 0.027964152678277204
+            }
+          },
+          {
+            "id": 3,
+            "baseline_action": "grasp",
+            "old_proposed": "grasp",
+            "new_proposed": "grasp",
+            "confidence": 0.4680608972360839,
+            "latency_ms": 7891.04672614485,
+            "image_sha256": "22c35d32d9325da396b269a3293874a61b16d31f0f6556758c563786f3e92803",
+            "same_image_and_state": true,
+            "probabilities": {
+              "pre_grasp": 0.10384406452022621,
+              "approach": 0.14210690153682254,
+              "grasp": 0.4680608972360839,
+              "lift": 0.23474087523544918,
+              "transport": 0.013099080146301706,
+              "lower": 0.0074476717894964095,
+              "release": 0.024530576371700592,
+              "abort": 0.006169933163919529
+            }
+          },
+          {
+            "id": 4,
+            "baseline_action": "lift",
+            "old_proposed": "lift",
+            "new_proposed": "lift",
+            "confidence": 0.5092993372639937,
+            "latency_ms": 7874.9981368891895,
+            "image_sha256": "871262daa95a1632bd39fa0948276fead6a23f6a08ab439cd9606aa03c50c8c1",
+            "same_image_and_state": true,
+            "probabilities": {
+              "pre_grasp": 0.044091210606700196,
+              "approach": 0.041410011724064416,
+              "grasp": 0.14522428348234243,
+              "lift": 0.5092993372639937,
+              "transport": 0.0603372503690109,
+              "lower": 0.0266918394309471,
+              "release": 0.1546272119201454,
+              "abort": 0.018318855202795928
+            }
+          },
+          {
+            "id": 5,
+            "baseline_action": "transport",
+            "old_proposed": "lift",
+            "new_proposed": "transport",
+            "confidence": 0.3381799694779104,
+            "latency_ms": 8256.97126891464,
+            "image_sha256": "020b9687397ccecf444f3e3f8a880ea34fa4173b9330a32f0889ebdd04c58b12",
+            "same_image_and_state": true,
+            "probabilities": {
+              "pre_grasp": 0.029277015707136714,
+              "approach": 0.0661810786779635,
+              "grasp": 0.051492866980855166,
+              "lift": 0.28016108800141837,
+              "transport": 0.3381799694779104,
+              "lower": 0.10267405131090596,
+              "release": 0.11640029763003679,
+              "abort": 0.015633632213773098
+            }
+          },
+          {
+            "id": 6,
+            "baseline_action": "lower",
+            "old_proposed": "grasp",
+            "new_proposed": "transport",
+            "confidence": 0.42787601875104087,
+            "latency_ms": 7886.622285936028,
+            "image_sha256": "66ae92d7e0a4152c2e81633c7267c51727f5364491a53daad3f98af26ad16bf6",
+            "same_image_and_state": true,
+            "probabilities": {
+              "pre_grasp": 0.015390160952379831,
+              "approach": 0.032674089577677486,
+              "grasp": 0.01744763559886636,
+              "lift": 0.1777723521896947,
+              "transport": 0.42787601875104087,
+              "lower": 0.1777723521896947,
+              "release": 0.13831759894672302,
+              "abort": 0.012749791793922993
+            }
+          },
+          {
+            "id": 7,
+            "baseline_action": "release",
+            "old_proposed": "lift",
+            "new_proposed": "lift",
+            "confidence": 0.5029986935752254,
+            "latency_ms": 7926.162296207622,
+            "image_sha256": "f5c562561814966c8b1500ff4a54cb3ceec3d829f875d4c2c16953b93171c773",
+            "same_image_and_state": true,
+            "probabilities": {
+              "pre_grasp": 0.023252993157726748,
+              "approach": 0.0280684834310764,
+              "grasp": 0.11882092193350974,
+              "lift": 0.5029986935752254,
+              "transport": 0.0318208902234136,
+              "lower": 0.063449171350898,
+              "release": 0.2225152711328011,
+              "abort": 0.009073575195349012
+            }
+          }
+        ]
+      },
+      "protocol_sha256": "063ad6f2b9d68f28fd4a6930b039e58f916476d9b93504cbf18a84b3e31401d5",
+      "replay_evidence_checks": [
+        {
+          "decision_id": 1,
+          "same_image_bytes_state_and_candidate_order": true,
+          "image_sha256": "2ddacca715e283d96bd6ef50ec5875eec8e90138c5c4eca9b19662756b89d28a",
+          "request_sha256": "08aad6a0d134b051e6ac8bdabe69059312cb05e42bd6889e43d8fd0451947263",
+          "response_sha256": "d001a84f3cc0a174fc8a58ca46ccb1e8da92c6b767a048ef13fb4c8f16065a07"
+        },
+        {
+          "decision_id": 2,
+          "same_image_bytes_state_and_candidate_order": true,
+          "image_sha256": "d51e15f493476c9a7c40996b4bb169359dc8bd8ade2b3383e2b5de83274d2c8b",
+          "request_sha256": "496c7506320f6b3a643085c679ce807eefacbfc6b51c7beb65796bcba045b226",
+          "response_sha256": "68e5f2ffda9dd16d1172e37bb45f0134897e47f6b5baaa4786aa8b8628cd12d4"
+        },
+        {
+          "decision_id": 3,
+          "same_image_bytes_state_and_candidate_order": true,
+          "image_sha256": "22c35d32d9325da396b269a3293874a61b16d31f0f6556758c563786f3e92803",
+          "request_sha256": "cbdf52c32af9a639b57428143336ee6770d65abe40ead47f9a4d8fd1e39d626e",
+          "response_sha256": "20517fd4a7be4198ee1c7bc9d3e245b77bbaee2a41362f7407831f2a86b759c7"
+        },
+        {
+          "decision_id": 4,
+          "same_image_bytes_state_and_candidate_order": true,
+          "image_sha256": "871262daa95a1632bd39fa0948276fead6a23f6a08ab439cd9606aa03c50c8c1",
+          "request_sha256": "1a1d0f00fb9147452fa9cf9c98032a50ffef8105ffc1adab3e104208fb069f30",
+          "response_sha256": "e14ca882b616e4ff0228b0a26d4119c06b734c52e19c772a061c8cc8b0ca9820"
+        },
+        {
+          "decision_id": 5,
+          "same_image_bytes_state_and_candidate_order": true,
+          "image_sha256": "020b9687397ccecf444f3e3f8a880ea34fa4173b9330a32f0889ebdd04c58b12",
+          "request_sha256": "3a1ce5cf919b0b7f9fe8a32cab0bb5c7cb948d87962c15146a6debd032584b2f",
+          "response_sha256": "94abc749a47b5066ec3b64efc0db2ff216cebfdd3c45f9e2584049322bea4c13"
+        },
+        {
+          "decision_id": 6,
+          "same_image_bytes_state_and_candidate_order": true,
+          "image_sha256": "66ae92d7e0a4152c2e81633c7267c51727f5364491a53daad3f98af26ad16bf6",
+          "request_sha256": "4ede77ece2064e3bf44038ccaae4efcca7059c2cef32f21c48db4f26899e04a0",
+          "response_sha256": "a0e1316ca74ee9517ab29450bb031807505fecf8ecd9da6b0dbe7cc8d58826bd"
+        },
+        {
+          "decision_id": 7,
+          "same_image_bytes_state_and_candidate_order": true,
+          "image_sha256": "f5c562561814966c8b1500ff4a54cb3ceec3d829f875d4c2c16953b93171c773",
+          "request_sha256": "a258e337c44ddcade8b5553b91bd3a41bf4a23686bb06b7a521ed673ba531cf8",
+          "response_sha256": "3803550104c9137a3c9d8e4d55ccb46178f364a64c43d4cd47e6e95816fda734"
+        }
+      ]
+    },
+    "20_prompt_shadow": {
+      "source_file_sha256": {
+        "manifest.json": "f12604c7d85d3dafc18f87c52535859d6bb513f9e4f49aaea562f0e6a1882476",
+        "summary.json": "441c902b66a3d98033c37208eb63102bc3d22f93633c472eb7a13065e8defebd",
+        "events.jsonl": "84cec5df9e3620d8d82e3fcfbe1d686941a18f211b94302e5db7c7fdc359b731"
+      },
+      "summary": {
+        "physical_completion": true,
+        "strict_success": true,
+        "final_cube_position_m": [
+          0.47915345430374146,
+          0.49299249053001404,
+          0.024999940767884254
+        ],
+        "final_xy_error_m": 0.02199280919842071,
+        "final_z_error_m": 5.923211574693221e-08,
+        "release_reached": true,
+        "timeout_occurred": false,
+        "termination_reason": "completed",
+        "mode": "shadow",
+        "num_decisions": 7,
+        "api_attempts": 7,
+        "api_completed": 7,
+        "model_called": true,
+        "real_model_evaluated": true,
+        "model_had_control": false,
+        "mock_backend": false,
+        "wall_seconds": 75.84274837304838,
+        "physics_updates": 776,
+        "recorded_frames": 21,
+        "executed_actions": [
+          "pre_grasp",
+          "approach",
+          "grasp",
+          "lift",
+          "transport",
+          "lower",
+          "release"
+        ],
+        "proposed_actions": [
+          "pre_grasp",
+          "approach",
+          "grasp",
+          "lift",
+          "transport",
+          "transport",
+          "lift"
+        ],
+        "error": null,
+        "controller_target_source": "configured_world_coordinates",
+        "end_to_end_visual_localization": false
+      },
+      "created_utc": "2026-10-06T15:44:40.121122+00:00",
+      "source_sha256": {
+        "run_isaac.py": "e7876d4cb250e72398a50778c4c29e0d6af96804cab32ed3401373eedb070e84",
+        "visual_lab/__init__.py": "ee35301b55f5da7f6a1f412279bccc541e0a9111df8941996db9cef1a871a75b",
+        "visual_lab/audit.py": "9b0ab935c222b2316ff1e6ea3ab10969b9ed1904a0db1319ceca3464680f4ca6",
+        "visual_lab/capture.py": "d736c299e444c1e001d1cebc3fae5af912a9be96e00300144dbabd351fc83b5c",
+        "visual_lab/client.py": "7abd9923ceb75d748b18517d90e79624a40f81417673fe03869d87db7f27685f",
+        "visual_lab/core.py": "21f9991aa3a62cc49580b863fd14e50f884ec93f6ed557165747512618089471",
+        "visual_lab/png.py": "da421559b77b50a365721ae1c89e0688c6f1e67a56c6024ad9a2169185bce9c4",
+        "visual_lab/protocol.py": "063ad6f2b9d68f28fd4a6930b039e58f916476d9b93504cbf18a84b3e31401d5",
+        "visual_lab/runner.py": "4fae7f9cf2830f80c0948ca68d7aeae4f821b196f1c9c6ec2f1e224a758d7dff",
+        "visual_lab/server.py": "ccf7f5d4be9054050d899bf15a3177aa23632e8c0e13d72f6cefa8cdcae1abfe",
+        "visual_lab/sim.py": "30ed6e7081d929d6e17e1b42c1efc85b469941ed96381b04182121867d570304",
+        "visual_lab/upstream.py": "663662e902b65dd8799e2a81e7e6e91e927c848e1ac3b468fcbd224d285f87ba"
+      },
+      "decisions": [
+        {
+          "decision_id": 1,
+          "proposed_action": "pre_grasp",
+          "executed_action": "pre_grasp",
+          "probabilities": {
+            "pre_grasp": 0.46247042699556085,
+            "approach": 0.20458647902844435,
+            "grasp": 0.14950077923235136,
+            "lift": 0.051457617593283496,
+            "transport": 0.011416395097223997,
+            "lower": 0.004183905712828008,
+            "release": 0.013780630892287113,
+            "abort": 0.10260376544802091
+          },
+          "confidence": 0.46247042699556085,
+          "http_latency_ms": 7936.26972194761,
+          "image_sha256": "48dfb090252e8fecaa58a63ca8680bc4f5b7257432886ee58bb226e0453d2ce9",
+          "request_sha256": "6fd78d18ff14cc8f5136e0a56c395f6174d5826ff308765a93aceefabe3b50d9",
+          "response_sha256": "a50e86db990ecd69a82e482781b30a63409ca702f738b90a5ffbf2a89803d7ea",
+          "evidence_link_verified": true
+        },
+        {
+          "decision_id": 2,
+          "proposed_action": "approach",
+          "executed_action": "approach",
+          "probabilities": {
+            "pre_grasp": 0.28694588572465174,
+            "approach": 0.30552495796714046,
+            "grasp": 0.23771682869950858,
+            "lift": 0.09876571365640253,
+            "transport": 0.01326514502011906,
+            "lower": 0.0042881651202497815,
+            "release": 0.012458487535841459,
+            "abort": 0.04103481627608639
+          },
+          "confidence": 0.30552495796714046,
+          "http_latency_ms": 7850.573747884482,
+          "image_sha256": "330b124a41b16b9dd87dd78d7296749b61e07151596155c6d53feea865dd157e",
+          "request_sha256": "aaabf41ffcf77ec7636793fa1d40d7b44c4eed0b63d47a03de6bb7cfcab6ea6b",
+          "response_sha256": "7e6832ed549b4c8f666a61fdc2a6fd50b2b45ae0dee446cdb4a6c3cb3e077b41",
+          "evidence_link_verified": true
+        },
+        {
+          "decision_id": 3,
+          "proposed_action": "grasp",
+          "executed_action": "grasp",
+          "probabilities": {
+            "pre_grasp": 0.09712101184250795,
+            "approach": 0.12482454509813433,
+            "grasp": 0.46610154484448413,
+            "lift": 0.2488935369740011,
+            "transport": 0.015745594543461187,
+            "lower": 0.008952386862063198,
+            "release": 0.031395883989904255,
+            "abort": 0.006965495845443767
+          },
+          "confidence": 0.46610154484448413,
+          "http_latency_ms": 7860.729666193947,
+          "image_sha256": "1e44ba170702dbeb3a12b72eb56ab937a89993100aab7ef27f3f30627870df89",
+          "request_sha256": "68fe514df4c76c50867de48450650dc0199529a0b4b26831a6fae81eed7fb2e7",
+          "response_sha256": "f7d11e3b9e336b23966b871e0036df74ee814dc62acb0d7521735a408ae4f503",
+          "evidence_link_verified": true
+        },
+        {
+          "decision_id": 4,
+          "proposed_action": "lift",
+          "executed_action": "lift",
+          "probabilities": {
+            "pre_grasp": 0.036315130058613934,
+            "approach": 0.03866645030507707,
+            "grasp": 0.1196120145623236,
+            "lift": 0.506347602914194,
+            "transport": 0.07709885670050146,
+            "lower": 0.04117001331634766,
+            "release": 0.16368476675267815,
+            "abort": 0.01710516539026408
+          },
+          "confidence": 0.506347602914194,
+          "http_latency_ms": 7877.608546055853,
+          "image_sha256": "e8d65ddd62e5f47a4bac020eb2307e5a45883bc6147c8be00a5b3615885d0b19",
+          "request_sha256": "3a8271fdc6b1f1570acb451cdb07cc7608729bf582a6d6828090cd8f685ced01",
+          "response_sha256": "3b73c8a35edaf94611f3af9a02b63b7c5e11e509952962f199147f85d48d75c8",
+          "evidence_link_verified": true
+        },
+        {
+          "decision_id": 5,
+          "proposed_action": "transport",
+          "executed_action": "transport",
+          "probabilities": {
+            "pre_grasp": 0.02951628930170571,
+            "approach": 0.06266457496773489,
+            "grasp": 0.048756812445274134,
+            "lift": 0.2824507617713366,
+            "transport": 0.3409438333252191,
+            "lower": 0.10351317648894033,
+            "release": 0.11735160672606745,
+            "abort": 0.014802944973721857
+          },
+          "confidence": 0.3409438333252191,
+          "http_latency_ms": 7894.187378929928,
+          "image_sha256": "2fca6fb65abdce21e18196a9cfdeec3c56d46357d698e8e46696ddf6a308c84e",
+          "request_sha256": "1a1309862983d9c5f764ed5441cc95fbb2b7279605d1eefaa2b56130226ff17b",
+          "response_sha256": "8d0f9c4f30fa2c1283ec28bec29abfbca5ea99cbc53804cc0e2304ba02fdafa5",
+          "evidence_link_verified": true
+        },
+        {
+          "decision_id": 6,
+          "proposed_action": "transport",
+          "executed_action": "lower",
+          "probabilities": {
+            "pre_grasp": 0.016628621430670634,
+            "approach": 0.035303403760120124,
+            "grasp": 0.020072263716166744,
+            "lift": 0.16942751771726478,
+            "transport": 0.43419453795784113,
+            "lower": 0.18039754263413676,
+            "release": 0.13182481110476696,
+            "abort": 0.012151301679032897
+          },
+          "confidence": 0.43419453795784113,
+          "http_latency_ms": 8168.9951659645885,
+          "image_sha256": "20f8b45c796b06b6074f4ccae32778bf2ad22f18e58c9cd187ed7a21fa896116",
+          "request_sha256": "24ee52fd921b9bb5710d358c515e49c5d684f680d2cbb970628a1a9b48f56f28",
+          "response_sha256": "66c4c63001348e1f1a6da2de9762e47e95f1f8ee59b161ce054eb0ec4dc93763",
+          "evidence_link_verified": true
+        },
+        {
+          "decision_id": 7,
+          "proposed_action": "lift",
+          "executed_action": "release",
+          "probabilities": {
+            "pre_grasp": 0.02578328641733789,
+            "approach": 0.031122776444726732,
+            "grasp": 0.10914710180055975,
+            "lift": 0.49196349362768,
+            "transport": 0.04259040674102592,
+            "lower": 0.07035344063821179,
+            "release": 0.21763355065256101,
+            "abort": 0.011405943677896921
+          },
+          "confidence": 0.49196349362768,
+          "http_latency_ms": 8015.803518937901,
+          "image_sha256": "8c0e98c9452524ff3b1e47acf53d86fb38c873b250e3114268ea23495e367ead",
+          "request_sha256": "33bff5dc6b934609aa04003e0302a09facefddab31dc90db7d9303447326e11e",
+          "response_sha256": "45cb092e049f2482398e5978e514e85b0936290db5316f36a2a48eb953a385ea",
+          "evidence_link_verified": true
+        }
+      ],
+      "baseline_agreement_count": 5
+    }
+  }
+}

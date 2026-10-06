@@ -109,4 +109,23 @@ ffmpeg 的真实 Isaac 视频编码未执行；本次没有提供真实相机截
 
 - `fa5ffa9` 同步后，真实 GPU `runs/17_goal_baseline` 与 `18_goal_shadow` 均退出 0、物理成功、最终 XY 误差仍约 0.021993 m。检查实际相机图片确认加宽的蓝框清楚可辨，但 shadow 七个建议仍为 `[approach, approach, grasp, lift, lift, grasp, lift]`，与 `16_shadow` 完全相同；单独加宽没有改变本次 argmax，不能声称解决了决策问题。概率有所变化，不证明模型已理解目标。
 - 下一轮仅修改 `CRITERIA` / `INSTRUCTIONS`：明确每个技能的视觉/本体适用条件和排除条件，避免已经抬起仍 lift、已经闭爪仍 grasp；解释 0/0.5 rad 与手指连杆参考点。仍保留全部八个候选、原状态和真实图片，不加入方块/目标真值、不按上一阶段强制下一阶段，也不调整温度、权重、物理或目标框。
-- 新增七项 CPU 文字契约回归检查：RED 有五项测试失败（含六个子例），证据/候选保留检查通过；GREEN 全部 **138 / 138 CPU 测试通过**，原始输出见 `test_reports/unittest_action_descriptions_20261006.txt`，编译与 diff 检查通过。这些测试只守住提示文字与请求契约，不能替代真实模型判断验证。**新文字的同图重放和新 GPU shadow 尚未验证；已有诊断图片不是独立测试集。**
+- 新增七项 CPU 文字契约回归检查：RED 有五项测试失败（含六个子例），证据/候选保留检查通过；GREEN 全部 **138 / 138 CPU 测试通过**，原始输出见 `test_reports/unittest_action_descriptions_20261006.txt`，编译与 diff 检查通过。这些测试只守住提示文字与请求契约，不能替代真实模型判断验证。**提交 `efc3a8f` 时新文字的同图重放和新 GPU shadow 尚未验证；后续结果见下节。已有诊断图片不是独立测试集。**
+
+### 新动作描述的真实同图重放与 GPU shadow
+
+- `efc3a8f` 推送并安全同步到 GPU 主机后，`runs/19_prompt_replay` 完成七次真实模型推理，不运行或移动机器人。以 `18_goal_shadow` 的原 PNG 字节和对应状态重放，只改变问题文字；全部图片/状态、八个候选及顺序相同，响应图片 SHA256 与观测一致。与固定 baseline 的一致项由 **3/7 增加至 5/7**。
+- 随后新运行 `runs/20_prompt_shadow`，Isaac 启动环境明确设置 `OMNI_KIT_ALLOW_ROOT=1`、`LD_LIBRARY_PATH=""`，仍使用独立模型服务。退出 0，七次真实推理完成，约 7.85–8.17 秒/次，776 次物理更新、21 帧记录；物理抓放成功、无超时，最终 XY 误差约 0.021993 m。建议与同图重放相同，仍为 **5/7**。
+
+| 决策 | 固定 baseline 执行 | 旧文字 `18` | 新文字同图重放 `19` | 新文字新 shadow `20` |
+|---|---|---|---|---|
+| 1 | pre_grasp | approach | pre_grasp | pre_grasp |
+| 2 | approach | approach | approach | approach |
+| 3 | grasp | grasp | grasp | grasp |
+| 4 | lift | lift | lift | lift |
+| 5 | transport | lift | transport | transport |
+| 6 | lower | grasp | transport | transport |
+| 7 | release | lift | lift | lift |
+
+- 重新读取远端原始文件，核对每次模型调用的请求/观测状态、PNG 哈希、响应及日志概率；官方 inference.py 哈希和温度不变。`17`、`18`、`20` 的完整仿真配置相同，`18` → `20` 的运行源码哈希仅 `visual_lab/protocol.py` 改变。摘要、全部候选概率及源文件 SHA256 归档于 `test_reports/gpu_prompt_comparison_20261006.json`；原始图片、请求/响应、日志及 HTML 保留在远端各 run 目录，未覆盖既有实验。
+- **改善只发生在初始对齐与抓起后的搬运选择；到目标上方和放低后的判断仍不合理，不满足 visual 接管门槛，因此未运行 visual，`model_had_control=false`。** shadow 的物理成功来自固定执行器，不是模型控制成功；新 shadow 仍是同一固定场景，不是独立泛化测试。不能把 5/7 报告成机器人任务成功率，也不继续针对七张诊断图片反复改词。遮挡、单目高度歧义或模型场景理解不足只是后续待检验假设。
+- 补充两项 CPU 输入拒绝测试，覆盖非字典状态及七种畸形证据/题目子例；全部 **140 / 140 CPU 测试通过**，输出见 `test_reports/unittest_prompt_verification_20261006.txt`。完整测试执行下，`make_request` 可执行行覆盖 10/10、`validate_request` 23/23，记录见 `test_reports/coverage_prompt_verification_20261006.json`；仅为这两个函数的 CPU 行执行覆盖，不是全仓库、分支或模型质量覆盖。Python 编译、SHA256 清单与 diff 检查通过；该轮没有再修改动作文字、相机、物理、模型或评分规则。

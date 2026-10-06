@@ -2,7 +2,7 @@
 import copy
 import unittest
 
-from visual_lab.core import ACTIONS, model_state
+from visual_lab.core import ACTIONS, ProtocolError, model_state
 from visual_lab.png import encode_rgb_bytes
 from visual_lab.protocol import CRITERIA, INSTRUCTIONS, make_request, validate_request
 
@@ -55,6 +55,30 @@ class ActionDescriptionTests(unittest.TestCase):
             criteria.append(request["questions"]["next_stage"]["criteria"])
         self.assertTrue(all(row == CRITERIA for row in criteria))
         self.assertEqual(len(criteria[0]), 8)
+
+    def test_request_builder_rejects_non_object_state(self):
+        png = encode_rgb_bytes(1, 1, bytes([180, 50, 50]))
+        with self.assertRaisesRegex(ProtocolError, "state must be a dict"):
+            make_request(png, None)
+
+    def test_malformed_evidence_or_question_is_rejected(self):
+        png = encode_rgb_bytes(1, 1, bytes([180, 50, 50]))
+        original = make_request(png, {})
+        cases = [
+            ("state", lambda r: r.update(state=None)),
+            ("question_type", lambda r: r["questions"]["next_stage"].update(type="score")),
+            ("blank_description", lambda r: r["questions"]["next_stage"]["criteria"].update(lift=" ")),
+            ("instructions", lambda r: r["questions"]["next_stage"].update(instructions=None)),
+            ("missing_criteria", lambda r: r["questions"]["next_stage"].pop("criteria")),
+            ("no_image", lambda r: r.update(images=[])),
+            ("wrong_image_type", lambda r: r["images"][0].update(type="image/jpeg")),
+        ]
+        for name, change in cases:
+            with self.subTest(name=name):
+                request = copy.deepcopy(original)
+                change(request)
+                with self.assertRaises(ProtocolError):
+                    validate_request(request)
 
 
 if __name__ == "__main__":

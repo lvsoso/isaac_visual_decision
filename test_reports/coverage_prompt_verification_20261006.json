@@ -1,0 +1,22 @@
+{
+  "tests": 140,
+  "passed": true,
+  "coverage": [
+    {
+      "function": "make_request",
+      "covered": 10,
+      "executable": 10,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "validate_request",
+      "covered": 23,
+      "executable": 23,
+      "percent": 100.0,
+      "uncovered": []
+    }
+  ],
+  "method": "stdlib sys/threading.settrace with dis.findlinestarts executable line denominator",
+  "scope": "Only make_request and validate_request CPU line execution; not whole-repo/branch/GPU/model-quality coverage"
+}
