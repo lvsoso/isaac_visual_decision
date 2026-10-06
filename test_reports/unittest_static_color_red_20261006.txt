@@ -1,0 +1,108 @@
+test_any_physical_state_difference_is_rejected (tests.test_static_factorial.StaticPairTests.test_any_physical_state_difference_is_rejected) ... ERROR
+test_color_validation_fails_when_treatments_have_identical_pixels (tests.test_static_factorial.StaticPairTests.test_color_validation_fails_when_treatments_have_identical_pixels) ... ERROR
+test_invalidated_static_source_is_rejected (tests.test_static_factorial.StaticPairTests.test_invalidated_static_source_is_rejected) ... ERROR
+test_pairing_matches_all_seven_physical_states_and_preserves_pixels (tests.test_static_factorial.StaticPairTests.test_pairing_matches_all_seven_physical_states_and_preserves_pixels) ... ERROR
+test_proprioception_difference_is_rejected (tests.test_static_factorial.StaticPairTests.test_proprioception_difference_is_rejected) ... ERROR
+test_real_pairing_rejects_synthetic_sources (tests.test_static_factorial.StaticPairTests.test_real_pairing_rejects_synthetic_sources) ... ERROR
+test_source_configuration_difference_is_rejected (tests.test_static_factorial.StaticPairTests.test_source_configuration_difference_is_rejected) ... ERROR
+test_static_collection_has_no_recoloring (tests.test_static_factorial.StaticPairTests.test_static_collection_has_no_recoloring) ... ERROR
+test_experiment_color_is_authored_before_first_render (tests.test_goal_visibility.GoalVisibilityTests.test_experiment_color_is_authored_before_first_render) ... FAIL
+
+======================================================================
+ERROR: test_any_physical_state_difference_is_rejected (tests.test_static_factorial.StaticPairTests.test_any_physical_state_difference_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_static_factorial.py", line 70, in test_any_physical_state_difference_is_rejected
+    blue, yellow = self.collect('blue'), self.collect('yellow')
+                   ~~~~~~~~~~~~^^^^^^^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_static_factorial.py", line 34, in collect
+    result = self.f.collect_episode(scene, [object(), object()], self.config, log, static_color=color)
+TypeError: collect_episode() got an unexpected keyword argument 'static_color'
+
+======================================================================
+ERROR: test_color_validation_fails_when_treatments_have_identical_pixels (tests.test_static_factorial.StaticPairTests.test_color_validation_fails_when_treatments_have_identical_pixels)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_static_factorial.py", line 105, in test_color_validation_fails_when_treatments_have_identical_pixels
+    self.f.check_color_treatment(png, png, 1, allow_mock=True)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'visual_lab.factorial' has no attribute 'check_color_treatment'
+
+======================================================================
+ERROR: test_invalidated_static_source_is_rejected (tests.test_static_factorial.StaticPairTests.test_invalidated_static_source_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_static_factorial.py", line 96, in test_invalidated_static_source_is_rejected
+    blue, yellow = self.collect('blue'), self.collect('yellow')
+                   ~~~~~~~~~~~~^^^^^^^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_static_factorial.py", line 34, in collect
+    result = self.f.collect_episode(scene, [object(), object()], self.config, log, static_color=color)
+TypeError: collect_episode() got an unexpected keyword argument 'static_color'
+
+======================================================================
+ERROR: test_pairing_matches_all_seven_physical_states_and_preserves_pixels (tests.test_static_factorial.StaticPairTests.test_pairing_matches_all_seven_physical_states_and_preserves_pixels)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_static_factorial.py", line 55, in test_pairing_matches_all_seven_physical_states_and_preserves_pixels
+    blue, yellow = self.collect('blue'), self.collect('yellow')
+                   ~~~~~~~~~~~~^^^^^^^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_static_factorial.py", line 34, in collect
+    result = self.f.collect_episode(scene, [object(), object()], self.config, log, static_color=color)
+TypeError: collect_episode() got an unexpected keyword argument 'static_color'
+
+======================================================================
+ERROR: test_proprioception_difference_is_rejected (tests.test_static_factorial.StaticPairTests.test_proprioception_difference_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_static_factorial.py", line 76, in test_proprioception_difference_is_rejected
+    blue, yellow = self.collect('blue'), self.collect('yellow')
+                   ~~~~~~~~~~~~^^^^^^^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_static_factorial.py", line 34, in collect
+    result = self.f.collect_episode(scene, [object(), object()], self.config, log, static_color=color)
+TypeError: collect_episode() got an unexpected keyword argument 'static_color'
+
+======================================================================
+ERROR: test_real_pairing_rejects_synthetic_sources (tests.test_static_factorial.StaticPairTests.test_real_pairing_rejects_synthetic_sources)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_static_factorial.py", line 91, in test_real_pairing_rejects_synthetic_sources
+    blue, yellow = self.collect('blue'), self.collect('yellow')
+                   ~~~~~~~~~~~~^^^^^^^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_static_factorial.py", line 34, in collect
+    result = self.f.collect_episode(scene, [object(), object()], self.config, log, static_color=color)
+TypeError: collect_episode() got an unexpected keyword argument 'static_color'
+
+======================================================================
+ERROR: test_source_configuration_difference_is_rejected (tests.test_static_factorial.StaticPairTests.test_source_configuration_difference_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_static_factorial.py", line 82, in test_source_configuration_difference_is_rejected
+    blue, yellow = self.collect('blue'), self.collect('yellow')
+                   ~~~~~~~~~~~~^^^^^^^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_static_factorial.py", line 34, in collect
+    result = self.f.collect_episode(scene, [object(), object()], self.config, log, static_color=color)
+TypeError: collect_episode() got an unexpected keyword argument 'static_color'
+
+======================================================================
+ERROR: test_static_collection_has_no_recoloring (tests.test_static_factorial.StaticPairTests.test_static_collection_has_no_recoloring)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_static_factorial.py", line 48, in test_static_collection_has_no_recoloring
+    source = self.collect('yellow')
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_static_factorial.py", line 34, in collect
+    result = self.f.collect_episode(scene, [object(), object()], self.config, log, static_color=color)
+TypeError: collect_episode() got an unexpected keyword argument 'static_color'
+
+======================================================================
+FAIL: test_experiment_color_is_authored_before_first_render (tests.test_goal_visibility.GoalVisibilityTests.test_experiment_color_is_authored_before_first_render)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_goal_visibility.py", line 28, in test_experiment_color_is_authored_before_first_render
+    self.assertTrue(all(edge.color == [(1.0, .85, .02)] for edge in self.edges.values()))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.053s
+
+FAILED (failures=1, errors=8)

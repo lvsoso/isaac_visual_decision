@@ -22,6 +22,11 @@ class Attribute:
 
 
 class GoalVisibilityTests(unittest.TestCase):
+    def test_experiment_color_is_authored_before_first_render(self):
+        self.scene.visual_goal_color = [1.0, .85, .02]
+        self.decorate()
+        self.assertTrue(all(edge.color == [(1.0, .85, .02)] for edge in self.edges.values()))
+
     def setUp(self):
         self.scene = IsaacScene.__new__(IsaacScene)
         self.scene.c = load_config(ROOT / "configs/default.json")
