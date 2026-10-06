@@ -1,0 +1,461 @@
+{
+  "source_run": "runs/21_factorial_capture",
+  "scope": "GPU PNG observational comparison. Fixed approximate goal ROIs; threshold/ROI statistics are not calibrated contrast, object-localization, or model-quality metrics.",
+  "all_fourteen_color_pairs_show_roi_pixel_change": false,
+  "pairs": [
+    {
+      "decision_id": 1,
+      "view": 1,
+      "resolution": [
+        640,
+        480
+      ],
+      "roi_xyxy": [
+        300,
+        230,
+        342,
+        259
+      ],
+      "changed_pixels_threshold_8_rgb": 171,
+      "changed_pixels_in_goal_roi": 128,
+      "changed_pixels_outside_roi": 43,
+      "mean_rgb_on_changed_roi_pixels": {
+        "blue": [
+          76.66,
+          143.67,
+          212.8
+        ],
+        "yellow": [
+          104.3,
+          159.91,
+          192.57
+        ]
+      },
+      "source_image_sha256": {
+        "blue": "99a44c63c727e4f85540be56d5f4a3875acc3d9381e83ae99d1885e94206c9fb",
+        "yellow": "640695fcc1dabb15778187007b2bdab881697586ebe8bcbf7b3201c476538991"
+      }
+    },
+    {
+      "decision_id": 1,
+      "view": 2,
+      "resolution": [
+        640,
+        480
+      ],
+      "roi_xyxy": [
+        365,
+        272,
+        434,
+        329
+      ],
+      "changed_pixels_threshold_8_rgb": 735,
+      "changed_pixels_in_goal_roi": 645,
+      "changed_pixels_outside_roi": 90,
+      "mean_rgb_on_changed_roi_pixels": {
+        "blue": [
+          65.73,
+          138.81,
+          212.71
+        ],
+        "yellow": [
+          154.08,
+          184.45,
+          137.04
+        ]
+      },
+      "source_image_sha256": {
+        "blue": "166fcb9f27a2e88a2ff62a92e5d888f2c9253de1b435812131a03e6512f5592b",
+        "yellow": "fc87579d30eca63bba70e8c01781f8ac37160c1eb2aaf72adc6d237931c358b1"
+      }
+    },
+    {
+      "decision_id": 2,
+      "view": 1,
+      "resolution": [
+        640,
+        480
+      ],
+      "roi_xyxy": [
+        300,
+        230,
+        342,
+        259
+      ],
+      "changed_pixels_threshold_8_rgb": 268,
+      "changed_pixels_in_goal_roi": 218,
+      "changed_pixels_outside_roi": 50,
+      "mean_rgb_on_changed_roi_pixels": {
+        "blue": [
+          74.87,
+          142.28,
+          212.66
+        ],
+        "yellow": [
+          101.99,
+          158.66,
+          192.38
+        ]
+      },
+      "source_image_sha256": {
+        "blue": "84fdd2e00fbd258dadb4a0c864f4ff88b5f8ed815e32299985f187adf3a0604b",
+        "yellow": "af9e7f74c015f5a9076869b41806800eaaeb83e33982231ed4853d89a8046bd6"
+      }
+    },
+    {
+      "decision_id": 2,
+      "view": 2,
+      "resolution": [
+        640,
+        480
+      ],
+      "roi_xyxy": [
+        365,
+        272,
+        434,
+        329
+      ],
+      "changed_pixels_threshold_8_rgb": 724,
+      "changed_pixels_in_goal_roi": 642,
+      "changed_pixels_outside_roi": 82,
+      "mean_rgb_on_changed_roi_pixels": {
+        "blue": [
+          66.96,
+          143.07,
+          205.58
+        ],
+        "yellow": [
+          150.19,
+          183.74,
+          127.09
+        ]
+      },
+      "source_image_sha256": {
+        "blue": "80baf96db1bf838c4d9e453f0781284f35b5d1d47229a40e14a783f87970c553",
+        "yellow": "f7ffa7a298492fbe2292a9d96ba9d9175a8c27da970d3d9ed5027f5090fa297f"
+      }
+    },
+    {
+      "decision_id": 3,
+      "view": 1,
+      "resolution": [
+        640,
+        480
+      ],
+      "roi_xyxy": [
+        300,
+        230,
+        342,
+        259
+      ],
+      "changed_pixels_threshold_8_rgb": 24,
+      "changed_pixels_in_goal_roi": 0,
+      "changed_pixels_outside_roi": 24,
+      "mean_rgb_on_changed_roi_pixels": {
+        "blue": null,
+        "yellow": null
+      },
+      "source_image_sha256": {
+        "blue": "1435f0c686c3fffe6aada6451061fa4f0a14c6707f3ebd7615cb0d59e2544eb8",
+        "yellow": "ec8982390570e808cec5acce019c9d1dbee787b345dec3c59fc2387aa4c0dff7"
+      }
+    },
+    {
+      "decision_id": 3,
+      "view": 2,
+      "resolution": [
+        640,
+        480
+      ],
+      "roi_xyxy": [
+        365,
+        272,
+        434,
+        329
+      ],
+      "changed_pixels_threshold_8_rgb": 614,
+      "changed_pixels_in_goal_roi": 577,
+      "changed_pixels_outside_roi": 37,
+      "mean_rgb_on_changed_roi_pixels": {
+        "blue": [
+          149.91,
+          185.14,
+          125.55
+        ],
+        "yellow": [
+          182.71,
+          198.51,
+          93.09
+        ]
+      },
+      "source_image_sha256": {
+        "blue": "43814f2b9f51678160f2aa0772f5e1668656689494aad6542ba524bfd412ed2c",
+        "yellow": "e140388698f4e798ae135c6e12380d19731665f82d2d1b6bd6fb10f837d4d597"
+      }
+    },
+    {
+      "decision_id": 4,
+      "view": 1,
+      "resolution": [
+        640,
+        480
+      ],
+      "roi_xyxy": [
+        300,
+        230,
+        342,
+        259
+      ],
+      "changed_pixels_threshold_8_rgb": 207,
+      "changed_pixels_in_goal_roi": 202,
+      "changed_pixels_outside_roi": 5,
+      "mean_rgb_on_changed_roi_pixels": {
+        "blue": [
+          107.77,
+          163.94,
+          187.31
+        ],
+        "yellow": [
+          126.75,
+          173.11,
+          171.02
+        ]
+      },
+      "source_image_sha256": {
+        "blue": "0995f91aa4333cba0e1a007e8c02229bda2daa0d39d849af52ca060e6d466ca9",
+        "yellow": "c9a4b72908a3cb4c8c871154098920bfc9670b5bc42a6f9bdd4910d4654a80a8"
+      }
+    },
+    {
+      "decision_id": 4,
+      "view": 2,
+      "resolution": [
+        640,
+        480
+      ],
+      "roi_xyxy": [
+        365,
+        272,
+        434,
+        329
+      ],
+      "changed_pixels_threshold_8_rgb": 582,
+      "changed_pixels_in_goal_roi": 574,
+      "changed_pixels_outside_roi": 8,
+      "mean_rgb_on_changed_roi_pixels": {
+        "blue": [
+          116.11,
+          171.43,
+          156.74
+        ],
+        "yellow": [
+          149.01,
+          185.36,
+          125.96
+        ]
+      },
+      "source_image_sha256": {
+        "blue": "026b125a663b4492eac8702c31646e734474e53276532c192371e9c9327dab26",
+        "yellow": "eb691ba9602a9e9dae3b6d05bfa3ddede4dace50397bda3f0b9368cbc48f56dc"
+      }
+    },
+    {
+      "decision_id": 5,
+      "view": 1,
+      "resolution": [
+        640,
+        480
+      ],
+      "roi_xyxy": [
+        300,
+        230,
+        342,
+        259
+      ],
+      "changed_pixels_threshold_8_rgb": 76,
+      "changed_pixels_in_goal_roi": 1,
+      "changed_pixels_outside_roi": 75,
+      "mean_rgb_on_changed_roi_pixels": {
+        "blue": [
+          109.0,
+          157.0,
+          175.0
+        ],
+        "yellow": [
+          101.0,
+          153.0,
+          175.0
+        ]
+      },
+      "source_image_sha256": {
+        "blue": "fee18e6310c6ddae5c5b497e4eebf3136b4f81215c882d718c49ef136ae663a5",
+        "yellow": "87a649c4725d510a445d1cf4801f59c7661c52113e43c87b1b1ae64728a7268d"
+      }
+    },
+    {
+      "decision_id": 5,
+      "view": 2,
+      "resolution": [
+        640,
+        480
+      ],
+      "roi_xyxy": [
+        365,
+        272,
+        434,
+        329
+      ],
+      "changed_pixels_threshold_8_rgb": 617,
+      "changed_pixels_in_goal_roi": 541,
+      "changed_pixels_outside_roi": 76,
+      "mean_rgb_on_changed_roi_pixels": {
+        "blue": [
+          150.35,
+          186.65,
+          125.21
+        ],
+        "yellow": [
+          173.1,
+          195.49,
+          103.49
+        ]
+      },
+      "source_image_sha256": {
+        "blue": "49ff25c3140fb25420861a6574c5939135beafebd8f4679d853348b1d5326428",
+        "yellow": "9e296c4dbed166a9dacc3fdcf260a0566d0dfdef111b943034f2c4d7c2d23db0"
+      }
+    },
+    {
+      "decision_id": 6,
+      "view": 1,
+      "resolution": [
+        640,
+        480
+      ],
+      "roi_xyxy": [
+        300,
+        230,
+        342,
+        259
+      ],
+      "changed_pixels_threshold_8_rgb": 248,
+      "changed_pixels_in_goal_roi": 199,
+      "changed_pixels_outside_roi": 49,
+      "mean_rgb_on_changed_roi_pixels": {
+        "blue": [
+          111.81,
+          166.21,
+          183.05
+        ],
+        "yellow": [
+          129.29,
+          174.37,
+          167.27
+        ]
+      },
+      "source_image_sha256": {
+        "blue": "dae872a4fc7def03060b7626cffd256e4aa48aac00223974d9bb138d862fef6c",
+        "yellow": "2f74bfb4a320dbb10eb451ae3c79ea94bb31d663f284373916504ddebb8ff1c1"
+      }
+    },
+    {
+      "decision_id": 6,
+      "view": 2,
+      "resolution": [
+        640,
+        480
+      ],
+      "roi_xyxy": [
+        365,
+        272,
+        434,
+        329
+      ],
+      "changed_pixels_threshold_8_rgb": 674,
+      "changed_pixels_in_goal_roi": 623,
+      "changed_pixels_outside_roi": 51,
+      "mean_rgb_on_changed_roi_pixels": {
+        "blue": [
+          87.37,
+          156.86,
+          182.69
+        ],
+        "yellow": [
+          163.35,
+          189.88,
+          109.01
+        ]
+      },
+      "source_image_sha256": {
+        "blue": "c191a08ec252400c642d9cb636a48839316e3049f760c7c3178a80c37be66f15",
+        "yellow": "3fc48eeb07a79a0e095517be9bfbb6d0a707ab77951b63117c809ebfe5a51062"
+      }
+    },
+    {
+      "decision_id": 7,
+      "view": 1,
+      "resolution": [
+        640,
+        480
+      ],
+      "roi_xyxy": [
+        300,
+        230,
+        342,
+        259
+      ],
+      "changed_pixels_threshold_8_rgb": 29,
+      "changed_pixels_in_goal_roi": 6,
+      "changed_pixels_outside_roi": 23,
+      "mean_rgb_on_changed_roi_pixels": {
+        "blue": [
+          157.83,
+          167.83,
+          145.17
+        ],
+        "yellow": [
+          157.5,
+          164.33,
+          137.0
+        ]
+      },
+      "source_image_sha256": {
+        "blue": "193d1bf8892d3a9e47ab8658007a89c266e6c919c6d3c8306d700bdd045f51c5",
+        "yellow": "016422e45087a1e964e43008076091df1572f3620efe5b8c3135142b03c373c0"
+      }
+    },
+    {
+      "decision_id": 7,
+      "view": 2,
+      "resolution": [
+        640,
+        480
+      ],
+      "roi_xyxy": [
+        365,
+        272,
+        434,
+        329
+      ],
+      "changed_pixels_threshold_8_rgb": 477,
+      "changed_pixels_in_goal_roi": 453,
+      "changed_pixels_outside_roi": 24,
+      "mean_rgb_on_changed_roi_pixels": {
+        "blue": [
+          164.29,
+          184.46,
+          90.65
+        ],
+        "yellow": [
+          187.0,
+          194.78,
+          71.66
+        ]
+      },
+      "source_image_sha256": {
+        "blue": "f54c7b62ac3d06425eb47eee5c75e4de763d7d06a809fff5c5740f4a1bd3fbf1",
+        "yellow": "9b1cc92cfe2164811ae66dce0b64e061a8ef244e0d8dcc5a7d74314f8fc8262d"
+      }
+    }
+  ]
+}

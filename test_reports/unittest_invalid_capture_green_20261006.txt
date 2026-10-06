@@ -1,0 +1,6 @@
+test_invalidated_gpu_capture_cannot_be_replayed (tests.test_factorial.CollectionReplayTests.test_invalidated_gpu_capture_cannot_be_replayed) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.074s
+
+OK

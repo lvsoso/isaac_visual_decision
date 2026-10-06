@@ -13,8 +13,8 @@ from .capture import SceneCamera, capture_camera_batch
 
 class IsaacScene:
     def __init__(self, app, config: dict, tutorial_path: Path, *, xrdf_dir=None,
-                 urdf="robot.urdf", xrdf="robot.xrdf", sim_device="cuda",
-                 record_every=0, record_directory: Path | None = None):
+                  urdf="robot.urdf", xrdf="robot.xrdf", sim_device="cuda",
+                  record_every=0, record_directory: Path | None = None, visual_goal_color=None):
         import numpy as np
         import carb
         import omni.timeline
@@ -23,6 +23,10 @@ class IsaacScene:
         self.np = np
         self.app = app
         self.c = config
+        self.visual_goal_color = vector3(visual_goal_color if visual_goal_color is not None else
+                                       [0.02, 0.18, 0.95], "initial visual goal color")
+        if any(not 0 <= value <= 1 for value in self.visual_goal_color):
+            raise LabError("Initial goal color components must be in [0,1]")
         self.manager = SimulationManager
         self.timeline = omni.timeline.get_timeline_interface()
         self.camera = None
@@ -103,7 +107,7 @@ class IsaacScene:
         for i, (pos, scale) in enumerate(strips):
             geom = UsdGeom.Cube.Define(stage, f"/World/VisualGoal/edge_{i}")
             geom.CreateSizeAttr(1.0)
-            geom.CreateDisplayColorAttr([Gf.Vec3f(0.02, 0.18, 0.95)])
+            geom.CreateDisplayColorAttr([Gf.Vec3f(*getattr(self, "visual_goal_color", [0.02, 0.18, 0.95]))])
             transform = UsdGeom.Xformable(geom.GetPrim())
             transform.AddTranslateOp().Set(Gf.Vec3d(*pos))
             transform.AddScaleOp().Set(Gf.Vec3f(*scale))

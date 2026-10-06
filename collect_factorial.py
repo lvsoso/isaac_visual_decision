@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Isaac GPU: one fixed trajectory, paired colors and simultaneous two-view PNGs."""
+"""Isaac GPU: one STATIC color and simultaneous views along a fixed trajectory."""
 from __future__ import annotations
 import argparse
 import json
@@ -18,10 +18,11 @@ def main():
     p.add_argument('--run-dir', type=Path, required=True)
     p.add_argument('--isaac-root', required=True)
     p.add_argument('--headless', action='store_true')
+    p.add_argument('--goal-color', choices=list(GOAL_COLORS), required=True)
     a = p.parse_args()
     config = load_config(a.config)
     tutorial = find_tutorial(None, a.isaac_root)
-    log = AuditLog(a.run_dir, {'kind': 'paired_factorial_capture', 'config': config,
+    log = AuditLog(a.run_dir, {'kind': 'static_color_capture', 'static_goal_color': a.goal_color, 'config': config,
         'cameras': camera_configs(config), 'goal_colors': GOAL_COLORS, 'render_settle_steps_per_color': 3,
         'upstream_tutorial': inspect_tutorial(tutorial), 'model_had_control': False,
         'source_sha256': {str(path.relative_to(ROOT)): sha256_file(path) for path in
@@ -33,9 +34,9 @@ def main():
                              'multi_gpu': False, 'renderer': 'RaytracedLighting'})
         from visual_lab.sim import IsaacScene
         from visual_lab.capture import SceneCamera
-        scene = IsaacScene(app, config, tutorial)
+        scene = IsaacScene(app, config, tutorial, visual_goal_color=GOAL_COLORS[a.goal_color])
         second = SceneCamera(camera_configs(config)[1])
-        result = collect_episode(scene, [scene.camera, second], config, log)
+        result = collect_episode(scene, [scene.camera, second], config, log, static_color=a.goal_color)
         print(json.dumps(result, indent=2))
         return 0 if result['complete'] and result['strict_success'] else 2
     except Exception as exc:

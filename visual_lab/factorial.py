@@ -99,7 +99,7 @@ def capture_pairs(scene, cameras: list, *, reverse=False) -> dict[str, list[byte
         scene.timeline.pause()
 
 
-def collect_episode(scene, cameras: list, config: dict, log, *, seed=20261006) -> dict:
+def collect_episode(scene, cameras: list, config: dict, log, *, seed=20261006, static_color=None) -> dict:
     records, previous_action, previous_result = [], None, None
     rng = random.Random(seed)
     target = scene.placement_tool_target()
@@ -110,7 +110,12 @@ def collect_episode(scene, cameras: list, config: dict, log, *, seed=20261006) -
             guidance = goal_guidance(config["target_position_m"], target,
                                      scene._controller_tool_world_position(), scene.scenario._tool_frame)
             reverse = bool(rng.getrandbits(1))
-            pairs = capture_pairs(scene, cameras, reverse=reverse)
+            if static_color is not None:
+                if static_color not in GOAL_COLORS:
+                    raise LabError("Unknown static goal color")
+                pairs = {static_color: scene.capture_views(cameras)}
+            else:
+                pairs = capture_pairs(scene, cameras, reverse=reverse)
             images = {}
             for color, pngs in pairs.items():
                 images[color] = []
@@ -120,7 +125,8 @@ def collect_episode(scene, cameras: list, config: dict, log, *, seed=20261006) -
                     images[color].append({"path": str(path.relative_to(log.root)), "sha256": hashlib.sha256(png).hexdigest()})
             record = {"decision_id": number, "expected_action": action, "model_state": state,
                       "goal_guidance": guidance, "images": images,
-                      "color_capture_order": list(pairs), "frozen_physics_verified": True}
+                      "color_capture_order": list(pairs), "frozen_physics_verified": True,
+                      "private_frozen_state": scene.frozen_state()}
             records.append(record)
             log.event("paired_observation", **record, private_ground_truth=scene.private_truth(), frozen_state=scene.frozen_state())
             outcome = scene.execute(action)
@@ -144,7 +150,8 @@ def collect_episode(scene, cameras: list, config: dict, log, *, seed=20261006) -
         log.event("error", error=error)
     result = judge_episode(scene.private_truth()["cube_world_position_m"], config,
                            released=released, timed_out=timed_out, termination_reason=reason)
-    result.update(mode="factorial_capture", complete=error is None and len(records) == 7 and reason == "completed",
+    result.update(mode="static_color_capture" if static_color else "factorial_capture",
+                  complete=error is None and len(records) == 7 and reason == "completed",
                   error=error, physics_updates=scene.frames, num_observations=len(records),
                   model_had_control=False, model_called=False, real_model_evaluated=False)
     write_json(log.root/"snapshots.json", {"view_metadata": view_metadata(config), "records": records})
@@ -152,8 +159,134 @@ def collect_episode(scene, cameras: list, config: dict, log, *, seed=20261006) -
     return result
 
 
+def goal_image_roi(camera: dict, goal: list) -> list[int]:
+    """Evaluator-only approximate outline bounds, not model image labels."""
+    position = camera["position"]
+    forward = [b-a for a, b in zip(position, camera["look_at"])]
+    norm = math.sqrt(sum(x*x for x in forward))
+    forward = [x/norm for x in forward]
+    right = [forward[1], -forward[0], 0.0]
+    norm = math.hypot(*right[:2])
+    right = [x/norm for x in right]
+    up = [right[1]*forward[2], -right[0]*forward[2], right[0]*forward[1]-right[1]*forward[0]]
+    w, h = camera["resolution"]
+    focal = camera["focal_length_mm"]/20.955  # Replicator default horizontal aperture.
+    points = []
+    for dx in [-.08, .08]:
+        for dy in [-.08, .08]:
+            rel = [goal[0]+dx-position[0], goal[1]+dy-position[1], .001-position[2]]
+            depth = sum(a*b for a, b in zip(rel, forward))
+            if depth <= 0:
+                raise LabError("Goal is behind the validation camera")
+            x = w*(.5+focal*sum(a*b for a, b in zip(rel, right))/depth)
+            y = h*(.5-focal*(w/h)*sum(a*b for a, b in zip(rel, up))/depth)
+            points.append((x, y))
+    return [max(0, math.floor(min(p[0] for p in points))-4), max(0, math.floor(min(p[1] for p in points))-4),
+            min(w, math.ceil(max(p[0] for p in points))+4), min(h, math.ceil(max(p[1] for p in points))+4)]
+
+
+def check_color_treatment(blue_png: bytes, yellow_png: bytes, view: int, *, roi=None, allow_mock=False) -> dict:
+    from PIL import Image
+    with Image.open(io.BytesIO(blue_png)) as blue, Image.open(io.BytesIO(yellow_png)) as yellow:
+        if blue.size != yellow.size or (not allow_mock and blue.size != (640, 480)):
+            raise LabError("Unexpected paired color image size")
+        roi = roi or [0, 0, *blue.size]
+        b = list(blue.convert("RGB").crop(tuple(roi)).getdata())
+        y = list(yellow.convert("RGB").crop(tuple(roi)).getdata())
+        warm_pixels = sum(yr-br >= 8 and bb-yb >= 8 for (br, _, bb), (yr, _, yb) in zip(b, y))
+    minimum = 1 if allow_mock else 20
+    if warm_pixels < minimum:
+        raise LabError(f"Insufficient rendered color treatment in view{view}: {warm_pixels} warm-shift pixels")
+    return {"view": view, "roi_xyxy": roi, "warm_shift_pixels": warm_pixels,
+            "minimum_pixels": minimum, "signed_channel_threshold": 8,
+            "scope": "Rendered treatment sanity check, not calibrated contrast or perception accuracy"}
+
+
+def pair_static_captures(blue_source: Path, yellow_source: Path, output: Path, *, allow_mock=False) -> dict:
+    """Pair independently rendered colors only if every physical state is exact."""
+    sources = [blue_source.resolve(), yellow_source.resolve()]
+    manifests, bundles, summaries = [], [], []
+    for source, color in zip(sources, GOAL_COLORS):
+        if (source/"INVALIDATED.json").exists():
+            raise LabError("Cannot pair an invalidated static capture")
+        manifest = json.loads((source/"manifest.json").read_text())
+        if not allow_mock and manifest.get("synthetic_fixture"):
+            raise LabError("Cannot pair synthetic captures in real mode")
+        if manifest.get("kind") != "static_color_capture" or manifest.get("static_goal_color") != color:
+            raise LabError("Require correctly labeled static-color capture manifests")
+        summary = json.loads((source/"summary.json").read_text())
+        if summary.get("complete") is not True or summary.get("strict_success") is not True:
+            raise LabError("Require two complete successful fixed trajectories")
+        bundle = json.loads((source/"snapshots.json").read_text())
+        if ([r["expected_action"] for r in bundle["records"]] != list(ACTIONS[:-1])
+                or [r["decision_id"] for r in bundle["records"]] != list(range(1, 8))):
+            raise LabError("Static trajectory must contain seven ordered decisions")
+        manifests.append(manifest); bundles.append(bundle); summaries.append(summary)
+    for key in ["config", "cameras", "source_sha256", "upstream_tutorial"]:
+        if manifests[0].get(key) != manifests[1].get(key):
+            raise LabError("Static capture source/configuration mismatch: "+key)
+    if bundles[0]["view_metadata"] != bundles[1]["view_metadata"]:
+        raise LabError("Static camera view descriptions differ")
+    records, png_assets, color_checks = [], {}, []
+    for blue_record, yellow_record in zip(bundles[0]["records"], bundles[1]["records"]):
+        for key in ["private_frozen_state", "model_state", "goal_guidance", "expected_action", "decision_id", "frozen_physics_verified"]:
+            if key not in blue_record or blue_record[key] != yellow_record.get(key):
+                raise LabError(f"Static trajectory state mismatch: decision{blue_record['decision_id']} {key}")
+        if blue_record["frozen_physics_verified"] is not True:
+            raise LabError("Unverified static frozen state")
+        record = copy.deepcopy(blue_record)
+        record["images"].update(copy.deepcopy(yellow_record["images"]))
+        record["color_capture_order"] = "independent static-color processes; no live recoloring"
+        pngs = {}
+        for source, color in zip(sources, GOAL_COLORS):
+            assets = record["images"][color]
+            if len(assets) != 2:
+                raise LabError("Require two images for each static color")
+            pngs[color] = []
+            for asset in assets:
+                relative = Path(asset["path"])
+                if relative.is_absolute() or ".." in relative.parts or not relative.parts or relative.parts[0] != "images":
+                    raise LabError("Static source image must have a safe relative images/ path")
+                path = (source/asset["path"]).resolve()
+                if not path.is_relative_to(source) or sha256_file(path) != asset["sha256"]:
+                    raise LabError("Static source image path/hash mismatch")
+                png = path.read_bytes()
+                if asset["path"] in png_assets:
+                    raise LabError("Static source images must have unique output paths")
+                png_assets[asset["path"]] = png
+                pngs[color].append(png)
+        config = manifests[0]["config"]
+        for index, camera in enumerate(camera_configs(config)):
+            roi = None if allow_mock else goal_image_roi(camera, config["target_position_m"])
+            check = check_color_treatment(pngs["blue"][index], pngs["yellow"][index], index+1, roi=roi, allow_mock=allow_mock)
+            color_checks.append({"decision_id": record["decision_id"], **check})
+        records.append(record)
+    # Validate everything before creating output; always preserve source pixels.
+    output.mkdir(parents=True, exist_ok=False)
+    (output/"images").mkdir()
+    for relative, png in png_assets.items():
+        path = output/relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(png)
+    provenance = {color: {"path": str(source), **{name+"_sha256": sha256_file(source/name) for name in
+                    ["manifest.json", "snapshots.json", "summary.json", "events.jsonl"]}} for source, color in zip(sources, GOAL_COLORS)}
+    write_json(output/"manifest.json", {"kind": "paired_factorial_capture", "synthetic_fixture": allow_mock,
+        "pairing_method": "two static-color processes; exact frozen state equality at all seven decisions",
+        "source_captures": provenance, "config": manifests[0]["config"], "cameras": manifests[0]["cameras"],
+        "source_sha256": manifests[0]["source_sha256"], "pairing_source_sha256": sha256_file(Path(__file__)),
+        "model_had_control": False, "render_color_checks": color_checks})
+    write_json(output/"snapshots.json", {"view_metadata": bundles[0]["view_metadata"], "records": records})
+    result = {"complete": True, "strict_success": True, "model_had_control": False,
+              "all_physical_states_exactly_equal": True, "render_color_pairs_validated": len(color_checks),
+              "source_summaries": dict(zip(GOAL_COLORS, summaries)), "scope": "Two fixed-policy runs, no model control"}
+    write_json(output/"summary.json", result)
+    return result
+
+
 def load_snapshots(source: Path) -> dict:
     source = source.resolve()
+    if (source/"INVALIDATED.json").exists():
+        raise LabError("This capture was invalidated; preserve it but never replay it as an experiment")
     summary = json.loads((source/"summary.json").read_text())
     if summary.get("complete") is not True or summary.get("strict_success") is not True:
         raise LabError("Require a complete successful fixed-policy capture")

@@ -135,4 +135,12 @@ ffmpeg 的真实 Isaac 视频编码未执行；本次没有提供真实相机截
 - 用户确认先做八组，目标信息只使用目标配置与实测关节控制工具点 FK，不提供方块真值。计划经反向审查，见 `plans/factorial-visual-decision.md`；新增独立 `collect_factorial.py` / `tools/run_factorial.py`，不切换默认 baseline/shadow/visual 的行为。蓝/亮黄 × 无/有目标辅助 × 单/双同时视图，共56次诊断推理；模型不控制机器人。
 - RED 的26项相关测试实际执行，11个预期错误：原bridge拒绝双图，缺少能力声明/processor观察器，配对实验模块尚未实现；记录见 `test_reports/unittest_factorial_red_20261006.txt`。GREEN 补齐双图有限接口、逐图内容/顺序/清理、实际 processor 图像输入审计、无私有真值白名单、同参考点目标距离与同渲染步双相机；相关26项通过，记录见 `test_reports/unittest_factorial_green_20261006.txt`。
 - 增加采集/重放合成场景、故障停止、颜色恢复、lower目标一致性、路径/哈希与旧目录保护、56次真实localhost HTTP替身请求回归。该替身不运行真实权重，不属于模型质量证据。反向审查还发现需要显式拒绝截断和真实模式下的合成采集来源；两项RED实际失败、GREEN通过，记录见 `test_reports/unittest_factorial_gates_red_20261006.txt` / `unittest_factorial_gates_green_20261006.txt`。processor调用显式 `truncation=False`，官方编码器在前向前检查完整长度并拒绝超长；真实重放拒绝合成manifest。当前完整 **185 / 185 CPU 测试通过**，记录见 `test_reports/unittest_factorial_20261006.txt`。所选15个纯CPU构造/审计/采集编排/重放函数行覆盖均≥80%，见 `test_reports/coverage_factorial_20261006.json`；不是整个仓库、GPU入口或权重加载覆盖。编译、SHA256及diff检查通过。
-- **双视图GPU同步渲染、实际颜色/地板对比、物理baseline和八组真实模型结果尚未执行。** 默认单图历史记录仍保留；所有新组颜色中性文字及相机说明属于共同协议变化，不能把历史5/7与新对照的差值直接归给三因素。只有完成全部56个有效响应才标记完整，最后两阶段仍为关键诊断；不声称模型接管或泛化。
+- **在实现提交45ce2e9时，双视图GPU同步渲染、实际颜色/地板对比、物理baseline和八组真实模型结果尚未执行。** 默认单图历史记录仍保留；所有新组颜色中性文字及相机说明属于共同协议变化，不能把历史5/7与新对照的差值直接归给三因素。只有完成全部56个有效响应才标记完整，最后两阶段仍为关键诊断；不声称模型接管或泛化。
+
+### GPU颜色对照失败与受控恢复
+
+- `21_factorial_capture` 已在L40成功执行固定抓放，776次物理更新、七个观测、28张RGB、最终XY误差0.0219928092m。物理不推进的采集检查通过，但**颜色处理不可靠**：原第一视图黄先采集的阶段3/5/7，目标ROI暖色像素变化极少或没有。原像素检查见 `test_reports/factorial_render_checks_20261006.json`。物理成功不使颜色实验有效。
+- `22_factorial_replay` 在发现该问题时主动SIGTERM项目自己的重放进程；15个响应文件保留，后端共完成16请求（包括中止时在途请求），双图官方processor确实接受有序两图。**不使用部分结果作因素优劣结论**。21/22各增加 `INVALIDATED.json`，保留原summary、图片和响应；新增RED/GREEN回归，禁止使用已失效采集源启动任何重放。
+- 两个额外冻结场景GPU诊断：USD颜色设置正确、dispatcher渲染计数增加，但额外app更新和重建render product均未稳定消除旧颜色影响。没有盲目改光照/渲染设置；原因尚未定位到具体RTX/Replicator机制。诊断源代码、图片与JSON留在远端 `ivd-ops/20261006/render_refresh_diagnosis` / `render_fresh_products_diagnosis`。
+- 恢复策略：分别在场景创建时固定蓝/黄色（默认原蓝色不变），不再live改色；同一固定技能轨迹执行两次，严格核对七阶段全部物理状态、本体状态及工具目标完全相同，再验证14对实际目标ROI颜色变化，原像素配对后进行56次真实重放。不提供方块真值、不调整物理评分或提示词，也不启动visual；新的静态GPU结果仍待执行。
+- 失败与两次GPU诊断原始摘要/来源哈希归档于 `test_reports/gpu_factorial_recovery_20261006.json`。静态颜色/严格状态配对九项RED实际失败、GREEN通过，记录见 `test_reports/unittest_static_color_red_20261006.txt` / `unittest_static_color_green_20261006.txt`；失效源拒绝见 `unittest_invalid_capture_red_20261006.txt` / `unittest_invalid_capture_green_20261006.txt`。补充路径/覆盖保护与像素拒绝测试后，全套 **200 / 200 CPU测试通过**，所选18个函数均≥80%CPU行覆盖，见 `unittest_static_recovery_20261006.txt` / `coverage_static_recovery_20261006.json`；仍不代表GPU或模型判断质量。

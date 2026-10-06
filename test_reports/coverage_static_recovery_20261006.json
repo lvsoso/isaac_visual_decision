@@ -1,0 +1,161 @@
+{
+  "tests": 200,
+  "passed": true,
+  "coverage": [
+    {
+      "function": "factor_cells",
+      "covered": 2,
+      "executable": 2,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "camera_configs",
+      "covered": 4,
+      "executable": 4,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "view_metadata",
+      "covered": 15,
+      "executable": 16,
+      "percent": 93.75,
+      "uncovered": [
+        39
+      ]
+    },
+    {
+      "function": "goal_guidance",
+      "covered": 11,
+      "executable": 11,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "neutral",
+      "covered": 1,
+      "executable": 1,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "factor_request",
+      "covered": 11,
+      "executable": 11,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "capture_pairs",
+      "covered": 14,
+      "executable": 14,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "collect_episode",
+      "covered": 56,
+      "executable": 56,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "goal_image_roi",
+      "covered": 22,
+      "executable": 22,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "check_color_treatment",
+      "covered": 14,
+      "executable": 14,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "pair_static_captures",
+      "covered": 69,
+      "executable": 76,
+      "percent": 90.79,
+      "uncovered": [
+        216,
+        219,
+        223,
+        229,
+        236,
+        244,
+        252
+      ]
+    },
+    {
+      "function": "load_snapshots",
+      "covered": 20,
+      "executable": 22,
+      "percent": 90.91,
+      "uncovered": [
+        298,
+        303
+      ]
+    },
+    {
+      "function": "summarize",
+      "covered": 17,
+      "executable": 17,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "run_replay",
+      "covered": 62,
+      "executable": 69,
+      "percent": 89.86,
+      "uncovered": [
+        341,
+        368,
+        370,
+        379,
+        380,
+        381,
+        382
+      ]
+    },
+    {
+      "function": "capture_camera_batch",
+      "covered": 18,
+      "executable": 22,
+      "percent": 81.82,
+      "uncovered": [
+        15,
+        26,
+        30,
+        33
+      ]
+    },
+    {
+      "function": "make_request",
+      "covered": 13,
+      "executable": 14,
+      "percent": 92.86,
+      "uncovered": [
+        40
+      ]
+    },
+    {
+      "function": "validate_request",
+      "covered": 23,
+      "executable": 23,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "ProcessorAudit.__call__",
+      "covered": 11,
+      "executable": 11,
+      "percent": 100.0,
+      "uncovered": []
+    }
+  ],
+  "scope": "CPU executable-line tracing for selected functions; not GPU entrypoints, OfficialEngine loading, whole-repo/branch or model quality"
+}

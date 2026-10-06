@@ -1,0 +1,600 @@
+{
+  "kind": "invalid_color_capture_and_recovery_diagnostics",
+  "valid_factorial_results": false,
+  "raw_capture": "/root/gpufree-share/isaac_visual_decision/runs/21_factorial_capture",
+  "capture_summary": {
+    "physical_completion": true,
+    "strict_success": true,
+    "final_cube_position_m": [
+      0.47915345430374146,
+      0.49299249053001404,
+      0.024999940767884254
+    ],
+    "final_xy_error_m": 0.02199280919842071,
+    "final_z_error_m": 5.923211574693221e-08,
+    "release_reached": true,
+    "timeout_occurred": false,
+    "termination_reason": "completed",
+    "mode": "factorial_capture",
+    "complete": true,
+    "error": null,
+    "physics_updates": 776,
+    "num_observations": 7,
+    "model_had_control": false,
+    "model_called": false,
+    "real_model_evaluated": false
+  },
+  "capture_source_sha256": {
+    "manifest.json": "e2868817076133e481c17a6fd6347832a15ea4a1e2112a9e5fd273c7cd98634b",
+    "snapshots.json": "d71937006608c23b3f34e80b871e25303887e1bf93777eeafbae89ed05a1badb",
+    "summary.json": "c5597f38149d97c39f934cccdb3a64e14120d3762e2aa73814559a3ac734d3d9",
+    "events.jsonl": "449ebc283bbb267591c43eae000385f42ed5a66022ffd8530c02315434d43762",
+    "INVALIDATED.json": "b67f533508b57c9be8439a4fbd1646e5431bcf65968213a2ce3b71880dad9c75"
+  },
+  "invalidated_replay": "/root/gpufree-share/isaac_visual_decision/runs/22_factorial_replay",
+  "invalidation": {
+    "termination_reason": "invalid_color_treatment_detected",
+    "invalid_for_factorial_conclusions": true,
+    "issue": "Camera1 goal pixels did not reliably switch between blue/yellow in stages3/5/7; preserve corpus and partial replies for diagnosis",
+    "stopped_owned_replay_pids": [
+      269854
+    ],
+    "response_files_present": 15
+  },
+  "partial_response_files_archived": 15,
+  "partial_response_audits": [
+    {
+      "name": "A0B0C0_decision_002.json",
+      "response_sha256": "f5be21ebe3b69064a66434b1cf1517a36ff98b312a0d505871229bcae11edb0d",
+      "image_count": 1,
+      "processor_image_count": 1,
+      "processor_input_tokens": 1671
+    },
+    {
+      "name": "A0B0C1_decision_002.json",
+      "response_sha256": "29d36a9673600d0bd424877ead775404b90e3b074860faf7fcf1cc6a1f4c66de",
+      "image_count": 2,
+      "processor_image_count": 2,
+      "processor_input_tokens": 2271
+    },
+    {
+      "name": "A0B0C1_decision_003.json",
+      "response_sha256": "a159d0443affbd9718dfb9bbd598f52be1c45b376a5d5b6daba3cd58f3d12a81",
+      "image_count": 2,
+      "processor_image_count": 2,
+      "processor_input_tokens": 2270
+    },
+    {
+      "name": "A0B0C1_decision_004.json",
+      "response_sha256": "f7f7039ac5fea2b39e4e33b01cdaf5702e49136b2cfa3becfab72e5e7f23bb2a",
+      "image_count": 2,
+      "processor_image_count": 2,
+      "processor_input_tokens": 2273
+    },
+    {
+      "name": "A0B0C1_decision_007.json",
+      "response_sha256": "38317d43077128443bc90282ec35d2990879a8d8d6c4d86cc2500e044976bc33",
+      "image_count": 2,
+      "processor_image_count": 2,
+      "processor_input_tokens": 2272
+    },
+    {
+      "name": "A0B1C0_decision_002.json",
+      "response_sha256": "f71d8a79b97a8b8667320429e18acf0818c8d2f4e86192098ff3be07951ad77f",
+      "image_count": 1,
+      "processor_image_count": 1,
+      "processor_input_tokens": 2060
+    },
+    {
+      "name": "A0B1C0_decision_004.json",
+      "response_sha256": "d216031104f10314839553c4b79e9023687e385ea36538b8061f543def701fe7",
+      "image_count": 1,
+      "processor_image_count": 1,
+      "processor_input_tokens": 2062
+    },
+    {
+      "name": "A0B1C1_decision_002.json",
+      "response_sha256": "10eb4f960308f493fa07a91a5dff206288e199fb8c51b05249cbc632b9550f99",
+      "image_count": 2,
+      "processor_image_count": 2,
+      "processor_input_tokens": 2660
+    },
+    {
+      "name": "A0B1C1_decision_003.json",
+      "response_sha256": "ac490d71bd7d76fd17c398a760214c0cc2140520881d50709fa01395556ab9ee",
+      "image_count": 2,
+      "processor_image_count": 2,
+      "processor_input_tokens": 2659
+    },
+    {
+      "name": "A0B1C1_decision_007.json",
+      "response_sha256": "8a7f106a73281917cea98e06a5e38af4028d56d8f88fb22bc2c789d1ab2277a3",
+      "image_count": 2,
+      "processor_image_count": 2,
+      "processor_input_tokens": 2669
+    },
+    {
+      "name": "A1B0C0_decision_004.json",
+      "response_sha256": "f590038031aba701f137df217a62009a1b04365d02512d6fc0223fd0bc7c801f",
+      "image_count": 1,
+      "processor_image_count": 1,
+      "processor_input_tokens": 1673
+    },
+    {
+      "name": "A1B0C0_decision_005.json",
+      "response_sha256": "e43016197550338a68c6458c230b2e858d9a1118c2c643a98d4664f01d31c73f",
+      "image_count": 1,
+      "processor_image_count": 1,
+      "processor_input_tokens": 1672
+    },
+    {
+      "name": "A1B0C1_decision_003.json",
+      "response_sha256": "27302b95d04336162fde5c2d4502c8e51026e78e41becc236e6a56f6bfb90283",
+      "image_count": 2,
+      "processor_image_count": 2,
+      "processor_input_tokens": 2270
+    },
+    {
+      "name": "A1B1C0_decision_003.json",
+      "response_sha256": "a52d8f1cb01cbd0705cbf93314bc7a03b714045f0793c011dff434f9ec9dcb67",
+      "image_count": 1,
+      "processor_image_count": 1,
+      "processor_input_tokens": 2059
+    },
+    {
+      "name": "A1B1C0_decision_005.json",
+      "response_sha256": "f5cc2b20b17bf3a6b87ec03b239a6e1a45fc57a799f2e79cd985823cf6ee9431",
+      "image_count": 1,
+      "processor_image_count": 1,
+      "processor_input_tokens": 2060
+    }
+  ],
+  "diagnoses": {
+    "render_refresh_diagnosis": {
+      "remote_path": "/root/gpufree-data/ivd-ops/20261006/render_refresh_diagnosis",
+      "summary_sha256": "63e75da65a52b644b2dce610356fca71859572b7d8d10fc35711009ebd6b5577",
+      "summary": {
+        "source_sha256": "04ac626f37169fa14ffaf43980966a117e64f9e61e0c168568b9dae04b01a88e",
+        "settings": {
+          "/rtx/hydra/supportMultiTickRate": true,
+          "/rtx/ecoMode/enabled": false,
+          "/rtx/post/dlss/execMode": 0,
+          "/omni/replicator/captureOnPlay": false
+        },
+        "frozen_verified": true,
+        "frozen_state": {
+          "joints": [
+            [
+              -0.334089070558548,
+              -1.2618895769119263,
+              2.0535471439361572,
+              0.7793266177177429,
+              1.570793867111206,
+              -1.9047353267669678,
+              -4.4289602540992234e-10,
+              -7.147097562665294e-07,
+              2.803772304105223e-06,
+              1.1176159205206204e-05,
+              -4.462550350581296e-06,
+              4.614171302819159e-06
+            ]
+          ],
+          "root_position": [
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "root_orientation": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "cube_position": [
+            [
+              0.5,
+              2.1218699686187392e-08,
+              0.024999912828207016
+            ]
+          ],
+          "cube_orientation": [
+            [
+              0.9999999403953552,
+              -0.00033541195443831384,
+              -8.115111268125474e-05,
+              1.1072249435528647e-05
+            ]
+          ],
+          "simulation_time": 5.149999999999987,
+          "physics_updates": 308
+        },
+        "rows": [
+          {
+            "strategy": "default",
+            "index": 0,
+            "authored_color": "yellow",
+            "usd_color": [
+              1.0,
+              0.8500000238418579,
+              0.019999999552965164
+            ],
+            "dispatcher_count_before": 618,
+            "dispatcher_count_after": 658,
+            "roi_means_rgb": [
+              [
+                109.32183908045977,
+                153.3095238095238,
+                178.6543513957307
+              ],
+              [
+                114.63386727688787,
+                154.9216882786677,
+                157.88431222985
+              ]
+            ],
+            "png_sha256s": [
+              "a450648d25c93d95e84e487541b7ae6b99b6c37972322fbcd693c6ee544e71fe",
+              "09c16fcaf0eaa3d3d483ed5298b161f8d7933fce3018be3640772a3e3ed3937d"
+            ]
+          },
+          {
+            "strategy": "default",
+            "index": 1,
+            "authored_color": "blue",
+            "usd_color": [
+              0.019999999552965164,
+              0.18000000715255737,
+              0.949999988079071
+            ],
+            "dispatcher_count_before": 658,
+            "dispatcher_count_after": 696,
+            "roi_means_rgb": [
+              [
+                109.36288998357963,
+                153.36617405582922,
+                178.49589490968802
+              ],
+              [
+                101.14162217137046,
+                148.9529621154335,
+                171.4830917874396
+              ]
+            ],
+            "png_sha256s": [
+              "e0926be31f16be6f5b19710d3cbaac1049b510baffb1bcdcf606abbaec51b32c",
+              "60a224411bcc20a2a1e7f6dea7391c25f6680d72bc822e95cb7458cf7d16b2e4"
+            ]
+          },
+          {
+            "strategy": "default",
+            "index": 2,
+            "authored_color": "blue",
+            "usd_color": [
+              0.019999999552965164,
+              0.18000000715255737,
+              0.949999988079071
+            ],
+            "dispatcher_count_before": 696,
+            "dispatcher_count_after": 734,
+            "roi_means_rgb": [
+              [
+                108.71182266009852,
+                152.9392446633826,
+                178.78981937602626
+              ],
+              [
+                100.2974828375286,
+                148.50394101195016,
+                172.16857360793287
+              ]
+            ],
+            "png_sha256s": [
+              "a48cbc7e31e013b01f04527325358b53c9693994ed4756cc1b0d7f3fc588b80f",
+              "4cec8fee0dac53db852057e75f5422ac7f85511e85ddf271823af03c03a61f81"
+            ]
+          },
+          {
+            "strategy": "default",
+            "index": 3,
+            "authored_color": "yellow",
+            "usd_color": [
+              1.0,
+              0.8500000238418579,
+              0.019999999552965164
+            ],
+            "dispatcher_count_before": 734,
+            "dispatcher_count_after": 772,
+            "roi_means_rgb": [
+              [
+                111.58210180623973,
+                154.55336617405584,
+                176.30377668308702
+              ],
+              [
+                106.94355453852022,
+                151.65853038393084,
+                166.22044241037375
+              ]
+            ],
+            "png_sha256s": [
+              "5cf324c1eac69cf72a9ab4d69cb5a36909c1389aadb758dd9c8cd8eb6df8ec17",
+              "8c3874d0ff20e1fffc9a00c0d6104ba2d92774e6213c5e93e3e8bd3e4c028bce"
+            ]
+          },
+          {
+            "strategy": "preflush",
+            "index": 0,
+            "authored_color": "yellow",
+            "usd_color": [
+              1.0,
+              0.8500000238418579,
+              0.019999999552965164
+            ],
+            "dispatcher_count_before": 772,
+            "dispatcher_count_after": 814,
+            "roi_means_rgb": [
+              [
+                114.74794745484401,
+                155.94663382594416,
+                173.0927750410509
+              ],
+              [
+                108.85049580472922,
+                152.5260615306382,
+                164.57411645054665
+              ]
+            ],
+            "png_sha256s": [
+              "346ac343afddf3829a266b994769c38ae058c158474f7ec052e7e913d55c78fe",
+              "e3d69ddcf73b97f2a4bffbc29436a81dc62a2701fba6c2d64346827d9df97f18"
+            ]
+          },
+          {
+            "strategy": "preflush",
+            "index": 1,
+            "authored_color": "blue",
+            "usd_color": [
+              0.019999999552965164,
+              0.18000000715255737,
+              0.949999988079071
+            ],
+            "dispatcher_count_before": 814,
+            "dispatcher_count_after": 856,
+            "roi_means_rgb": [
+              [
+                114.26518883415436,
+                155.6929392446634,
+                173.36124794745484
+              ],
+              [
+                107.08899059242309,
+                151.83066361556064,
+                166.2466310704297
+              ]
+            ],
+            "png_sha256s": [
+              "46396aa5faf97ad10371a1a9060ac0fbd5f88012809b1cd3da2b02336930acee",
+              "70fdd9ad2aab90fbdce4630867ee4f702848af8538e8656fd9867493cfe045f6"
+            ]
+          },
+          {
+            "strategy": "preflush",
+            "index": 2,
+            "authored_color": "blue",
+            "usd_color": [
+              0.019999999552965164,
+              0.18000000715255737,
+              0.949999988079071
+            ],
+            "dispatcher_count_before": 856,
+            "dispatcher_count_after": 898,
+            "roi_means_rgb": [
+              [
+                113.22577996715928,
+                155.1600985221675,
+                174.2167487684729
+              ],
+              [
+                104.5906432748538,
+                150.7355708110857,
+                168.3251970505975
+              ]
+            ],
+            "png_sha256s": [
+              "e85c21b396a4eba46b027cee14ec8f18ce8e8e312a62bbcc78c12af8e86a5f30",
+              "ac040931df79ebb73e59dcff8461bd3fb2fd9ff65acb4a898d355538c1913186"
+            ]
+          },
+          {
+            "strategy": "preflush",
+            "index": 3,
+            "authored_color": "yellow",
+            "usd_color": [
+              1.0,
+              0.8500000238418579,
+              0.019999999552965164
+            ],
+            "dispatcher_count_before": 898,
+            "dispatcher_count_after": 939,
+            "roi_means_rgb": [
+              [
+                115.23234811165845,
+                156.17241379310346,
+                171.97701149425288
+              ],
+              [
+                107.39308415967454,
+                151.9438087973557,
+                165.77777777777777
+              ]
+            ],
+            "png_sha256s": [
+              "5f8cb2be5202db96128c08f181f7c8a8657d5e87fc85e8180202545ef52ec1e4",
+              "2f3aaf0deff1a611096588a563c62ddc4cfb0a7c4d4901e6a10c93d1bc486eec"
+            ]
+          },
+          {
+            "strategy": "postflush",
+            "index": 0,
+            "authored_color": "yellow",
+            "usd_color": [
+              1.0,
+              0.8500000238418579,
+              0.019999999552965164
+            ],
+            "dispatcher_count_before": 939,
+            "dispatcher_count_after": 1004,
+            "roi_means_rgb": [
+              [
+                118.71592775041051,
+                157.82430213464696,
+                168.38998357963874
+              ],
+              [
+                109.90592423086703,
+                153.30612763793542,
+                163.54818204932621
+              ]
+            ],
+            "png_sha256s": [
+              "9a1f45a7a66d1cb332f3e8d402a4e6014d8f9da0a6f71c18a095c8e94edff80a",
+              "4102380c3c651ce9754c563b0d0b45a561d91683558281d8d9bf1acb9769a861"
+            ]
+          },
+          {
+            "strategy": "postflush",
+            "index": 1,
+            "authored_color": "blue",
+            "usd_color": [
+              0.019999999552965164,
+              0.18000000715255737,
+              0.949999988079071
+            ],
+            "dispatcher_count_before": 1004,
+            "dispatcher_count_after": 1070,
+            "roi_means_rgb": [
+              [
+                116.99671592775042,
+                157.0311986863711,
+                170.0960591133005
+              ],
+              [
+                104.98804983473175,
+                151.37020086448004,
+                168.3440122044241
+              ]
+            ],
+            "png_sha256s": [
+              "fa3178e92bcab493edbea36ed95aba1576bf1a2345b753e646410f3c6d01d124",
+              "e072f681b32cb7bb2b1bb48a4dfea3d5ea88a15392de55007b9182af888d2fe1"
+            ]
+          },
+          {
+            "strategy": "postflush",
+            "index": 2,
+            "authored_color": "blue",
+            "usd_color": [
+              0.019999999552965164,
+              0.18000000715255737,
+              0.949999988079071
+            ],
+            "dispatcher_count_before": 1070,
+            "dispatcher_count_after": 1136,
+            "roi_means_rgb": [
+              [
+                114.9080459770115,
+                156.0615763546798,
+                171.7536945812808
+              ],
+              [
+                102.94279176201373,
+                150.33282481566235,
+                170.0790744978388
+              ]
+            ],
+            "png_sha256s": [
+              "04517541310077766db97ff72acea750ab6b76289a559806762380f5b4ed46c6",
+              "a03a78ba129a1a1d3e1a8167e9e220b05731eb79566224cae148eb2c41890895"
+            ]
+          },
+          {
+            "strategy": "postflush",
+            "index": 3,
+            "authored_color": "yellow",
+            "usd_color": [
+              1.0,
+              0.8500000238418579,
+              0.019999999552965164
+            ],
+            "dispatcher_count_before": 1136,
+            "dispatcher_count_after": 1201,
+            "roi_means_rgb": [
+              [
+                117.90558292282431,
+                157.55829228243022,
+                168.58374384236453
+              ],
+              [
+                107.67302313755403,
+                152.25451309433004,
+                165.5537757437071
+              ]
+            ],
+            "png_sha256s": [
+              "edc7560d47ad627709a7f0907b713f850bf096ed575a364763d5725e38722b89",
+              "3ebfb1e19c95e476de2ddd3a1c9b9316327937bf3a8aece7deebf182cdb96b77"
+            ]
+          }
+        ]
+      }
+    },
+    "render_fresh_products_diagnosis": {
+      "remote_path": "/root/gpufree-data/ivd-ops/20261006/render_fresh_products_diagnosis",
+      "summary_sha256": "36f7dd4bcd0a5e3659480f9d5b4cf0f506eb1b270f5b184e1062e7a94d84a05a",
+      "summary": {
+        "source_sha256": "6657b1d56cc58385974bb5667d4b968963cc0f9b50dff3165ce701d4e2da9df7",
+        "frozen_verified": true,
+        "rows": [
+          {
+            "index": 0,
+            "color": "yellow",
+            "png_sha256s": [
+              "90552b886c1c84cc051de450abd89c3313b4e1ff8b2a964577138cf0f7a8e5bd",
+              "ec07cbdb9091ae01a5c101140c638abe650d099c140875abae9e0fda5a99e199"
+            ]
+          },
+          {
+            "index": 1,
+            "color": "blue",
+            "png_sha256s": [
+              "121a63d58c5a284b580cbbee9837cd575bc87cbb4c92c5eab51d6a4dfdefd7f8",
+              "d787d2b1d7e089dbb3cdfd955551af23509b46046de5e4fb6b503887c62b544c"
+            ]
+          },
+          {
+            "index": 2,
+            "color": "blue",
+            "png_sha256s": [
+              "6f3bd68ff5bc0e3babae49c3fe19b5a8feec8691d436e05f0fef4860fdacfd33",
+              "b78be36295d4cc99db449b76f80af2de060ed9e0bc436af6985b914badf3242b"
+            ]
+          },
+          {
+            "index": 3,
+            "color": "yellow",
+            "png_sha256s": [
+              "c921913d5d2a315e2234190cc7af115fc9668f3aacefbd577e021295eeaf258d",
+              "780d6248721f311c58e13a74c1f14b8588720a767d05ac45a10e03f14f1d0c6c"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "recovery_strategy": "Author one static goal color before any rendering per process; exact state matching and actual goal-ROI signed color check before any formal replay",
+  "scope": "No factors ranked from these invalid/partial inputs. Specific underlying RTX/Replicator mechanism unproven. No physics/model changes."
+}

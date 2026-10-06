@@ -25,6 +25,9 @@ class StaticPairTests(unittest.TestCase):
     def collect(self, color):
         scene = FakeScene()
         scene.colors = [self.f.GOAL_COLORS[color]]
+        from visual_lab.png import encode_rgb_bytes
+        rgb = [20, 30, 150] if color == 'blue' else [220, 190, 20]
+        scene.capture_views = lambda cameras: [encode_rgb_bytes(2, 2, bytes(rgb*4))]*2
         scene.set_goal_color = Mock(side_effect=AssertionError('No live recoloring is permitted'))
         directory = self.root/color
         manifest = {'kind': 'static_color_capture', 'synthetic_fixture': True, 'static_goal_color': color,
@@ -103,6 +106,46 @@ class StaticPairTests(unittest.TestCase):
         png = encode_rgb_bytes(2, 2, bytes([20, 20, 100]*4))
         with self.assertRaisesRegex(LabError, 'color'):
             self.f.check_color_treatment(png, png, 1, allow_mock=True)
+
+    def test_goal_roi_contains_known_center_in_both_views(self):
+        for camera, center in zip(self.f.camera_configs(self.config), [(321, 244), (399, 300)]):
+            roi = self.f.goal_image_roi(camera, self.config['target_position_m'])
+            self.assertTrue(roi[0] < center[0] < roi[2] and roi[1] < center[1] < roi[3])
+        camera = copy.deepcopy(self.config['camera'])
+        camera['look_at'] = [3, -4, 3]
+        with self.assertRaisesRegex(LabError, 'behind'):
+            self.f.goal_image_roi(camera, self.config['target_position_m'])
+
+    def test_absolute_asset_path_cannot_overwrite_source(self):
+        blue, yellow = self.collect('blue'), self.collect('yellow')
+        self.modify_snapshot(blue, lambda value: value['records'][0]['images']['blue'][0].update(
+            path=str(blue/'images/decision_001_blue_view1.png')))
+        with self.assertRaisesRegex(LabError, 'relative'):
+            self.f.pair_static_captures(blue, yellow, self.root/'paired', allow_mock=True)
+
+    def test_duplicate_asset_destination_is_rejected(self):
+        blue, yellow = self.collect('blue'), self.collect('yellow')
+        self.modify_snapshot(blue, lambda value: value['records'][0]['images']['blue'].__setitem__(
+            1, copy.deepcopy(value['records'][0]['images']['blue'][0])))
+        with self.assertRaisesRegex(LabError, 'unique'):
+            self.f.pair_static_captures(blue, yellow, self.root/'paired', allow_mock=True)
+
+    def test_invalid_static_color_fails_without_live_recoloring(self):
+        scene = FakeScene()
+        log = AuditLog(self.root/'invalid', {'synthetic_fixture': True})
+        try:
+            result = self.f.collect_episode(scene, [], self.config, log, static_color='red')
+        finally:
+            log.close()
+        self.assertFalse(result['complete'])
+        self.assertIn('static goal color', result['error'])
+
+    def test_pixel_check_rejects_non_gpu_dimensions_in_real_mode(self):
+        from visual_lab.png import encode_rgb_bytes
+        blue = encode_rgb_bytes(2, 2, bytes([20, 30, 150]*4))
+        yellow = encode_rgb_bytes(2, 2, bytes([220, 190, 20]*4))
+        with self.assertRaisesRegex(LabError, 'size'):
+            self.f.check_color_treatment(blue, yellow, 1)
 
 
 if __name__ == '__main__':
