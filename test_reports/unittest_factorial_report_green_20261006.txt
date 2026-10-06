@@ -1,0 +1,11 @@
+test_existing_report_is_never_overwritten (tests.test_factorial_report.FactorialReportTests.test_existing_report_is_never_overwritten) ... ok
+test_hostile_metadata_does_not_break_out_of_data_script (tests.test_factorial_report.FactorialReportTests.test_hostile_metadata_does_not_break_out_of_data_script) ... ok
+test_incomplete_experiment_cannot_be_reported_as_complete (tests.test_factorial_report.FactorialReportTests.test_incomplete_experiment_cannot_be_reported_as_complete) ... ok
+test_real_mode_cannot_label_mock_results_as_real (tests.test_factorial_report.FactorialReportTests.test_real_mode_cannot_label_mock_results_as_real) ... ok
+test_self_contained_all_images_and_probabilities_with_mock_warning (tests.test_factorial_report.FactorialReportTests.test_self_contained_all_images_and_probabilities_with_mock_warning) ... ok
+test_tampered_image_or_response_refuses_report (tests.test_factorial_report.FactorialReportTests.test_tampered_image_or_response_refuses_report) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 1.561s
+
+OK
