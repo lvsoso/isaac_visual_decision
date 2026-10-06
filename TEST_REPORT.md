@@ -44,3 +44,14 @@ ffmpeg 的真实 Isaac 视频编码未执行；本次没有提供真实相机截
 ## 在目标主机还需要完成的验收
 
 按手册分别运行 capture → baseline → 单图 probe → shadow → visual。保留终端日志和整个 run 目录。这样可以逐层判断是 API 契约、资产/相机、控制器、模型判断还是评分条件的问题，而不是用一个总成功率掩盖未验证环节。
+
+## 2026-10-06 后续修复验证
+
+以下为后续验证，不替换上面的 2026-10-05 原始记录。
+
+- 本地环境：macOS x86_64、Python 3.13.3、Pillow 12.3.0，使用独立 `.venv-test`，未安装 Isaac Sim。
+- CPU 测试：**74 / 74 通过**，命令 `.venv-test/bin/python -m unittest discover -s tests -v`；新增记录见 `test_reports/unittest_20261006.txt`。
+- 新增相机几何取景测试 3 项：使用默认光学参数估计方块、目标框与远端实测初始夹爪区域是否在画面内。不验证网格遮挡、颜色或 GPU 渲染。
+- 新增真实适配器的时间线顺序测试 8 项：用延迟生效的 timeline 替身复现播放请求被误判为暂停，覆盖 pre_grasp、录像恢复、settle、实际暂停、窗口关闭及物理未运行。修复前 4 项报出相同暂停异常、1 项错误分类失败；修复后全部通过。
+- 用户提供的远端 Isaac Sim 6.0.1 baseline 记录显示 `runtime_error`，错误为 `Timeline paused during an execution segment`，停在首个 pre_grasp，方块未移动。修复将播放状态检查移到同一次应用更新之后，不额外增加物理更新，不放宽超时。
+- **修复后的真实 GPU baseline 抓放仍待远端复跑，不能把 CPU 替身测试当成抓放成功。** 真实模型仍未验证。

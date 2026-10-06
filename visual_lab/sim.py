@@ -91,9 +91,11 @@ class IsaacScene:
     def _physics_step(self, *, record=True):
         if not self.app.is_running():
             raise LabError("SimulationApp window was closed")
+        # Kit applies queued play/pause requests at the next update. Check the
+        # committed state after this same counted step, not immediately after play().
+        self.app.update()
         if not self.timeline.is_playing():
             raise LabError("Timeline paused during an execution segment")
-        self.app.update()
         if not self.manager.is_simulating():
             raise LabError("Physics is not simulating; verify the installed Tutorial 9 first")
         self.frames += 1
