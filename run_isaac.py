@@ -76,7 +76,8 @@ def main() -> int:
             runtime_version = importlib.metadata.version("isaacsim")
         except importlib.metadata.PackageNotFoundError:
             runtime_version = "not exposed by this standalone distribution; see Isaac startup log"
-        log.event("runtime", isaac_distribution_version=runtime_version, source=metadata)
+        log.event("runtime", isaac_distribution_version=runtime_version, source=metadata,
+                  physics_pose_sync=scene.physics_pose_sync)
         result = run_episode(scene, config, a.mode, log, client, allow_mock=a.mode == "mock")
         print(json.dumps(result, ensure_ascii=False, indent=2), flush=True)
         print(f"Artifacts: {log.root}", flush=True)

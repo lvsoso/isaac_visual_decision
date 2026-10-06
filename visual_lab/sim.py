@@ -16,6 +16,7 @@ class IsaacScene:
                  urdf="robot.urdf", xrdf="robot.xrdf", sim_device="cuda",
                  record_every=0, record_directory: Path | None = None):
         import numpy as np
+        import carb
         import omni.timeline
         from isaacsim.core.simulation_manager import SimulationManager
         from isaacsim.core.experimental.prims import GeomPrim
@@ -32,6 +33,7 @@ class IsaacScene:
         self.gripper_command = 0.0
         self.scenario = None
         SimulationManager.setup_simulation(dt=config["physics_dt"], device=sim_device)
+        self.physics_pose_sync = self._configure_pose_updates(carb.settings.get_settings())
         cls, self.source_metadata = load_tutorial(tutorial_path)
         expected = {"_ROBOT_PRIM_PATH": "/World/ur10e_robot", "_CUBE_PRIM_PATH": "/World/cube",
                     "_EE_LINK_NAME": "right_inner_finger", "_GRIPPER_JOINT": "finger_joint",
@@ -59,6 +61,23 @@ class IsaacScene:
             self.scenario._articulation.set_dof_position_targets([0.0] * dofs)
             self._physics_step(record=False)
         self.timeline.pause()
+
+    def _configure_pose_updates(self, settings):
+        """Keep default USD pose readers and rendering in sync with physics.
+
+        CUDA setup enables Fabric and suppresses USD readback. Our GeomPrim
+        readers use USD, so restore USD updates before loading/playing the scene.
+        This trades some readback overhead for one consistent state source; it
+        does not change the requested physics device or advance the simulation.
+        """
+        self.manager.enable_fabric(False)
+        settings.set_bool("/physics/suppressReadback", False)
+        state = {"pose_backend": "usd", "fabric_enabled": self.manager.is_fabric_enabled(),
+                 "update_to_usd": settings.get_as_bool("/physics/updateToUsd"),
+                 "suppress_readback": settings.get_as_bool("/physics/suppressReadback")}
+        if state["fabric_enabled"] or not state["update_to_usd"] or state["suppress_readback"]:
+            raise LabError(f"Cannot synchronize physics poses to USD: {state}")
+        return state
 
     def _decorate_scene(self):
         """Make the visual task defined: red object, blue goal visible in rendered RGB.

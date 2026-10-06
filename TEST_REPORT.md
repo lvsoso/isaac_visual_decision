@@ -69,3 +69,12 @@ ffmpeg 的真实 Isaac 视频编码未执行；本次没有提供真实相机截
 - 执行器改为每帧一次合并目标写入，保留夹爪命令、索引映射及未控制关节；缺失、非有限、无效索引或长度不匹配的控制器指令会报错。没有改变阶段超时、容差或物理更新时间步。
 - 新增 10 项 CPU 测试，覆盖覆盖风险、夹爪保持、索引顺序、未控制关节、输出校验及实测诊断字段。最新 CPU 测试 **99 / 99 通过**，原始输出见 `test_reports/unittest_commands_20261006.txt`。
 - 阶段日志新增有效指令帧数、最后提交的关节目标、起止末端和关节位置、最大关节净位移，便于远端判断指令是否生效。**修改后是否消除真实主机的不运动现象，以及能否完成抓放，仍需真实 GPU baseline 复跑验证。**
+
+### CUDA 物理状态与 USD 位姿同步
+
+- 用户随后提供的真实 `runs/07_baseline/events.jsonl` 显示：首阶段有 1000 帧有效控制器指令，最大关节净位移约 1.904847 rad，末端起止读数却完全相同。它证明关节物理状态已有变化，不能再把画面不动解释为没有控制指令；本轮抓放仍失败。
+- 对照公开 NVIDIA [SimulationManager](https://github.com/isaac-sim/IsaacSim/blob/main/source/extensions/isaacsim.core.simulation_manager/python/impl/simulation_manager.py) 和 [XformPrim](https://github.com/isaac-sim/IsaacSim/blob/main/source/extensions/isaacsim.core.experimental.prims/python/impl/xform_prim.py)：CUDA 设置启用 Fabric、抑制 readback 并关闭 USD 更新；默认 `GeomPrim.get_world_poses()` 使用 USD。项目此前没有消除该状态源不一致。公开 main 源码分析不等于已检查远端安装源码。
+- 修复在设备配置之后、场景加载之前禁用物理 Fabric 更新并解除 readback 抑制，恢复 USD 位姿回写，保持 CUDA 物理设备与原有步数、容差及阶段预算不变。逐帧回写存在性能开销，本小场景优先保证状态一致。
+- 实际同步配置写入 `runtime.physics_pose_sync`；若 Fabric 仍启用、USD 更新仍关闭或 readback 仍被抑制，直接报错，不静默继续使用陈旧坐标。
+- 新增 6 项 CPU 回归测试：实际构造流程的配置顺序、默认末端/方块读数刷新、不变更设备且不额外步进，以及三种配置未生效的报错。最新 CPU 测试 **105 / 105 通过**，命令 `.venv-test/bin/python -m unittest discover -s tests -v`，原始输出见 `test_reports/unittest_pose_sync_20261006.txt`。
+- 用户上传的根目录 `summary.json` 保留在本地并排除出版本管理/代码同步；未覆盖或删除原始实验文件。**USD 同步修复后的真实画面、末端到位和抓放成功仍待远端 GPU 验证；真实模型仍未验证。**

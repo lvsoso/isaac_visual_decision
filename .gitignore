@@ -5,3 +5,5 @@ runs/
 models/
 .env
 *.mp4
+# Uploaded run diagnostics are local artifacts, not source code.
+/summary.json
