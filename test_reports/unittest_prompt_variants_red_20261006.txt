@@ -1,0 +1,357 @@
+test_all_84_inputs_are_saved_before_first_inference_and_never_modified (tests.test_prompt_variants.PromptReplayTests.test_all_84_inputs_are_saved_before_first_inference_and_never_modified) ... ERROR
+test_busy_service_refused_without_creating_run (tests.test_prompt_variants.PromptReplayTests.test_busy_service_refused_without_creating_run) ... ERROR
+test_changed_service_provenance_is_incomplete_not_silently_accepted (tests.test_prompt_variants.PromptReplayTests.test_changed_service_provenance_is_incomplete_not_silently_accepted) ... ERROR
+test_exact_probability_tie_never_counts_reference_as_chosen (tests.test_prompt_variants.PromptReplayTests.test_exact_probability_tie_never_counts_reference_as_chosen) ... ERROR
+test_existing_directory_is_preserved (tests.test_prompt_variants.PromptReplayTests.test_existing_directory_is_preserved) ... ERROR
+test_failure_stops_once_with_original_response_and_incomplete_summary (tests.test_prompt_variants.PromptReplayTests.test_failure_stops_once_with_original_response_and_incomplete_summary) ... ERROR
+test_ordered_image_audit_failure_is_not_counted_as_completed (tests.test_prompt_variants.PromptReplayTests.test_ordered_image_audit_failure_is_not_counted_as_completed) ... ERROR
+test_request_tampering_is_detected_before_it_is_sent (tests.test_prompt_variants.PromptReplayTests.test_request_tampering_is_detected_before_it_is_sent) ... ERROR
+test_source_changes_during_replay_invalidate_completed_requests (tests.test_prompt_variants.PromptReplayTests.test_source_changes_during_replay_invalidate_completed_requests) ... ERROR
+test_synthetic_invalidated_and_single_view_are_rejected_before_inference (tests.test_prompt_variants.PromptReplayTests.test_synthetic_invalidated_and_single_view_are_rejected_before_inference) ... ERROR
+test_html_embeds_28_original_pngs_all_84_actual_inputs_and_warning (tests.test_prompt_variants.PromptReportTests.test_html_embeds_28_original_pngs_all_84_actual_inputs_and_warning) ... ERROR
+test_report_rejects_tamper_incomplete_mock_as_real_and_overwrite (tests.test_prompt_variants.PromptReportTests.test_report_rejects_tamper_incomplete_mock_as_real_and_overwrite) ... ERROR
+test_safe_embedded_metadata_cannot_close_script (tests.test_prompt_variants.PromptReportTests.test_safe_embedded_metadata_cannot_close_script) ... ERROR
+test_bad_variant_or_nonfinite_geometry_refuses_construction (tests.test_prompt_variants.PromptRequestTests.test_bad_variant_or_nonfinite_geometry_refuses_construction) ... ERROR
+test_color_identification_only_changes_two_target_sentences (tests.test_prompt_variants.PromptRequestTests.test_color_identification_only_changes_two_target_sentences) ... ERROR
+test_english_neutral_matches_previous_factorial_request_exactly (tests.test_prompt_variants.PromptRequestTests.test_english_neutral_matches_previous_factorial_request_exactly) ... ERROR
+test_every_form_keeps_all_candidates_and_does_not_mutate_sources (tests.test_prompt_variants.PromptRequestTests.test_every_form_keeps_all_candidates_and_does_not_mutate_sources) ... ERROR
+test_relative_format_preserves_question_and_uses_tool_not_cube (tests.test_prompt_variants.PromptRequestTests.test_relative_format_preserves_question_and_uses_tool_not_cube) ... ERROR
+test_signed_height_negative_and_near_zero_do_not_become_action_labels (tests.test_prompt_variants.PromptRequestTests.test_signed_height_negative_and_near_zero_do_not_become_action_labels) ... ERROR
+test_translation_preserves_every_numeric_value_machine_id_and_png (tests.test_prompt_variants.PromptRequestTests.test_translation_preserves_every_numeric_value_machine_id_and_png) ... ERROR
+test_twelve_unique_cells_in_three_frozen_rounds (tests.test_prompt_variants.PromptRequestTests.test_twelve_unique_cells_in_three_frozen_rounds) ... ERROR
+test_whitelist_blocks_private_truth_and_labels_in_all_forms (tests.test_prompt_variants.PromptRequestTests.test_whitelist_blocks_private_truth_and_labels_in_all_forms) ... ERROR
+
+======================================================================
+ERROR: test_all_84_inputs_are_saved_before_first_inference_and_never_modified (tests.test_prompt_variants.PromptReplayTests.test_all_84_inputs_are_saved_before_first_inference_and_never_modified)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_prompt_variants.py", line 135, in setUp
+    self.p = importlib.import_module('visual_lab.prompt_variants')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.prompt_variants'
+
+======================================================================
+ERROR: test_busy_service_refused_without_creating_run (tests.test_prompt_variants.PromptReplayTests.test_busy_service_refused_without_creating_run)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_prompt_variants.py", line 135, in setUp
+    self.p = importlib.import_module('visual_lab.prompt_variants')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.prompt_variants'
+
+======================================================================
+ERROR: test_changed_service_provenance_is_incomplete_not_silently_accepted (tests.test_prompt_variants.PromptReplayTests.test_changed_service_provenance_is_incomplete_not_silently_accepted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_prompt_variants.py", line 135, in setUp
+    self.p = importlib.import_module('visual_lab.prompt_variants')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.prompt_variants'
+
+======================================================================
+ERROR: test_exact_probability_tie_never_counts_reference_as_chosen (tests.test_prompt_variants.PromptReplayTests.test_exact_probability_tie_never_counts_reference_as_chosen)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_prompt_variants.py", line 135, in setUp
+    self.p = importlib.import_module('visual_lab.prompt_variants')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.prompt_variants'
+
+======================================================================
+ERROR: test_existing_directory_is_preserved (tests.test_prompt_variants.PromptReplayTests.test_existing_directory_is_preserved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_prompt_variants.py", line 135, in setUp
+    self.p = importlib.import_module('visual_lab.prompt_variants')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.prompt_variants'
+
+======================================================================
+ERROR: test_failure_stops_once_with_original_response_and_incomplete_summary (tests.test_prompt_variants.PromptReplayTests.test_failure_stops_once_with_original_response_and_incomplete_summary)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_prompt_variants.py", line 135, in setUp
+    self.p = importlib.import_module('visual_lab.prompt_variants')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.prompt_variants'
+
+======================================================================
+ERROR: test_ordered_image_audit_failure_is_not_counted_as_completed (tests.test_prompt_variants.PromptReplayTests.test_ordered_image_audit_failure_is_not_counted_as_completed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_prompt_variants.py", line 135, in setUp
+    self.p = importlib.import_module('visual_lab.prompt_variants')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.prompt_variants'
+
+======================================================================
+ERROR: test_request_tampering_is_detected_before_it_is_sent (tests.test_prompt_variants.PromptReplayTests.test_request_tampering_is_detected_before_it_is_sent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_prompt_variants.py", line 135, in setUp
+    self.p = importlib.import_module('visual_lab.prompt_variants')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.prompt_variants'
+
+======================================================================
+ERROR: test_source_changes_during_replay_invalidate_completed_requests (tests.test_prompt_variants.PromptReplayTests.test_source_changes_during_replay_invalidate_completed_requests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_prompt_variants.py", line 135, in setUp
+    self.p = importlib.import_module('visual_lab.prompt_variants')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.prompt_variants'
+
+======================================================================
+ERROR: test_synthetic_invalidated_and_single_view_are_rejected_before_inference (tests.test_prompt_variants.PromptReplayTests.test_synthetic_invalidated_and_single_view_are_rejected_before_inference)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_prompt_variants.py", line 135, in setUp
+    self.p = importlib.import_module('visual_lab.prompt_variants')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.prompt_variants'
+
+======================================================================
+ERROR: test_html_embeds_28_original_pngs_all_84_actual_inputs_and_warning (tests.test_prompt_variants.PromptReportTests.test_html_embeds_28_original_pngs_all_84_actual_inputs_and_warning)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_prompt_variants.py", line 135, in setUp
+    self.p = importlib.import_module('visual_lab.prompt_variants')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.prompt_variants'
+
+======================================================================
+ERROR: test_report_rejects_tamper_incomplete_mock_as_real_and_overwrite (tests.test_prompt_variants.PromptReportTests.test_report_rejects_tamper_incomplete_mock_as_real_and_overwrite)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_prompt_variants.py", line 135, in setUp
+    self.p = importlib.import_module('visual_lab.prompt_variants')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.prompt_variants'
+
+======================================================================
+ERROR: test_safe_embedded_metadata_cannot_close_script (tests.test_prompt_variants.PromptReportTests.test_safe_embedded_metadata_cannot_close_script)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_prompt_variants.py", line 135, in setUp
+    self.p = importlib.import_module('visual_lab.prompt_variants')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.prompt_variants'
+
+======================================================================
+ERROR: test_bad_variant_or_nonfinite_geometry_refuses_construction (tests.test_prompt_variants.PromptRequestTests.test_bad_variant_or_nonfinite_geometry_refuses_construction)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_prompt_variants.py", line 27, in setUp
+    self.p = importlib.import_module('visual_lab.prompt_variants')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.prompt_variants'
+
+======================================================================
+ERROR: test_color_identification_only_changes_two_target_sentences (tests.test_prompt_variants.PromptRequestTests.test_color_identification_only_changes_two_target_sentences)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_prompt_variants.py", line 27, in setUp
+    self.p = importlib.import_module('visual_lab.prompt_variants')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.prompt_variants'
+
+======================================================================
+ERROR: test_english_neutral_matches_previous_factorial_request_exactly (tests.test_prompt_variants.PromptRequestTests.test_english_neutral_matches_previous_factorial_request_exactly)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_prompt_variants.py", line 27, in setUp
+    self.p = importlib.import_module('visual_lab.prompt_variants')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.prompt_variants'
+
+======================================================================
+ERROR: test_every_form_keeps_all_candidates_and_does_not_mutate_sources (tests.test_prompt_variants.PromptRequestTests.test_every_form_keeps_all_candidates_and_does_not_mutate_sources)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_prompt_variants.py", line 27, in setUp
+    self.p = importlib.import_module('visual_lab.prompt_variants')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.prompt_variants'
+
+======================================================================
+ERROR: test_relative_format_preserves_question_and_uses_tool_not_cube (tests.test_prompt_variants.PromptRequestTests.test_relative_format_preserves_question_and_uses_tool_not_cube)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_prompt_variants.py", line 27, in setUp
+    self.p = importlib.import_module('visual_lab.prompt_variants')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.prompt_variants'
+
+======================================================================
+ERROR: test_signed_height_negative_and_near_zero_do_not_become_action_labels (tests.test_prompt_variants.PromptRequestTests.test_signed_height_negative_and_near_zero_do_not_become_action_labels)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_prompt_variants.py", line 27, in setUp
+    self.p = importlib.import_module('visual_lab.prompt_variants')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.prompt_variants'
+
+======================================================================
+ERROR: test_translation_preserves_every_numeric_value_machine_id_and_png (tests.test_prompt_variants.PromptRequestTests.test_translation_preserves_every_numeric_value_machine_id_and_png)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_prompt_variants.py", line 27, in setUp
+    self.p = importlib.import_module('visual_lab.prompt_variants')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.prompt_variants'
+
+======================================================================
+ERROR: test_twelve_unique_cells_in_three_frozen_rounds (tests.test_prompt_variants.PromptRequestTests.test_twelve_unique_cells_in_three_frozen_rounds)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_prompt_variants.py", line 27, in setUp
+    self.p = importlib.import_module('visual_lab.prompt_variants')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.prompt_variants'
+
+======================================================================
+ERROR: test_whitelist_blocks_private_truth_and_labels_in_all_forms (tests.test_prompt_variants.PromptRequestTests.test_whitelist_blocks_private_truth_and_labels_in_all_forms)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_prompt_variants.py", line 27, in setUp
+    self.p = importlib.import_module('visual_lab.prompt_variants')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.prompt_variants'
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.252s
+
+FAILED (errors=22)
