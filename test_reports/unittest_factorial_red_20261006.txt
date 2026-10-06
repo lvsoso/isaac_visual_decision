@@ -1,0 +1,201 @@
+test_auth_401 (tests.test_multiview.MultiViewBridgeTests.test_auth_401) ... ok
+test_auth_correct (tests.test_multiview.MultiViewBridgeTests.test_auth_correct) ... ok
+test_client_rejects_chat_endpoint (tests.test_multiview.MultiViewBridgeTests.test_client_rejects_chat_endpoint) ... ok
+test_engine_failure_500_not_fallback (tests.test_multiview.MultiViewBridgeTests.test_engine_failure_500_not_fallback) ... ok
+test_health_declares_two_image_limit (tests.test_multiview.MultiViewBridgeTests.test_health_declares_two_image_limit) ... ERROR
+test_health_mock_explicit (tests.test_multiview.MultiViewBridgeTests.test_health_mock_explicit) ... ok
+test_health_rejects_mock (tests.test_multiview.MultiViewBridgeTests.test_health_rejects_mock) ... ok
+test_http_round_trip_image_hash (tests.test_multiview.MultiViewBridgeTests.test_http_round_trip_image_hash) ... ok
+test_invalid_base64_422 (tests.test_multiview.MultiViewBridgeTests.test_invalid_base64_422) ... ok
+test_lock_busy_503 (tests.test_multiview.MultiViewBridgeTests.test_lock_busy_503) ... ok
+test_non_png_422 (tests.test_multiview.MultiViewBridgeTests.test_non_png_422) ... ok
+test_official_engine_requires_explicit_trust (tests.test_multiview.MultiViewBridgeTests.test_official_engine_requires_explicit_trust) ... ok
+test_second_invalid_image_never_reaches_engine (tests.test_multiview.MultiViewBridgeTests.test_second_invalid_image_never_reaches_engine) ... ok
+test_temp_png_exists_only_during_inference (tests.test_multiview.MultiViewBridgeTests.test_temp_png_exists_only_during_inference) ... ok
+test_third_image_is_rejected (tests.test_multiview.MultiViewBridgeTests.test_third_image_is_rejected) ... ok
+test_truncated_png_422 (tests.test_multiview.MultiViewBridgeTests.test_truncated_png_422) ... ok
+test_two_images_are_processed_in_order_and_cleaned (tests.test_multiview.MultiViewBridgeTests.test_two_images_are_processed_in_order_and_cleaned) ... ERROR
+test_records_actual_rgb_order_and_grid_without_changing_batch (tests.test_multiview.ProcessorAuditTests.test_records_actual_rgb_order_and_grid_without_changing_batch) ... ERROR
+test_all_candidates_and_valid_image_contract (tests.test_factorial.FactorialTests.test_all_candidates_and_valid_image_contract) ... ERROR
+test_color_does_not_change_text_or_state (tests.test_factorial.FactorialTests.test_color_does_not_change_text_or_state) ... ERROR
+test_coordinates_only_add_approved_block (tests.test_factorial.FactorialTests.test_coordinates_only_add_approved_block) ... ERROR
+test_eight_unique_combinations (tests.test_factorial.FactorialTests.test_eight_unique_combinations) ... ERROR
+test_goal_ground_and_lower_tool_target_are_not_confused (tests.test_factorial.FactorialTests.test_goal_ground_and_lower_tool_target_are_not_confused) ... ERROR
+test_second_view_preserves_first_image_and_proprioception (tests.test_factorial.FactorialTests.test_second_view_preserves_first_image_and_proprioception) ... ERROR
+test_view_angles_are_defined_from_world_direction (tests.test_factorial.FactorialTests.test_view_angles_are_defined_from_world_direction) ... ERROR
+test_whitelist_discards_truth_even_with_coordinates (tests.test_factorial.FactorialTests.test_whitelist_discards_truth_even_with_coordinates) ... ERROR
+
+======================================================================
+ERROR: test_health_declares_two_image_limit (tests.test_multiview.MultiViewBridgeTests.test_health_declares_two_image_limit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_multiview.py", line 38, in test_health_declares_two_image_limit
+    self.assertEqual(self.client.health(allow_mock=True)['max_images'], 2)
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+KeyError: 'max_images'
+
+======================================================================
+ERROR: test_two_images_are_processed_in_order_and_cleaned (tests.test_multiview.MultiViewBridgeTests.test_two_images_are_processed_in_order_and_cleaned)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/visual_lab/client.py", line 42, in _request
+    with self.opener.open(request, timeout=self.timeout) as response:
+         ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 495, in open
+    response = meth(req, response)
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 604, in http_response
+    response = self.parent.error(
+        'http', request, response, code, msg, hdrs)
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 533, in error
+    return self._call_chain(*args)
+           ~~~~~~~~~~~~~~~~^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 466, in _call_chain
+    result = func(*args)
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 613, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 422: Unprocessable Content
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_multiview.py", line 31, in test_two_images_are_processed_in_order_and_cleaned
+    raw, _ = self.client.predict(request)
+             ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/visual_lab/client.py", line 71, in predict
+    response = self._request(self.endpoint, request)
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/visual_lab/client.py", line 48, in _request
+    raise ModelAPIError(f"Model HTTP {exc.code}: {detail}") from exc
+visual_lab.client.ModelAPIError: Model HTTP 422: {"error": "This v0.1 experiment requires one current RGB image"}
+
+======================================================================
+ERROR: test_records_actual_rgb_order_and_grid_without_changing_batch (tests.test_multiview.ProcessorAuditTests.test_records_actual_rgb_order_and_grid_without_changing_batch)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_multiview.py", line 57, in test_records_actual_rgb_order_and_grid_without_changing_batch
+    from visual_lab.server import ProcessorAudit
+ImportError: cannot import name 'ProcessorAudit' from 'visual_lab.server' (/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/visual_lab/server.py)
+
+======================================================================
+ERROR: test_all_candidates_and_valid_image_contract (tests.test_factorial.FactorialTests.test_all_candidates_and_valid_image_contract)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_factorial.py", line 19, in setUp
+    self.f = importlib.import_module('visual_lab.factorial')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.factorial'
+
+======================================================================
+ERROR: test_color_does_not_change_text_or_state (tests.test_factorial.FactorialTests.test_color_does_not_change_text_or_state)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_factorial.py", line 19, in setUp
+    self.f = importlib.import_module('visual_lab.factorial')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.factorial'
+
+======================================================================
+ERROR: test_coordinates_only_add_approved_block (tests.test_factorial.FactorialTests.test_coordinates_only_add_approved_block)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_factorial.py", line 19, in setUp
+    self.f = importlib.import_module('visual_lab.factorial')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.factorial'
+
+======================================================================
+ERROR: test_eight_unique_combinations (tests.test_factorial.FactorialTests.test_eight_unique_combinations)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_factorial.py", line 19, in setUp
+    self.f = importlib.import_module('visual_lab.factorial')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.factorial'
+
+======================================================================
+ERROR: test_goal_ground_and_lower_tool_target_are_not_confused (tests.test_factorial.FactorialTests.test_goal_ground_and_lower_tool_target_are_not_confused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_factorial.py", line 19, in setUp
+    self.f = importlib.import_module('visual_lab.factorial')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.factorial'
+
+======================================================================
+ERROR: test_second_view_preserves_first_image_and_proprioception (tests.test_factorial.FactorialTests.test_second_view_preserves_first_image_and_proprioception)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_factorial.py", line 19, in setUp
+    self.f = importlib.import_module('visual_lab.factorial')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.factorial'
+
+======================================================================
+ERROR: test_view_angles_are_defined_from_world_direction (tests.test_factorial.FactorialTests.test_view_angles_are_defined_from_world_direction)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_factorial.py", line 19, in setUp
+    self.f = importlib.import_module('visual_lab.factorial')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.factorial'
+
+======================================================================
+ERROR: test_whitelist_discards_truth_even_with_coordinates (tests.test_factorial.FactorialTests.test_whitelist_discards_truth_even_with_coordinates)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_factorial.py", line 19, in setUp
+    self.f = importlib.import_module('visual_lab.factorial')
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.factorial'
+
+----------------------------------------------------------------------
+Ran 26 tests in 8.275s
+
+FAILED (errors=11)
