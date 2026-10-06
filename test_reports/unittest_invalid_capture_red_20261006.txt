@@ -1,0 +1,15 @@
+test_invalidated_gpu_capture_cannot_be_replayed (tests.test_factorial.CollectionReplayTests.test_invalidated_gpu_capture_cannot_be_replayed) ... FAIL
+
+======================================================================
+FAIL: test_invalidated_gpu_capture_cannot_be_replayed (tests.test_factorial.CollectionReplayTests.test_invalidated_gpu_capture_cannot_be_replayed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_factorial.py", line 222, in test_invalidated_gpu_capture_cannot_be_replayed
+    with self.assertRaisesRegex(LabError, 'invalidated'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: LabError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.054s
+
+FAILED (failures=1)

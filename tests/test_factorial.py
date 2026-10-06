@@ -214,6 +214,16 @@ class CollectionReplayTests(unittest.TestCase):
         with self.assertRaisesRegex(LabError, 'hash'):
             self.f.load_snapshots(self.source)
 
+    def test_invalidated_gpu_capture_cannot_be_replayed(self):
+        self.collect()
+        (self.source/'INVALIDATED.json').write_text('{"invalid_for_factorial_conclusions": true}')
+        client = SimpleNamespace(health=Mock(return_value={'max_images': 2, 'is_mock': True}),
+                                 predict=Mock(side_effect=LabError('fixture must not be reached')))
+        with self.assertRaisesRegex(LabError, 'invalidated'):
+            self.f.run_replay(self.source, Path(self.temp.name)/'replay', client, allow_mock=True)
+        client.health.assert_not_called()
+        client.predict.assert_not_called()
+
     def test_snapshot_path_cannot_escape_source(self):
         self.collect()
         path = self.source/'snapshots.json'
