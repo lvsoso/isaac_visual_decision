@@ -5,10 +5,10 @@
   "cube_size_m": 0.05,
   "physics_dt": 0.016666666666666666,
   "camera": {
-    "position": [1.35, 1.35, 1.1],
-    "look_at": [0.48, 0.23, 0.22],
+    "position": [1.8, -1.6, 1.5],
+    "look_at": [0.65, 0.25, 0.2],
     "resolution": [640, 480],
-    "focal_length_mm": 24.0,
+    "focal_length_mm": 18.0,
     "rt_subframes": 4
   },
   "tutorial_phase_limits": [250, 150, 100, 50, 150, 100, 100, 100],
