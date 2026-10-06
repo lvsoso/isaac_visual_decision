@@ -258,10 +258,10 @@ class CollectionReplayTests(unittest.TestCase):
 
     def test_single_image_service_is_rejected_before_output_creation(self):
         self.collect()
-        client = SimpleNamespace(health=lambda **kw: {'max_images': 1, 'is_mock': False})
+        client = SimpleNamespace(health=lambda **kw: {'max_images': 1, 'is_mock': True})
         output = Path(self.temp.name)/'replay'
         with self.assertRaises(ProtocolError):
-            self.f.run_replay(self.source, output, client)
+            self.f.run_replay(self.source, output, client, allow_mock=True)
         self.assertFalse(output.exists())
 
     def test_real_mode_rejects_synthetic_capture_before_output_creation(self):
@@ -278,6 +278,12 @@ class CollectionReplayTests(unittest.TestCase):
         from visual_lab.server import MockEngine
         import hashlib
         self.collect()
+        # Only imitate the production manifest tag to reach the negative API gate.
+        # This remains an explicit CPU fixture with no model/renderer.
+        manifest = self.source/'manifest.json'
+        metadata = json.loads(manifest.read_text())
+        metadata.update(kind='paired_factorial_capture', synthetic_fixture=False)
+        manifest.write_text(json.dumps(metadata))
         health = {'max_images': 2, 'is_mock': False, 'vision_input_audit': True,
                   'inference_py_sha256': 'CPU-FIXTURE', 'temperature': 1.0}
         def predict(request):

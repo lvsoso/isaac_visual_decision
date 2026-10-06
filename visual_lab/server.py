@@ -21,7 +21,7 @@ import warnings
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from .core import ACTIONS, ProtocolError, parse_decision
-from .protocol import validate_request
+from .protocol import MAX_IMAGES, validate_request
 from .audit import sha256_file
 
 MAX_BODY = 5 * 1024 * 1024
@@ -58,6 +58,29 @@ def validate_png(data: str) -> bytes:
     return raw
 
 
+class ProcessorAudit:
+    """Observe actual processor inputs/output; forward without altering tensors."""
+    def __init__(self, processor):
+        self.processor = processor
+        self.last = None
+
+    def __getattr__(self, name):
+        return getattr(self.processor, name)
+
+    def __call__(self, *args, **kwargs):
+        if kwargs.get("truncation", False) is not False:
+            raise ProtocolError("Image/text processor truncation is forbidden")
+        kwargs["truncation"] = False
+        images = kwargs.get("images", [])
+        rgb_hashes = [hashlib.sha256(image.convert("RGB").tobytes()).hexdigest() for image in images]
+        batch = self.processor(*args, **kwargs)
+        grid = batch.get("image_grid_thw")
+        self.last = {"normalized_rgb_sha256s": rgb_hashes,
+                     "image_grid_thw": grid.tolist() if grid is not None else [],
+                     "input_tokens": int(batch["input_ids"].shape[-1])}
+        return batch
+
+
 class OfficialEngine:
     def __init__(self, checkpoint: str, *, trust_model_code: bool, expected_sha: str | None = None,
                  device: str = "cuda", dtype: str = "bfloat16", max_length: int = 8192,
@@ -85,13 +108,32 @@ class OfficialEngine:
         self.engine = mod.DecisionEngine(**kwargs)
         if not callable(getattr(self.engine, "predict", None)):
             raise ProtocolError("This checkpoint does not expose DecisionEngine.predict(request)")
+        self.processor_audit = ProcessorAudit(self.engine.backend.processor)
+        self.engine.backend.processor = self.processor_audit
         self.metadata = {"is_mock": False, "checkpoint": str(self.checkpoint),
                          "inference_py_sha256": digest, "config_sha256": sha256_file(self.checkpoint / "config.json"),
                          "device": device, "dtype": dtype, "max_length": max_length,
-                         "temperature": getattr(self.engine, "temperature", temperature)}
+                          "temperature": getattr(self.engine, "temperature", temperature), "vision_input_audit": True,
+                          "model_files_sha256": {name: sha256_file(self.checkpoint/name) for name in
+                              ("config.json", "preprocessor_config.json", "processor_config.json", "tokenizer_config.json",
+                               "chat_template.jinja", "DOWNLOAD_RECEIPT.json") if (self.checkpoint/name).is_file()}}
 
     def predict(self, request: dict) -> dict:
-        return self.engine.predict(request)
+        from PIL import Image
+        expected = []
+        for path in request.get("images", []):
+            with Image.open(path) as image:
+                expected.append(hashlib.sha256(image.convert("RGB").tobytes()).hexdigest())
+        self.processor_audit.last = None
+        result = self.engine.predict(request)
+        audit = self.processor_audit.last
+        if expected:
+            if not audit or audit["normalized_rgb_sha256s"] != expected or len(audit["image_grid_thw"]) != len(expected):
+                raise ProtocolError("Official processor image count/order does not match the request")
+            if audit["input_tokens"] > self.metadata["max_length"]:
+                raise ProtocolError("Official processor input exceeds the non-truncating length limit")
+            result["_vision_audit"] = copy.deepcopy(audit)
+        return result
 
 
 class MockEngine:
@@ -119,32 +161,38 @@ class DecisionBridge:
         self.lock = threading.Lock()
         self.started = time.monotonic()
         self.requests_completed = 0
+        self.source_hashes = {"bridge_source_sha256": sha256_file(Path(__file__)),
+                              "protocol_source_sha256": sha256_file(Path(__file__).with_name("protocol.py"))}
 
     def health(self) -> dict:
-        return {"status": "ok", "bridge_schema": 1, "supports_images": True,
+        return {"status": "ok", "bridge_schema": 1, "supports_images": True, "max_images": MAX_IMAGES,
                 "busy": self.lock.locked(), "requests_completed": self.requests_completed,
-                "uptime_seconds": round(time.monotonic() - self.started, 3), **self.engine.metadata}
+                "uptime_seconds": round(time.monotonic() - self.started, 3), **self.source_hashes, **self.engine.metadata}
 
     def predict(self, request: dict) -> dict:
         validate_request(request)
-        raw = validate_png(request["images"][0]["data"])
+        images = [validate_png(item["data"]) for item in request["images"]]
         if not self.lock.acquire(blocking=False):
             raise BlockingIOError("GPU is busy; one request is allowed at a time")
         try:
             # Temporary path is server-generated. A client filename never becomes a path.
             with tempfile.TemporaryDirectory(prefix="visual-decision-") as directory:
-                image_path = Path(directory) / "observation.png"
-                image_path.write_bytes(raw)
+                paths = []
+                for index, raw in enumerate(images):
+                    image_path = Path(directory) / f"observation_{index}.png"
+                    image_path.write_bytes(raw)
+                    paths.append(str(image_path))
                 internal = copy.deepcopy(request)
-                internal["images"] = [str(image_path)]
+                internal["images"] = paths
                 start = time.perf_counter()
                 result = self.engine.predict(internal)
                 if not isinstance(result, dict):
                     raise ProtocolError("Official engine did not return a dict")
                 result = copy.deepcopy(result)
                 result["_bridge"] = {"bridge_schema": 1, "is_mock": self.engine.metadata["is_mock"],
-                    "image_sha256": hashlib.sha256(raw).hexdigest(),
-                    "image_count": 1, "inference_py_sha256": self.engine.metadata.get("inference_py_sha256"),
+                    "image_sha256": hashlib.sha256(images[0]).hexdigest(),
+                    "image_sha256s": [hashlib.sha256(raw).hexdigest() for raw in images],
+                    "image_count": len(images), "inference_py_sha256": self.engine.metadata.get("inference_py_sha256"),
                     "engine_ms": (time.perf_counter() - start) * 1000}
                 parse_decision(result, allow_mock=True)
                 json.dumps(result, allow_nan=False)

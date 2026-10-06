@@ -5,6 +5,8 @@ import copy
 import json
 from .core import ACTIONS, ProtocolError
 
+MAX_IMAGES = 2  # Bounded experiment interface; default episodes still send one.
+
 # criteria 是动作语义，不是通过源码替模型决定的动作掩码。
 CRITERIA = {
     "pre_grasp": "Move the gripper to a high alignment pose above the red cube for pickup. Use when the fingers are open and the gripper is not yet above the resting cube. Do not use if the cube is already carried, or the gripper is already aligned above it; this skill does not open closed fingers.",
@@ -32,14 +34,18 @@ INSTRUCTIONS = (
 )
 
 
-def make_request(png_bytes: bytes, state: dict) -> dict:
-    if not isinstance(png_bytes, bytes) or not png_bytes.startswith(b"\x89PNG\r\n\x1a\n"):
-        raise ProtocolError("Expected PNG bytes, not a server path or RGB array")
+def make_request(png_bytes: bytes | list[bytes], state: dict) -> dict:
+    images = png_bytes if isinstance(png_bytes, list) else [png_bytes]
+    if not 1 <= len(images) <= MAX_IMAGES:
+        raise ProtocolError("Expected one or two current PNG images")
+    for image in images:
+        if not isinstance(image, bytes) or not image.startswith(b"\x89PNG\r\n\x1a\n"):
+            raise ProtocolError("Expected PNG bytes, not a server path or RGB array")
     if not isinstance(state, dict):
         raise ProtocolError("state must be a dict")
     result = {
         "state": copy.deepcopy(state),
-        "images": [{"type": "image/png", "data": base64.b64encode(png_bytes).decode("ascii")}],
+        "images": [{"type": "image/png", "data": base64.b64encode(image).decode("ascii")} for image in images],
         "questions": {"next_stage": {"type": "choice", "instructions": INSTRUCTIONS, "criteria": dict(CRITERIA)}},
     }
     # 拒绝 NaN/Inf；不要 sort_keys，训练接口依赖选项顺序。
@@ -65,9 +71,9 @@ def validate_request(request: dict) -> None:
     except (KeyError, TypeError) as exc:
         raise ProtocolError("Malformed decision schema") from exc
     images = request["images"]
-    if not isinstance(images, list) or len(images) != 1:
-        raise ProtocolError("This v0.1 experiment requires one current RGB image")
-    item = images[0]
-    if not isinstance(item, dict) or set(item) != {"type", "data"} or item["type"] != "image/png" or not isinstance(item["data"], str):
-        raise ProtocolError("images[0] must contain image/png and base64 data; URLs/paths are forbidden")
+    if not isinstance(images, list) or not 1 <= len(images) <= MAX_IMAGES:
+        raise ProtocolError("This bridge requires one or two current RGB images")
+    for item in images:
+        if not isinstance(item, dict) or set(item) != {"type", "data"} or item["type"] != "image/png" or not isinstance(item["data"], str):
+            raise ProtocolError("Images must contain image/png and base64 data; URLs/paths are forbidden")
     json.dumps(request, allow_nan=False)

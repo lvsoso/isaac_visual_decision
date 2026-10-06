@@ -1,0 +1,31 @@
+test_auth_401 (tests.test_multiview.MultiViewBridgeTests.test_auth_401) ... ok
+test_auth_correct (tests.test_multiview.MultiViewBridgeTests.test_auth_correct) ... ok
+test_client_rejects_chat_endpoint (tests.test_multiview.MultiViewBridgeTests.test_client_rejects_chat_endpoint) ... ok
+test_engine_failure_500_not_fallback (tests.test_multiview.MultiViewBridgeTests.test_engine_failure_500_not_fallback) ... ok
+test_health_declares_two_image_limit (tests.test_multiview.MultiViewBridgeTests.test_health_declares_two_image_limit) ... ok
+test_health_mock_explicit (tests.test_multiview.MultiViewBridgeTests.test_health_mock_explicit) ... ok
+test_health_rejects_mock (tests.test_multiview.MultiViewBridgeTests.test_health_rejects_mock) ... ok
+test_http_round_trip_image_hash (tests.test_multiview.MultiViewBridgeTests.test_http_round_trip_image_hash) ... ok
+test_invalid_base64_422 (tests.test_multiview.MultiViewBridgeTests.test_invalid_base64_422) ... ok
+test_lock_busy_503 (tests.test_multiview.MultiViewBridgeTests.test_lock_busy_503) ... ok
+test_non_png_422 (tests.test_multiview.MultiViewBridgeTests.test_non_png_422) ... ok
+test_official_engine_requires_explicit_trust (tests.test_multiview.MultiViewBridgeTests.test_official_engine_requires_explicit_trust) ... ok
+test_second_invalid_image_never_reaches_engine (tests.test_multiview.MultiViewBridgeTests.test_second_invalid_image_never_reaches_engine) ... ok
+test_temp_png_exists_only_during_inference (tests.test_multiview.MultiViewBridgeTests.test_temp_png_exists_only_during_inference) ... ok
+test_third_image_is_rejected (tests.test_multiview.MultiViewBridgeTests.test_third_image_is_rejected) ... ok
+test_truncated_png_422 (tests.test_multiview.MultiViewBridgeTests.test_truncated_png_422) ... ok
+test_two_images_are_processed_in_order_and_cleaned (tests.test_multiview.MultiViewBridgeTests.test_two_images_are_processed_in_order_and_cleaned) ... ok
+test_records_actual_rgb_order_and_grid_without_changing_batch (tests.test_multiview.ProcessorAuditTests.test_records_actual_rgb_order_and_grid_without_changing_batch) ... ok
+test_all_candidates_and_valid_image_contract (tests.test_factorial.FactorialTests.test_all_candidates_and_valid_image_contract) ... ok
+test_color_does_not_change_text_or_state (tests.test_factorial.FactorialTests.test_color_does_not_change_text_or_state) ... ok
+test_coordinates_only_add_approved_block (tests.test_factorial.FactorialTests.test_coordinates_only_add_approved_block) ... ok
+test_eight_unique_combinations (tests.test_factorial.FactorialTests.test_eight_unique_combinations) ... ok
+test_goal_ground_and_lower_tool_target_are_not_confused (tests.test_factorial.FactorialTests.test_goal_ground_and_lower_tool_target_are_not_confused) ... ok
+test_second_view_preserves_first_image_and_proprioception (tests.test_factorial.FactorialTests.test_second_view_preserves_first_image_and_proprioception) ... ok
+test_view_angles_are_defined_from_world_direction (tests.test_factorial.FactorialTests.test_view_angles_are_defined_from_world_direction) ... ok
+test_whitelist_discards_truth_even_with_coordinates (tests.test_factorial.FactorialTests.test_whitelist_discards_truth_even_with_coordinates) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 8.783s
+
+OK

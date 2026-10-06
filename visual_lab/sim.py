@@ -8,7 +8,7 @@ import math
 from pathlib import Path
 from .core import LabError, PHASES, NEAR_POSE_PHASES, phase_result, vector3
 from .upstream import load_tutorial
-from .capture import SceneCamera
+from .capture import SceneCamera, capture_camera_batch
 
 
 class IsaacScene:
@@ -132,6 +132,47 @@ class IsaacScene:
         positions = s._articulation.get_dof_positions().numpy().reshape(-1)
         return {"ee_world_position_m": vector3(ee, "ee_position"),
                 "finger_joint_position_rad": float(positions[s._finger_idx])}
+
+    def set_goal_color(self, rgb):
+        """Experiment-only visual change; never edits geometry or physics."""
+        import omni.usd
+        from pxr import UsdGeom, Gf
+        color = vector3(rgb, "goal color")
+        if any(not 0 <= value <= 1 for value in color):
+            raise LabError("Goal color components must be in [0,1]")
+        stage = omni.usd.get_context().get_stage()
+        for index in range(4):
+            prim = stage.GetPrimAtPath(f"/World/VisualGoal/edge_{index}")
+            if not prim.IsValid():
+                raise LabError("Visual goal edge is missing")
+            UsdGeom.Gprim(prim).GetDisplayColorAttr().Set([Gf.Vec3f(*color)])
+
+    def placement_tool_target(self) -> list[float]:
+        """One fixed lower-skill target; do not leave the phase index changed."""
+        previous = self.scenario._event
+        try:
+            self.scenario._event = PHASES.index("lower")
+            return vector3(self.scenario._phase_ee_target().tolist(), "lower tool target")
+        finally:
+            self.scenario._event = previous
+
+    def frozen_state(self) -> dict:
+        """Private capture-consistency evidence, never forwarded to the model."""
+        root = self.scenario._articulation.get_world_poses()
+        cube = self.cube_prim.get_world_poses()
+        return {"joints": self.scenario._articulation.get_dof_positions().numpy().tolist(),
+                "root_position": root[0].numpy().tolist(), "root_orientation": root[1].numpy().tolist(),
+                "cube_position": cube[0].numpy().tolist(), "cube_orientation": cube[1].numpy().tolist(),
+                "simulation_time": float(self.timeline.get_current_time()), "physics_updates": self.frames}
+
+    def capture_views(self, cameras: list) -> list[bytes]:
+        self.timeline.pause()
+        before = self.frozen_state()
+        images = capture_camera_batch(cameras, settle_steps=3)
+        after = self.frozen_state()
+        if any(not self.np.allclose(before[key], after[key], rtol=0, atol=1e-7) for key in before):
+            raise LabError("Paired camera capture changed frozen physical state")
+        return images
 
     def private_truth(self) -> dict:
         # DO NOT insert this into model_state. It is evaluator/debugger-only information.

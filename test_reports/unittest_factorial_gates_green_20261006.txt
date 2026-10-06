@@ -1,0 +1,7 @@
+test_truncating_processor_call_is_rejected_before_processing (tests.test_multiview.ProcessorAuditTests.test_truncating_processor_call_is_rejected_before_processing) ... ok
+test_real_mode_rejects_synthetic_capture_before_output_creation (tests.test_factorial.CollectionReplayTests.test_real_mode_rejects_synthetic_capture_before_output_creation) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.077s
+
+OK

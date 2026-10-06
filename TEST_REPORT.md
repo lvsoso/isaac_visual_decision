@@ -129,3 +129,10 @@ ffmpeg 的真实 Isaac 视频编码未执行；本次没有提供真实相机截
 - 重新读取远端原始文件，核对每次模型调用的请求/观测状态、PNG 哈希、响应及日志概率；官方 inference.py 哈希和温度不变。`17`、`18`、`20` 的完整仿真配置相同，`18` → `20` 的运行源码哈希仅 `visual_lab/protocol.py` 改变。摘要、全部候选概率及源文件 SHA256 归档于 `test_reports/gpu_prompt_comparison_20261006.json`；原始图片、请求/响应、日志及 HTML 保留在远端各 run 目录，未覆盖既有实验。
 - **改善只发生在初始对齐与抓起后的搬运选择；到目标上方和放低后的判断仍不合理，不满足 visual 接管门槛，因此未运行 visual，`model_had_control=false`。** shadow 的物理成功来自固定执行器，不是模型控制成功；新 shadow 仍是同一固定场景，不是独立泛化测试。不能把 5/7 报告成机器人任务成功率，也不继续针对七张诊断图片反复改词。遮挡、单目高度歧义或模型场景理解不足只是后续待检验假设。
 - 补充两项 CPU 输入拒绝测试，覆盖非字典状态及七种畸形证据/题目子例；全部 **140 / 140 CPU 测试通过**，输出见 `test_reports/unittest_prompt_verification_20261006.txt`。完整测试执行下，`make_request` 可执行行覆盖 10/10、`validate_request` 23/23，记录见 `test_reports/coverage_prompt_verification_20261006.json`；仅为这两个函数的 CPU 行执行覆盖，不是全仓库、分支或模型质量覆盖。Python 编译、SHA256 清单与 diff 检查通过；该轮没有再修改动作文字、相机、物理、模型或评分规则。
+
+### 三因素八组合：实现及 CPU 验证
+
+- 用户确认先做八组，目标信息只使用目标配置与实测关节控制工具点 FK，不提供方块真值。计划经反向审查，见 `plans/factorial-visual-decision.md`；新增独立 `collect_factorial.py` / `tools/run_factorial.py`，不切换默认 baseline/shadow/visual 的行为。蓝/亮黄 × 无/有目标辅助 × 单/双同时视图，共56次诊断推理；模型不控制机器人。
+- RED 的26项相关测试实际执行，11个预期错误：原bridge拒绝双图，缺少能力声明/processor观察器，配对实验模块尚未实现；记录见 `test_reports/unittest_factorial_red_20261006.txt`。GREEN 补齐双图有限接口、逐图内容/顺序/清理、实际 processor 图像输入审计、无私有真值白名单、同参考点目标距离与同渲染步双相机；相关26项通过，记录见 `test_reports/unittest_factorial_green_20261006.txt`。
+- 增加采集/重放合成场景、故障停止、颜色恢复、lower目标一致性、路径/哈希与旧目录保护、56次真实localhost HTTP替身请求回归。该替身不运行真实权重，不属于模型质量证据。反向审查还发现需要显式拒绝截断和真实模式下的合成采集来源；两项RED实际失败、GREEN通过，记录见 `test_reports/unittest_factorial_gates_red_20261006.txt` / `unittest_factorial_gates_green_20261006.txt`。processor调用显式 `truncation=False`，官方编码器在前向前检查完整长度并拒绝超长；真实重放拒绝合成manifest。当前完整 **185 / 185 CPU 测试通过**，记录见 `test_reports/unittest_factorial_20261006.txt`。所选15个纯CPU构造/审计/采集编排/重放函数行覆盖均≥80%，见 `test_reports/coverage_factorial_20261006.json`；不是整个仓库、GPU入口或权重加载覆盖。编译、SHA256及diff检查通过。
+- **双视图GPU同步渲染、实际颜色/地板对比、物理baseline和八组真实模型结果尚未执行。** 默认单图历史记录仍保留；所有新组颜色中性文字及相机说明属于共同协议变化，不能把历史5/7与新对照的差值直接归给三因素。只有完成全部56个有效响应才标记完整，最后两阶段仍为关键诊断；不声称模型接管或泛化。
