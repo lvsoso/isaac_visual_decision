@@ -104,3 +104,9 @@ ffmpeg 的真实 Isaac 视频编码未执行；本次没有提供真实相机截
 - 独立 Conda 模型环境 `/root/gpufree-data/envs/ivd-model`（Python 3.12.14）安装固定 Torch 2.9.1 / Torchvision 0.24.1 / Transformers 5.14.1，`pip check` 和 L40 上实际 BF16 CUDA 矩阵运算通过。完整模型快照及小文件哈希已核对，服务仅绑定 loopback，加载的官方 inference.py SHA256 为 `c904e2c67ca0775621a22375ee373d2ba30b52117cda870c6c9ef74143b29863`。
 - `runs/15_model_probe` 完成一次真实相机图片推理，约 9 秒；`runs/16_shadow` 的七次真实模型调用全部完成，约 7.8–8.8 秒/次，物理抓放仍成功。但建议为 `[approach, approach, grasp, lift, lift, grasp, lift]`，仅 3/7 与固定序列一致；后半段在抬起、到目标上方、放低后仍选 lift/grasp/lift，不满足当前 visual 接管门槛。图片 SHA256 和对应状态已核对，未给模型私有方块/目标坐标。shadow 成功不是模型控制成功。
 - 本轮先只把非碰撞目标框线由 4 mm 加宽到 20 mm，边中心、颜色、相机、动作描述、物理参数与成功阈值均不变。新增五项 CPU 检查，覆盖 USD 几何、投影宽度、配置/颜色不变、自定义目标和缺失方块；RED 有两个预期失败，旧框线默认投影不足 1 像素。GREEN 全部 **131 / 131 CPU 测试通过**，原始输出见 `test_reports/unittest_goal_visibility_20261006.txt`，装饰方法可执行行覆盖 20/20；编译与 diff 检查通过。**本轮加宽后的 GPU 可见性、baseline 和 shadow 效果仍待复跑；不预先宣称已修复模型判断。**
+
+### 加宽目标框的 GPU 对照与动作描述调整
+
+- `fa5ffa9` 同步后，真实 GPU `runs/17_goal_baseline` 与 `18_goal_shadow` 均退出 0、物理成功、最终 XY 误差仍约 0.021993 m。检查实际相机图片确认加宽的蓝框清楚可辨，但 shadow 七个建议仍为 `[approach, approach, grasp, lift, lift, grasp, lift]`，与 `16_shadow` 完全相同；单独加宽没有改变本次 argmax，不能声称解决了决策问题。概率有所变化，不证明模型已理解目标。
+- 下一轮仅修改 `CRITERIA` / `INSTRUCTIONS`：明确每个技能的视觉/本体适用条件和排除条件，避免已经抬起仍 lift、已经闭爪仍 grasp；解释 0/0.5 rad 与手指连杆参考点。仍保留全部八个候选、原状态和真实图片，不加入方块/目标真值、不按上一阶段强制下一阶段，也不调整温度、权重、物理或目标框。
+- 新增七项 CPU 文字契约回归检查：RED 有五项测试失败（含六个子例），证据/候选保留检查通过；GREEN 全部 **138 / 138 CPU 测试通过**，原始输出见 `test_reports/unittest_action_descriptions_20261006.txt`，编译与 diff 检查通过。这些测试只守住提示文字与请求契约，不能替代真实模型判断验证。**新文字的同图重放和新 GPU shadow 尚未验证；已有诊断图片不是独立测试集。**
