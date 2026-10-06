@@ -1,0 +1,25 @@
+test_truncating_processor_call_is_rejected_before_processing (tests.test_multiview.ProcessorAuditTests.test_truncating_processor_call_is_rejected_before_processing) ... FAIL
+test_real_mode_rejects_synthetic_capture_before_output_creation (tests.test_factorial.CollectionReplayTests.test_real_mode_rejects_synthetic_capture_before_output_creation) ... FAIL
+
+======================================================================
+FAIL: test_truncating_processor_call_is_rejected_before_processing (tests.test_multiview.ProcessorAuditTests.test_truncating_processor_call_is_rejected_before_processing)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_multiview.py", line 77, in test_truncating_processor_call_is_rejected_before_processing
+    with self.assertRaisesRegex(ProtocolError, 'truncation'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ProtocolError not raised
+
+======================================================================
+FAIL: test_real_mode_rejects_synthetic_capture_before_output_creation (tests.test_factorial.CollectionReplayTests.test_real_mode_rejects_synthetic_capture_before_output_creation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_factorial.py", line 271, in test_real_mode_rejects_synthetic_capture_before_output_creation
+    with self.assertRaisesRegex(LabError, 'production|synthetic'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: LabError not raised
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.076s
+
+FAILED (failures=2)

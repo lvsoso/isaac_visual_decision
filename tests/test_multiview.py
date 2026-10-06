@@ -51,8 +51,33 @@ class MultiViewBridgeTests(test_bridge.BridgeTests):
             self.client.predict(request)
         self.assertEqual(self.bridge.requests_completed, 0)
 
+    def test_two_temp_files_are_cleaned_after_engine_failure(self):
+        request, _ = self.two_images()
+        paths = []
+        def predict(internal):
+            paths.extend(internal['images'])
+            raise RuntimeError('synthetic two-image failure')
+        self.bridge.engine = type('E', (), {'metadata': {'is_mock': True}, 'predict': staticmethod(predict)})()
+        from visual_lab.client import ModelAPIError
+        with self.assertRaises(ModelAPIError):
+            self.client.predict(request)
+        self.assertEqual(len(paths), 2)
+        self.assertTrue(all(not Path(path).exists() for path in paths))
+
 
 class ProcessorAuditTests(unittest.TestCase):
+    def test_truncating_processor_call_is_rejected_before_processing(self):
+        from visual_lab.server import ProcessorAudit
+        from unittest.mock import Mock
+        from PIL import Image
+        grid = type('Grid', (), {'tolist': lambda s: [[1, 2, 2], [1, 2, 2]]})()
+        ids = type('Ids', (), {'shape': (1, 8192)})()
+        processor = Mock(return_value={'image_grid_thw': grid, 'input_ids': ids})
+        proxy = ProcessorAudit(processor)
+        with self.assertRaisesRegex(ProtocolError, 'truncation'):
+            proxy(images=[Image.new('RGB', (2, 2))]*2, text=['long input'], truncation=True)
+        processor.assert_not_called()
+
     def test_records_actual_rgb_order_and_grid_without_changing_batch(self):
         from visual_lab.server import ProcessorAudit
         from PIL import Image
