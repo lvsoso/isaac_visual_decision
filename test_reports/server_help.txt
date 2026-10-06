@@ -1,0 +1,25 @@
+usage: serve_model.py [-h] [--checkpoint CHECKPOINT] [--trust-model-code]
+                      [--expected-inference-sha256 EXPECTED_INFERENCE_SHA256]
+                      [--device DEVICE] [--dtype {bfloat16,float16,float32}]
+                      [--max-length MAX_LENGTH] [--temperature TEMPERATURE]
+                      [--host HOST] [--port PORT] [--mock]
+
+在独立的模型 Python 环境运行，不要用 Isaac Sim 的 python.sh。
+
+options:
+  -h, --help            show this help message and exit
+  --checkpoint CHECKPOINT
+                        Complete local Intern-Decision HF snapshot
+  --trust-model-code    Explicitly permit importing the reviewed
+                        checkpoint/inference.py
+  --expected-inference-sha256 EXPECTED_INFERENCE_SHA256
+  --device DEVICE
+  --dtype {bfloat16,float16,float32}
+  --max-length MAX_LENGTH
+  --temperature TEMPERATURE
+                        Omit to retain this checkpoint's own calibration; NOT
+                        a robot success probability
+  --host HOST
+  --port PORT
+  --mock                NO MODEL: protocol fixture, forbidden by real
+                        simulator modes

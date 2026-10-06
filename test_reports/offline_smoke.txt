@@ -1,0 +1,57 @@
+[mock] decision 1: proposed=pre_grasp, execute=pre_grasp
+[mock] decision 2: proposed=approach, execute=approach
+[mock] decision 3: proposed=grasp, execute=grasp
+[mock] decision 4: proposed=lift, execute=lift
+[mock] decision 5: proposed=transport, execute=transport
+[mock] decision 6: proposed=lower, execute=lower
+[mock] decision 7: proposed=release, execute=release
+{
+  "physical_completion": true,
+  "strict_success": true,
+  "final_cube_position_m": [
+    0.5,
+    0.5,
+    0.025
+  ],
+  "final_xy_error_m": 0.0,
+  "final_z_error_m": 0.0,
+  "release_reached": true,
+  "timeout_occurred": false,
+  "termination_reason": "completed",
+  "mode": "mock",
+  "num_decisions": 7,
+  "api_attempts": 7,
+  "api_completed": 7,
+  "model_called": true,
+  "real_model_evaluated": false,
+  "model_had_control": false,
+  "mock_backend": true,
+  "wall_seconds": 0.016792693000070358,
+  "physics_updates": 600,
+  "recorded_frames": 0,
+  "executed_actions": [
+    "pre_grasp",
+    "approach",
+    "grasp",
+    "lift",
+    "transport",
+    "lower",
+    "release"
+  ],
+  "proposed_actions": [
+    "pre_grasp",
+    "approach",
+    "grasp",
+    "lift",
+    "transport",
+    "lower",
+    "release"
+  ],
+  "error": null,
+  "controller_target_source": "configured_world_coordinates",
+  "end_to_end_visual_localization": false,
+  "synthetic_fixture": true,
+  "note": "Contract test only. No physics, rendering, visual understanding or model quality was tested."
+}
+/mnt/data/isaac_visual_decision_smoke_final/report.html
+/mnt/data/isaac_visual_decision_smoke_final/report.html

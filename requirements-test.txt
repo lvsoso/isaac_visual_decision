@@ -1,0 +1,2 @@
+# HTTP PNG-decoding tests. No torch, CUDA or Isaac dependency.
+Pillow>=10.0.0,<13

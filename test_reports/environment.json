@@ -1,0 +1,9 @@
+{
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "Pillow": "12.3.0",
+  "isaacsim_module_present": false,
+  "real_model_run": false,
+  "isaac_simulation_run": false,
+  "real_robot_run": false
+}

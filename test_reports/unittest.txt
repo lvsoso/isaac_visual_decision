@@ -1,0 +1,101 @@
+test_auth_401 (test_bridge.BridgeTests.test_auth_401) ... ok
+test_auth_correct (test_bridge.BridgeTests.test_auth_correct) ... ok
+test_client_rejects_chat_endpoint (test_bridge.BridgeTests.test_client_rejects_chat_endpoint) ... ok
+test_engine_failure_500_not_fallback (test_bridge.BridgeTests.test_engine_failure_500_not_fallback) ... ok
+test_health_mock_explicit (test_bridge.BridgeTests.test_health_mock_explicit) ... ok
+test_health_rejects_mock (test_bridge.BridgeTests.test_health_rejects_mock) ... ok
+test_http_round_trip_image_hash (test_bridge.BridgeTests.test_http_round_trip_image_hash) ... ok
+test_invalid_base64_422 (test_bridge.BridgeTests.test_invalid_base64_422) ... ok
+test_lock_busy_503 (test_bridge.BridgeTests.test_lock_busy_503) ... ok
+test_non_png_422 (test_bridge.BridgeTests.test_non_png_422) ... ok
+test_official_engine_requires_explicit_trust (test_bridge.BridgeTests.test_official_engine_requires_explicit_trust) ... ok
+test_temp_png_exists_only_during_inference (test_bridge.BridgeTests.test_temp_png_exists_only_during_inference) ... ok
+test_truncated_png_422 (test_bridge.BridgeTests.test_truncated_png_422) ... ok
+test_abort_cannot_strict_pass (test_core.CoreTests.test_abort_cannot_strict_pass) ... ok
+test_arm_not_forced_to_wait_60 (test_core.CoreTests.test_arm_not_forced_to_wait_60) ... ok
+test_bool_not_number (test_core.CoreTests.test_bool_not_number) ... ok
+test_choice_not_argmax (test_core.CoreTests.test_choice_not_argmax) ... ok
+test_choice_unknown (test_core.CoreTests.test_choice_unknown) ... ok
+test_command_target_z_does_not_pass_ground_test (test_core.CoreTests.test_command_target_z_does_not_pass_ground_test) ... ok
+test_confidence_missing (test_core.CoreTests.test_confidence_missing) ... ok
+test_convergence_wins_at_timeout_frame (test_core.CoreTests.test_convergence_wins_at_timeout_frame) ... ok
+test_extra_request_key_rejected (test_core.CoreTests.test_extra_request_key_rejected) ... ok
+test_gripper_cannot_finish_before_60 (test_core.CoreTests.test_gripper_cannot_finish_before_60) ... ok
+test_gripper_finishes_at_60 (test_core.CoreTests.test_gripper_finishes_at_60) ... ok
+test_ground_height_not_command_height (test_core.CoreTests.test_ground_height_not_command_height) ... ok
+test_impossible_budget_is_rejected (test_core.CoreTests.test_impossible_budget_is_rejected) ... ok
+test_mock_explicitly_accepted (test_core.CoreTests.test_mock_explicitly_accepted) ... ok
+test_mock_rejected_for_real (test_core.CoreTests.test_mock_rejected_for_real) ... ok
+test_nan_position_rejected (test_core.CoreTests.test_nan_position_rejected) ... ok
+test_no_local_image_path_over_http (test_core.CoreTests.test_no_local_image_path_over_http) ... ok
+test_no_release_cannot_pass (test_core.CoreTests.test_no_release_cannot_pass) ... ok
+test_no_remote_image_url (test_core.CoreTests.test_no_remote_image_url) ... ok
+test_no_synthesized_response_shape (test_core.CoreTests.test_no_synthesized_response_shape) ... ok
+test_option_order_preserved (test_core.CoreTests.test_option_order_preserved) ... ok
+test_outside_xy (test_core.CoreTests.test_outside_xy) ... ok
+test_png_size_validation (test_core.CoreTests.test_png_size_validation) ... ok
+test_probability_bad_sum (test_core.CoreTests.test_probability_bad_sum) ... ok
+test_probability_missing_key (test_core.CoreTests.test_probability_missing_key) ... ok
+test_probability_nan (test_core.CoreTests.test_probability_nan) ... ok
+test_reordered_options_rejected (test_core.CoreTests.test_reordered_options_rejected) ... ok
+test_request_contract (test_core.CoreTests.test_request_contract) ... ok
+test_state_has_no_world_truth (test_core.CoreTests.test_state_has_no_world_truth) ... ok
+test_state_not_mutated (test_core.CoreTests.test_state_not_mutated) ... ok
+test_timeout_cannot_strict_pass (test_core.CoreTests.test_timeout_cannot_strict_pass) ... ok
+test_timeout_with_error (test_core.CoreTests.test_timeout_with_error) ... ok
+test_unknown_previous_phase (test_core.CoreTests.test_unknown_previous_phase) ... ok
+test_wrong_magic_rejected (test_core.CoreTests.test_wrong_magic_rejected) ... ok
+test_api_failure_stops_before_motion (test_runner.RunnerTests.test_api_failure_stops_before_motion) ... ok
+test_automatic_retract_not_a_decision (test_runner.RunnerTests.test_automatic_retract_not_a_decision) ... [baseline] decision 1: proposed=None, execute=pre_grasp
+[baseline] decision 2: proposed=None, execute=approach
+[baseline] decision 3: proposed=None, execute=grasp
+[baseline] decision 4: proposed=None, execute=lift
+[baseline] decision 5: proposed=None, execute=transport
+[baseline] decision 6: proposed=None, execute=lower
+[baseline] decision 7: proposed=None, execute=release
+ok
+test_baseline_no_model (test_runner.RunnerTests.test_baseline_no_model) ... [baseline] decision 1: proposed=None, execute=pre_grasp
+[baseline] decision 2: proposed=None, execute=approach
+[baseline] decision 3: proposed=None, execute=grasp
+[baseline] decision 4: proposed=None, execute=lift
+[baseline] decision 5: proposed=None, execute=transport
+[baseline] decision 6: proposed=None, execute=lower
+[baseline] decision 7: proposed=None, execute=release
+ok
+test_capture_does_not_move (test_runner.RunnerTests.test_capture_does_not_move) ... ok
+test_decision_limit (test_runner.RunnerTests.test_decision_limit) ... [visual] decision 1: proposed=pre_grasp, execute=pre_grasp
+[visual] decision 2: proposed=pre_grasp, execute=pre_grasp
+[visual] decision 3: proposed=pre_grasp, execute=pre_grasp
+ok
+test_html_report_and_csv_generated (test_runner.RunnerTests.test_html_report_and_csv_generated) ... [baseline] decision 1: proposed=None, execute=pre_grasp
+[baseline] decision 2: proposed=None, execute=approach
+[baseline] decision 3: proposed=None, execute=grasp
+[baseline] decision 4: proposed=None, execute=lift
+[baseline] decision 5: proposed=None, execute=transport
+[baseline] decision 6: proposed=None, execute=lower
+[baseline] decision 7: proposed=None, execute=release
+ok
+test_run_directory_never_overwritten (test_runner.RunnerTests.test_run_directory_never_overwritten) ... ok
+test_shadow_does_not_execute_suggested_abort (test_runner.RunnerTests.test_shadow_does_not_execute_suggested_abort) ... [shadow] decision 1: proposed=abort, execute=pre_grasp
+[shadow] decision 2: proposed=abort, execute=approach
+[shadow] decision 3: proposed=abort, execute=grasp
+[shadow] decision 4: proposed=abort, execute=lift
+[shadow] decision 5: proposed=abort, execute=transport
+[shadow] decision 6: proposed=abort, execute=lower
+[shadow] decision 7: proposed=abort, execute=release
+ok
+test_timeout_is_terminal (test_runner.RunnerTests.test_timeout_is_terminal) ... [baseline] decision 1: proposed=None, execute=pre_grasp
+ok
+test_visual_abort_does_not_retract (test_runner.RunnerTests.test_visual_abort_does_not_retract) ... [visual] decision 1: proposed=abort, execute=abort
+ok
+test_ast_contract_validation (test_upstream.UpstreamTests.test_ast_contract_validation) ... ok
+test_main_and_top_level_not_executed (test_upstream.UpstreamTests.test_main_and_top_level_not_executed) ... ok
+test_missing_constructor_argument_fails (test_upstream.UpstreamTests.test_missing_constructor_argument_fails) ... ok
+test_missing_method_fails_early (test_upstream.UpstreamTests.test_missing_method_fails_early) ... ok
+test_missing_path (test_upstream.UpstreamTests.test_missing_path) ... ok
+test_source_layout_discovery (test_upstream.UpstreamTests.test_source_layout_discovery) ... ok
+
+----------------------------------------------------------------------
+Ran 63 tests in 6.628s
+
+OK
