@@ -1,0 +1,852 @@
+{
+  "approved_plan_sha256": "db8b54e34715225a6addbe4a937701d976fe22b1a07f432aa6bee2b660b29892",
+  "prompt_implementation_sha256": "1a556afc2597749305ad57eb35cf37fb00d204f0d8e2aa58e36bb048799a00d5",
+  "source_snapshots_sha256": "88ff6365c8173f6da3303a3ed17e79efc29fa43718bfe87342322c2573025c6d",
+  "scope": "Local offline input inspection, no model inference or robot control. Actual remote frozen-request hashes still need post-run comparison.",
+  "matched_legacy_request_bytes": 14,
+  "input_count": 84,
+  "translation_review": "Natural-language equivalents reviewed for all eight candidate preconditions/exclusions, state/reference warnings and camera definitions; machine IDs/numbers remain unchanged. Official system/template are unchanged.",
+  "spatial_review": "Same controller-tool geometry; signed height and horizontal distance, world-axis displacement, centimeter/angle rounding; no alignment/holding/next-action labels. Not object localization or obstacle/path reasoning.",
+  "requests": {
+    "blue_en_neutral_raw_decision_001": {
+      "request_sha256": "f31b628872ab9c33c39ddfd17cf023305dff36c5c9d6572b836ff3c9fbf8aa22",
+      "png_sha256s": [
+        "f1885e0503931d0d91b628f9cd8c62d074343c3b90df9edf57de790650cf48fc",
+        "9f3ff60657b1a209c61f3db964426b3a5d781a8ab8d98af894de4a8e2251bede"
+      ],
+      "task": "Place the red cube inside the square ground outline, then release it.",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "yellow_en_neutral_raw_decision_001": {
+      "request_sha256": "be5fc2856f3b5e6636ebfd4f8ac27ad4968a125dab8ff486d626ccf5790f9d97",
+      "png_sha256s": [
+        "4fc9733a07b34a02229d8f8df187a7339c623da7ffaec5a7956ecfce547df081",
+        "0f2e62cf9cbddc88573069b79122e937575e028d437c76c48b2a82e8a9636b72"
+      ],
+      "task": "Place the red cube inside the square ground outline, then release it.",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "blue_zh_neutral_raw_decision_001": {
+      "request_sha256": "a5c58bffd186b90ec76455618c2a31764bddbf0e3937c4052266bf320753454c",
+      "png_sha256s": [
+        "f1885e0503931d0d91b628f9cd8c62d074343c3b90df9edf57de790650cf48fc",
+        "9f3ff60657b1a209c61f3db964426b3a5d781a8ab8d98af894de4a8e2251bede"
+      ],
+      "task": "将红色方块放入地面方形轮廓线内部，然后释放它。",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "yellow_zh_neutral_raw_decision_001": {
+      "request_sha256": "84223b532960985f76b0336042acf3e2284e022d1b0bb47a4004b9d521fc6033",
+      "png_sha256s": [
+        "4fc9733a07b34a02229d8f8df187a7339c623da7ffaec5a7956ecfce547df081",
+        "0f2e62cf9cbddc88573069b79122e937575e028d437c76c48b2a82e8a9636b72"
+      ],
+      "task": "将红色方块放入地面方形轮廓线内部，然后释放它。",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "blue_en_named_raw_decision_001": {
+      "request_sha256": "30309d72c4ab97d4f75cd071af6f1bad0891fcead4456f7eb85aa9527adc0420",
+      "png_sha256s": [
+        "f1885e0503931d0d91b628f9cd8c62d074343c3b90df9edf57de790650cf48fc",
+        "9f3ff60657b1a209c61f3db964426b3a5d781a8ab8d98af894de4a8e2251bede"
+      ],
+      "task": "Place the red cube inside the blue ground outline, then release it.",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "yellow_en_named_raw_decision_001": {
+      "request_sha256": "fc48749d3293039ada2b28ab7d2e7371aee386ae5fecad3b3c0b438065bd375a",
+      "png_sha256s": [
+        "4fc9733a07b34a02229d8f8df187a7339c623da7ffaec5a7956ecfce547df081",
+        "0f2e62cf9cbddc88573069b79122e937575e028d437c76c48b2a82e8a9636b72"
+      ],
+      "task": "Place the red cube inside the yellow ground outline, then release it.",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "blue_zh_named_raw_decision_001": {
+      "request_sha256": "9edd57733e6718f8db111eb1aabb7dfc11cd82b0ad3e133712c08ad91289a097",
+      "png_sha256s": [
+        "f1885e0503931d0d91b628f9cd8c62d074343c3b90df9edf57de790650cf48fc",
+        "9f3ff60657b1a209c61f3db964426b3a5d781a8ab8d98af894de4a8e2251bede"
+      ],
+      "task": "将红色方块放入地面蓝色方形轮廓线内部，然后释放它。",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "yellow_zh_named_raw_decision_001": {
+      "request_sha256": "5c8518c99f02ca2660b078e2b0d301c40dfe09faef3b64455baabe929fccdb28",
+      "png_sha256s": [
+        "4fc9733a07b34a02229d8f8df187a7339c623da7ffaec5a7956ecfce547df081",
+        "0f2e62cf9cbddc88573069b79122e937575e028d437c76c48b2a82e8a9636b72"
+      ],
+      "task": "将红色方块放入地面黄色方形轮廓线内部，然后释放它。",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "blue_en_named_relative_decision_001": {
+      "request_sha256": "20091888b02eba66bfc2cab3ff7b6c89b715984699e158bd8efda7bbc7e05f5f",
+      "png_sha256s": [
+        "f1885e0503931d0d91b628f9cd8c62d074343c3b90df9edf57de790650cf48fc",
+        "9f3ff60657b1a209c61f3db964426b3a5d781a8ab8d98af894de4a8e2251bede"
+      ],
+      "task": "Place the red cube inside the blue ground outline, then release it.",
+      "spatial_description": "Configured ground-outline center approximately (X=50.0, Y=50.0, Z=0.0) cm in world coordinates. Placement tool target approximately (X=50.0, Y=50.0, Z=23.5) cm; measured model tool approximately (X=118.4, Y=25.6, Z=1.2) cm. Displacement from the tool to its placement target approximately (X=-68.4, Y=24.4, Z=22.3) cm along world axes, not image left/right. Horizontal distance from tool to ground-goal center approximately 72.7 cm. Tool height relative to placement tool target (signed measured Z minus target Z; positive is above, negative below) approximately -22.3 cm. Straight-line distance to placement tool target approximately 76.0 cm. Positions/distances are rounded to one decimal centimeter, at most 0.05 cm rounding error per scalar; no alignment, contact or holding judgment.",
+      "contains_reference_label": false
+    },
+    "yellow_en_named_relative_decision_001": {
+      "request_sha256": "4bd058e3ed76aa20b1841e9f9e738e3f99ede6913e4e6d6635a8b568872cff45",
+      "png_sha256s": [
+        "4fc9733a07b34a02229d8f8df187a7339c623da7ffaec5a7956ecfce547df081",
+        "0f2e62cf9cbddc88573069b79122e937575e028d437c76c48b2a82e8a9636b72"
+      ],
+      "task": "Place the red cube inside the yellow ground outline, then release it.",
+      "spatial_description": "Configured ground-outline center approximately (X=50.0, Y=50.0, Z=0.0) cm in world coordinates. Placement tool target approximately (X=50.0, Y=50.0, Z=23.5) cm; measured model tool approximately (X=118.4, Y=25.6, Z=1.2) cm. Displacement from the tool to its placement target approximately (X=-68.4, Y=24.4, Z=22.3) cm along world axes, not image left/right. Horizontal distance from tool to ground-goal center approximately 72.7 cm. Tool height relative to placement tool target (signed measured Z minus target Z; positive is above, negative below) approximately -22.3 cm. Straight-line distance to placement tool target approximately 76.0 cm. Positions/distances are rounded to one decimal centimeter, at most 0.05 cm rounding error per scalar; no alignment, contact or holding judgment.",
+      "contains_reference_label": false
+    },
+    "blue_zh_named_relative_decision_001": {
+      "request_sha256": "70b87a24f633871ace479fb555a531c5cd5ee09b861a1954731c06ebf5d0e691",
+      "png_sha256s": [
+        "f1885e0503931d0d91b628f9cd8c62d074343c3b90df9edf57de790650cf48fc",
+        "9f3ff60657b1a209c61f3db964426b3a5d781a8ab8d98af894de4a8e2251bede"
+      ],
+      "task": "将红色方块放入地面蓝色方形轮廓线内部，然后释放它。",
+      "spatial_description": "配置的地面框中心世界坐标约(X=50.0, Y=50.0, Z=0.0)厘米。放置工具目标约(X=50.0, Y=50.0, Z=23.5)厘米；实测模型工具点约(X=118.4, Y=25.6, Z=1.2)厘米。从工具点到放置工具目标的位移约(X=-68.4, Y=24.4, Z=22.3)厘米（世界轴，不是画面左右）。工具点与地面目标中心的水平距离约72.7厘米。工具点相对放置工具目标的高度差（带符号，实测Z减目标Z；正数在上方、负数在下方）约-22.3厘米。到放置工具目标的直线距离约76.0厘米。位置量以厘米保留一位小数，每量舍入误差最多0.05厘米；不判断是否对齐、接触或夹持。",
+      "contains_reference_label": false
+    },
+    "yellow_zh_named_relative_decision_001": {
+      "request_sha256": "1facdfc384f075ce76de62d4f771822fbffcc80822a86f96c33a29bac0421b84",
+      "png_sha256s": [
+        "4fc9733a07b34a02229d8f8df187a7339c623da7ffaec5a7956ecfce547df081",
+        "0f2e62cf9cbddc88573069b79122e937575e028d437c76c48b2a82e8a9636b72"
+      ],
+      "task": "将红色方块放入地面黄色方形轮廓线内部，然后释放它。",
+      "spatial_description": "配置的地面框中心世界坐标约(X=50.0, Y=50.0, Z=0.0)厘米。放置工具目标约(X=50.0, Y=50.0, Z=23.5)厘米；实测模型工具点约(X=118.4, Y=25.6, Z=1.2)厘米。从工具点到放置工具目标的位移约(X=-68.4, Y=24.4, Z=22.3)厘米（世界轴，不是画面左右）。工具点与地面目标中心的水平距离约72.7厘米。工具点相对放置工具目标的高度差（带符号，实测Z减目标Z；正数在上方、负数在下方）约-22.3厘米。到放置工具目标的直线距离约76.0厘米。位置量以厘米保留一位小数，每量舍入误差最多0.05厘米；不判断是否对齐、接触或夹持。",
+      "contains_reference_label": false
+    },
+    "blue_en_neutral_raw_decision_002": {
+      "request_sha256": "baae02f41db08f0f47feb52a81dce866f1f359016f1aa81f87fce344ce8a6ae4",
+      "png_sha256s": [
+        "f8fa5b606bc56f89fc509fe3350e1a7d596257e64118520c7dc9a0485bbce092",
+        "4a912daf9df389f0eb5df0577453307f332f6534f1de81d39863302e7be6d2a1"
+      ],
+      "task": "Place the red cube inside the square ground outline, then release it.",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "yellow_en_neutral_raw_decision_002": {
+      "request_sha256": "6157ddcf6b6356e99bd0980afcb37a5449b77a97f12c3b9307744cd4b9bfaacb",
+      "png_sha256s": [
+        "1b22101c4ba750094098569f9f5bc290da5cbd1f4df610d72d330bc2413e9ec6",
+        "dcd8f5dcbc20a8ad13fafc497f3d375831bbfd620ac557d2c30694ece216cd90"
+      ],
+      "task": "Place the red cube inside the square ground outline, then release it.",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "blue_zh_neutral_raw_decision_002": {
+      "request_sha256": "37a9398439848d99406e4e431a2621bd8f9ec75c10e27df4ba1ea9319ad4fbb2",
+      "png_sha256s": [
+        "f8fa5b606bc56f89fc509fe3350e1a7d596257e64118520c7dc9a0485bbce092",
+        "4a912daf9df389f0eb5df0577453307f332f6534f1de81d39863302e7be6d2a1"
+      ],
+      "task": "将红色方块放入地面方形轮廓线内部，然后释放它。",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "yellow_zh_neutral_raw_decision_002": {
+      "request_sha256": "698429975cb23c2c9764fb5e16b36fffa30dbf7021f21845b73ba3aaa2e5f2b8",
+      "png_sha256s": [
+        "1b22101c4ba750094098569f9f5bc290da5cbd1f4df610d72d330bc2413e9ec6",
+        "dcd8f5dcbc20a8ad13fafc497f3d375831bbfd620ac557d2c30694ece216cd90"
+      ],
+      "task": "将红色方块放入地面方形轮廓线内部，然后释放它。",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "blue_en_named_raw_decision_002": {
+      "request_sha256": "c18f38fd93d335438f4297fb3cf150324b2ca3d74486d4908641d42702fcdab9",
+      "png_sha256s": [
+        "f8fa5b606bc56f89fc509fe3350e1a7d596257e64118520c7dc9a0485bbce092",
+        "4a912daf9df389f0eb5df0577453307f332f6534f1de81d39863302e7be6d2a1"
+      ],
+      "task": "Place the red cube inside the blue ground outline, then release it.",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "yellow_en_named_raw_decision_002": {
+      "request_sha256": "733cf2d064ce469adfd1e364dc19c67047b0f6b024846bfa1eb537ceb29ed988",
+      "png_sha256s": [
+        "1b22101c4ba750094098569f9f5bc290da5cbd1f4df610d72d330bc2413e9ec6",
+        "dcd8f5dcbc20a8ad13fafc497f3d375831bbfd620ac557d2c30694ece216cd90"
+      ],
+      "task": "Place the red cube inside the yellow ground outline, then release it.",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "blue_zh_named_raw_decision_002": {
+      "request_sha256": "79848a2c9ef25dc86b0dc2503a47512111718c7ee3b4f3e33582d7220f5c9bff",
+      "png_sha256s": [
+        "f8fa5b606bc56f89fc509fe3350e1a7d596257e64118520c7dc9a0485bbce092",
+        "4a912daf9df389f0eb5df0577453307f332f6534f1de81d39863302e7be6d2a1"
+      ],
+      "task": "将红色方块放入地面蓝色方形轮廓线内部，然后释放它。",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "yellow_zh_named_raw_decision_002": {
+      "request_sha256": "efbb741bb15da0b41e7b47b5b895103c9073fe6453dc037be957d31fc932e41b",
+      "png_sha256s": [
+        "1b22101c4ba750094098569f9f5bc290da5cbd1f4df610d72d330bc2413e9ec6",
+        "dcd8f5dcbc20a8ad13fafc497f3d375831bbfd620ac557d2c30694ece216cd90"
+      ],
+      "task": "将红色方块放入地面黄色方形轮廓线内部，然后释放它。",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "blue_en_named_relative_decision_002": {
+      "request_sha256": "771883ccc713272f5950f110aa2fd934f17dd34cecfcdb9e3a820a99c7e585dd",
+      "png_sha256s": [
+        "f8fa5b606bc56f89fc509fe3350e1a7d596257e64118520c7dc9a0485bbce092",
+        "4a912daf9df389f0eb5df0577453307f332f6534f1de81d39863302e7be6d2a1"
+      ],
+      "task": "Place the red cube inside the blue ground outline, then release it.",
+      "spatial_description": "Configured ground-outline center approximately (X=50.0, Y=50.0, Z=0.0) cm in world coordinates. Placement tool target approximately (X=50.0, Y=50.0, Z=23.5) cm; measured model tool approximately (X=51.8, Y=0.6, Z=52.1) cm. Displacement from the tool to its placement target approximately (X=-1.8, Y=49.4, Z=-28.6) cm along world axes, not image left/right. Horizontal distance from tool to ground-goal center approximately 49.4 cm. Tool height relative to placement tool target (signed measured Z minus target Z; positive is above, negative below) approximately 28.6 cm. Straight-line distance to placement tool target approximately 57.1 cm. Positions/distances are rounded to one decimal centimeter, at most 0.05 cm rounding error per scalar; no alignment, contact or holding judgment.",
+      "contains_reference_label": false
+    },
+    "yellow_en_named_relative_decision_002": {
+      "request_sha256": "aa4f5293a3f8c56aa1f6c7039e561e5cd7f549837bc275fbd544cb6c23d20319",
+      "png_sha256s": [
+        "1b22101c4ba750094098569f9f5bc290da5cbd1f4df610d72d330bc2413e9ec6",
+        "dcd8f5dcbc20a8ad13fafc497f3d375831bbfd620ac557d2c30694ece216cd90"
+      ],
+      "task": "Place the red cube inside the yellow ground outline, then release it.",
+      "spatial_description": "Configured ground-outline center approximately (X=50.0, Y=50.0, Z=0.0) cm in world coordinates. Placement tool target approximately (X=50.0, Y=50.0, Z=23.5) cm; measured model tool approximately (X=51.8, Y=0.6, Z=52.1) cm. Displacement from the tool to its placement target approximately (X=-1.8, Y=49.4, Z=-28.6) cm along world axes, not image left/right. Horizontal distance from tool to ground-goal center approximately 49.4 cm. Tool height relative to placement tool target (signed measured Z minus target Z; positive is above, negative below) approximately 28.6 cm. Straight-line distance to placement tool target approximately 57.1 cm. Positions/distances are rounded to one decimal centimeter, at most 0.05 cm rounding error per scalar; no alignment, contact or holding judgment.",
+      "contains_reference_label": false
+    },
+    "blue_zh_named_relative_decision_002": {
+      "request_sha256": "02a929de6b1e436d1bdec6eb1afc42fae97fa015bc41a024a3213e5f8903fe98",
+      "png_sha256s": [
+        "f8fa5b606bc56f89fc509fe3350e1a7d596257e64118520c7dc9a0485bbce092",
+        "4a912daf9df389f0eb5df0577453307f332f6534f1de81d39863302e7be6d2a1"
+      ],
+      "task": "将红色方块放入地面蓝色方形轮廓线内部，然后释放它。",
+      "spatial_description": "配置的地面框中心世界坐标约(X=50.0, Y=50.0, Z=0.0)厘米。放置工具目标约(X=50.0, Y=50.0, Z=23.5)厘米；实测模型工具点约(X=51.8, Y=0.6, Z=52.1)厘米。从工具点到放置工具目标的位移约(X=-1.8, Y=49.4, Z=-28.6)厘米（世界轴，不是画面左右）。工具点与地面目标中心的水平距离约49.4厘米。工具点相对放置工具目标的高度差（带符号，实测Z减目标Z；正数在上方、负数在下方）约28.6厘米。到放置工具目标的直线距离约57.1厘米。位置量以厘米保留一位小数，每量舍入误差最多0.05厘米；不判断是否对齐、接触或夹持。",
+      "contains_reference_label": false
+    },
+    "yellow_zh_named_relative_decision_002": {
+      "request_sha256": "e4136b52dd15985a2546dae5e2fbd5cbfaa460f38d26725cebc98859744e0732",
+      "png_sha256s": [
+        "1b22101c4ba750094098569f9f5bc290da5cbd1f4df610d72d330bc2413e9ec6",
+        "dcd8f5dcbc20a8ad13fafc497f3d375831bbfd620ac557d2c30694ece216cd90"
+      ],
+      "task": "将红色方块放入地面黄色方形轮廓线内部，然后释放它。",
+      "spatial_description": "配置的地面框中心世界坐标约(X=50.0, Y=50.0, Z=0.0)厘米。放置工具目标约(X=50.0, Y=50.0, Z=23.5)厘米；实测模型工具点约(X=51.8, Y=0.6, Z=52.1)厘米。从工具点到放置工具目标的位移约(X=-1.8, Y=49.4, Z=-28.6)厘米（世界轴，不是画面左右）。工具点与地面目标中心的水平距离约49.4厘米。工具点相对放置工具目标的高度差（带符号，实测Z减目标Z；正数在上方、负数在下方）约28.6厘米。到放置工具目标的直线距离约57.1厘米。位置量以厘米保留一位小数，每量舍入误差最多0.05厘米；不判断是否对齐、接触或夹持。",
+      "contains_reference_label": false
+    },
+    "blue_en_neutral_raw_decision_003": {
+      "request_sha256": "8e9dcc56a6103ef20b8220ebd16a4f72eae217a65eea08fcc9ccbb80bca44624",
+      "png_sha256s": [
+        "2a66e24d6e3d7d4b7c63842d4ce9a4b64cad74170df55d1fffb320dab8300d9b",
+        "f25de64cb622419860c649ee7d491bc60a0db6eba069f2f9e90366a51b5db3c5"
+      ],
+      "task": "Place the red cube inside the square ground outline, then release it.",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "yellow_en_neutral_raw_decision_003": {
+      "request_sha256": "e26bc22e98af48c0eef4c1e890e279703447905fb720d5831828774f3ca3bb3a",
+      "png_sha256s": [
+        "ad5829c8111fd65879ed1bd98d8259e1afc367f5e60d9d42ac55fa3ff9e50aa1",
+        "106af1745195a3d206de61c899303959d220e04644ee4f9b62587c3241786e24"
+      ],
+      "task": "Place the red cube inside the square ground outline, then release it.",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "blue_zh_neutral_raw_decision_003": {
+      "request_sha256": "6ff200d15c1588149705ade2e214db62868a052f333057bee33715393cd9e0bb",
+      "png_sha256s": [
+        "2a66e24d6e3d7d4b7c63842d4ce9a4b64cad74170df55d1fffb320dab8300d9b",
+        "f25de64cb622419860c649ee7d491bc60a0db6eba069f2f9e90366a51b5db3c5"
+      ],
+      "task": "将红色方块放入地面方形轮廓线内部，然后释放它。",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "yellow_zh_neutral_raw_decision_003": {
+      "request_sha256": "42b7519f5805008088f8ebb93848d93f42577530a4f8edb555fcc97e88738355",
+      "png_sha256s": [
+        "ad5829c8111fd65879ed1bd98d8259e1afc367f5e60d9d42ac55fa3ff9e50aa1",
+        "106af1745195a3d206de61c899303959d220e04644ee4f9b62587c3241786e24"
+      ],
+      "task": "将红色方块放入地面方形轮廓线内部，然后释放它。",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "blue_en_named_raw_decision_003": {
+      "request_sha256": "45f84f4587e80020b9dd5847c4360664a79466f91d7c73be51c662492b7ddaa5",
+      "png_sha256s": [
+        "2a66e24d6e3d7d4b7c63842d4ce9a4b64cad74170df55d1fffb320dab8300d9b",
+        "f25de64cb622419860c649ee7d491bc60a0db6eba069f2f9e90366a51b5db3c5"
+      ],
+      "task": "Place the red cube inside the blue ground outline, then release it.",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "yellow_en_named_raw_decision_003": {
+      "request_sha256": "604cc2a0fe47854ce36cb0372c65ea5d8e02139f0fab4855a229998992c59086",
+      "png_sha256s": [
+        "ad5829c8111fd65879ed1bd98d8259e1afc367f5e60d9d42ac55fa3ff9e50aa1",
+        "106af1745195a3d206de61c899303959d220e04644ee4f9b62587c3241786e24"
+      ],
+      "task": "Place the red cube inside the yellow ground outline, then release it.",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "blue_zh_named_raw_decision_003": {
+      "request_sha256": "ff472c898c7a7d2b50b7bf8cb78a03d2c0d53d2f94f179f5b7bc0b76092ccf6d",
+      "png_sha256s": [
+        "2a66e24d6e3d7d4b7c63842d4ce9a4b64cad74170df55d1fffb320dab8300d9b",
+        "f25de64cb622419860c649ee7d491bc60a0db6eba069f2f9e90366a51b5db3c5"
+      ],
+      "task": "将红色方块放入地面蓝色方形轮廓线内部，然后释放它。",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "yellow_zh_named_raw_decision_003": {
+      "request_sha256": "a461d85d75697fc0aee9e4914da1de5dc593a3a17745dfea641a0e272a62d812",
+      "png_sha256s": [
+        "ad5829c8111fd65879ed1bd98d8259e1afc367f5e60d9d42ac55fa3ff9e50aa1",
+        "106af1745195a3d206de61c899303959d220e04644ee4f9b62587c3241786e24"
+      ],
+      "task": "将红色方块放入地面黄色方形轮廓线内部，然后释放它。",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "blue_en_named_relative_decision_003": {
+      "request_sha256": "9ba4ebef5cab6905ef05d6207ba8b368af916759503ce9da1c8dcfa6ed47945c",
+      "png_sha256s": [
+        "2a66e24d6e3d7d4b7c63842d4ce9a4b64cad74170df55d1fffb320dab8300d9b",
+        "f25de64cb622419860c649ee7d491bc60a0db6eba069f2f9e90366a51b5db3c5"
+      ],
+      "task": "Place the red cube inside the blue ground outline, then release it.",
+      "spatial_description": "Configured ground-outline center approximately (X=50.0, Y=50.0, Z=0.0) cm in world coordinates. Placement tool target approximately (X=50.0, Y=50.0, Z=23.5) cm; measured model tool approximately (X=50.0, Y=0.0, Z=21.1) cm. Displacement from the tool to its placement target approximately (X=0.0, Y=50.0, Z=2.4) cm along world axes, not image left/right. Horizontal distance from tool to ground-goal center approximately 50.0 cm. Tool height relative to placement tool target (signed measured Z minus target Z; positive is above, negative below) approximately -2.4 cm. Straight-line distance to placement tool target approximately 50.1 cm. Positions/distances are rounded to one decimal centimeter, at most 0.05 cm rounding error per scalar; no alignment, contact or holding judgment.",
+      "contains_reference_label": false
+    },
+    "yellow_en_named_relative_decision_003": {
+      "request_sha256": "3044fde87183597da991f5dc8d853b9ce89245262f84a7e2a5b2b40afecc5a2f",
+      "png_sha256s": [
+        "ad5829c8111fd65879ed1bd98d8259e1afc367f5e60d9d42ac55fa3ff9e50aa1",
+        "106af1745195a3d206de61c899303959d220e04644ee4f9b62587c3241786e24"
+      ],
+      "task": "Place the red cube inside the yellow ground outline, then release it.",
+      "spatial_description": "Configured ground-outline center approximately (X=50.0, Y=50.0, Z=0.0) cm in world coordinates. Placement tool target approximately (X=50.0, Y=50.0, Z=23.5) cm; measured model tool approximately (X=50.0, Y=0.0, Z=21.1) cm. Displacement from the tool to its placement target approximately (X=0.0, Y=50.0, Z=2.4) cm along world axes, not image left/right. Horizontal distance from tool to ground-goal center approximately 50.0 cm. Tool height relative to placement tool target (signed measured Z minus target Z; positive is above, negative below) approximately -2.4 cm. Straight-line distance to placement tool target approximately 50.1 cm. Positions/distances are rounded to one decimal centimeter, at most 0.05 cm rounding error per scalar; no alignment, contact or holding judgment.",
+      "contains_reference_label": false
+    },
+    "blue_zh_named_relative_decision_003": {
+      "request_sha256": "fff4b97ecb25116758fd5c644fd790ef20b36dabbd2f93ce99902b47d6fa56c2",
+      "png_sha256s": [
+        "2a66e24d6e3d7d4b7c63842d4ce9a4b64cad74170df55d1fffb320dab8300d9b",
+        "f25de64cb622419860c649ee7d491bc60a0db6eba069f2f9e90366a51b5db3c5"
+      ],
+      "task": "将红色方块放入地面蓝色方形轮廓线内部，然后释放它。",
+      "spatial_description": "配置的地面框中心世界坐标约(X=50.0, Y=50.0, Z=0.0)厘米。放置工具目标约(X=50.0, Y=50.0, Z=23.5)厘米；实测模型工具点约(X=50.0, Y=0.0, Z=21.1)厘米。从工具点到放置工具目标的位移约(X=0.0, Y=50.0, Z=2.4)厘米（世界轴，不是画面左右）。工具点与地面目标中心的水平距离约50.0厘米。工具点相对放置工具目标的高度差（带符号，实测Z减目标Z；正数在上方、负数在下方）约-2.4厘米。到放置工具目标的直线距离约50.1厘米。位置量以厘米保留一位小数，每量舍入误差最多0.05厘米；不判断是否对齐、接触或夹持。",
+      "contains_reference_label": false
+    },
+    "yellow_zh_named_relative_decision_003": {
+      "request_sha256": "8e2220d154e7bbf16506b1396b5b991a0e1ccce1aedfdc89a028c24296cc4395",
+      "png_sha256s": [
+        "ad5829c8111fd65879ed1bd98d8259e1afc367f5e60d9d42ac55fa3ff9e50aa1",
+        "106af1745195a3d206de61c899303959d220e04644ee4f9b62587c3241786e24"
+      ],
+      "task": "将红色方块放入地面黄色方形轮廓线内部，然后释放它。",
+      "spatial_description": "配置的地面框中心世界坐标约(X=50.0, Y=50.0, Z=0.0)厘米。放置工具目标约(X=50.0, Y=50.0, Z=23.5)厘米；实测模型工具点约(X=50.0, Y=0.0, Z=21.1)厘米。从工具点到放置工具目标的位移约(X=0.0, Y=50.0, Z=2.4)厘米（世界轴，不是画面左右）。工具点与地面目标中心的水平距离约50.0厘米。工具点相对放置工具目标的高度差（带符号，实测Z减目标Z；正数在上方、负数在下方）约-2.4厘米。到放置工具目标的直线距离约50.1厘米。位置量以厘米保留一位小数，每量舍入误差最多0.05厘米；不判断是否对齐、接触或夹持。",
+      "contains_reference_label": false
+    },
+    "blue_en_neutral_raw_decision_004": {
+      "request_sha256": "7922e7afc5f7243acb9be05b1f4765e426c436bc7f4c7be8981c592e4bb15d0e",
+      "png_sha256s": [
+        "6540bb9b30cec64c0b31dd933e3e806cb2cb9262f4921f3c1978df7233154553",
+        "e7758a36fc992b4807c17a1e7c50f700df67ac67d3f10327d26a5f6dad600296"
+      ],
+      "task": "Place the red cube inside the square ground outline, then release it.",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "yellow_en_neutral_raw_decision_004": {
+      "request_sha256": "5ef568b6aa6a7df0d3a4de83361bf7bf407b9d3b991e04c16bc43ce996b08768",
+      "png_sha256s": [
+        "0db7d2bea302f8bdfe42517cc9efab384d5024d994ef002291ccadda89a2f81d",
+        "534c65f8447373ce2df41f359771f7f47112692ee4539d6eab12fdbed9687cc9"
+      ],
+      "task": "Place the red cube inside the square ground outline, then release it.",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "blue_zh_neutral_raw_decision_004": {
+      "request_sha256": "6e89e5bd7a430b8b2aa3a3ce92faf6109f8c5d8cd3b38e70114472303794151d",
+      "png_sha256s": [
+        "6540bb9b30cec64c0b31dd933e3e806cb2cb9262f4921f3c1978df7233154553",
+        "e7758a36fc992b4807c17a1e7c50f700df67ac67d3f10327d26a5f6dad600296"
+      ],
+      "task": "将红色方块放入地面方形轮廓线内部，然后释放它。",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "yellow_zh_neutral_raw_decision_004": {
+      "request_sha256": "1add738673be11b4cb42edc439666774b26f7ca2052ccc95e68c0a8cacd76f94",
+      "png_sha256s": [
+        "0db7d2bea302f8bdfe42517cc9efab384d5024d994ef002291ccadda89a2f81d",
+        "534c65f8447373ce2df41f359771f7f47112692ee4539d6eab12fdbed9687cc9"
+      ],
+      "task": "将红色方块放入地面方形轮廓线内部，然后释放它。",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "blue_en_named_raw_decision_004": {
+      "request_sha256": "6d5d81d1f6b7522afa31fb811b134ed4fa5b24370bb5b0dcc1b38ea525813da2",
+      "png_sha256s": [
+        "6540bb9b30cec64c0b31dd933e3e806cb2cb9262f4921f3c1978df7233154553",
+        "e7758a36fc992b4807c17a1e7c50f700df67ac67d3f10327d26a5f6dad600296"
+      ],
+      "task": "Place the red cube inside the blue ground outline, then release it.",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "yellow_en_named_raw_decision_004": {
+      "request_sha256": "6e720721731736fd67b790154185eb3bc42a4a15d445f8880a7891cb17b94ada",
+      "png_sha256s": [
+        "0db7d2bea302f8bdfe42517cc9efab384d5024d994ef002291ccadda89a2f81d",
+        "534c65f8447373ce2df41f359771f7f47112692ee4539d6eab12fdbed9687cc9"
+      ],
+      "task": "Place the red cube inside the yellow ground outline, then release it.",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "blue_zh_named_raw_decision_004": {
+      "request_sha256": "da67ab5e5ce4a46d2557b764e3cf5aef3ee36d3828b84898c7059956a24efaf9",
+      "png_sha256s": [
+        "6540bb9b30cec64c0b31dd933e3e806cb2cb9262f4921f3c1978df7233154553",
+        "e7758a36fc992b4807c17a1e7c50f700df67ac67d3f10327d26a5f6dad600296"
+      ],
+      "task": "将红色方块放入地面蓝色方形轮廓线内部，然后释放它。",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "yellow_zh_named_raw_decision_004": {
+      "request_sha256": "24cd388f18ed4e07cb563e83141046b95fb3fe7b996ff601eff6f95b5c972965",
+      "png_sha256s": [
+        "0db7d2bea302f8bdfe42517cc9efab384d5024d994ef002291ccadda89a2f81d",
+        "534c65f8447373ce2df41f359771f7f47112692ee4539d6eab12fdbed9687cc9"
+      ],
+      "task": "将红色方块放入地面黄色方形轮廓线内部，然后释放它。",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "blue_en_named_relative_decision_004": {
+      "request_sha256": "ede6887ec83cd2a49d772c4311971c5f745ce53f9f4fbbd41a0e100409c8dcb6",
+      "png_sha256s": [
+        "6540bb9b30cec64c0b31dd933e3e806cb2cb9262f4921f3c1978df7233154553",
+        "e7758a36fc992b4807c17a1e7c50f700df67ac67d3f10327d26a5f6dad600296"
+      ],
+      "task": "Place the red cube inside the blue ground outline, then release it.",
+      "spatial_description": "Configured ground-outline center approximately (X=50.0, Y=50.0, Z=0.0) cm in world coordinates. Placement tool target approximately (X=50.0, Y=50.0, Z=23.5) cm; measured model tool approximately (X=50.0, Y=0.0, Z=21.1) cm. Displacement from the tool to its placement target approximately (X=0.0, Y=50.0, Z=2.4) cm along world axes, not image left/right. Horizontal distance from tool to ground-goal center approximately 50.0 cm. Tool height relative to placement tool target (signed measured Z minus target Z; positive is above, negative below) approximately -2.4 cm. Straight-line distance to placement tool target approximately 50.1 cm. Positions/distances are rounded to one decimal centimeter, at most 0.05 cm rounding error per scalar; no alignment, contact or holding judgment.",
+      "contains_reference_label": false
+    },
+    "yellow_en_named_relative_decision_004": {
+      "request_sha256": "01886b7b43145ddd0ba767b01738606c3fb5970ed9de570f508ec69c28bcf510",
+      "png_sha256s": [
+        "0db7d2bea302f8bdfe42517cc9efab384d5024d994ef002291ccadda89a2f81d",
+        "534c65f8447373ce2df41f359771f7f47112692ee4539d6eab12fdbed9687cc9"
+      ],
+      "task": "Place the red cube inside the yellow ground outline, then release it.",
+      "spatial_description": "Configured ground-outline center approximately (X=50.0, Y=50.0, Z=0.0) cm in world coordinates. Placement tool target approximately (X=50.0, Y=50.0, Z=23.5) cm; measured model tool approximately (X=50.0, Y=0.0, Z=21.1) cm. Displacement from the tool to its placement target approximately (X=0.0, Y=50.0, Z=2.4) cm along world axes, not image left/right. Horizontal distance from tool to ground-goal center approximately 50.0 cm. Tool height relative to placement tool target (signed measured Z minus target Z; positive is above, negative below) approximately -2.4 cm. Straight-line distance to placement tool target approximately 50.1 cm. Positions/distances are rounded to one decimal centimeter, at most 0.05 cm rounding error per scalar; no alignment, contact or holding judgment.",
+      "contains_reference_label": false
+    },
+    "blue_zh_named_relative_decision_004": {
+      "request_sha256": "7ccd6489e11f620c28b06c4e8ac04223c0b6182b69e34013abe58e57a6a301de",
+      "png_sha256s": [
+        "6540bb9b30cec64c0b31dd933e3e806cb2cb9262f4921f3c1978df7233154553",
+        "e7758a36fc992b4807c17a1e7c50f700df67ac67d3f10327d26a5f6dad600296"
+      ],
+      "task": "将红色方块放入地面蓝色方形轮廓线内部，然后释放它。",
+      "spatial_description": "配置的地面框中心世界坐标约(X=50.0, Y=50.0, Z=0.0)厘米。放置工具目标约(X=50.0, Y=50.0, Z=23.5)厘米；实测模型工具点约(X=50.0, Y=0.0, Z=21.1)厘米。从工具点到放置工具目标的位移约(X=0.0, Y=50.0, Z=2.4)厘米（世界轴，不是画面左右）。工具点与地面目标中心的水平距离约50.0厘米。工具点相对放置工具目标的高度差（带符号，实测Z减目标Z；正数在上方、负数在下方）约-2.4厘米。到放置工具目标的直线距离约50.1厘米。位置量以厘米保留一位小数，每量舍入误差最多0.05厘米；不判断是否对齐、接触或夹持。",
+      "contains_reference_label": false
+    },
+    "yellow_zh_named_relative_decision_004": {
+      "request_sha256": "a7d622d131b9371cf6b795ad61c98060953d5ee1032a6ad234e48aa52b823881",
+      "png_sha256s": [
+        "0db7d2bea302f8bdfe42517cc9efab384d5024d994ef002291ccadda89a2f81d",
+        "534c65f8447373ce2df41f359771f7f47112692ee4539d6eab12fdbed9687cc9"
+      ],
+      "task": "将红色方块放入地面黄色方形轮廓线内部，然后释放它。",
+      "spatial_description": "配置的地面框中心世界坐标约(X=50.0, Y=50.0, Z=0.0)厘米。放置工具目标约(X=50.0, Y=50.0, Z=23.5)厘米；实测模型工具点约(X=50.0, Y=0.0, Z=21.1)厘米。从工具点到放置工具目标的位移约(X=0.0, Y=50.0, Z=2.4)厘米（世界轴，不是画面左右）。工具点与地面目标中心的水平距离约50.0厘米。工具点相对放置工具目标的高度差（带符号，实测Z减目标Z；正数在上方、负数在下方）约-2.4厘米。到放置工具目标的直线距离约50.1厘米。位置量以厘米保留一位小数，每量舍入误差最多0.05厘米；不判断是否对齐、接触或夹持。",
+      "contains_reference_label": false
+    },
+    "blue_en_neutral_raw_decision_005": {
+      "request_sha256": "d2253ff32e4bc96e979664bbdd554c689010e820c12c238f6d0b0526218606f9",
+      "png_sha256s": [
+        "c6b79ef67069123769809e7e23143a674e9c78121f0da5c2fadb8f37e680a1fa",
+        "b2c3615006c39946383b54a74cda87b717e3539a899dff7aee576fc8333e04f5"
+      ],
+      "task": "Place the red cube inside the square ground outline, then release it.",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "yellow_en_neutral_raw_decision_005": {
+      "request_sha256": "85d6f90509b9a2c1657564a3e51fbf848f20a408d15d06dde8ce3578fef583b1",
+      "png_sha256s": [
+        "d5485b1c85ee99eec12b001939c403b0dfca90026e4e209bc0de64a28d1dcd4c",
+        "fb588c99e42b036fb86d23e7f70b5d612a594c414dfd71f86eebc232aa10c1c2"
+      ],
+      "task": "Place the red cube inside the square ground outline, then release it.",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "blue_zh_neutral_raw_decision_005": {
+      "request_sha256": "58f52396955a469a1fed94b1f0ba7d1351cbcd539300dff502a10ed372a7ad01",
+      "png_sha256s": [
+        "c6b79ef67069123769809e7e23143a674e9c78121f0da5c2fadb8f37e680a1fa",
+        "b2c3615006c39946383b54a74cda87b717e3539a899dff7aee576fc8333e04f5"
+      ],
+      "task": "将红色方块放入地面方形轮廓线内部，然后释放它。",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "yellow_zh_neutral_raw_decision_005": {
+      "request_sha256": "0123743fba05394b57229365c51d5a20f59a9de37e3cf94b1edd55d046bbd7e7",
+      "png_sha256s": [
+        "d5485b1c85ee99eec12b001939c403b0dfca90026e4e209bc0de64a28d1dcd4c",
+        "fb588c99e42b036fb86d23e7f70b5d612a594c414dfd71f86eebc232aa10c1c2"
+      ],
+      "task": "将红色方块放入地面方形轮廓线内部，然后释放它。",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "blue_en_named_raw_decision_005": {
+      "request_sha256": "0dbd7501e0b0b8ec57b1605fddebcacad609fa8ff2a58fd43320e8a9fb7fd6b9",
+      "png_sha256s": [
+        "c6b79ef67069123769809e7e23143a674e9c78121f0da5c2fadb8f37e680a1fa",
+        "b2c3615006c39946383b54a74cda87b717e3539a899dff7aee576fc8333e04f5"
+      ],
+      "task": "Place the red cube inside the blue ground outline, then release it.",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "yellow_en_named_raw_decision_005": {
+      "request_sha256": "100b2f2412832f0ded451c6ba299dd621012458e01b800ede44020fe6faa3c5a",
+      "png_sha256s": [
+        "d5485b1c85ee99eec12b001939c403b0dfca90026e4e209bc0de64a28d1dcd4c",
+        "fb588c99e42b036fb86d23e7f70b5d612a594c414dfd71f86eebc232aa10c1c2"
+      ],
+      "task": "Place the red cube inside the yellow ground outline, then release it.",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "blue_zh_named_raw_decision_005": {
+      "request_sha256": "7b1ccd02bde907e5cfdf529971c84a3e5b34abdf0f34aeebb585afb7dec94719",
+      "png_sha256s": [
+        "c6b79ef67069123769809e7e23143a674e9c78121f0da5c2fadb8f37e680a1fa",
+        "b2c3615006c39946383b54a74cda87b717e3539a899dff7aee576fc8333e04f5"
+      ],
+      "task": "将红色方块放入地面蓝色方形轮廓线内部，然后释放它。",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "yellow_zh_named_raw_decision_005": {
+      "request_sha256": "b2a95feac398bb6c0020537bb53ce724344b09d97bcb01877fe8bc13ca3b5db5",
+      "png_sha256s": [
+        "d5485b1c85ee99eec12b001939c403b0dfca90026e4e209bc0de64a28d1dcd4c",
+        "fb588c99e42b036fb86d23e7f70b5d612a594c414dfd71f86eebc232aa10c1c2"
+      ],
+      "task": "将红色方块放入地面黄色方形轮廓线内部，然后释放它。",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "blue_en_named_relative_decision_005": {
+      "request_sha256": "1d8921b6fa2c6bb8c369a9739db836a490aefbb03515d3117d9df754b6a9bb20",
+      "png_sha256s": [
+        "c6b79ef67069123769809e7e23143a674e9c78121f0da5c2fadb8f37e680a1fa",
+        "b2c3615006c39946383b54a74cda87b717e3539a899dff7aee576fc8333e04f5"
+      ],
+      "task": "Place the red cube inside the blue ground outline, then release it.",
+      "spatial_description": "Configured ground-outline center approximately (X=50.0, Y=50.0, Z=0.0) cm in world coordinates. Placement tool target approximately (X=50.0, Y=50.0, Z=23.5) cm; measured model tool approximately (X=50.0, Y=0.0, Z=50.7) cm. Displacement from the tool to its placement target approximately (X=0.0, Y=50.0, Z=-27.2) cm along world axes, not image left/right. Horizontal distance from tool to ground-goal center approximately 50.0 cm. Tool height relative to placement tool target (signed measured Z minus target Z; positive is above, negative below) approximately 27.2 cm. Straight-line distance to placement tool target approximately 56.9 cm. Positions/distances are rounded to one decimal centimeter, at most 0.05 cm rounding error per scalar; no alignment, contact or holding judgment.",
+      "contains_reference_label": false
+    },
+    "yellow_en_named_relative_decision_005": {
+      "request_sha256": "1d81146c6b2c59aee5e4bc6d74f034330deedc75282563c2d37eb1a0bf1e5c90",
+      "png_sha256s": [
+        "d5485b1c85ee99eec12b001939c403b0dfca90026e4e209bc0de64a28d1dcd4c",
+        "fb588c99e42b036fb86d23e7f70b5d612a594c414dfd71f86eebc232aa10c1c2"
+      ],
+      "task": "Place the red cube inside the yellow ground outline, then release it.",
+      "spatial_description": "Configured ground-outline center approximately (X=50.0, Y=50.0, Z=0.0) cm in world coordinates. Placement tool target approximately (X=50.0, Y=50.0, Z=23.5) cm; measured model tool approximately (X=50.0, Y=0.0, Z=50.7) cm. Displacement from the tool to its placement target approximately (X=0.0, Y=50.0, Z=-27.2) cm along world axes, not image left/right. Horizontal distance from tool to ground-goal center approximately 50.0 cm. Tool height relative to placement tool target (signed measured Z minus target Z; positive is above, negative below) approximately 27.2 cm. Straight-line distance to placement tool target approximately 56.9 cm. Positions/distances are rounded to one decimal centimeter, at most 0.05 cm rounding error per scalar; no alignment, contact or holding judgment.",
+      "contains_reference_label": false
+    },
+    "blue_zh_named_relative_decision_005": {
+      "request_sha256": "38cd270352cf44758ff32f84d415e9f129a1680685db24406d87e8a018a8e098",
+      "png_sha256s": [
+        "c6b79ef67069123769809e7e23143a674e9c78121f0da5c2fadb8f37e680a1fa",
+        "b2c3615006c39946383b54a74cda87b717e3539a899dff7aee576fc8333e04f5"
+      ],
+      "task": "将红色方块放入地面蓝色方形轮廓线内部，然后释放它。",
+      "spatial_description": "配置的地面框中心世界坐标约(X=50.0, Y=50.0, Z=0.0)厘米。放置工具目标约(X=50.0, Y=50.0, Z=23.5)厘米；实测模型工具点约(X=50.0, Y=0.0, Z=50.7)厘米。从工具点到放置工具目标的位移约(X=0.0, Y=50.0, Z=-27.2)厘米（世界轴，不是画面左右）。工具点与地面目标中心的水平距离约50.0厘米。工具点相对放置工具目标的高度差（带符号，实测Z减目标Z；正数在上方、负数在下方）约27.2厘米。到放置工具目标的直线距离约56.9厘米。位置量以厘米保留一位小数，每量舍入误差最多0.05厘米；不判断是否对齐、接触或夹持。",
+      "contains_reference_label": false
+    },
+    "yellow_zh_named_relative_decision_005": {
+      "request_sha256": "39003df0e0013702c935a223878cf051dac619da0f757345cbc983eeefda93fb",
+      "png_sha256s": [
+        "d5485b1c85ee99eec12b001939c403b0dfca90026e4e209bc0de64a28d1dcd4c",
+        "fb588c99e42b036fb86d23e7f70b5d612a594c414dfd71f86eebc232aa10c1c2"
+      ],
+      "task": "将红色方块放入地面黄色方形轮廓线内部，然后释放它。",
+      "spatial_description": "配置的地面框中心世界坐标约(X=50.0, Y=50.0, Z=0.0)厘米。放置工具目标约(X=50.0, Y=50.0, Z=23.5)厘米；实测模型工具点约(X=50.0, Y=0.0, Z=50.7)厘米。从工具点到放置工具目标的位移约(X=0.0, Y=50.0, Z=-27.2)厘米（世界轴，不是画面左右）。工具点与地面目标中心的水平距离约50.0厘米。工具点相对放置工具目标的高度差（带符号，实测Z减目标Z；正数在上方、负数在下方）约27.2厘米。到放置工具目标的直线距离约56.9厘米。位置量以厘米保留一位小数，每量舍入误差最多0.05厘米；不判断是否对齐、接触或夹持。",
+      "contains_reference_label": false
+    },
+    "blue_en_neutral_raw_decision_006": {
+      "request_sha256": "09a620bb48d897bc1dde816cf627999fe5adeacb6f29e0de8a32957d15f89ffc",
+      "png_sha256s": [
+        "ce4be0168dd27b6e30e238b57571e433b7848ffad237972b93974f7dffa58acb",
+        "0aa8920b9ab8d7fefa145306098f3c8da1bb4ed404a4aea8a946900dc7cec51d"
+      ],
+      "task": "Place the red cube inside the square ground outline, then release it.",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "yellow_en_neutral_raw_decision_006": {
+      "request_sha256": "0aab76987750772cb5a9faac82995ff84fd8cd838bacbd6dfef7901b59fb94d2",
+      "png_sha256s": [
+        "e1f8057a01fc413988e1681b04800887469a5e91a373af800b7fd595f4479c9c",
+        "9a141dc46e03789d35f42a88b5c9dbcc7e64ae485d6c71ac18ff00265a7d0822"
+      ],
+      "task": "Place the red cube inside the square ground outline, then release it.",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "blue_zh_neutral_raw_decision_006": {
+      "request_sha256": "aaae437d0fbf1516f5cb9f924b5095678e345f61714e9f090a114b0d7dc87563",
+      "png_sha256s": [
+        "ce4be0168dd27b6e30e238b57571e433b7848ffad237972b93974f7dffa58acb",
+        "0aa8920b9ab8d7fefa145306098f3c8da1bb4ed404a4aea8a946900dc7cec51d"
+      ],
+      "task": "将红色方块放入地面方形轮廓线内部，然后释放它。",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "yellow_zh_neutral_raw_decision_006": {
+      "request_sha256": "bad4296221ced1c33016ad54af4528b08e714bbc5b04e4a9badbeff8c89001bc",
+      "png_sha256s": [
+        "e1f8057a01fc413988e1681b04800887469a5e91a373af800b7fd595f4479c9c",
+        "9a141dc46e03789d35f42a88b5c9dbcc7e64ae485d6c71ac18ff00265a7d0822"
+      ],
+      "task": "将红色方块放入地面方形轮廓线内部，然后释放它。",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "blue_en_named_raw_decision_006": {
+      "request_sha256": "76cadc9a84a0eb938f0624cde789da083395893842856029a11bc6f65a4e3f76",
+      "png_sha256s": [
+        "ce4be0168dd27b6e30e238b57571e433b7848ffad237972b93974f7dffa58acb",
+        "0aa8920b9ab8d7fefa145306098f3c8da1bb4ed404a4aea8a946900dc7cec51d"
+      ],
+      "task": "Place the red cube inside the blue ground outline, then release it.",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "yellow_en_named_raw_decision_006": {
+      "request_sha256": "d2e3f87a1716fb9b48849d35caa4801e4a775094093e1213295409aa94507efa",
+      "png_sha256s": [
+        "e1f8057a01fc413988e1681b04800887469a5e91a373af800b7fd595f4479c9c",
+        "9a141dc46e03789d35f42a88b5c9dbcc7e64ae485d6c71ac18ff00265a7d0822"
+      ],
+      "task": "Place the red cube inside the yellow ground outline, then release it.",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "blue_zh_named_raw_decision_006": {
+      "request_sha256": "b30aed9a034913c5dc60ced4018d4cebc6a10d2c90f1c3b2ba5b276af180e419",
+      "png_sha256s": [
+        "ce4be0168dd27b6e30e238b57571e433b7848ffad237972b93974f7dffa58acb",
+        "0aa8920b9ab8d7fefa145306098f3c8da1bb4ed404a4aea8a946900dc7cec51d"
+      ],
+      "task": "将红色方块放入地面蓝色方形轮廓线内部，然后释放它。",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "yellow_zh_named_raw_decision_006": {
+      "request_sha256": "154d21f931c39153792ab3dbf3df2bad63a834389d02ecdb5ffaaacc86b4f024",
+      "png_sha256s": [
+        "e1f8057a01fc413988e1681b04800887469a5e91a373af800b7fd595f4479c9c",
+        "9a141dc46e03789d35f42a88b5c9dbcc7e64ae485d6c71ac18ff00265a7d0822"
+      ],
+      "task": "将红色方块放入地面黄色方形轮廓线内部，然后释放它。",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "blue_en_named_relative_decision_006": {
+      "request_sha256": "63ef7bb603f1639ab8c16f41281bbfb95e33accafa3a38de0a6c2154d75a107a",
+      "png_sha256s": [
+        "ce4be0168dd27b6e30e238b57571e433b7848ffad237972b93974f7dffa58acb",
+        "0aa8920b9ab8d7fefa145306098f3c8da1bb4ed404a4aea8a946900dc7cec51d"
+      ],
+      "task": "Place the red cube inside the blue ground outline, then release it.",
+      "spatial_description": "Configured ground-outline center approximately (X=50.0, Y=50.0, Z=0.0) cm in world coordinates. Placement tool target approximately (X=50.0, Y=50.0, Z=23.5) cm; measured model tool approximately (X=49.9, Y=48.2, Z=54.8) cm. Displacement from the tool to its placement target approximately (X=0.1, Y=1.8, Z=-31.3) cm along world axes, not image left/right. Horizontal distance from tool to ground-goal center approximately 1.8 cm. Tool height relative to placement tool target (signed measured Z minus target Z; positive is above, negative below) approximately 31.3 cm. Straight-line distance to placement tool target approximately 31.4 cm. Positions/distances are rounded to one decimal centimeter, at most 0.05 cm rounding error per scalar; no alignment, contact or holding judgment.",
+      "contains_reference_label": false
+    },
+    "yellow_en_named_relative_decision_006": {
+      "request_sha256": "fa1cdd483ccda9259835af44b3edff89c7d6dfe78e70377190385af73d71b936",
+      "png_sha256s": [
+        "e1f8057a01fc413988e1681b04800887469a5e91a373af800b7fd595f4479c9c",
+        "9a141dc46e03789d35f42a88b5c9dbcc7e64ae485d6c71ac18ff00265a7d0822"
+      ],
+      "task": "Place the red cube inside the yellow ground outline, then release it.",
+      "spatial_description": "Configured ground-outline center approximately (X=50.0, Y=50.0, Z=0.0) cm in world coordinates. Placement tool target approximately (X=50.0, Y=50.0, Z=23.5) cm; measured model tool approximately (X=49.9, Y=48.2, Z=54.8) cm. Displacement from the tool to its placement target approximately (X=0.1, Y=1.8, Z=-31.3) cm along world axes, not image left/right. Horizontal distance from tool to ground-goal center approximately 1.8 cm. Tool height relative to placement tool target (signed measured Z minus target Z; positive is above, negative below) approximately 31.3 cm. Straight-line distance to placement tool target approximately 31.4 cm. Positions/distances are rounded to one decimal centimeter, at most 0.05 cm rounding error per scalar; no alignment, contact or holding judgment.",
+      "contains_reference_label": false
+    },
+    "blue_zh_named_relative_decision_006": {
+      "request_sha256": "02774406154feac96a828f835b8896e68258e1abd08bda0ecaa79067833963b2",
+      "png_sha256s": [
+        "ce4be0168dd27b6e30e238b57571e433b7848ffad237972b93974f7dffa58acb",
+        "0aa8920b9ab8d7fefa145306098f3c8da1bb4ed404a4aea8a946900dc7cec51d"
+      ],
+      "task": "将红色方块放入地面蓝色方形轮廓线内部，然后释放它。",
+      "spatial_description": "配置的地面框中心世界坐标约(X=50.0, Y=50.0, Z=0.0)厘米。放置工具目标约(X=50.0, Y=50.0, Z=23.5)厘米；实测模型工具点约(X=49.9, Y=48.2, Z=54.8)厘米。从工具点到放置工具目标的位移约(X=0.1, Y=1.8, Z=-31.3)厘米（世界轴，不是画面左右）。工具点与地面目标中心的水平距离约1.8厘米。工具点相对放置工具目标的高度差（带符号，实测Z减目标Z；正数在上方、负数在下方）约31.3厘米。到放置工具目标的直线距离约31.4厘米。位置量以厘米保留一位小数，每量舍入误差最多0.05厘米；不判断是否对齐、接触或夹持。",
+      "contains_reference_label": false
+    },
+    "yellow_zh_named_relative_decision_006": {
+      "request_sha256": "98e38f54dec6b1c6c4900dd67aa4dad91259b820f1b84ae6392b2c7d7057b337",
+      "png_sha256s": [
+        "e1f8057a01fc413988e1681b04800887469a5e91a373af800b7fd595f4479c9c",
+        "9a141dc46e03789d35f42a88b5c9dbcc7e64ae485d6c71ac18ff00265a7d0822"
+      ],
+      "task": "将红色方块放入地面黄色方形轮廓线内部，然后释放它。",
+      "spatial_description": "配置的地面框中心世界坐标约(X=50.0, Y=50.0, Z=0.0)厘米。放置工具目标约(X=50.0, Y=50.0, Z=23.5)厘米；实测模型工具点约(X=49.9, Y=48.2, Z=54.8)厘米。从工具点到放置工具目标的位移约(X=0.1, Y=1.8, Z=-31.3)厘米（世界轴，不是画面左右）。工具点与地面目标中心的水平距离约1.8厘米。工具点相对放置工具目标的高度差（带符号，实测Z减目标Z；正数在上方、负数在下方）约31.3厘米。到放置工具目标的直线距离约31.4厘米。位置量以厘米保留一位小数，每量舍入误差最多0.05厘米；不判断是否对齐、接触或夹持。",
+      "contains_reference_label": false
+    },
+    "blue_en_neutral_raw_decision_007": {
+      "request_sha256": "fb8dc53b7c2d75d805d714749790ed3196ad88f4a4f708d6e0b626b912351132",
+      "png_sha256s": [
+        "15437cfa084ef5e69f3b2055910a8de4051901895da86d2d95b25b92c4716667",
+        "81eb282d7002416f0dc2723541cf1f13684d9fdac4207e45385139a87aee55ff"
+      ],
+      "task": "Place the red cube inside the square ground outline, then release it.",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "yellow_en_neutral_raw_decision_007": {
+      "request_sha256": "7fbb2f5a63c0db97fe633194372868dd77d546c186a30bc0be9edc37c6d23b45",
+      "png_sha256s": [
+        "a1190792fb1211e304a543030f010b95dd6344560b907bc7637bb1c929787823",
+        "ec6cee0b581100c985ffbef0e4c9b08281bb1f3e5d46c32cce8e287b3249a6a3"
+      ],
+      "task": "Place the red cube inside the square ground outline, then release it.",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "blue_zh_neutral_raw_decision_007": {
+      "request_sha256": "9946d5d204001f56283c5d64f721dc4aea77725f679f9b8b54c95474b04e7a34",
+      "png_sha256s": [
+        "15437cfa084ef5e69f3b2055910a8de4051901895da86d2d95b25b92c4716667",
+        "81eb282d7002416f0dc2723541cf1f13684d9fdac4207e45385139a87aee55ff"
+      ],
+      "task": "将红色方块放入地面方形轮廓线内部，然后释放它。",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "yellow_zh_neutral_raw_decision_007": {
+      "request_sha256": "0725dcc77509bd35a5d6a102b5385a886c14af13367c30632725a7218b2a451a",
+      "png_sha256s": [
+        "a1190792fb1211e304a543030f010b95dd6344560b907bc7637bb1c929787823",
+        "ec6cee0b581100c985ffbef0e4c9b08281bb1f3e5d46c32cce8e287b3249a6a3"
+      ],
+      "task": "将红色方块放入地面方形轮廓线内部，然后释放它。",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "blue_en_named_raw_decision_007": {
+      "request_sha256": "e277364fb4846496a8c6087432bf26adf6be05c154cf5f1db1fde6bff2dd3d7a",
+      "png_sha256s": [
+        "15437cfa084ef5e69f3b2055910a8de4051901895da86d2d95b25b92c4716667",
+        "81eb282d7002416f0dc2723541cf1f13684d9fdac4207e45385139a87aee55ff"
+      ],
+      "task": "Place the red cube inside the blue ground outline, then release it.",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "yellow_en_named_raw_decision_007": {
+      "request_sha256": "570741cb4f865f91c8051e7793840bf2f6e83804dcb47afb544204b6fcad4e60",
+      "png_sha256s": [
+        "a1190792fb1211e304a543030f010b95dd6344560b907bc7637bb1c929787823",
+        "ec6cee0b581100c985ffbef0e4c9b08281bb1f3e5d46c32cce8e287b3249a6a3"
+      ],
+      "task": "Place the red cube inside the yellow ground outline, then release it.",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "blue_zh_named_raw_decision_007": {
+      "request_sha256": "42f3d0bb6daf6f976e7472a2c85563e887d71b6d6bc92c41fb82b3be1516290c",
+      "png_sha256s": [
+        "15437cfa084ef5e69f3b2055910a8de4051901895da86d2d95b25b92c4716667",
+        "81eb282d7002416f0dc2723541cf1f13684d9fdac4207e45385139a87aee55ff"
+      ],
+      "task": "将红色方块放入地面蓝色方形轮廓线内部，然后释放它。",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "yellow_zh_named_raw_decision_007": {
+      "request_sha256": "21cf7db12d8723d8534702122a1b701d0482c8a7325997bec37cdb1b670f960d",
+      "png_sha256s": [
+        "a1190792fb1211e304a543030f010b95dd6344560b907bc7637bb1c929787823",
+        "ec6cee0b581100c985ffbef0e4c9b08281bb1f3e5d46c32cce8e287b3249a6a3"
+      ],
+      "task": "将红色方块放入地面黄色方形轮廓线内部，然后释放它。",
+      "spatial_description": null,
+      "contains_reference_label": false
+    },
+    "blue_en_named_relative_decision_007": {
+      "request_sha256": "0ea960c95fbb16152128dd53116a08f364ac3a452ad4219aca265aab44cc28ec",
+      "png_sha256s": [
+        "15437cfa084ef5e69f3b2055910a8de4051901895da86d2d95b25b92c4716667",
+        "81eb282d7002416f0dc2723541cf1f13684d9fdac4207e45385139a87aee55ff"
+      ],
+      "task": "Place the red cube inside the blue ground outline, then release it.",
+      "spatial_description": "Configured ground-outline center approximately (X=50.0, Y=50.0, Z=0.0) cm in world coordinates. Placement tool target approximately (X=50.0, Y=50.0, Z=23.5) cm; measured model tool approximately (X=50.0, Y=50.0, Z=23.6) cm. Displacement from the tool to its placement target approximately (X=0.0, Y=0.0, Z=-0.1) cm along world axes, not image left/right. Horizontal distance from tool to ground-goal center approximately 0.0 cm. Tool height relative to placement tool target (signed measured Z minus target Z; positive is above, negative below) approximately 0.1 cm. Straight-line distance to placement tool target approximately 0.1 cm. Positions/distances are rounded to one decimal centimeter, at most 0.05 cm rounding error per scalar; no alignment, contact or holding judgment.",
+      "contains_reference_label": false
+    },
+    "yellow_en_named_relative_decision_007": {
+      "request_sha256": "400abc13b4021fcd761121bb3555ff900f86859d70b6bf3c9773f5cd09e995eb",
+      "png_sha256s": [
+        "a1190792fb1211e304a543030f010b95dd6344560b907bc7637bb1c929787823",
+        "ec6cee0b581100c985ffbef0e4c9b08281bb1f3e5d46c32cce8e287b3249a6a3"
+      ],
+      "task": "Place the red cube inside the yellow ground outline, then release it.",
+      "spatial_description": "Configured ground-outline center approximately (X=50.0, Y=50.0, Z=0.0) cm in world coordinates. Placement tool target approximately (X=50.0, Y=50.0, Z=23.5) cm; measured model tool approximately (X=50.0, Y=50.0, Z=23.6) cm. Displacement from the tool to its placement target approximately (X=0.0, Y=0.0, Z=-0.1) cm along world axes, not image left/right. Horizontal distance from tool to ground-goal center approximately 0.0 cm. Tool height relative to placement tool target (signed measured Z minus target Z; positive is above, negative below) approximately 0.1 cm. Straight-line distance to placement tool target approximately 0.1 cm. Positions/distances are rounded to one decimal centimeter, at most 0.05 cm rounding error per scalar; no alignment, contact or holding judgment.",
+      "contains_reference_label": false
+    },
+    "blue_zh_named_relative_decision_007": {
+      "request_sha256": "b1779f843d564ea6e0ae484384ef2053e768d88febfe4ed984037bf0057592bf",
+      "png_sha256s": [
+        "15437cfa084ef5e69f3b2055910a8de4051901895da86d2d95b25b92c4716667",
+        "81eb282d7002416f0dc2723541cf1f13684d9fdac4207e45385139a87aee55ff"
+      ],
+      "task": "将红色方块放入地面蓝色方形轮廓线内部，然后释放它。",
+      "spatial_description": "配置的地面框中心世界坐标约(X=50.0, Y=50.0, Z=0.0)厘米。放置工具目标约(X=50.0, Y=50.0, Z=23.5)厘米；实测模型工具点约(X=50.0, Y=50.0, Z=23.6)厘米。从工具点到放置工具目标的位移约(X=0.0, Y=0.0, Z=-0.1)厘米（世界轴，不是画面左右）。工具点与地面目标中心的水平距离约0.0厘米。工具点相对放置工具目标的高度差（带符号，实测Z减目标Z；正数在上方、负数在下方）约0.1厘米。到放置工具目标的直线距离约0.1厘米。位置量以厘米保留一位小数，每量舍入误差最多0.05厘米；不判断是否对齐、接触或夹持。",
+      "contains_reference_label": false
+    },
+    "yellow_zh_named_relative_decision_007": {
+      "request_sha256": "21303825ddf24f3db4a4b849eac2649157c831d85664b9462d92fee551bb620d",
+      "png_sha256s": [
+        "a1190792fb1211e304a543030f010b95dd6344560b907bc7637bb1c929787823",
+        "ec6cee0b581100c985ffbef0e4c9b08281bb1f3e5d46c32cce8e287b3249a6a3"
+      ],
+      "task": "将红色方块放入地面黄色方形轮廓线内部，然后释放它。",
+      "spatial_description": "配置的地面框中心世界坐标约(X=50.0, Y=50.0, Z=0.0)厘米。放置工具目标约(X=50.0, Y=50.0, Z=23.5)厘米；实测模型工具点约(X=50.0, Y=50.0, Z=23.6)厘米。从工具点到放置工具目标的位移约(X=0.0, Y=0.0, Z=-0.1)厘米（世界轴，不是画面左右）。工具点与地面目标中心的水平距离约0.0厘米。工具点相对放置工具目标的高度差（带符号，实测Z减目标Z；正数在上方、负数在下方）约0.1厘米。到放置工具目标的直线距离约0.1厘米。位置量以厘米保留一位小数，每量舍入误差最多0.05厘米；不判断是否对齐、接触或夹持。",
+      "contains_reference_label": false
+    }
+  }
+}

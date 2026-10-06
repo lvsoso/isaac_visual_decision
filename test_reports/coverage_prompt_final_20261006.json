@@ -1,0 +1,112 @@
+{
+  "tests": 228,
+  "passed": true,
+  "archived_actual84_response_report_rebuild_byte_identical": true,
+  "legacy_neutral_request_matches": 14,
+  "coverage": [
+    {
+      "function": "prompt_cells",
+      "covered": 4,
+      "executable": 4,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "cm",
+      "covered": 2,
+      "executable": 2,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "position_cm",
+      "covered": 1,
+      "executable": 1,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "relative_state",
+      "covered": 28,
+      "executable": 28,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "prompt_request",
+      "covered": 34,
+      "executable": 35,
+      "percent": 97.14,
+      "uncovered": [
+        111
+      ]
+    },
+    {
+      "function": "validate_capture",
+      "covered": 11,
+      "executable": 12,
+      "percent": 91.67,
+      "uncovered": [
+        147
+      ]
+    },
+    {
+      "function": "source_hashes",
+      "covered": 3,
+      "executable": 3,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "verify_response",
+      "covered": 16,
+      "executable": 18,
+      "percent": 88.89,
+      "uncovered": [
+        172,
+        174
+      ]
+    },
+    {
+      "function": "summarize_prompts",
+      "covered": 27,
+      "executable": 27,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "check_reference",
+      "covered": 18,
+      "executable": 22,
+      "percent": 81.82,
+      "uncovered": [
+        213,
+        215,
+        217,
+        227
+      ]
+    },
+    {
+      "function": "run_prompt_replay",
+      "covered": 65,
+      "executable": 68,
+      "percent": 95.59,
+      "uncovered": [
+        242,
+        258,
+        259
+      ]
+    },
+    {
+      "function": "build_prompt_report",
+      "covered": 51,
+      "executable": 53,
+      "percent": 96.23,
+      "uncovered": [
+        53,
+        56
+      ]
+    }
+  ],
+  "scope": "Final full CPU tests + local offline reconstruction / audits of saved real GPU responses; not new model calls, renderer or physics."
+}
