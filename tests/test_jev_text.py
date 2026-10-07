@@ -3,7 +3,7 @@ import copy,importlib,io,json,re,unittest,urllib.error
 from unittest.mock import Mock
 from tests import test_image_ablation as fixtures
 from visual_lab.image_ablation import image_request
-from visual_lab.core import ACTIONS,ProtocolError
+from visual_lab.core import ACTIONS,ProtocolError,parse_decision
 
 def mod():return importlib.import_module('visual_lab.jev')
 
@@ -29,11 +29,34 @@ class JevTests(unittest.TestCase):
   self.assertEqual(body,{'model':'jev-1.13.0','state':original['state'],'questions':original['questions']});self.assertEqual(original,saved)
   original['images']=[{}]
   with self.assertRaises(ProtocolError):mod().jev_payload(original)
- def test_confidence_formula_is_not_top_probability_and_ties_preserved(self):
+  def test_vendor_confidence_and_choice_are_preserved_without_formula_gate(self):
   answer=mod().verify_jev_response(self.raw());self.assertEqual(answer.action,'abort');self.assertEqual(answer.confidence,0.0)
   self.assertEqual(max(answer.probabilities.values()),.125)
-  bad=self.raw();bad['answers']['next_stage']['confidence']=.125
-  with self.assertRaisesRegex(ProtocolError,'confidence'):mod().verify_jev_response(bad)
+   raw=self.raw();raw['answers']['next_stage']['confidence']=.125
+   self.assertEqual(mod().verify_jev_response(raw).confidence,.125)
+  def test_archived_real_response_passes_offline_without_mutation(self):
+   from pathlib import Path
+   raw=json.loads(Path('test_reports/jev_diagnostic_response_20261007.json').read_text());saved=copy.deepcopy(raw)
+   answer=mod().verify_jev_response(raw)
+   self.assertEqual(answer.action,'transport');self.assertEqual(answer.confidence,.55)
+   self.assertEqual(answer.probabilities,raw['answers']['next_stage']['probabilities']);self.assertEqual(raw,saved)
+  def test_nonunit_sum_and_non_argmax_vendor_choice_are_not_rejected_or_corrected(self):
+   raw=self.raw();raw['answers']['next_stage']['probabilities']['abort']=.1;saved=copy.deepcopy(raw)
+   parsed=mod().verify_jev_response(raw)
+   self.assertEqual(parsed.action,'abort');self.assertEqual(parsed.probabilities,saved['answers']['next_stage']['probabilities']);self.assertEqual(raw,saved)
+   with self.assertRaises(ProtocolError):parse_decision(raw)
+  def test_basic_numeric_structure_model_and_mock_guards_remain(self):
+   for value in [True,'0.1',None,float('nan'),float('inf'),-.01,1.01]:
+    for field in ['confidence','probabilities']:
+     raw=self.raw()
+     if field=='confidence':raw['answers']['next_stage'][field]=value
+     else:raw['answers']['next_stage'][field]['abort']=value
+     with self.subTest(value=value,field=field),self.assertRaises(ProtocolError):mod().verify_jev_response(raw)
+   for raw in [[],{},dict(self.raw(),_bridge={'is_mock':True}),dict(self.raw(),_bridge=[]),dict(self.raw(),usage=[])]:
+    with self.assertRaises(ProtocolError):mod().verify_jev_response(raw)
+   for field,value in [('type','score'),('choice','not-a-candidate'),('probabilities',[])]:
+    raw=self.raw();raw['answers']['next_stage'][field]=value
+    with self.assertRaises(ProtocolError):mod().verify_jev_response(raw)
  def test_wrong_model_bad_candidates_or_usage_are_rejected(self):
   for field in ['model','probabilities','usage']:
    bad=self.raw()
@@ -72,10 +95,15 @@ class JevTests(unittest.TestCase):
   with self.assertRaises(Exception) as raised:c.health()
   self.assertNotIn('CPU-fixture-secret',str(raised.exception))
  def test_invalid_probability_response_is_retained_without_retry_or_normalization(self):
-  client=mod().JevClient(token='CPU-fixture-secret');client.opener=Mock();raw=self.raw();raw['answers']['next_stage']['probabilities']['abort']=.0
+   client=mod().JevClient(token='CPU-fixture-secret');client.opener=Mock();raw=self.raw();raw['answers']['next_stage']['probabilities']['abort']=-.01
   client.opener.open.return_value=io.BytesIO(json.dumps(raw).encode())
   with self.assertRaises(ProtocolError):client.predict(self.request())
-  self.assertEqual(client.last_response,raw);self.assertEqual(client.requests_completed,0);self.assertEqual(client.attempts,1);client.opener.open.assert_called_once()
+   self.assertEqual(client.last_response,raw);self.assertEqual(client.requests_completed,0);self.assertEqual(client.attempts,1);client.opener.open.assert_called_once()
+  def test_nonunit_sum_response_is_returned_unchanged_without_retry(self):
+   client=mod().JevClient(token='CPU-fixture-secret');client.opener=Mock();raw=self.raw();raw['answers']['next_stage']['probabilities']['abort']=0.0
+   client.opener.open.return_value=io.BytesIO(json.dumps(raw).encode())
+   result,_=client.predict(self.request());self.assertEqual(result,raw);self.assertEqual(client.last_response,raw)
+   self.assertEqual(client.requests_completed,1);self.assertEqual(client.attempts,1);client.opener.open.assert_called_once()
  def test_private_echo_is_never_retained_as_last_response(self):
   client=mod().JevClient(token='CPU-fixture-secret');client.opener=Mock();raw=self.raw();raw['debug']='CPU-fixture-secret'
   client.opener.open.return_value=io.BytesIO(json.dumps(raw).encode())
