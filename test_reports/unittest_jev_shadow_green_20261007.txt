@@ -1,0 +1,30 @@
+test_api_failure_stops_before_any_motion_without_baseline_fallback (tests.test_jev_shadow.ShadowTests.test_api_failure_stops_before_any_motion_without_baseline_fallback) ... ok
+test_factory_matches_previous_english_except_truthful_online_context (tests.test_jev_shadow.ShadowTests.test_factory_matches_previous_english_except_truthful_online_context) ... ok
+test_isolated_subprocess_environment_and_budget_without_real_worker (tests.test_jev_shadow.ShadowTests.test_isolated_subprocess_environment_and_budget_without_real_worker) ... ok
+test_only_complete_physical_shadow_seven_of_seven_is_eligible (tests.test_jev_shadow.ShadowTests.test_only_complete_physical_shadow_seven_of_seven_is_eligible) ... ok
+test_state_change_during_api_stops_before_action (tests.test_jev_shadow.ShadowTests.test_state_change_during_api_stops_before_action) ... ok
+test_suggested_abort_never_controls_arm_and_fixed_success_is_not_model_success (tests.test_jev_shadow.ShadowTests.test_suggested_abort_never_controls_arm_and_fixed_success_is_not_model_success) ... [jev_shadow/blue] 1/7 proposed=abort; fixed_execute=pre_grasp
+[jev_shadow/blue] 2/7 proposed=abort; fixed_execute=approach
+[jev_shadow/blue] 3/7 proposed=abort; fixed_execute=grasp
+[jev_shadow/blue] 4/7 proposed=abort; fixed_execute=lift
+[jev_shadow/blue] 5/7 proposed=abort; fixed_execute=transport
+[jev_shadow/blue] 6/7 proposed=abort; fixed_execute=lower
+[jev_shadow/blue] 7/7 proposed=abort; fixed_execute=release
+ok
+test_timeout_is_terminal_and_no_retract (tests.test_jev_shadow.ShadowTests.test_timeout_is_terminal_and_no_retract) ... [jev_shadow/yellow] 1/7 proposed=abort; fixed_execute=pre_grasp
+[jev_shadow/yellow] 2/7 proposed=abort; fixed_execute=approach
+[jev_shadow/yellow] 3/7 proposed=abort; fixed_execute=grasp
+ok
+test_worker_timeout_or_invalid_output_is_safe_and_not_retried (tests.test_jev_shadow.ShadowTests.test_worker_timeout_or_invalid_output_is_safe_and_not_retried) ... ok
+test_wrong_backend_or_mock_health_prevents_movement (tests.test_jev_shadow.ShadowTests.test_wrong_backend_or_mock_health_prevents_movement) ... ok
+test_http_error_is_safe_archived_without_retry (tests.test_jev_shadow_worker.WorkerTests.test_http_error_is_safe_archived_without_retry) ... ok
+test_invalid_basic_numeric_response_is_still_retained (tests.test_jev_shadow_worker.WorkerTests.test_invalid_basic_numeric_response_is_still_retained) ... ok
+test_one_call_per_worker_raw_archived_before_validation (tests.test_jev_shadow_worker.WorkerTests.test_one_call_per_worker_raw_archived_before_validation) ... ok
+test_private_response_not_written_or_returned (tests.test_jev_shadow_worker.WorkerTests.test_private_response_not_written_or_returned) ... ok
+test_stdio_main_health_and_bad_message_do_not_emit_secrets (tests.test_jev_shadow_worker.WorkerTests.test_stdio_main_health_and_bad_message_do_not_emit_secrets) ... ok
+test_template_change_rejected_before_call (tests.test_jev_shadow_worker.WorkerTests.test_template_change_rejected_before_call) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.187s
+
+OK

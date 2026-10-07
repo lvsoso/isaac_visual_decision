@@ -3,7 +3,7 @@ import copy,importlib,io,json,subprocess,tempfile,unittest
 from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import Mock,patch
-from tests.test_factorial import FactorialTests,FakeScene,ROOT
+from tests import test_factorial as fixtures
 from visual_lab.audit import AuditLog
 from visual_lab.client import ModelAPIError
 from visual_lab.core import ACTIONS,ProtocolError,load_config,model_state
@@ -26,12 +26,12 @@ class FakeClient:
 
 class ShadowTests(unittest.TestCase):
     def setUp(self):
-        self.tmp=tempfile.TemporaryDirectory();self.root=Path(self.tmp.name);self.config=load_config(ROOT/'configs/default.json');self.scene=FakeScene()
+        self.tmp=tempfile.TemporaryDirectory();self.root=Path(self.tmp.name);self.config=load_config(fixtures.ROOT/'configs/default.json');self.scene=fixtures.FakeScene()
         self.scene.capture=lambda:b'CPU-fixture-PNG-not-a-real-render';self.scene.recorded_frames=0
         self.log=AuditLog(self.root/'run',{'synthetic_fixture':True,'config':self.config});self.client=FakeClient()
     def tearDown(self):self.log.close();self.tmp.cleanup()
     def test_factory_matches_previous_english_except_truthful_online_context(self):
-        fixture=FactorialTests();fixture.setUp()
+        fixture=fixtures.FactorialTests();fixture.setUp()
         for color in ['blue','yellow']:
             old=english_request(binding_request(image_request(fixture.pngs[color],fixture.state,fixture.views,fixture.guidance,{'color':color,'views':0},prompt_policy='modality_aware_v1'),color),color)
             expected=copy.deepcopy(old);expected['questions']['next_stage']['instructions']=EN_INSTRUCTIONS.replace('offline action suggestions','online shadow action suggestions')

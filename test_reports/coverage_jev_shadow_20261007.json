@@ -1,0 +1,20 @@
+{
+  "method": "stdlib trace / AST statement-line coverage, not branch coverage",
+  "cpu_tests": 15,
+  "real_api_calls": 0,
+  "gpu_simulation_verified": false,
+  "files": {
+    "visual_lab/jev_shadow.py": {
+      "statement_lines": 75,
+      "covered_lines": 75,
+      "line_percent": 100.0,
+      "uncovered_lines": []
+    },
+    "tools/jev_shadow_worker.py": {
+      "statement_lines": 31,
+      "covered_lines": 31,
+      "line_percent": 100.0,
+      "uncovered_lines": []
+    }
+  }
+}
