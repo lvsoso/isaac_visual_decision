@@ -13,6 +13,16 @@ def verify_frozen_plan(archived_path,expected_path):
     assert plan==json.loads(Path(expected_path).read_text()),'Archived plan must match the explicitly selected frozen batch'
     return plan
 
+def audit_reused(evidence,plan,life,config):
+    records=[];originals=life.get('reused_shadows',[])
+    assert len(originals)==len(plan.get('reused_shadows',[]))
+    for planned,original in zip(plan.get('reused_shadows',[]),originals):
+        record=audit_shadow(Path(evidence)/Path(planned['run_dir']).name,config,pinned_health())
+        assert record['color']==planned['color'] and record['files_sha256']==planned['files_sha256']
+        assert {k:v for k,v in record.items() if k!='directory'}=={k:v for k,v in original.items() if k!='directory'}
+        records.append(record)
+    return records
+
 def audit(evidence,output,report,plan_path=None):
     expected_path=plan_path or ROOT/'test_reports/candidate_control_plan_20261007.json'
     evidence=Path(evidence);plan_path=evidence/'experiment/plan.json';plan=json.loads(plan_path.read_text())
@@ -22,7 +32,8 @@ def audit(evidence,output,report,plan_path=None):
     assert life['launch_environment']=={'OMNI_KIT_ALLOW_ROOT':'1','LD_LIBRARY_PATH':''}
     assert plan['control_authorized'] is True and plan['physical_hardware_authorized'] is False
     assert life['source_sha256']=={name:plan['source_sha256'][name] for name in life['source_sha256']}
-    runs=[];shadow_checks=[];latencies=[];new_calls=0
+    reused=audit_reused(evidence,plan,life,config)
+    runs=[];shadow_checks=list(reused);latencies=[];new_calls=0
     for record in life['runs']:
         directory=evidence/Path(record['run_dir']).name
         if not (directory/'manifest.json').exists():
@@ -97,6 +108,9 @@ def audit(evidence,output,report,plan_path=None):
         'http_wait_median_ms':statistics.median(latencies) if latencies else None,'scope':'One known fixed Isaac scene; model selects existing skills, controller targets configured. Not perturbation recovery/generalization/hardware validation.',
         'model_service_loaded_on_gpu':bool(life.get('initial_health')),'isaac_scene_verified':any(r.get('runtime') for r in runs),
         'gpu_evidence_source':'Remote service and launcher logs; only episode runtime records, when present, support Isaac execution. This offline script does not generate GPU evidence.'}
+    if reused:
+        payload.update(reused_shadow_evidence=reused,reused_shadow_runs=len(reused),reused_model_predictions=sum(r['summary']['api_completed'] for r in reused),
+            reused_is_not_new_inference=True)
     write_json(output,payload);render(payload,report);return payload
 
 def render(payload,report):
@@ -105,6 +119,9 @@ def render(payload,report):
         '<h1>Intern双视角：在线shadow与受限仿真接管</h1><p>固定Intern-Decision-4B、中文空间描述、两张同时视图。shadow由固定执行器推进；control由模型选择既有技能，低层目标仍来自配置。Jev排除。</p>',
         f'<p>真实新推理 {payload["new_model_predictions"]} 次；shadow {payload["shadow_runs"]} 回合；模型接管 {payload["control_runs"]} 回合；接管物理成功 {payload["control_physical_successes"]} 回合。</p>',
         '<p>只验证已观察的固定Isaac场景。不代表独立泛化、扰动恢复或实体机械臂安全。完整原输入、响应、八概率与审计帧保留，无归一化或重选choice。</p>']
+    if payload.get('reused_shadow_evidence'):
+        page.append(f'<p>另复用既有蓝色shadow：{payload["reused_model_predictions"]}次历史调用，未重跑、不计入新推理。逐文件哈希与原始响应已独立复核。</p>')
+        page.append(f'<details><summary>复用蓝色41准入证据</summary><pre>{esc(payload["reused_shadow_evidence"])}</pre></details>')
     for run in payload['runs']:
         title=f'{run["mode"]} / {run["color"]}';summary=run.get('summary',{})
         page.append(f'<section><h2>{title}</h2><pre>{esc(summary)}</pre></section>')

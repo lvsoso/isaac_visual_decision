@@ -1,0 +1,15 @@
+test_changed_archived_blue_files_are_not_accepted (tests.test_candidate_reused_audit.ReusedAuditTests.test_changed_archived_blue_files_are_not_accepted) ... ok
+test_lifecycle_cannot_relabel_or_replace_reused_source (tests.test_candidate_reused_audit.ReusedAuditTests.test_lifecycle_cannot_relabel_or_replace_reused_source) ... ok
+test_original_nonreuse_report_path_is_unchanged (tests.test_candidate_reused_audit.ReusedAuditTests.test_original_nonreuse_report_path_is_unchanged) ... ok
+test_reused_blue_verified_separately_from_new_prediction_counts (tests.test_candidate_reused_audit.ReusedAuditTests.test_reused_blue_verified_separately_from_new_prediction_counts) ... ok
+test_blue_real_seven_of_seven_not_pair_admission_or_control (tests.test_candidate_41_evidence.Candidate41EvidenceTests.test_blue_real_seven_of_seven_not_pair_admission_or_control) ... ok
+test_changed_saved_request_is_rejected (tests.test_candidate_41_evidence.Candidate41EvidenceTests.test_changed_saved_request_is_rejected) ... ok
+test_summary_claim_cannot_make_six_of_seven_eligible (tests.test_candidate_41_evidence.Candidate41EvidenceTests.test_summary_claim_cannot_make_six_of_seven_eligible) ... ok
+test_tied_lower_choice_is_official_not_reselected (tests.test_candidate_41_evidence.Candidate41EvidenceTests.test_tied_lower_choice_is_official_not_reselected) ... ok
+test_zero_prediction_no_scene_no_control_and_deterministic_report (tests.test_candidate_startup_evidence.StartupEvidenceTests.test_zero_prediction_no_scene_no_control_and_deterministic_report) ... ok
+test_run_label_does_not_become_last_details_label_on_second_stage (tests.test_candidate_report_labels.ReportLabelTests.test_run_label_does_not_become_last_details_label_on_second_stage) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 4.494s
+
+OK
