@@ -1,0 +1,134 @@
+{
+  "sdk_version": "0.7.2",
+  "offline_parse_only": true,
+  "new_inference_calls": 0,
+  "count": 14,
+  "checks": [
+    {
+      "name": "blue_images_0_decision_001",
+      "body_sha256": "21c7ffa5f4f59cc3d0306832c24e590fd80b7255042a05db4470fe09d0594a0e",
+      "sdk_parse_success": true,
+      "probabilities_unchanged": true,
+      "choice_unchanged": true,
+      "confidence_unchanged": true,
+      "request_id": "req_01a1155f364073babb386cb76ce824e5"
+    },
+    {
+      "name": "blue_images_0_decision_002",
+      "body_sha256": "243cdb146c7583d05bb73f64c9967fa6243ea18ff7f4161e5d9a2b8ae13b8d63",
+      "sdk_parse_success": true,
+      "probabilities_unchanged": true,
+      "choice_unchanged": true,
+      "confidence_unchanged": true,
+      "request_id": "req_01a1155f2f9276ba86f25f4584b0d286"
+    },
+    {
+      "name": "blue_images_0_decision_003",
+      "body_sha256": "273f151d911e981e04703522336859f2d4ec45383d92bac7840c393246ecd583",
+      "sdk_parse_success": true,
+      "probabilities_unchanged": true,
+      "choice_unchanged": true,
+      "confidence_unchanged": true,
+      "request_id": "req_01a1155f388f751a944c47e19a50f397"
+    },
+    {
+      "name": "blue_images_0_decision_004",
+      "body_sha256": "f5c166b90fec39396cb23a91244284fbc65f7c1fb1d226f0759263c4ea12a832",
+      "sdk_parse_success": true,
+      "probabilities_unchanged": true,
+      "choice_unchanged": true,
+      "confidence_unchanged": true,
+      "request_id": "req_01a1155f28af7bf3b4c0b0e87f8accb8"
+    },
+    {
+      "name": "blue_images_0_decision_005",
+      "body_sha256": "ffa24faae73077aed4669976629644da2e9121c468ce5975ff305583c06b6772",
+      "sdk_parse_success": true,
+      "probabilities_unchanged": true,
+      "choice_unchanged": true,
+      "confidence_unchanged": true,
+      "request_id": "req_01a1155f3ff27bddb2c6981ec74300c4"
+    },
+    {
+      "name": "blue_images_0_decision_006",
+      "body_sha256": "a31658041f68d036fd0103242304e802fd8e573498a107b9bcabb7480967b4e9",
+      "sdk_parse_success": true,
+      "probabilities_unchanged": true,
+      "choice_unchanged": true,
+      "confidence_unchanged": true,
+      "request_id": "req_01a1155f31c0715bb3e273ba756542bc"
+    },
+    {
+      "name": "blue_images_0_decision_007",
+      "body_sha256": "0cb29783f625d0f9e02b5acec61cc8cbb1839f96502791cdd0a8ef0b21c6f098",
+      "sdk_parse_success": true,
+      "probabilities_unchanged": true,
+      "choice_unchanged": true,
+      "confidence_unchanged": true,
+      "request_id": "req_01a1155f2b077759a9c3da01bd4bbdc7"
+    },
+    {
+      "name": "yellow_images_0_decision_001",
+      "body_sha256": "0e8024bd2fdbec35199e97561902a75b4b2a4e50075c2f15a230b086e824838b",
+      "sdk_parse_success": true,
+      "probabilities_unchanged": true,
+      "choice_unchanged": true,
+      "confidence_unchanged": true,
+      "request_id": "req_01a1155f423877ae8bc27d7f59c4297f"
+    },
+    {
+      "name": "yellow_images_0_decision_002",
+      "body_sha256": "9776a5ada794740ebb7c1c66a0d3a5c62cd9f798a367d9e85fbbac330e19156f",
+      "sdk_parse_success": true,
+      "probabilities_unchanged": true,
+      "choice_unchanged": true,
+      "confidence_unchanged": true,
+      "request_id": "req_01a1155f268574dcbb0de9aae70744ce"
+    },
+    {
+      "name": "yellow_images_0_decision_003",
+      "body_sha256": "79eda0daea212d825081e478ebc931af7f4913387c8add233393d5383afd574a",
+      "sdk_parse_success": true,
+      "probabilities_unchanged": true,
+      "choice_unchanged": true,
+      "confidence_unchanged": true,
+      "request_id": "req_01a1155f3b597bbfb6f286a050715dc2"
+    },
+    {
+      "name": "yellow_images_0_decision_004",
+      "body_sha256": "08f66ba995c686df45524e8c56c353d7745aa1b987af004ef6a586db28e97d55",
+      "sdk_parse_success": true,
+      "probabilities_unchanged": true,
+      "choice_unchanged": true,
+      "confidence_unchanged": true,
+      "request_id": "req_01a1155f33d07a139d16ad72381d3a91"
+    },
+    {
+      "name": "yellow_images_0_decision_005",
+      "body_sha256": "73415aaf810c772fbb38eb018dd92e1d1ca4ba6fafdd06fcabad48c5361e3e02",
+      "sdk_parse_success": true,
+      "probabilities_unchanged": true,
+      "choice_unchanged": true,
+      "confidence_unchanged": true,
+      "request_id": "req_01a1155f24457a43a0d94db16af8bc5d"
+    },
+    {
+      "name": "yellow_images_0_decision_006",
+      "body_sha256": "9101477f6a7fca51195b791e2be6a4d931f34caa6ec820061288a089540f150f",
+      "sdk_parse_success": true,
+      "probabilities_unchanged": true,
+      "choice_unchanged": true,
+      "confidence_unchanged": true,
+      "request_id": "req_01a1155f3db67de0aab75bd22b73ca2f"
+    },
+    {
+      "name": "yellow_images_0_decision_007",
+      "body_sha256": "5195b68a251fbca2f873ede67c8398403cc7927eee00f5df8eab5202eeeb60ed",
+      "sdk_parse_success": true,
+      "probabilities_unchanged": true,
+      "choice_unchanged": true,
+      "confidence_unchanged": true,
+      "request_id": "req_01a1155f2d6877cda4fd40071182a240"
+    }
+  ]
+}

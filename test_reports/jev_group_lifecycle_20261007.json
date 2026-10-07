@@ -1,0 +1,18 @@
+{
+  "started_utc": "2026-10-07T07:58:35.942699+00:00",
+  "kind": "new_complete_english_jev_group",
+  "validation_policy": "jev_sdk_basic_v1",
+  "frozen_sha256": "e6add34480dc30ddeb254e6c7c13820a4e9341044056a7c76d140f92eed285d4",
+  "driver_sha256": "b46dc94d30508f2496bb77a9aa22648fcd4cd9f459cf53a57e365458b7c79832",
+  "model": "jev-1.13.0",
+  "api_completed": 14,
+  "http_prediction_attempts": 14,
+  "complete": true,
+  "automatic_retries": 0,
+  "new_isaac_process_started": false,
+  "model_had_control": false,
+  "old32batch_resumed": false,
+  "error": null,
+  "ended_utc": "2026-10-07T07:58:44.987020+00:00",
+  "actual_transport_attempts": 14
+}
