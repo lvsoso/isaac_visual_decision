@@ -32,7 +32,7 @@ class DiagnosticTests(unittest.TestCase):
   c.record_response(200,{'content-type':'application/json','x-typesafe-request-id':'fixture-id','set-cookie':'private','authorization':'CPU-fixture-secret'},body)
   self.assertEqual((self.output/'response.body').read_bytes(),body);meta=json.loads((self.output/'response_meta.json').read_text())
   self.assertEqual(meta['request_id'],'fixture-id');self.assertNotIn('authorization',meta['headers']);self.assertNotIn('set-cookie',meta['headers'])
-   d=mod().audit_choice_response(r);self.assertTrue(d['project_valid']);self.assertEqual(d['validation_policy'],'jev_sdk_basic_v1');self.assertFalse(d['sum_check_enforced']);self.assertFalse(d['confidence_formula_enforced']);self.assertEqual(d['probability_sum'],.875);self.assertEqual(d['probability_sum_decimal'],'0.875');self.assertEqual(d['probabilities'],r['answers']['next_stage']['probabilities'])
+  d=mod().audit_choice_response(r);self.assertTrue(d['project_valid']);self.assertEqual(d['validation_policy'],'jev_sdk_basic_v1');self.assertFalse(d['sum_check_enforced']);self.assertFalse(d['confidence_formula_enforced']);self.assertEqual(d['probability_sum'],.875);self.assertEqual(d['probability_sum_decimal'],'0.875');self.assertEqual(d['probabilities'],r['answers']['next_stage']['probabilities'])
  def test_secret_echo_never_written_even_when_json_escaped(self):
   c=self.capture();c.before_send(self.request());r=raw();r['debug']='CPU-fixture-secret';body=json.dumps(r).replace('CPU-fixture-secret','CPU-fixture-\\u0073ecret').encode()
   with self.assertRaises(LabError) as e:c.record_response(200,{},body)

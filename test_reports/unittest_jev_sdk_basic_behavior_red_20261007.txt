@@ -1,0 +1,76 @@
+test_archived_real_response_passes_offline_without_mutation (tests.test_jev_text.JevTests.test_archived_real_response_passes_offline_without_mutation) ... ERROR
+test_basic_numeric_structure_model_and_mock_guards_remain (tests.test_jev_text.JevTests.test_basic_numeric_structure_model_and_mock_guards_remain) ... ERROR
+test_health_uses_cached_models_list_and_size_and_network_errors_stop (tests.test_jev_text.JevTests.test_health_uses_cached_models_list_and_size_and_network_errors_stop) ... ok
+test_http_error_does_not_leak_key_or_response_body_and_never_retries (tests.test_jev_text.JevTests.test_http_error_does_not_leak_key_or_response_body_and_never_retries) ... ok
+test_https_fixed_host_no_redirect_and_single_call (tests.test_jev_text.JevTests.test_https_fixed_host_no_redirect_and_single_call) ... ok
+test_invalid_probability_response_is_retained_without_retry_or_normalization (tests.test_jev_text.JevTests.test_invalid_probability_response_is_retained_without_retry_or_normalization) ... ok
+test_missing_key_and_non_json_responses_are_not_fabricated (tests.test_jev_text.JevTests.test_missing_key_and_non_json_responses_are_not_fabricated) ... ok
+test_nonunit_sum_and_non_argmax_vendor_choice_are_not_rejected_or_corrected (tests.test_jev_text.JevTests.test_nonunit_sum_and_non_argmax_vendor_choice_are_not_rejected_or_corrected) ... ERROR
+test_nonunit_sum_response_is_returned_unchanged_without_retry (tests.test_jev_text.JevTests.test_nonunit_sum_response_is_returned_unchanged_without_retry) ... ERROR
+test_payload_removes_empty_images_only_and_pins_model (tests.test_jev_text.JevTests.test_payload_removes_empty_images_only_and_pins_model) ... ok
+test_private_echo_is_never_retained_as_last_response (tests.test_jev_text.JevTests.test_private_echo_is_never_retained_as_last_response) ... ok
+test_success_body_cannot_echo_private_key_into_artifacts (tests.test_jev_text.JevTests.test_success_body_cannot_echo_private_key_into_artifacts) ... ok
+test_vendor_confidence_and_choice_are_preserved_without_formula_gate (tests.test_jev_text.JevTests.test_vendor_confidence_and_choice_are_preserved_without_formula_gate) ... ERROR
+test_wrong_model_bad_candidates_or_usage_are_rejected (tests.test_jev_text.JevTests.test_wrong_model_bad_candidates_or_usage_are_rejected) ... ok
+
+======================================================================
+ERROR: test_archived_real_response_passes_offline_without_mutation (tests.test_jev_text.JevTests.test_archived_real_response_passes_offline_without_mutation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_text.py", line 40, in test_archived_real_response_passes_offline_without_mutation
+    answer=mod().verify_jev_response(raw)
+  File "f263be0:visual_lab/jev.py", line 24, in verify_jev_response
+visual_lab.core.ProtocolError: Jev Choice confidence formula mismatch
+
+======================================================================
+ERROR: test_basic_numeric_structure_model_and_mock_guards_remain (tests.test_jev_text.JevTests.test_basic_numeric_structure_model_and_mock_guards_remain)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_text.py", line 56, in test_basic_numeric_structure_model_and_mock_guards_remain
+    with self.assertRaises(ProtocolError):mod().verify_jev_response(raw)
+                                          ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "f263be0:visual_lab/jev.py", line 26, in verify_jev_response
+  File "f263be0:visual_lab/jev.py", line 26, in <genexpr>
+AttributeError: 'list' object has no attribute 'get'
+
+======================================================================
+ERROR: test_nonunit_sum_and_non_argmax_vendor_choice_are_not_rejected_or_corrected (tests.test_jev_text.JevTests.test_nonunit_sum_and_non_argmax_vendor_choice_are_not_rejected_or_corrected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_text.py", line 45, in test_nonunit_sum_and_non_argmax_vendor_choice_are_not_rejected_or_corrected
+    parsed=mod().verify_jev_response(raw)
+  File "f263be0:visual_lab/jev.py", line 21, in verify_jev_response
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/visual_lab/core.py", line 150, in parse_decision
+    raise ProtocolError("Probabilities must be in [0,1] and sum to 1")
+visual_lab.core.ProtocolError: Probabilities must be in [0,1] and sum to 1
+
+======================================================================
+ERROR: test_nonunit_sum_response_is_returned_unchanged_without_retry (tests.test_jev_text.JevTests.test_nonunit_sum_response_is_returned_unchanged_without_retry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_text.py", line 105, in test_nonunit_sum_response_is_returned_unchanged_without_retry
+    result,_=client.predict(self.request());self.assertEqual(result,raw);self.assertEqual(client.last_response,raw)
+             ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/visual_lab/jev.py", line 86, in predict
+    verify_jev_response(raw);self.requests_completed+=1
+    ~~~~~~~~~~~~~~~~~~~^^^^^
+  File "f263be0:visual_lab/jev.py", line 21, in verify_jev_response
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/visual_lab/core.py", line 150, in parse_decision
+    raise ProtocolError("Probabilities must be in [0,1] and sum to 1")
+visual_lab.core.ProtocolError: Probabilities must be in [0,1] and sum to 1
+
+======================================================================
+ERROR: test_vendor_confidence_and_choice_are_preserved_without_formula_gate (tests.test_jev_text.JevTests.test_vendor_confidence_and_choice_are_preserved_without_formula_gate)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_text.py", line 36, in test_vendor_confidence_and_choice_are_preserved_without_formula_gate
+    self.assertEqual(mod().verify_jev_response(raw).confidence,.125)
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "f263be0:visual_lab/jev.py", line 24, in verify_jev_response
+visual_lab.core.ProtocolError: Jev Choice confidence formula mismatch
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.186s
+
+FAILED (errors=5)
+Historical verifier injected in memory only; zero live requests. First RED log had indentation errors; this is the corrected behavioral RED.
