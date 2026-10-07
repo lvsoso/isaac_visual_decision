@@ -1,0 +1,35 @@
+test_english_pair_same_state_questions_and_no_wire_images (tests.test_text_study_report.StudyReportTests.test_english_pair_same_state_questions_and_no_wire_images) ... ERROR
+test_pair_rejects_missing_or_nonempty_image_input (tests.test_text_study_report.StudyReportTests.test_pair_rejects_missing_or_nonempty_image_input) ... ERROR
+
+======================================================================
+ERROR: test_english_pair_same_state_questions_and_no_wire_images (tests.test_text_study_report.StudyReportTests.test_english_pair_same_state_questions_and_no_wire_images)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_text_study_report.py", line 11, in test_english_pair_same_state_questions_and_no_wire_images
+    m=importlib.import_module('tools.make_text_study_report');a=self.payload();b=self.payload('jev')
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'tools.make_text_study_report'
+
+======================================================================
+ERROR: test_pair_rejects_missing_or_nonempty_image_input (tests.test_text_study_report.StudyReportTests.test_pair_rejects_missing_or_nonempty_image_input)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_text_study_report.py", line 16, in test_pair_rejects_missing_or_nonempty_image_input
+    m=importlib.import_module('tools.make_text_study_report');a=self.payload();b=self.payload('jev')
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'tools.make_text_study_report'
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.002s
+
+FAILED (errors=2)
