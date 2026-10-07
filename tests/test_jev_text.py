@@ -71,5 +71,15 @@ class JevTests(unittest.TestCase):
   c=mod().JevClient(token='CPU-fixture-secret');c.opener=Mock();c.opener.open.side_effect=urllib.error.URLError('CPU-fixture-secret')
   with self.assertRaises(Exception) as raised:c.health()
   self.assertNotIn('CPU-fixture-secret',str(raised.exception))
+ def test_invalid_probability_response_is_retained_without_retry_or_normalization(self):
+  client=mod().JevClient(token='CPU-fixture-secret');client.opener=Mock();raw=self.raw();raw['answers']['next_stage']['probabilities']['abort']=.0
+  client.opener.open.return_value=io.BytesIO(json.dumps(raw).encode())
+  with self.assertRaises(ProtocolError):client.predict(self.request())
+  self.assertEqual(client.last_response,raw);self.assertEqual(client.requests_completed,0);self.assertEqual(client.attempts,1);client.opener.open.assert_called_once()
+ def test_private_echo_is_never_retained_as_last_response(self):
+  client=mod().JevClient(token='CPU-fixture-secret');client.opener=Mock();raw=self.raw();raw['debug']='CPU-fixture-secret'
+  client.opener.open.return_value=io.BytesIO(json.dumps(raw).encode())
+  with self.assertRaises(Exception):client.predict(self.request())
+  self.assertIsNone(client.last_response)
 
 if __name__=='__main__':unittest.main()

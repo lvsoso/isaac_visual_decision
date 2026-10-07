@@ -60,6 +60,13 @@ class BindingReplayTests(unittest.TestCase):
  def test_failure_stops_without_retry(self):
   ref=self.reference();self.client.predict=Mock(side_effect=ProtocolError('CPU fixture failure'))
   result=self.replay(ref);self.assertFalse(result['complete']);self.assertEqual(result['api_completed'],0);self.client.predict.assert_called_once()
+ def test_failed_safe_response_retained_without_fabricating_decision(self):
+  ref=self.reference();bad={'CPU_fixture':'invalid response, no private data'}
+  def fail(request):
+   self.client.last_response=bad;raise ProtocolError('CPU fixture invalid response')
+  self.client.predict=Mock(side_effect=fail);result=self.replay(ref)
+  self.assertFalse(result['complete']);self.assertEqual(result['api_completed'],0);self.assertEqual(result['decisions'],[])
+  name=json.loads((self.output/'manifest.json').read_text())['planned_order'][0]['name'];self.assertEqual(json.loads((self.output/'responses'/(name+'.json')).read_text()),bad);self.client.predict.assert_called_once()
  def test_busy_service_rejected_before_call(self):
   ref=self.reference();health=self.client.health;self.client.health=lambda **kw:{**health(**kw),'busy':True};self.client.predict=Mock()
   with self.assertRaises(ProtocolError):self.replay(ref)

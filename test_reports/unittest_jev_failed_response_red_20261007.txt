@@ -1,0 +1,34 @@
+test_translation_has_no_cjk_and_retains_numeric_evidence_and_labels (tests.test_jev_text.EnglishTests.test_translation_has_no_cjk_and_retains_numeric_evidence_and_labels) ... ok
+test_confidence_formula_is_not_top_probability_and_ties_preserved (tests.test_jev_text.JevTests.test_confidence_formula_is_not_top_probability_and_ties_preserved) ... ok
+test_health_uses_cached_models_list_and_size_and_network_errors_stop (tests.test_jev_text.JevTests.test_health_uses_cached_models_list_and_size_and_network_errors_stop) ... ok
+test_http_error_does_not_leak_key_or_response_body_and_never_retries (tests.test_jev_text.JevTests.test_http_error_does_not_leak_key_or_response_body_and_never_retries) ... ok
+test_https_fixed_host_no_redirect_and_single_call (tests.test_jev_text.JevTests.test_https_fixed_host_no_redirect_and_single_call) ... ok
+test_invalid_probability_response_is_retained_without_retry_or_normalization (tests.test_jev_text.JevTests.test_invalid_probability_response_is_retained_without_retry_or_normalization) ... ERROR
+test_missing_key_and_non_json_responses_are_not_fabricated (tests.test_jev_text.JevTests.test_missing_key_and_non_json_responses_are_not_fabricated) ... ok
+test_payload_removes_empty_images_only_and_pins_model (tests.test_jev_text.JevTests.test_payload_removes_empty_images_only_and_pins_model) ... ok
+test_private_echo_is_never_retained_as_last_response (tests.test_jev_text.JevTests.test_private_echo_is_never_retained_as_last_response) ... ERROR
+test_success_body_cannot_echo_private_key_into_artifacts (tests.test_jev_text.JevTests.test_success_body_cannot_echo_private_key_into_artifacts) ... ok
+test_wrong_model_bad_candidates_or_usage_are_rejected (tests.test_jev_text.JevTests.test_wrong_model_bad_candidates_or_usage_are_rejected) ... ok
+
+======================================================================
+ERROR: test_invalid_probability_response_is_retained_without_retry_or_normalization (tests.test_jev_text.JevTests.test_invalid_probability_response_is_retained_without_retry_or_normalization)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_text.py", line 78, in test_invalid_probability_response_is_retained_without_retry_or_normalization
+    self.assertEqual(client.last_response,raw);self.assertEqual(client.requests_completed,0);self.assertEqual(client.attempts,1);client.opener.open.assert_called_once()
+                     ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'JevClient' object has no attribute 'last_response'
+
+======================================================================
+ERROR: test_private_echo_is_never_retained_as_last_response (tests.test_jev_text.JevTests.test_private_echo_is_never_retained_as_last_response)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_text.py", line 83, in test_private_echo_is_never_retained_as_last_response
+    self.assertIsNone(client.last_response)
+                      ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'JevClient' object has no attribute 'last_response'
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.153s
+
+FAILED (errors=2)
