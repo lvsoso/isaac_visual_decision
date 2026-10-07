@@ -1,0 +1,3696 @@
+{
+  "kind": "gpu_image_ablation",
+  "date": "2026-10-06",
+  "implementation_commit": "afc4b1f7b781993495c712f7902ca29cf3339738",
+  "model_had_control": false,
+  "new_isaac_process_started": false,
+  "complete": true,
+  "api_completed": 42,
+  "error": null,
+  "independent_checks": {
+    "distinct_cell_stage_pairs": 42,
+    "preflight_frozen_request_hash_matches": 42,
+    "actual_0_1_2_image_counts": {
+      "0": 14,
+      "1": 14,
+      "2": 14
+    },
+    "zero_image_no_png_rgb_grid_vision_token_audits": 14,
+    "ordered_original_png_rgb_processor_grid_audits": 28,
+    "argmax_confidence_candidate_calibration_audits": 42,
+    "single_factor_state_questions_exact_pairs": 14,
+    "dual_request_bytes_exact": 14,
+    "dual_probabilities_exact": 14,
+    "model_source_health_stable": true,
+    "token_truncation": false,
+    "own_ablation_service_stopped_and_gpu_idle": true
+  },
+  "source_manifest": {
+    "kind": "paired_image_ablation",
+    "source": "/root/gpufree-share/isaac_visual_decision/runs/25_static_paired_capture",
+    "source_files_sha256": {
+      "manifest.json": "31f383c540afa83c11d0f315ce78f346f88e8f974f5fb39eb7ee65cd677ed7e1",
+      "snapshots.json": "88ff6365c8173f6da3303a3ed17e79efc29fa43718bfe87342322c2573025c6d",
+      "summary.json": "596a4fbfe57817a46058c00855393f8d5237fb64442b8d58818f26d006221799",
+      "render_review.json": "ab53badbc43d53efbf50f3bd4869c03cd8a466cdb750dd10895f955a02d04d0f"
+    },
+    "model_health": {
+      "status": "ok",
+      "bridge_schema": 1,
+      "supports_images": true,
+      "max_images": 2,
+      "supports_text_only_ablation": true,
+      "busy": false,
+      "requests_completed": 0,
+      "uptime_seconds": 0.539,
+      "bridge_source_sha256": "b3e73f0e5da226ee417623d6bbea11f2989fa1518fa4a683ec28878b72c11e4d",
+      "protocol_source_sha256": "354afcf57527d15d4e6e28579c95e47cd9f5d74beb242df610c820bfcc50339b",
+      "is_mock": false,
+      "checkpoint": "/root/gpufree-data/models/Intern-Decision-4B",
+      "inference_py_sha256": "c904e2c67ca0775621a22375ee373d2ba30b52117cda870c6c9ef74143b29863",
+      "config_sha256": "ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670",
+      "device": "cuda",
+      "dtype": "bfloat16",
+      "max_length": 8192,
+      "temperature": 1.99241824,
+      "vision_input_audit": true,
+      "text_input_audit": true,
+      "model_files_sha256": {
+        "config.json": "ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670",
+        "preprocessor_config.json": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516",
+        "tokenizer_config.json": "f26d55ed6da1fc0de69fbaefae7b855f762e36d0052c05f4fdec312f72a22ae1",
+        "chat_template.jinja": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+        "DOWNLOAD_RECEIPT.json": "79811b385a1e87a83798718b40eed08345601e64a468946f9baff46453e147b7"
+      }
+    },
+    "seed": 20261006,
+    "cells": [
+      {
+        "id": "blue_images_0",
+        "color": "blue",
+        "views": 0,
+        "variant": "zh_named_relative"
+      },
+      {
+        "id": "blue_images_1",
+        "color": "blue",
+        "views": 1,
+        "variant": "zh_named_relative"
+      },
+      {
+        "id": "blue_images_2",
+        "color": "blue",
+        "views": 2,
+        "variant": "zh_named_relative"
+      },
+      {
+        "id": "yellow_images_0",
+        "color": "yellow",
+        "views": 0,
+        "variant": "zh_named_relative"
+      },
+      {
+        "id": "yellow_images_1",
+        "color": "yellow",
+        "views": 1,
+        "variant": "zh_named_relative"
+      },
+      {
+        "id": "yellow_images_2",
+        "color": "yellow",
+        "views": 2,
+        "variant": "zh_named_relative"
+      }
+    ],
+    "planned_order": [
+      {
+        "name": "blue_images_0_decision_007",
+        "cell": "blue_images_0",
+        "decision_id": 7
+      },
+      {
+        "name": "blue_images_1_decision_001",
+        "cell": "blue_images_1",
+        "decision_id": 1
+      },
+      {
+        "name": "yellow_images_1_decision_003",
+        "cell": "yellow_images_1",
+        "decision_id": 3
+      },
+      {
+        "name": "blue_images_2_decision_004",
+        "cell": "blue_images_2",
+        "decision_id": 4
+      },
+      {
+        "name": "blue_images_0_decision_005",
+        "cell": "blue_images_0",
+        "decision_id": 5
+      },
+      {
+        "name": "yellow_images_0_decision_002",
+        "cell": "yellow_images_0",
+        "decision_id": 2
+      },
+      {
+        "name": "yellow_images_2_decision_003",
+        "cell": "yellow_images_2",
+        "decision_id": 3
+      },
+      {
+        "name": "blue_images_1_decision_005",
+        "cell": "blue_images_1",
+        "decision_id": 5
+      },
+      {
+        "name": "blue_images_1_decision_004",
+        "cell": "blue_images_1",
+        "decision_id": 4
+      },
+      {
+        "name": "yellow_images_2_decision_005",
+        "cell": "yellow_images_2",
+        "decision_id": 5
+      },
+      {
+        "name": "yellow_images_1_decision_002",
+        "cell": "yellow_images_1",
+        "decision_id": 2
+      },
+      {
+        "name": "yellow_images_0_decision_004",
+        "cell": "yellow_images_0",
+        "decision_id": 4
+      },
+      {
+        "name": "yellow_images_1_decision_004",
+        "cell": "yellow_images_1",
+        "decision_id": 4
+      },
+      {
+        "name": "blue_images_2_decision_005",
+        "cell": "blue_images_2",
+        "decision_id": 5
+      },
+      {
+        "name": "yellow_images_1_decision_005",
+        "cell": "yellow_images_1",
+        "decision_id": 5
+      },
+      {
+        "name": "yellow_images_1_decision_001",
+        "cell": "yellow_images_1",
+        "decision_id": 1
+      },
+      {
+        "name": "yellow_images_0_decision_003",
+        "cell": "yellow_images_0",
+        "decision_id": 3
+      },
+      {
+        "name": "yellow_images_1_decision_007",
+        "cell": "yellow_images_1",
+        "decision_id": 7
+      },
+      {
+        "name": "yellow_images_0_decision_005",
+        "cell": "yellow_images_0",
+        "decision_id": 5
+      },
+      {
+        "name": "blue_images_0_decision_006",
+        "cell": "blue_images_0",
+        "decision_id": 6
+      },
+      {
+        "name": "yellow_images_2_decision_007",
+        "cell": "yellow_images_2",
+        "decision_id": 7
+      },
+      {
+        "name": "yellow_images_2_decision_002",
+        "cell": "yellow_images_2",
+        "decision_id": 2
+      },
+      {
+        "name": "blue_images_1_decision_003",
+        "cell": "blue_images_1",
+        "decision_id": 3
+      },
+      {
+        "name": "blue_images_2_decision_007",
+        "cell": "blue_images_2",
+        "decision_id": 7
+      },
+      {
+        "name": "yellow_images_1_decision_006",
+        "cell": "yellow_images_1",
+        "decision_id": 6
+      },
+      {
+        "name": "blue_images_2_decision_002",
+        "cell": "blue_images_2",
+        "decision_id": 2
+      },
+      {
+        "name": "yellow_images_2_decision_004",
+        "cell": "yellow_images_2",
+        "decision_id": 4
+      },
+      {
+        "name": "blue_images_1_decision_007",
+        "cell": "blue_images_1",
+        "decision_id": 7
+      },
+      {
+        "name": "yellow_images_0_decision_001",
+        "cell": "yellow_images_0",
+        "decision_id": 1
+      },
+      {
+        "name": "blue_images_1_decision_002",
+        "cell": "blue_images_1",
+        "decision_id": 2
+      },
+      {
+        "name": "blue_images_0_decision_001",
+        "cell": "blue_images_0",
+        "decision_id": 1
+      },
+      {
+        "name": "blue_images_0_decision_002",
+        "cell": "blue_images_0",
+        "decision_id": 2
+      },
+      {
+        "name": "blue_images_2_decision_001",
+        "cell": "blue_images_2",
+        "decision_id": 1
+      },
+      {
+        "name": "yellow_images_0_decision_006",
+        "cell": "yellow_images_0",
+        "decision_id": 6
+      },
+      {
+        "name": "blue_images_2_decision_003",
+        "cell": "blue_images_2",
+        "decision_id": 3
+      },
+      {
+        "name": "yellow_images_2_decision_006",
+        "cell": "yellow_images_2",
+        "decision_id": 6
+      },
+      {
+        "name": "blue_images_0_decision_003",
+        "cell": "blue_images_0",
+        "decision_id": 3
+      },
+      {
+        "name": "blue_images_2_decision_006",
+        "cell": "blue_images_2",
+        "decision_id": 6
+      },
+      {
+        "name": "yellow_images_0_decision_007",
+        "cell": "yellow_images_0",
+        "decision_id": 7
+      },
+      {
+        "name": "blue_images_0_decision_004",
+        "cell": "blue_images_0",
+        "decision_id": 4
+      },
+      {
+        "name": "yellow_images_2_decision_001",
+        "cell": "yellow_images_2",
+        "decision_id": 1
+      },
+      {
+        "name": "blue_images_1_decision_006",
+        "cell": "blue_images_1",
+        "decision_id": 6
+      }
+    ],
+    "planned_request_sha256": {
+      "blue_images_0_decision_001": "853423a165b331b5accf3cab75fd0ceb0af03fa0c0177171d85fb4bfd971da8b",
+      "blue_images_1_decision_001": "656fd511500783481ddca11057b12a9c4de7231551ddf61cfa57331ec8affa15",
+      "blue_images_2_decision_001": "70b87a24f633871ace479fb555a531c5cd5ee09b861a1954731c06ebf5d0e691",
+      "yellow_images_0_decision_001": "5344db7ce950e62afcc7645faa6bec0086eb8f78a07b64c70ef9c869703b91b8",
+      "yellow_images_1_decision_001": "f4cdf31315907331fbe0541cf44c47b5b380aeec3a6cd198dc433bf319813ed4",
+      "yellow_images_2_decision_001": "1facdfc384f075ce76de62d4f771822fbffcc80822a86f96c33a29bac0421b84",
+      "blue_images_0_decision_002": "54004b342a2bd41f4b9258dabb33ab3747c4fd282ffa66866c939fd53ea57bc3",
+      "blue_images_1_decision_002": "ddc3a76939aed08aa9bf7dab1d20d3afe2df6ef6cbd92f0f7abf33dcd0e7f470",
+      "blue_images_2_decision_002": "02a929de6b1e436d1bdec6eb1afc42fae97fa015bc41a024a3213e5f8903fe98",
+      "yellow_images_0_decision_002": "973ef33e00a1ae79a23715086bb8f478fc443cbc71083533507b29d51a15ae4f",
+      "yellow_images_1_decision_002": "e9b9756bb15b18ed1f8b9dbf55c082959e807dac4c25fdb5c5794b9c0592024a",
+      "yellow_images_2_decision_002": "e4136b52dd15985a2546dae5e2fbd5cbfaa460f38d26725cebc98859744e0732",
+      "blue_images_0_decision_003": "4f7df6cfabf2610cf7deb8f15525828410b2cf0f9f941382eff14d288fe56445",
+      "blue_images_1_decision_003": "6ba4cc535b638c237421c1d80974353b80f655b323f4b13e7ed35ef0a94a72e6",
+      "blue_images_2_decision_003": "fff4b97ecb25116758fd5c644fd790ef20b36dabbd2f93ce99902b47d6fa56c2",
+      "yellow_images_0_decision_003": "9251f2490e254a54cd3b2620d1fb0a4ee45b793c3da5e18377169770d840e392",
+      "yellow_images_1_decision_003": "3ebee1d6a7ed7fa35379eda781c67bf54bcc593a81e9ec85f144208f2e31fed4",
+      "yellow_images_2_decision_003": "8e2220d154e7bbf16506b1396b5b991a0e1ccce1aedfdc89a028c24296cc4395",
+      "blue_images_0_decision_004": "ed0db40769a34816d7ced4daafbabc3c383e810a2bb67c09749f90561f482258",
+      "blue_images_1_decision_004": "3b07ecf823a56d76816a06fae45e53d067c7f932362c84780597802c87b27509",
+      "blue_images_2_decision_004": "7ccd6489e11f620c28b06c4e8ac04223c0b6182b69e34013abe58e57a6a301de",
+      "yellow_images_0_decision_004": "500f923d7fdc1b35ec0eef1fe1b31e2cde787b84455c620490e48a5c4ba4a4ba",
+      "yellow_images_1_decision_004": "98a9fc533dd12f981d118d40fc9b3427f88c5a399ea5365d13a9d75887640403",
+      "yellow_images_2_decision_004": "a7d622d131b9371cf6b795ad61c98060953d5ee1032a6ad234e48aa52b823881",
+      "blue_images_0_decision_005": "b81d1726d6a0faf910721a4b87b6271083e480b7ced395cdcee678e732d455e8",
+      "blue_images_1_decision_005": "a8ae357d94d707e2aacd9236cd9d1cabd7be5454b71263a5cade9c63441b86a4",
+      "blue_images_2_decision_005": "38cd270352cf44758ff32f84d415e9f129a1680685db24406d87e8a018a8e098",
+      "yellow_images_0_decision_005": "7e0709cdea3164f2c2250ddb91ebce0988f7aa01881c40c849fbb5e5063f1e25",
+      "yellow_images_1_decision_005": "286c6ae68860885eb04cbdeebe7e72dcf3925539bc9a1ddb1ee3087b305809be",
+      "yellow_images_2_decision_005": "39003df0e0013702c935a223878cf051dac619da0f757345cbc983eeefda93fb",
+      "blue_images_0_decision_006": "cd6b112a663b1a8bc1c4ec2e5eef62170433efb35fb16e2af0de9a0cd02869fa",
+      "blue_images_1_decision_006": "80b513070e9ad0e14c2bf85a0495499eeed2bbc13a0644c63712fd995b0ffbd1",
+      "blue_images_2_decision_006": "02774406154feac96a828f835b8896e68258e1abd08bda0ecaa79067833963b2",
+      "yellow_images_0_decision_006": "c7b4ebd15056a32c7f5b574bec23f0554ce0f7d11866cbacc21c66e22de6c655",
+      "yellow_images_1_decision_006": "73a70b72a67d205cd13edbb629ee09ce69cd558bfe66f2e2bc468eefef317b2b",
+      "yellow_images_2_decision_006": "98e38f54dec6b1c6c4900dd67aa4dad91259b820f1b84ae6392b2c7d7057b337",
+      "blue_images_0_decision_007": "7213beb936fff3e12a44fa8ea653cbc4ef4cad39edf4ab123a56002be89e141e",
+      "blue_images_1_decision_007": "c493604245f1efe36611543a76cde3b97ba5eba6b94256725631195ea4094a51",
+      "blue_images_2_decision_007": "b1779f843d564ea6e0ae484384ef2053e768d88febfe4ed984037bf0057592bf",
+      "yellow_images_0_decision_007": "dc00414e0f75e6025e5ae739e04e89774ceba8c1f63ad0aefeaaac89766e2313",
+      "yellow_images_1_decision_007": "3d6fef9fed3249c49c98b64e6e4c9897e6cacac1ef1fae09a9adc2570065b3e7",
+      "yellow_images_2_decision_007": "21303825ddf24f3db4a4b849eac2649157c831d85664b9462d92fee551bb620d"
+    },
+    "reference_replay": {
+      "path": "/root/gpufree-share/isaac_visual_decision/runs/27_prompt_language_spatial",
+      "files_sha256": {
+        "manifest.json": "a0e03cf0d3f7c4f77994c82752510c89cd88f5e2c7b9410f7c1f1451939ce847",
+        "summary.json": "a84d784e827607c70326a72049d0842d9f15ed0ce40891f9a7ef25882dc6d4cc"
+      },
+      "dual_rows": [
+        {
+          "name": "blue_zh_named_relative_decision_003",
+          "cell": "blue_zh_named_relative",
+          "decision_id": 3,
+          "expected_action": "grasp",
+          "proposed_action": "grasp",
+          "probabilities": {
+            "pre_grasp": 0.12574442519852266,
+            "approach": 0.14255488987076775,
+            "grasp": 0.3222471936375289,
+            "lift": 0.22116122434961358,
+            "transport": 0.06714625607949139,
+            "lower": 0.021706076215369484,
+            "release": 0.08629955935074135,
+            "abort": 0.013140375297964904
+          },
+          "confidence": 0.3222471936375289,
+          "top_probability_ties": [
+            "grasp"
+          ],
+          "http_latency_ms": 15533.38957997039,
+          "input_tokens": 2338,
+          "image_sha256s": [
+            "2a66e24d6e3d7d4b7c63842d4ce9a4b64cad74170df55d1fffb320dab8300d9b",
+            "f25de64cb622419860c649ee7d491bc60a0db6eba069f2f9e90366a51b5db3c5"
+          ],
+          "request_sha256": "fff4b97ecb25116758fd5c644fd790ef20b36dabbd2f93ce99902b47d6fa56c2",
+          "response_sha256": "5816ece613fd6028b6f6d6f58e21fb113387194dc7c111d23f7377c2a9c8a01a"
+        },
+        {
+          "name": "yellow_zh_named_relative_decision_005",
+          "cell": "yellow_zh_named_relative",
+          "decision_id": 5,
+          "expected_action": "transport",
+          "proposed_action": "transport",
+          "probabilities": {
+            "pre_grasp": 0.09739432643100165,
+            "approach": 0.10370037658516701,
+            "grasp": 0.017900819510315247,
+            "lift": 0.16088189933665678,
+            "transport": 0.3636756418618024,
+            "lower": 0.1510986151732288,
+            "release": 0.07577865191304782,
+            "abort": 0.02956966918878025
+          },
+          "confidence": 0.3636756418618024,
+          "top_probability_ties": [
+            "transport"
+          ],
+          "http_latency_ms": 15599.655713886023,
+          "input_tokens": 2342,
+          "image_sha256s": [
+            "d5485b1c85ee99eec12b001939c403b0dfca90026e4e209bc0de64a28d1dcd4c",
+            "fb588c99e42b036fb86d23e7f70b5d612a594c414dfd71f86eebc232aa10c1c2"
+          ],
+          "request_sha256": "39003df0e0013702c935a223878cf051dac619da0f757345cbc983eeefda93fb",
+          "response_sha256": "384e91d4f0a6d37842ea3820e0684cd4d16c1e32c0fdb0a3c232f2d42a758856"
+        },
+        {
+          "name": "blue_zh_named_relative_decision_006",
+          "cell": "blue_zh_named_relative",
+          "decision_id": 6,
+          "expected_action": "lower",
+          "proposed_action": "lower",
+          "probabilities": {
+            "pre_grasp": 0.04198790943503837,
+            "approach": 0.06935820032204801,
+            "grasp": 0.015387821817221195,
+            "lift": 0.20150768465020777,
+            "transport": 0.24323815307531657,
+            "lower": 0.258987252254873,
+            "release": 0.15678512460854432,
+            "abort": 0.012747853836750736
+          },
+          "confidence": 0.258987252254873,
+          "top_probability_ties": [
+            "lower"
+          ],
+          "http_latency_ms": 15571.534788934514,
+          "input_tokens": 2342,
+          "image_sha256s": [
+            "ce4be0168dd27b6e30e238b57571e433b7848ffad237972b93974f7dffa58acb",
+            "0aa8920b9ab8d7fefa145306098f3c8da1bb4ed404a4aea8a946900dc7cec51d"
+          ],
+          "request_sha256": "02774406154feac96a828f835b8896e68258e1abd08bda0ecaa79067833963b2",
+          "response_sha256": "f6ed13069278c6cd77a2e6dea1288fd63fe8784921904d80ec6fe786a4f598de"
+        },
+        {
+          "name": "blue_zh_named_relative_decision_007",
+          "cell": "blue_zh_named_relative",
+          "decision_id": 7,
+          "expected_action": "release",
+          "proposed_action": "release",
+          "probabilities": {
+            "pre_grasp": 0.03902924564253632,
+            "approach": 0.06055039657384803,
+            "grasp": 0.0415562966318421,
+            "lift": 0.3294410598556046,
+            "transport": 0.05341012617133463,
+            "lower": 0.0882261174310399,
+            "release": 0.37348323427428876,
+            "abort": 0.014303523419505595
+          },
+          "confidence": 0.37348323427428876,
+          "top_probability_ties": [
+            "release"
+          ],
+          "http_latency_ms": 15587.695641908795,
+          "input_tokens": 2339,
+          "image_sha256s": [
+            "15437cfa084ef5e69f3b2055910a8de4051901895da86d2d95b25b92c4716667",
+            "81eb282d7002416f0dc2723541cf1f13684d9fdac4207e45385139a87aee55ff"
+          ],
+          "request_sha256": "b1779f843d564ea6e0ae484384ef2053e768d88febfe4ed984037bf0057592bf",
+          "response_sha256": "ce9a22103ae83560d7e976747665b16849a823562f3699b79f82d0dc3a129bfd"
+        },
+        {
+          "name": "yellow_zh_named_relative_decision_004",
+          "cell": "yellow_zh_named_relative",
+          "decision_id": 4,
+          "expected_action": "lift",
+          "proposed_action": "lift",
+          "probabilities": {
+            "pre_grasp": 0.11202798171761731,
+            "approach": 0.1270047273899241,
+            "grasp": 0.06781924559659655,
+            "lift": 0.3056846421322606,
+            "transport": 0.16323251891889712,
+            "lower": 0.04955865252292061,
+            "release": 0.08186401554037574,
+            "abort": 0.09280821618140801
+          },
+          "confidence": 0.3056846421322606,
+          "top_probability_ties": [
+            "lift"
+          ],
+          "http_latency_ms": 15591.961171012372,
+          "input_tokens": 2341,
+          "image_sha256s": [
+            "0db7d2bea302f8bdfe42517cc9efab384d5024d994ef002291ccadda89a2f81d",
+            "534c65f8447373ce2df41f359771f7f47112692ee4539d6eab12fdbed9687cc9"
+          ],
+          "request_sha256": "a7d622d131b9371cf6b795ad61c98060953d5ee1032a6ad234e48aa52b823881",
+          "response_sha256": "d94b591f412017111c6d0f4a504e1b0b3a4c2a599bd41684bec4c94c5071c330"
+        },
+        {
+          "name": "yellow_zh_named_relative_decision_006",
+          "cell": "yellow_zh_named_relative",
+          "decision_id": 6,
+          "expected_action": "lower",
+          "proposed_action": "lower",
+          "probabilities": {
+            "pre_grasp": 0.06131422894579365,
+            "approach": 0.08390632983290161,
+            "grasp": 0.02110413040607741,
+            "lift": 0.24377464164617715,
+            "transport": 0.17813738661412476,
+            "lower": 0.25955848316829944,
+            "release": 0.13860161376712615,
+            "abort": 0.013603185619499867
+          },
+          "confidence": 0.25955848316829944,
+          "top_probability_ties": [
+            "lower"
+          ],
+          "http_latency_ms": 15560.635860078037,
+          "input_tokens": 2342,
+          "image_sha256s": [
+            "e1f8057a01fc413988e1681b04800887469a5e91a373af800b7fd595f4479c9c",
+            "9a141dc46e03789d35f42a88b5c9dbcc7e64ae485d6c71ac18ff00265a7d0822"
+          ],
+          "request_sha256": "98e38f54dec6b1c6c4900dd67aa4dad91259b820f1b84ae6392b2c7d7057b337",
+          "response_sha256": "8f98d8c616d852ed7bd9a7fe49b584b969b12d3962605ad540cb8b8228f1509d"
+        },
+        {
+          "name": "yellow_zh_named_relative_decision_003",
+          "cell": "yellow_zh_named_relative",
+          "decision_id": 3,
+          "expected_action": "grasp",
+          "proposed_action": "grasp",
+          "probabilities": {
+            "pre_grasp": 0.18536170941861993,
+            "approach": 0.163503344772107,
+            "grasp": 0.3260170149730843,
+            "lift": 0.19736345003064656,
+            "transport": 0.06380081379633773,
+            "lower": 0.0103436085831284,
+            "release": 0.04112437925240959,
+            "abort": 0.012485679173666518
+          },
+          "confidence": 0.3260170149730843,
+          "top_probability_ties": [
+            "grasp"
+          ],
+          "http_latency_ms": 15512.26952811703,
+          "input_tokens": 2338,
+          "image_sha256s": [
+            "ad5829c8111fd65879ed1bd98d8259e1afc367f5e60d9d42ac55fa3ff9e50aa1",
+            "106af1745195a3d206de61c899303959d220e04644ee4f9b62587c3241786e24"
+          ],
+          "request_sha256": "8e2220d154e7bbf16506b1396b5b991a0e1ccce1aedfdc89a028c24296cc4395",
+          "response_sha256": "810b3d916f388b229d8ab93492c1c2fe1168f0d789e9aeb1a7efe00d36304a0e"
+        },
+        {
+          "name": "blue_zh_named_relative_decision_005",
+          "cell": "blue_zh_named_relative",
+          "decision_id": 5,
+          "expected_action": "transport",
+          "proposed_action": "transport",
+          "probabilities": {
+            "pre_grasp": 0.08783416612406351,
+            "approach": 0.10602384540414313,
+            "grasp": 0.020748635094661072,
+            "lift": 0.15448408201284886,
+            "transport": 0.3279775035847768,
+            "lower": 0.17513668102635152,
+            "release": 0.09352122123495663,
+            "abort": 0.03427386551819855
+          },
+          "confidence": 0.3279775035847768,
+          "top_probability_ties": [
+            "transport"
+          ],
+          "http_latency_ms": 15510.200709104538,
+          "input_tokens": 2342,
+          "image_sha256s": [
+            "c6b79ef67069123769809e7e23143a674e9c78121f0da5c2fadb8f37e680a1fa",
+            "b2c3615006c39946383b54a74cda87b717e3539a899dff7aee576fc8333e04f5"
+          ],
+          "request_sha256": "38cd270352cf44758ff32f84d415e9f129a1680685db24406d87e8a018a8e098",
+          "response_sha256": "6bf563c00fe2b13808f22a390e367bb8aa4350c911cbe8059c295b2a4c2ec2ec"
+        },
+        {
+          "name": "yellow_zh_named_relative_decision_001",
+          "cell": "yellow_zh_named_relative",
+          "decision_id": 1,
+          "expected_action": "pre_grasp",
+          "proposed_action": "pre_grasp",
+          "probabilities": {
+            "pre_grasp": 0.4454870622905712,
+            "approach": 0.25328814021726875,
+            "grasp": 0.20983347629288734,
+            "lift": 0.043722746380985694,
+            "transport": 0.012467332671079603,
+            "lower": 0.002945096792604585,
+            "release": 0.010328409463961604,
+            "abort": 0.0219277358906413
+          },
+          "confidence": 0.4454870622905712,
+          "top_probability_ties": [
+            "pre_grasp"
+          ],
+          "http_latency_ms": 15567.593896994367,
+          "input_tokens": 2339,
+          "image_sha256s": [
+            "4fc9733a07b34a02229d8f8df187a7339c623da7ffaec5a7956ecfce547df081",
+            "0f2e62cf9cbddc88573069b79122e937575e028d437c76c48b2a82e8a9636b72"
+          ],
+          "request_sha256": "1facdfc384f075ce76de62d4f771822fbffcc80822a86f96c33a29bac0421b84",
+          "response_sha256": "4467f3caaf7a61832275e4d61c1257e04c546357f67fa79b4118fe8612ad5484"
+        },
+        {
+          "name": "yellow_zh_named_relative_decision_007",
+          "cell": "yellow_zh_named_relative",
+          "decision_id": 7,
+          "expected_action": "release",
+          "proposed_action": "release",
+          "probabilities": {
+            "pre_grasp": 0.04112695908786602,
+            "approach": 0.052858319611285,
+            "grasp": 0.038626014041593854,
+            "lift": 0.3260374587714126,
+            "transport": 0.03199924976923981,
+            "lower": 0.07701822925992462,
+            "release": 0.4190388382623652,
+            "abort": 0.013294931196312832
+          },
+          "confidence": 0.4190388382623652,
+          "top_probability_ties": [
+            "release"
+          ],
+          "http_latency_ms": 15597.691329196095,
+          "input_tokens": 2339,
+          "image_sha256s": [
+            "a1190792fb1211e304a543030f010b95dd6344560b907bc7637bb1c929787823",
+            "ec6cee0b581100c985ffbef0e4c9b08281bb1f3e5d46c32cce8e287b3249a6a3"
+          ],
+          "request_sha256": "21303825ddf24f3db4a4b849eac2649157c831d85664b9462d92fee551bb620d",
+          "response_sha256": "3ab55c972336ed9228ad621ea1247650f744088dc45bd62a30765307d500c7c6"
+        },
+        {
+          "name": "blue_zh_named_relative_decision_002",
+          "cell": "blue_zh_named_relative",
+          "decision_id": 2,
+          "expected_action": "approach",
+          "proposed_action": "approach",
+          "probabilities": {
+            "pre_grasp": 0.25946925140628724,
+            "approach": 0.3550743907743437,
+            "grasp": 0.22887190232316582,
+            "lift": 0.10124776839031645,
+            "transport": 0.023917265918160874,
+            "lower": 0.006405173824033485,
+            "release": 0.018609073539658887,
+            "abort": 0.006405173824033485
+          },
+          "confidence": 0.3550743907743437,
+          "top_probability_ties": [
+            "approach"
+          ],
+          "http_latency_ms": 15671.355403959751,
+          "input_tokens": 2340,
+          "image_sha256s": [
+            "f8fa5b606bc56f89fc509fe3350e1a7d596257e64118520c7dc9a0485bbce092",
+            "4a912daf9df389f0eb5df0577453307f332f6534f1de81d39863302e7be6d2a1"
+          ],
+          "request_sha256": "02a929de6b1e436d1bdec6eb1afc42fae97fa015bc41a024a3213e5f8903fe98",
+          "response_sha256": "0b5c3b7feab471fd8fdc10a490e639c3dce71b3e28c967059584620e122321f3"
+        },
+        {
+          "name": "blue_zh_named_relative_decision_001",
+          "cell": "blue_zh_named_relative",
+          "decision_id": 1,
+          "expected_action": "pre_grasp",
+          "proposed_action": "pre_grasp",
+          "probabilities": {
+            "pre_grasp": 0.40253736273812263,
+            "approach": 0.2941526278818122,
+            "grasp": 0.228868455808742,
+            "lift": 0.03710494654603349,
+            "transport": 0.007261356591733951,
+            "lower": 0.002661158099970784,
+            "release": 0.009936906892127884,
+            "abort": 0.017477185441457085
+          },
+          "confidence": 0.40253736273812263,
+          "top_probability_ties": [
+            "pre_grasp"
+          ],
+          "http_latency_ms": 15614.021950168535,
+          "input_tokens": 2339,
+          "image_sha256s": [
+            "f1885e0503931d0d91b628f9cd8c62d074343c3b90df9edf57de790650cf48fc",
+            "9f3ff60657b1a209c61f3db964426b3a5d781a8ab8d98af894de4a8e2251bede"
+          ],
+          "request_sha256": "70b87a24f633871ace479fb555a531c5cd5ee09b861a1954731c06ebf5d0e691",
+          "response_sha256": "a687f7060c319dcf3eb7dc279cee63cac53aec36d78408532f7a95969cb4e9b8"
+        },
+        {
+          "name": "yellow_zh_named_relative_decision_002",
+          "cell": "yellow_zh_named_relative",
+          "decision_id": 2,
+          "expected_action": "approach",
+          "proposed_action": "approach",
+          "probabilities": {
+            "pre_grasp": 0.31637377889228147,
+            "approach": 0.3368582510964937,
+            "grasp": 0.23118892717643844,
+            "lift": 0.08472662440652992,
+            "transport": 0.015572530249823234,
+            "lower": 0.003047509914848022,
+            "release": 0.008315573592519134,
+            "abort": 0.003916804671066074
+          },
+          "confidence": 0.3368582510964937,
+          "top_probability_ties": [
+            "approach"
+          ],
+          "http_latency_ms": 15739.254191983491,
+          "input_tokens": 2340,
+          "image_sha256s": [
+            "1b22101c4ba750094098569f9f5bc290da5cbd1f4df610d72d330bc2413e9ec6",
+            "dcd8f5dcbc20a8ad13fafc497f3d375831bbfd620ac557d2c30694ece216cd90"
+          ],
+          "request_sha256": "e4136b52dd15985a2546dae5e2fbd5cbfaa460f38d26725cebc98859744e0732",
+          "response_sha256": "37c540d16727b5d28a6fa6aa2a8cd85e72d73a0510400ab0e3be9d82fc63e22c"
+        },
+        {
+          "name": "blue_zh_named_relative_decision_004",
+          "cell": "blue_zh_named_relative",
+          "decision_id": 4,
+          "expected_action": "lift",
+          "proposed_action": "lift",
+          "probabilities": {
+            "pre_grasp": 0.11246305378039549,
+            "approach": 0.12749796230756846,
+            "grasp": 0.0875030283229716,
+            "lift": 0.306871791240175,
+            "transport": 0.12749796230756846,
+            "lower": 0.046725736704278056,
+            "release": 0.12749796230756846,
+            "abort": 0.06394250302947443
+          },
+          "confidence": 0.306871791240175,
+          "top_probability_ties": [
+            "lift"
+          ],
+          "http_latency_ms": 15673.15565282479,
+          "input_tokens": 2341,
+          "image_sha256s": [
+            "6540bb9b30cec64c0b31dd933e3e806cb2cb9262f4921f3c1978df7233154553",
+            "e7758a36fc992b4807c17a1e7c50f700df67ac67d3f10327d26a5f6dad600296"
+          ],
+          "request_sha256": "7ccd6489e11f620c28b06c4e8ac04223c0b6182b69e34013abe58e57a6a301de",
+          "response_sha256": "e52da727c1ea772b0dccd3ea52e88a1539beeceae7849eaec577ccadbf34d283"
+        }
+      ],
+      "old_bridge_source_sha256": "4d6502ef7a672fbfba8aa53b310fd3fffd061a87266ecd913c22e643b5f29cc6",
+      "old_protocol_source_sha256": "516f7a424420c394fdc82ed015e7e3932becac4105e066de5f50d34b2b87e0a2",
+      "note": "Bridge/protocol changed only for explicit no-image support/auditing; official model/template/config/temperature remain pinned."
+    },
+    "synthetic_fixture": false,
+    "model_had_control": false,
+    "source_sha256": {
+      "image_ablation.py": "1160d515efa99dda954e7fdd0691633542ea95fb85f665fa5656918779b38f9b",
+      "prompt_variants.py": "1a556afc2597749305ad57eb35cf37fb00d204f0d8e2aa58e36bb048799a00d5",
+      "factorial.py": "ee8cf74b76a8f08849ca8e3a2bec4d2fa5453fac1c8cc8e837c91e7bf85d2b77",
+      "protocol.py": "354afcf57527d15d4e6e28579c95e47cd9f5d74beb242df610c820bfcc50339b",
+      "core.py": "21f9991aa3a62cc49580b863fd14e50f884ec93f6ed557165747512618089471",
+      "server.py": "b3e73f0e5da226ee417623d6bbea11f2989fa1518fa4a683ec28878b72c11e4d"
+    },
+    "design": "Only images change; zh_named_relative state/questions including two-camera text are identical across image counts."
+  },
+  "source_final_health": {
+    "status": "ok",
+    "bridge_schema": 1,
+    "supports_images": true,
+    "max_images": 2,
+    "supports_text_only_ablation": true,
+    "busy": false,
+    "requests_completed": 42,
+    "uptime_seconds": 356.313,
+    "bridge_source_sha256": "b3e73f0e5da226ee417623d6bbea11f2989fa1518fa4a683ec28878b72c11e4d",
+    "protocol_source_sha256": "354afcf57527d15d4e6e28579c95e47cd9f5d74beb242df610c820bfcc50339b",
+    "is_mock": false,
+    "checkpoint": "/root/gpufree-data/models/Intern-Decision-4B",
+    "inference_py_sha256": "c904e2c67ca0775621a22375ee373d2ba30b52117cda870c6c9ef74143b29863",
+    "config_sha256": "ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670",
+    "device": "cuda",
+    "dtype": "bfloat16",
+    "max_length": 8192,
+    "temperature": 1.99241824,
+    "vision_input_audit": true,
+    "text_input_audit": true,
+    "model_files_sha256": {
+      "config.json": "ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670",
+      "preprocessor_config.json": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516",
+      "tokenizer_config.json": "f26d55ed6da1fc0de69fbaefae7b855f762e36d0052c05f4fdec312f72a22ae1",
+      "chat_template.jinja": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+      "DOWNLOAD_RECEIPT.json": "79811b385a1e87a83798718b40eed08345601e64a468946f9baff46453e147b7"
+    }
+  },
+  "preflight": {
+    "started_utc": "2026-10-07T05:03:55.354229+00:00",
+    "implementation_commit": "afc4b1f7b781993495c712f7902ca29cf3339738",
+    "service_pid": 7877,
+    "service_command": [
+      "/root/gpufree-data/envs/ivd-model/bin/python",
+      "-u",
+      "/root/gpufree-share/isaac_visual_decision/serve_model.py",
+      "--checkpoint",
+      "/root/gpufree-data/models/Intern-Decision-4B",
+      "--trust-model-code",
+      "--expected-inference-sha256",
+      "c904e2c67ca0775621a22375ee373d2ba30b52117cda870c6c9ef74143b29863",
+      "--device",
+      "cuda",
+      "--dtype",
+      "bfloat16",
+      "--max-length",
+      "8192",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "8766",
+      "--allow-text-only-ablation"
+    ],
+    "new_isaac_process_started": false,
+    "gpu_before": "NVIDIA L40, 128 MiB, 0 %",
+    "model_health": {
+      "status": "ok",
+      "bridge_schema": 1,
+      "supports_images": true,
+      "max_images": 2,
+      "supports_text_only_ablation": true,
+      "busy": false,
+      "requests_completed": 0,
+      "uptime_seconds": 0.339,
+      "bridge_source_sha256": "b3e73f0e5da226ee417623d6bbea11f2989fa1518fa4a683ec28878b72c11e4d",
+      "protocol_source_sha256": "354afcf57527d15d4e6e28579c95e47cd9f5d74beb242df610c820bfcc50339b",
+      "is_mock": false,
+      "checkpoint": "/root/gpufree-data/models/Intern-Decision-4B",
+      "inference_py_sha256": "c904e2c67ca0775621a22375ee373d2ba30b52117cda870c6c9ef74143b29863",
+      "config_sha256": "ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670",
+      "device": "cuda",
+      "dtype": "bfloat16",
+      "max_length": 8192,
+      "temperature": 1.99241824,
+      "vision_input_audit": true,
+      "text_input_audit": true,
+      "model_files_sha256": {
+        "config.json": "ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670",
+        "preprocessor_config.json": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516",
+        "tokenizer_config.json": "f26d55ed6da1fc0de69fbaefae7b855f762e36d0052c05f4fdec312f72a22ae1",
+        "chat_template.jinja": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+        "DOWNLOAD_RECEIPT.json": "79811b385a1e87a83798718b40eed08345601e64a468946f9baff46453e147b7"
+      }
+    },
+    "ready_utc": "2026-10-07T05:04:07.415160+00:00"
+  },
+  "lifecycle": {
+    "started_utc": "2026-10-07T05:03:55.354229+00:00",
+    "implementation_commit": "afc4b1f7b781993495c712f7902ca29cf3339738",
+    "service_pid": 7877,
+    "service_command": [
+      "/root/gpufree-data/envs/ivd-model/bin/python",
+      "-u",
+      "/root/gpufree-share/isaac_visual_decision/serve_model.py",
+      "--checkpoint",
+      "/root/gpufree-data/models/Intern-Decision-4B",
+      "--trust-model-code",
+      "--expected-inference-sha256",
+      "c904e2c67ca0775621a22375ee373d2ba30b52117cda870c6c9ef74143b29863",
+      "--device",
+      "cuda",
+      "--dtype",
+      "bfloat16",
+      "--max-length",
+      "8192",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "8766",
+      "--allow-text-only-ablation"
+    ],
+    "new_isaac_process_started": false,
+    "gpu_before": "NVIDIA L40, 128 MiB, 0 %",
+    "model_health": {
+      "status": "ok",
+      "bridge_schema": 1,
+      "supports_images": true,
+      "max_images": 2,
+      "supports_text_only_ablation": true,
+      "busy": false,
+      "requests_completed": 0,
+      "uptime_seconds": 0.339,
+      "bridge_source_sha256": "b3e73f0e5da226ee417623d6bbea11f2989fa1518fa4a683ec28878b72c11e4d",
+      "protocol_source_sha256": "354afcf57527d15d4e6e28579c95e47cd9f5d74beb242df610c820bfcc50339b",
+      "is_mock": false,
+      "checkpoint": "/root/gpufree-data/models/Intern-Decision-4B",
+      "inference_py_sha256": "c904e2c67ca0775621a22375ee373d2ba30b52117cda870c6c9ef74143b29863",
+      "config_sha256": "ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670",
+      "device": "cuda",
+      "dtype": "bfloat16",
+      "max_length": 8192,
+      "temperature": 1.99241824,
+      "vision_input_audit": true,
+      "text_input_audit": true,
+      "model_files_sha256": {
+        "config.json": "ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670",
+        "preprocessor_config.json": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516",
+        "tokenizer_config.json": "f26d55ed6da1fc0de69fbaefae7b855f762e36d0052c05f4fdec312f72a22ae1",
+        "chat_template.jinja": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+        "DOWNLOAD_RECEIPT.json": "79811b385a1e87a83798718b40eed08345601e64a468946f9baff46453e147b7"
+      }
+    },
+    "ready_utc": "2026-10-07T05:04:07.415160+00:00",
+    "complete": true,
+    "api_completed": 42,
+    "error": null,
+    "own_service_exit_code": -15,
+    "finished_utc": "2026-10-07T05:10:05.491634+00:00",
+    "gpu_compute_processes_after": ""
+  },
+  "download": {
+    "archive": "/root/gpufree-data/ivd-ops/20261006/image_ablation_28_evidence.tar.gz",
+    "sha256": "f479ecd14583d40ab59d91dc81b68abe2b38b2ec4037a68430deb46f15484b6a",
+    "bytes": 29274691,
+    "report_sha256": "4ce765178c9e9d371ae83fe4269d3428157e43c4d7260411e7223a8db72036e6",
+    "gpu_compute_processes_now": ""
+  },
+  "summary": {
+    "complete": true,
+    "api_completed": 42,
+    "error": null,
+    "mock_backend": false,
+    "real_model_evaluated": true,
+    "model_had_control": false,
+    "cells": [
+      {
+        "id": "blue_images_0",
+        "color": "blue",
+        "views": 0,
+        "variant": "zh_named_relative",
+        "num_decisions": 7,
+        "baseline_agreement": 2,
+        "final_two_agreement": 0,
+        "proposed_actions": [
+          "pre_grasp",
+          "approach",
+          "approach",
+          "abort",
+          "abort",
+          "abort",
+          "lift"
+        ],
+        "mean_expected_action_probability": 0.21696062293143
+      },
+      {
+        "id": "blue_images_1",
+        "color": "blue",
+        "views": 1,
+        "variant": "zh_named_relative",
+        "num_decisions": 7,
+        "baseline_agreement": 6,
+        "final_two_agreement": 1,
+        "proposed_actions": [
+          "pre_grasp",
+          "approach",
+          "grasp",
+          "lift",
+          "transport",
+          "lower",
+          "lift"
+        ],
+        "mean_expected_action_probability": 0.31245270179121337
+      },
+      {
+        "id": "blue_images_2",
+        "color": "blue",
+        "views": 2,
+        "variant": "zh_named_relative",
+        "num_decisions": 7,
+        "baseline_agreement": 7,
+        "final_two_agreement": 2,
+        "proposed_actions": [
+          "pre_grasp",
+          "approach",
+          "grasp",
+          "lift",
+          "transport",
+          "lower",
+          "release"
+        ],
+        "mean_expected_action_probability": 0.3353112469291584
+      },
+      {
+        "id": "yellow_images_0",
+        "color": "yellow",
+        "views": 0,
+        "variant": "zh_named_relative",
+        "num_decisions": 7,
+        "baseline_agreement": 2,
+        "final_two_agreement": 0,
+        "proposed_actions": [
+          "pre_grasp",
+          "approach",
+          "approach",
+          "abort",
+          "abort",
+          "abort",
+          "lift"
+        ],
+        "mean_expected_action_probability": 0.21998863039146427
+      },
+      {
+        "id": "yellow_images_1",
+        "color": "yellow",
+        "views": 1,
+        "variant": "zh_named_relative",
+        "num_decisions": 7,
+        "baseline_agreement": 6,
+        "final_two_agreement": 1,
+        "proposed_actions": [
+          "pre_grasp",
+          "approach",
+          "grasp",
+          "lift",
+          "transport",
+          "lift",
+          "release"
+        ],
+        "mean_expected_action_probability": 0.3164310251983416
+      },
+      {
+        "id": "yellow_images_2",
+        "color": "yellow",
+        "views": 2,
+        "variant": "zh_named_relative",
+        "num_decisions": 7,
+        "baseline_agreement": 7,
+        "final_two_agreement": 2,
+        "proposed_actions": [
+          "pre_grasp",
+          "approach",
+          "grasp",
+          "lift",
+          "transport",
+          "lower",
+          "release"
+        ],
+        "mean_expected_action_probability": 0.3509028476835538
+      }
+    ],
+    "conditional_contrasts": [
+      {
+        "id": "blue_images_0_to_1",
+        "factor": "images_0_to_1",
+        "color": "blue",
+        "low_cell": "blue_images_0",
+        "high_cell": "blue_images_1",
+        "agreement_count_delta": 4,
+        "final_two_count_delta": 1,
+        "mean_expected_probability_delta": 0.09549207885978336,
+        "stages": [
+          {
+            "decision_id": 1,
+            "expected_action": "pre_grasp",
+            "low_choice": "pre_grasp",
+            "high_choice": "pre_grasp",
+            "expected_probability_delta": -0.006741723330433269
+          },
+          {
+            "decision_id": 2,
+            "expected_action": "approach",
+            "low_choice": "approach",
+            "high_choice": "approach",
+            "expected_probability_delta": 0.03890480751517267
+          },
+          {
+            "decision_id": 3,
+            "expected_action": "grasp",
+            "low_choice": "approach",
+            "high_choice": "grasp",
+            "expected_probability_delta": 0.08242131762634797
+          },
+          {
+            "decision_id": 4,
+            "expected_action": "lift",
+            "low_choice": "abort",
+            "high_choice": "lift",
+            "expected_probability_delta": 0.07380442596332334
+          },
+          {
+            "decision_id": 5,
+            "expected_action": "transport",
+            "low_choice": "abort",
+            "high_choice": "transport",
+            "expected_probability_delta": 0.1333647507207401
+          },
+          {
+            "decision_id": 6,
+            "expected_action": "lower",
+            "low_choice": "abort",
+            "high_choice": "lower",
+            "expected_probability_delta": 0.2008064806451972
+          },
+          {
+            "decision_id": 7,
+            "expected_action": "release",
+            "low_choice": "lift",
+            "high_choice": "lift",
+            "expected_probability_delta": 0.1458844928781352
+          }
+        ]
+      },
+      {
+        "id": "blue_images_1_to_2",
+        "factor": "images_1_to_2",
+        "color": "blue",
+        "low_cell": "blue_images_1",
+        "high_cell": "blue_images_2",
+        "agreement_count_delta": 1,
+        "final_two_count_delta": 1,
+        "mean_expected_probability_delta": 0.022858545137945052,
+        "stages": [
+          {
+            "decision_id": 1,
+            "expected_action": "pre_grasp",
+            "low_choice": "pre_grasp",
+            "high_choice": "pre_grasp",
+            "expected_probability_delta": -0.019708478256811157
+          },
+          {
+            "decision_id": 2,
+            "expected_action": "approach",
+            "low_choice": "approach",
+            "high_choice": "approach",
+            "expected_probability_delta": 0.007843847815936611
+          },
+          {
+            "decision_id": 3,
+            "expected_action": "grasp",
+            "low_choice": "grasp",
+            "high_choice": "grasp",
+            "expected_probability_delta": 0.05583199874514572
+          },
+          {
+            "decision_id": 4,
+            "expected_action": "lift",
+            "low_choice": "lift",
+            "high_choice": "lift",
+            "expected_probability_delta": 0.002034239567608287
+          },
+          {
+            "decision_id": 5,
+            "expected_action": "transport",
+            "low_choice": "transport",
+            "high_choice": "transport",
+            "expected_probability_delta": 0.10433632047894068
+          },
+          {
+            "decision_id": 6,
+            "expected_action": "lower",
+            "low_choice": "lower",
+            "high_choice": "lower",
+            "expected_probability_delta": 0.014991304488850887
+          },
+          {
+            "decision_id": 7,
+            "expected_action": "release",
+            "low_choice": "lift",
+            "high_choice": "release",
+            "expected_probability_delta": -0.00531941687405546
+          }
+        ]
+      },
+      {
+        "id": "blue_images_0_to_2",
+        "factor": "images_0_to_2",
+        "color": "blue",
+        "low_cell": "blue_images_0",
+        "high_cell": "blue_images_2",
+        "agreement_count_delta": 5,
+        "final_two_count_delta": 2,
+        "mean_expected_probability_delta": 0.11835062399772842,
+        "stages": [
+          {
+            "decision_id": 1,
+            "expected_action": "pre_grasp",
+            "low_choice": "pre_grasp",
+            "high_choice": "pre_grasp",
+            "expected_probability_delta": -0.026450201587244426
+          },
+          {
+            "decision_id": 2,
+            "expected_action": "approach",
+            "low_choice": "approach",
+            "high_choice": "approach",
+            "expected_probability_delta": 0.04674865533110928
+          },
+          {
+            "decision_id": 3,
+            "expected_action": "grasp",
+            "low_choice": "approach",
+            "high_choice": "grasp",
+            "expected_probability_delta": 0.13825331637149368
+          },
+          {
+            "decision_id": 4,
+            "expected_action": "lift",
+            "low_choice": "abort",
+            "high_choice": "lift",
+            "expected_probability_delta": 0.07583866553093163
+          },
+          {
+            "decision_id": 5,
+            "expected_action": "transport",
+            "low_choice": "abort",
+            "high_choice": "transport",
+            "expected_probability_delta": 0.23770107119968076
+          },
+          {
+            "decision_id": 6,
+            "expected_action": "lower",
+            "low_choice": "abort",
+            "high_choice": "lower",
+            "expected_probability_delta": 0.2157977851340481
+          },
+          {
+            "decision_id": 7,
+            "expected_action": "release",
+            "low_choice": "lift",
+            "high_choice": "release",
+            "expected_probability_delta": 0.14056507600407975
+          }
+        ]
+      },
+      {
+        "id": "yellow_images_0_to_1",
+        "factor": "images_0_to_1",
+        "color": "yellow",
+        "low_cell": "yellow_images_0",
+        "high_cell": "yellow_images_1",
+        "agreement_count_delta": 4,
+        "final_two_count_delta": 1,
+        "mean_expected_probability_delta": 0.09644239480687733,
+        "stages": [
+          {
+            "decision_id": 1,
+            "expected_action": "pre_grasp",
+            "low_choice": "pre_grasp",
+            "high_choice": "pre_grasp",
+            "expected_probability_delta": 0.015653848575503615
+          },
+          {
+            "decision_id": 2,
+            "expected_action": "approach",
+            "low_choice": "approach",
+            "high_choice": "approach",
+            "expected_probability_delta": 0.04499012225561716
+          },
+          {
+            "decision_id": 3,
+            "expected_action": "grasp",
+            "low_choice": "approach",
+            "high_choice": "grasp",
+            "expected_probability_delta": 0.0851626844725272
+          },
+          {
+            "decision_id": 4,
+            "expected_action": "lift",
+            "low_choice": "abort",
+            "high_choice": "lift",
+            "expected_probability_delta": 0.06318059822787395
+          },
+          {
+            "decision_id": 5,
+            "expected_action": "transport",
+            "low_choice": "abort",
+            "high_choice": "transport",
+            "expected_probability_delta": 0.13030332295064273
+          },
+          {
+            "decision_id": 6,
+            "expected_action": "lower",
+            "low_choice": "abort",
+            "high_choice": "lift",
+            "expected_probability_delta": 0.16535834056754384
+          },
+          {
+            "decision_id": 7,
+            "expected_action": "release",
+            "low_choice": "lift",
+            "high_choice": "release",
+            "expected_probability_delta": 0.1704478465984325
+          }
+        ]
+      },
+      {
+        "id": "yellow_images_1_to_2",
+        "factor": "images_1_to_2",
+        "color": "yellow",
+        "low_cell": "yellow_images_1",
+        "high_cell": "yellow_images_2",
+        "agreement_count_delta": 1,
+        "final_two_count_delta": 1,
+        "mean_expected_probability_delta": 0.03447182248521219,
+        "stages": [
+          {
+            "decision_id": 1,
+            "expected_action": "pre_grasp",
+            "low_choice": "pre_grasp",
+            "high_choice": "pre_grasp",
+            "expected_probability_delta": 0.002664623143563971
+          },
+          {
+            "decision_id": 2,
+            "expected_action": "approach",
+            "low_choice": "approach",
+            "high_choice": "approach",
+            "expected_probability_delta": -0.013663375403919764
+          },
+          {
+            "decision_id": 3,
+            "expected_action": "grasp",
+            "low_choice": "grasp",
+            "high_choice": "grasp",
+            "expected_probability_delta": 0.06162984597456472
+          },
+          {
+            "decision_id": 4,
+            "expected_action": "lift",
+            "low_choice": "lift",
+            "high_choice": "lift",
+            "expected_probability_delta": 0.009749127106442712
+          },
+          {
+            "decision_id": 5,
+            "expected_action": "transport",
+            "low_choice": "transport",
+            "high_choice": "transport",
+            "expected_probability_delta": 0.13677215168270032
+          },
+          {
+            "decision_id": 6,
+            "expected_action": "lower",
+            "low_choice": "lift",
+            "high_choice": "lower",
+            "expected_probability_delta": 0.0404954482797418
+          },
+          {
+            "decision_id": 7,
+            "expected_action": "release",
+            "low_choice": "release",
+            "high_choice": "release",
+            "expected_probability_delta": 0.003654936613392057
+          }
+        ]
+      },
+      {
+        "id": "yellow_images_0_to_2",
+        "factor": "images_0_to_2",
+        "color": "yellow",
+        "low_cell": "yellow_images_0",
+        "high_cell": "yellow_images_2",
+        "agreement_count_delta": 5,
+        "final_two_count_delta": 2,
+        "mean_expected_probability_delta": 0.13091421729208952,
+        "stages": [
+          {
+            "decision_id": 1,
+            "expected_action": "pre_grasp",
+            "low_choice": "pre_grasp",
+            "high_choice": "pre_grasp",
+            "expected_probability_delta": 0.018318471719067586
+          },
+          {
+            "decision_id": 2,
+            "expected_action": "approach",
+            "low_choice": "approach",
+            "high_choice": "approach",
+            "expected_probability_delta": 0.031326746851697396
+          },
+          {
+            "decision_id": 3,
+            "expected_action": "grasp",
+            "low_choice": "approach",
+            "high_choice": "grasp",
+            "expected_probability_delta": 0.14679253044709192
+          },
+          {
+            "decision_id": 4,
+            "expected_action": "lift",
+            "low_choice": "abort",
+            "high_choice": "lift",
+            "expected_probability_delta": 0.07292972533431666
+          },
+          {
+            "decision_id": 5,
+            "expected_action": "transport",
+            "low_choice": "abort",
+            "high_choice": "transport",
+            "expected_probability_delta": 0.267075474633343
+          },
+          {
+            "decision_id": 6,
+            "expected_action": "lower",
+            "low_choice": "abort",
+            "high_choice": "lower",
+            "expected_probability_delta": 0.20585378884728564
+          },
+          {
+            "decision_id": 7,
+            "expected_action": "release",
+            "low_choice": "lift",
+            "high_choice": "release",
+            "expected_probability_delta": 0.17410278321182457
+          }
+        ]
+      }
+    ],
+    "scope": "Image deletion diagnostic on one already-observed scene with seven correlated states; not image understanding, autonomous success or independent generalization.",
+    "decisions": [
+      {
+        "name": "blue_images_0_decision_007",
+        "cell": "blue_images_0",
+        "decision_id": 7,
+        "image_count": 0,
+        "expected_action": "release",
+        "proposed_action": "lift",
+        "probabilities": {
+          "pre_grasp": 0.09088723992433523,
+          "approach": 0.1097091891735128,
+          "grasp": 0.045581569780514294,
+          "lift": 0.3187401769101558,
+          "transport": 0.025916064196205773,
+          "lower": 0.08536036182073185,
+          "release": 0.232918158270209,
+          "abort": 0.09088723992433523
+        },
+        "confidence": 0.3187401769101558,
+        "top_probability_ties": [
+          "lift"
+        ],
+        "http_latency_ms": 736.833075992763,
+        "input_tokens": 1725,
+        "encoding_path": "tokenizer_only",
+        "image_sha256s": [],
+        "request_sha256": "7213beb936fff3e12a44fa8ea653cbc4ef4cad39edf4ab123a56002be89e141e",
+        "response_sha256": "3f09ace5dc784bab58db7f5216de5b426116ab01cf1cfdfa10b66364f58c653f"
+      },
+      {
+        "name": "blue_images_1_decision_001",
+        "cell": "blue_images_1",
+        "decision_id": 1,
+        "image_count": 1,
+        "expected_action": "pre_grasp",
+        "proposed_action": "pre_grasp",
+        "probabilities": {
+          "pre_grasp": 0.4222458409949338,
+          "approach": 0.2556182432530972,
+          "grasp": 0.1647650039779159,
+          "lift": 0.04412496903654353,
+          "transport": 0.013396680456572583,
+          "lower": 0.003819999537775341,
+          "release": 0.013396680456572583,
+          "abort": 0.08263258228658908
+        },
+        "confidence": 0.4222458409949338,
+        "top_probability_ties": [
+          "pre_grasp"
+        ],
+        "http_latency_ms": 8247.789705870673,
+        "input_tokens": 2032,
+        "encoding_path": "processor_images",
+        "image_sha256s": [
+          "f1885e0503931d0d91b628f9cd8c62d074343c3b90df9edf57de790650cf48fc"
+        ],
+        "request_sha256": "656fd511500783481ddca11057b12a9c4de7231551ddf61cfa57331ec8affa15",
+        "response_sha256": "7e4f0ea782cd0c79b57487aa8eb4d3e466e04b66baeb4187d6dc6ccdaea9fa74"
+      },
+      {
+        "name": "yellow_images_1_decision_003",
+        "cell": "yellow_images_1",
+        "decision_id": 3,
+        "image_count": 1,
+        "expected_action": "grasp",
+        "proposed_action": "grasp",
+        "probabilities": {
+          "pre_grasp": 0.2057091424996972,
+          "approach": 0.23320989494799457,
+          "grasp": 0.26438716899851955,
+          "lift": 0.13259487422636515,
+          "transport": 0.04563866566397347,
+          "lower": 0.0073990983368586215,
+          "release": 0.04025682765593191,
+          "abort": 0.07080432767065947
+        },
+        "confidence": 0.26438716899851955,
+        "top_probability_ties": [
+          "grasp"
+        ],
+        "http_latency_ms": 8091.616319026798,
+        "input_tokens": 2031,
+        "encoding_path": "processor_images",
+        "image_sha256s": [
+          "ad5829c8111fd65879ed1bd98d8259e1afc367f5e60d9d42ac55fa3ff9e50aa1"
+        ],
+        "request_sha256": "3ebee1d6a7ed7fa35379eda781c67bf54bcc593a81e9ec85f144208f2e31fed4",
+        "response_sha256": "d148233907f451ca21ca673510b54ee6609ff26926fe3d8e3e4965f51c410a89"
+      },
+      {
+        "name": "blue_images_2_decision_004",
+        "cell": "blue_images_2",
+        "decision_id": 4,
+        "image_count": 2,
+        "expected_action": "lift",
+        "proposed_action": "lift",
+        "probabilities": {
+          "pre_grasp": 0.11246305378039549,
+          "approach": 0.12749796230756846,
+          "grasp": 0.0875030283229716,
+          "lift": 0.306871791240175,
+          "transport": 0.12749796230756846,
+          "lower": 0.046725736704278056,
+          "release": 0.12749796230756846,
+          "abort": 0.06394250302947443
+        },
+        "confidence": 0.306871791240175,
+        "top_probability_ties": [
+          "lift"
+        ],
+        "http_latency_ms": 15870.19476806745,
+        "input_tokens": 2341,
+        "encoding_path": "processor_images",
+        "image_sha256s": [
+          "6540bb9b30cec64c0b31dd933e3e806cb2cb9262f4921f3c1978df7233154553",
+          "e7758a36fc992b4807c17a1e7c50f700df67ac67d3f10327d26a5f6dad600296"
+        ],
+        "request_sha256": "7ccd6489e11f620c28b06c4e8ac04223c0b6182b69e34013abe58e57a6a301de",
+        "response_sha256": "0e82dd7ce3b89d479550ff8c55ab95836f21a8405a14001fd61e96ccce8c04e6"
+      },
+      {
+        "name": "blue_images_0_decision_005",
+        "cell": "blue_images_0",
+        "decision_id": 5,
+        "image_count": 0,
+        "expected_action": "transport",
+        "proposed_action": "abort",
+        "probabilities": {
+          "pre_grasp": 0.18000643640410968,
+          "approach": 0.14912413818165293,
+          "grasp": 0.06596915875936586,
+          "lift": 0.16906019203456793,
+          "transport": 0.09027643238509601,
+          "lower": 0.031072814731250713,
+          "release": 0.03522686484768055,
+          "abort": 0.27926396265627634
+        },
+        "confidence": 0.27926396265627634,
+        "top_probability_ties": [
+          "abort"
+        ],
+        "http_latency_ms": 281.8167279474437,
+        "input_tokens": 1728,
+        "encoding_path": "tokenizer_only",
+        "image_sha256s": [],
+        "request_sha256": "b81d1726d6a0faf910721a4b87b6271083e480b7ced395cdcee678e732d455e8",
+        "response_sha256": "d3854b7db91a069024048ac6425eabb570e53b474af3a5662b3fd2d86666a921"
+      },
+      {
+        "name": "yellow_images_0_decision_002",
+        "cell": "yellow_images_0",
+        "decision_id": 2,
+        "image_count": 0,
+        "expected_action": "approach",
+        "proposed_action": "approach",
+        "probabilities": {
+          "pre_grasp": 0.3055315042447963,
+          "approach": 0.3055315042447963,
+          "grasp": 0.18496198644157222,
+          "lift": 0.09276172240915868,
+          "transport": 0.015038852563131309,
+          "lower": 0.004288257013869771,
+          "release": 0.015038852563131309,
+          "abort": 0.07684732051954413
+        },
+        "confidence": 0.3055315042447963,
+        "top_probability_ties": [
+          "pre_grasp",
+          "approach"
+        ],
+        "http_latency_ms": 270.480175036937,
+        "input_tokens": 1726,
+        "encoding_path": "tokenizer_only",
+        "image_sha256s": [],
+        "request_sha256": "973ef33e00a1ae79a23715086bb8f478fc443cbc71083533507b29d51a15ae4f",
+        "response_sha256": "6afc9aeccee1d823b853d3621770ffafa90c794829236e9da777efa7c03f02d2"
+      },
+      {
+        "name": "yellow_images_2_decision_003",
+        "cell": "yellow_images_2",
+        "decision_id": 3,
+        "image_count": 2,
+        "expected_action": "grasp",
+        "proposed_action": "grasp",
+        "probabilities": {
+          "pre_grasp": 0.18536170941861993,
+          "approach": 0.163503344772107,
+          "grasp": 0.3260170149730843,
+          "lift": 0.19736345003064656,
+          "transport": 0.06380081379633773,
+          "lower": 0.0103436085831284,
+          "release": 0.04112437925240959,
+          "abort": 0.012485679173666518
+        },
+        "confidence": 0.3260170149730843,
+        "top_probability_ties": [
+          "grasp"
+        ],
+        "http_latency_ms": 15895.743763074279,
+        "input_tokens": 2338,
+        "encoding_path": "processor_images",
+        "image_sha256s": [
+          "ad5829c8111fd65879ed1bd98d8259e1afc367f5e60d9d42ac55fa3ff9e50aa1",
+          "106af1745195a3d206de61c899303959d220e04644ee4f9b62587c3241786e24"
+        ],
+        "request_sha256": "8e2220d154e7bbf16506b1396b5b991a0e1ccce1aedfdc89a028c24296cc4395",
+        "response_sha256": "c8a8679260eb76ddf5377c8803554666d8706d01a311921e9dda10ea2a5e102b"
+      },
+      {
+        "name": "blue_images_1_decision_005",
+        "cell": "blue_images_1",
+        "decision_id": 5,
+        "image_count": 1,
+        "expected_action": "transport",
+        "proposed_action": "transport",
+        "probabilities": {
+          "pre_grasp": 0.09893381634031506,
+          "approach": 0.12715444096198658,
+          "grasp": 0.041104658932007446,
+          "lift": 0.16342493776069736,
+          "transport": 0.2236411831058361,
+          "lower": 0.10533955330895521,
+          "release": 0.07697647182950493,
+          "abort": 0.16342493776069736
+        },
+        "confidence": 0.2236411831058361,
+        "top_probability_ties": [
+          "transport"
+        ],
+        "http_latency_ms": 8202.600694959983,
+        "input_tokens": 2035,
+        "encoding_path": "processor_images",
+        "image_sha256s": [
+          "c6b79ef67069123769809e7e23143a674e9c78121f0da5c2fadb8f37e680a1fa"
+        ],
+        "request_sha256": "a8ae357d94d707e2aacd9236cd9d1cabd7be5454b71263a5cade9c63441b86a4",
+        "response_sha256": "4c95a093d25dfd51dba078315285fbb7d321b40664c1955ff095aa031c4d35d9"
+      },
+      {
+        "name": "blue_images_1_decision_004",
+        "cell": "blue_images_1",
+        "decision_id": 4,
+        "image_count": 1,
+        "expected_action": "lift",
+        "proposed_action": "lift",
+        "probabilities": {
+          "pre_grasp": 0.10492396045392756,
+          "approach": 0.10492396045392756,
+          "grasp": 0.0925510349774134,
+          "lift": 0.3048375516725667,
+          "transport": 0.09854349841742113,
+          "lower": 0.015976214101877707,
+          "release": 0.10492396045392756,
+          "abort": 0.17331981946893835
+        },
+        "confidence": 0.3048375516725667,
+        "top_probability_ties": [
+          "lift"
+        ],
+        "http_latency_ms": 8137.443159939721,
+        "input_tokens": 2034,
+        "encoding_path": "processor_images",
+        "image_sha256s": [
+          "6540bb9b30cec64c0b31dd933e3e806cb2cb9262f4921f3c1978df7233154553"
+        ],
+        "request_sha256": "3b07ecf823a56d76816a06fae45e53d067c7f932362c84780597802c87b27509",
+        "response_sha256": "9b71da87ba59213423c14749327d0a77dc2105dfef77b27882eeed23ad80bb71"
+      },
+      {
+        "name": "yellow_images_2_decision_005",
+        "cell": "yellow_images_2",
+        "decision_id": 5,
+        "image_count": 2,
+        "expected_action": "transport",
+        "proposed_action": "transport",
+        "probabilities": {
+          "pre_grasp": 0.09739432643100165,
+          "approach": 0.10370037658516701,
+          "grasp": 0.017900819510315247,
+          "lift": 0.16088189933665678,
+          "transport": 0.3636756418618024,
+          "lower": 0.1510986151732288,
+          "release": 0.07577865191304782,
+          "abort": 0.02956966918878025
+        },
+        "confidence": 0.3636756418618024,
+        "top_probability_ties": [
+          "transport"
+        ],
+        "http_latency_ms": 15937.968534883112,
+        "input_tokens": 2342,
+        "encoding_path": "processor_images",
+        "image_sha256s": [
+          "d5485b1c85ee99eec12b001939c403b0dfca90026e4e209bc0de64a28d1dcd4c",
+          "fb588c99e42b036fb86d23e7f70b5d612a594c414dfd71f86eebc232aa10c1c2"
+        ],
+        "request_sha256": "39003df0e0013702c935a223878cf051dac619da0f757345cbc983eeefda93fb",
+        "response_sha256": "64590a5ff35e968354414c3ff4184231358134d2774f62686f2ce3ed9c8656f2"
+      },
+      {
+        "name": "yellow_images_1_decision_002",
+        "cell": "yellow_images_1",
+        "decision_id": 2,
+        "image_count": 1,
+        "expected_action": "approach",
+        "proposed_action": "approach",
+        "probabilities": {
+          "pre_grasp": 0.329206287687063,
+          "approach": 0.35052162650041346,
+          "grasp": 0.21219800399381142,
+          "lift": 0.07776678607367847,
+          "transport": 0.01184113519041379,
+          "lower": 0.003171120565821681,
+          "release": 0.008126680289364958,
+          "abort": 0.0071683596994331295
+        },
+        "confidence": 0.35052162650041346,
+        "top_probability_ties": [
+          "approach"
+        ],
+        "http_latency_ms": 8072.466940851882,
+        "input_tokens": 2033,
+        "encoding_path": "processor_images",
+        "image_sha256s": [
+          "1b22101c4ba750094098569f9f5bc290da5cbd1f4df610d72d330bc2413e9ec6"
+        ],
+        "request_sha256": "e9b9756bb15b18ed1f8b9dbf55c082959e807dac4c25fdb5c5794b9c0592024a",
+        "response_sha256": "a12915e8d31a8bb2335c869e42de600b1a081f872bc79cb22010ab85bc971af5"
+      },
+      {
+        "name": "yellow_images_0_decision_004",
+        "cell": "yellow_images_0",
+        "decision_id": 4,
+        "image_count": 0,
+        "expected_action": "lift",
+        "proposed_action": "abort",
+        "probabilities": {
+          "pre_grasp": 0.15974185269678146,
+          "approach": 0.17008476714576296,
+          "grasp": 0.10963230944231446,
+          "lift": 0.23275491679794394,
+          "transport": 0.058542545720020274,
+          "lower": 0.008913961913811783,
+          "release": 0.0275747294854213,
+          "abort": 0.23275491679794394
+        },
+        "confidence": 0.23275491679794394,
+        "top_probability_ties": [
+          "lift",
+          "abort"
+        ],
+        "http_latency_ms": 269.8950308840722,
+        "input_tokens": 1727,
+        "encoding_path": "tokenizer_only",
+        "image_sha256s": [],
+        "request_sha256": "500f923d7fdc1b35ec0eef1fe1b31e2cde787b84455c620490e48a5c4ba4a4ba",
+        "response_sha256": "0849d6dab43ac193966af58d341927c30045ab770b47703fb5d277f243ac7e82"
+      },
+      {
+        "name": "yellow_images_1_decision_004",
+        "cell": "yellow_images_1",
+        "decision_id": 4,
+        "image_count": 1,
+        "expected_action": "lift",
+        "proposed_action": "lift",
+        "probabilities": {
+          "pre_grasp": 0.10845510240595617,
+          "approach": 0.10185991495517943,
+          "grasp": 0.08438460532686495,
+          "lift": 0.2959355150258179,
+          "transport": 0.12295419700456098,
+          "lower": 0.02122442561830717,
+          "release": 0.07443373857538314,
+          "abort": 0.19075250108793024
+        },
+        "confidence": 0.2959355150258179,
+        "top_probability_ties": [
+          "lift"
+        ],
+        "http_latency_ms": 8134.919123025611,
+        "input_tokens": 2034,
+        "encoding_path": "processor_images",
+        "image_sha256s": [
+          "0db7d2bea302f8bdfe42517cc9efab384d5024d994ef002291ccadda89a2f81d"
+        ],
+        "request_sha256": "98a9fc533dd12f981d118d40fc9b3427f88c5a399ea5365d13a9d75887640403",
+        "response_sha256": "8c007687467c573f1ac54fb1c93a293bb3724d7b0bf7584fbe66c416ee5807f1"
+      },
+      {
+        "name": "blue_images_2_decision_005",
+        "cell": "blue_images_2",
+        "decision_id": 5,
+        "image_count": 2,
+        "expected_action": "transport",
+        "proposed_action": "transport",
+        "probabilities": {
+          "pre_grasp": 0.08783416612406351,
+          "approach": 0.10602384540414313,
+          "grasp": 0.020748635094661072,
+          "lift": 0.15448408201284886,
+          "transport": 0.3279775035847768,
+          "lower": 0.17513668102635152,
+          "release": 0.09352122123495663,
+          "abort": 0.03427386551819855
+        },
+        "confidence": 0.3279775035847768,
+        "top_probability_ties": [
+          "transport"
+        ],
+        "http_latency_ms": 15834.02080507949,
+        "input_tokens": 2342,
+        "encoding_path": "processor_images",
+        "image_sha256s": [
+          "c6b79ef67069123769809e7e23143a674e9c78121f0da5c2fadb8f37e680a1fa",
+          "b2c3615006c39946383b54a74cda87b717e3539a899dff7aee576fc8333e04f5"
+        ],
+        "request_sha256": "38cd270352cf44758ff32f84d415e9f129a1680685db24406d87e8a018a8e098",
+        "response_sha256": "81845aa4f84a70eef5d928220d064501bd4042146fcb39a391c60278d135c27a"
+      },
+      {
+        "name": "yellow_images_1_decision_005",
+        "cell": "yellow_images_1",
+        "decision_id": 5,
+        "image_count": 1,
+        "expected_action": "transport",
+        "proposed_action": "transport",
+        "probabilities": {
+          "pre_grasp": 0.12116418276855363,
+          "approach": 0.12900927589422426,
+          "grasp": 0.04170426128267703,
+          "lift": 0.17654459073396725,
+          "transport": 0.22690349017910208,
+          "lower": 0.07809934338071495,
+          "release": 0.06076599580245031,
+          "abort": 0.16580885995831054
+        },
+        "confidence": 0.22690349017910208,
+        "top_probability_ties": [
+          "transport"
+        ],
+        "http_latency_ms": 8076.171102002263,
+        "input_tokens": 2035,
+        "encoding_path": "processor_images",
+        "image_sha256s": [
+          "d5485b1c85ee99eec12b001939c403b0dfca90026e4e209bc0de64a28d1dcd4c"
+        ],
+        "request_sha256": "286c6ae68860885eb04cbdeebe7e72dcf3925539bc9a1ddb1ee3087b305809be",
+        "response_sha256": "fec8b8a4ef450c63faa2a65650d85368697f69eeeccb2528ac1b799a40577069"
+      },
+      {
+        "name": "yellow_images_1_decision_001",
+        "cell": "yellow_images_1",
+        "decision_id": 1,
+        "image_count": 1,
+        "expected_action": "pre_grasp",
+        "proposed_action": "pre_grasp",
+        "probabilities": {
+          "pre_grasp": 0.44282243914700725,
+          "approach": 0.23646272895726733,
+          "grasp": 0.16228654812668822,
+          "lift": 0.043461224743015815,
+          "transport": 0.02047112087354794,
+          "lower": 0.00400615322628655,
+          "release": 0.014049518586540303,
+          "abort": 0.0764402663396466
+        },
+        "confidence": 0.44282243914700725,
+        "top_probability_ties": [
+          "pre_grasp"
+        ],
+        "http_latency_ms": 8116.598000982776,
+        "input_tokens": 2032,
+        "encoding_path": "processor_images",
+        "image_sha256s": [
+          "4fc9733a07b34a02229d8f8df187a7339c623da7ffaec5a7956ecfce547df081"
+        ],
+        "request_sha256": "f4cdf31315907331fbe0541cf44c47b5b380aeec3a6cd198dc433bf319813ed4",
+        "response_sha256": "e876f2083cf943fbec312de6698c8608f869ebd109611034922bf8ce2483a5b0"
+      },
+      {
+        "name": "yellow_images_0_decision_003",
+        "cell": "yellow_images_0",
+        "decision_id": 3,
+        "image_count": 0,
+        "expected_action": "grasp",
+        "proposed_action": "approach",
+        "probabilities": {
+          "pre_grasp": 0.2611424695770942,
+          "approach": 0.31522277383113617,
+          "grasp": 0.17922448452599235,
+          "lift": 0.09570406777706564,
+          "transport": 0.037344785998052896,
+          "lower": 0.006446478668021682,
+          "release": 0.025630071293981507,
+          "abort": 0.0792848683286556
+        },
+        "confidence": 0.31522277383113617,
+        "top_probability_ties": [
+          "approach"
+        ],
+        "http_latency_ms": 270.44242806732655,
+        "input_tokens": 1724,
+        "encoding_path": "tokenizer_only",
+        "image_sha256s": [],
+        "request_sha256": "9251f2490e254a54cd3b2620d1fb0a4ee45b793c3da5e18377169770d840e392",
+        "response_sha256": "b20a68fcb90780d2a841d8a0e588528e44f75c853b98e62738458f2c4a00ad7c"
+      },
+      {
+        "name": "yellow_images_1_decision_007",
+        "cell": "yellow_images_1",
+        "decision_id": 7,
+        "image_count": 1,
+        "expected_action": "release",
+        "proposed_action": "release",
+        "probabilities": {
+          "pre_grasp": 0.033773953659614234,
+          "approach": 0.040768242882667026,
+          "grasp": 0.06324830051231126,
+          "lift": 0.36640069417805504,
+          "transport": 0.018034950750979523,
+          "lower": 0.049210985859569435,
+          "release": 0.41538390164897315,
+          "abort": 0.01317897050783028
+        },
+        "confidence": 0.41538390164897315,
+        "top_probability_ties": [
+          "release"
+        ],
+        "http_latency_ms": 8075.033096130937,
+        "input_tokens": 2032,
+        "encoding_path": "processor_images",
+        "image_sha256s": [
+          "a1190792fb1211e304a543030f010b95dd6344560b907bc7637bb1c929787823"
+        ],
+        "request_sha256": "3d6fef9fed3249c49c98b64e6e4c9897e6cacac1ef1fae09a9adc2570065b3e7",
+        "response_sha256": "d6381258630c1949e8d1189bd3d7fd1053d337d6245587232b87480574050491"
+      },
+      {
+        "name": "yellow_images_0_decision_005",
+        "cell": "yellow_images_0",
+        "decision_id": 5,
+        "image_count": 0,
+        "expected_action": "transport",
+        "proposed_action": "abort",
+        "probabilities": {
+          "pre_grasp": 0.180902600364518,
+          "approach": 0.14075312275146984,
+          "grasp": 0.062266004321636766,
+          "lift": 0.1699018648752384,
+          "transport": 0.09660016722845935,
+          "lower": 0.03122751166830134,
+          "release": 0.03769445379124818,
+          "abort": 0.2806542749991282
+        },
+        "confidence": 0.2806542749991282,
+        "top_probability_ties": [
+          "abort"
+        ],
+        "http_latency_ms": 270.3547799028456,
+        "input_tokens": 1728,
+        "encoding_path": "tokenizer_only",
+        "image_sha256s": [],
+        "request_sha256": "7e0709cdea3164f2c2250ddb91ebce0988f7aa01881c40c849fbb5e5063f1e25",
+        "response_sha256": "cd944873ad224efdd9efa22eadbb3293256b7b083bae787fa0611698e73bb862"
+      },
+      {
+        "name": "blue_images_0_decision_006",
+        "cell": "blue_images_0",
+        "decision_id": 6,
+        "image_count": 0,
+        "expected_action": "lower",
+        "proposed_action": "abort",
+        "probabilities": {
+          "pre_grasp": 0.16127178992709154,
+          "approach": 0.14225417468156717,
+          "grasp": 0.0670046116726688,
+          "lift": 0.2349841463959195,
+          "transport": 0.04896336154743752,
+          "lower": 0.04318946712082492,
+          "release": 0.052133624157014856,
+          "abort": 0.2501988244974757
+        },
+        "confidence": 0.2501988244974757,
+        "top_probability_ties": [
+          "abort"
+        ],
+        "http_latency_ms": 267.53958803601563,
+        "input_tokens": 1728,
+        "encoding_path": "tokenizer_only",
+        "image_sha256s": [],
+        "request_sha256": "cd6b112a663b1a8bc1c4ec2e5eef62170433efb35fb16e2af0de9a0cd02869fa",
+        "response_sha256": "0dec68918da664672265c692a9beb28114c1777cd5bf242103cf5538c412915c"
+      },
+      {
+        "name": "yellow_images_2_decision_007",
+        "cell": "yellow_images_2",
+        "decision_id": 7,
+        "image_count": 2,
+        "expected_action": "release",
+        "proposed_action": "release",
+        "probabilities": {
+          "pre_grasp": 0.04112695908786602,
+          "approach": 0.052858319611285,
+          "grasp": 0.038626014041593854,
+          "lift": 0.3260374587714126,
+          "transport": 0.03199924976923981,
+          "lower": 0.07701822925992462,
+          "release": 0.4190388382623652,
+          "abort": 0.013294931196312832
+        },
+        "confidence": 0.4190388382623652,
+        "top_probability_ties": [
+          "release"
+        ],
+        "http_latency_ms": 15942.523187026381,
+        "input_tokens": 2339,
+        "encoding_path": "processor_images",
+        "image_sha256s": [
+          "a1190792fb1211e304a543030f010b95dd6344560b907bc7637bb1c929787823",
+          "ec6cee0b581100c985ffbef0e4c9b08281bb1f3e5d46c32cce8e287b3249a6a3"
+        ],
+        "request_sha256": "21303825ddf24f3db4a4b849eac2649157c831d85664b9462d92fee551bb620d",
+        "response_sha256": "17661a3fbd80bbc8a5f004a61e42fbf4314b1df639f65d5fbf3359e47425d07e"
+      },
+      {
+        "name": "yellow_images_2_decision_002",
+        "cell": "yellow_images_2",
+        "decision_id": 2,
+        "image_count": 2,
+        "expected_action": "approach",
+        "proposed_action": "approach",
+        "probabilities": {
+          "pre_grasp": 0.31637377889228147,
+          "approach": 0.3368582510964937,
+          "grasp": 0.23118892717643844,
+          "lift": 0.08472662440652992,
+          "transport": 0.015572530249823234,
+          "lower": 0.003047509914848022,
+          "release": 0.008315573592519134,
+          "abort": 0.003916804671066074
+        },
+        "confidence": 0.3368582510964937,
+        "top_probability_ties": [
+          "approach"
+        ],
+        "http_latency_ms": 16094.455555081367,
+        "input_tokens": 2340,
+        "encoding_path": "processor_images",
+        "image_sha256s": [
+          "1b22101c4ba750094098569f9f5bc290da5cbd1f4df610d72d330bc2413e9ec6",
+          "dcd8f5dcbc20a8ad13fafc497f3d375831bbfd620ac557d2c30694ece216cd90"
+        ],
+        "request_sha256": "e4136b52dd15985a2546dae5e2fbd5cbfaa460f38d26725cebc98859744e0732",
+        "response_sha256": "aa995fbec5458d847e69c07b21e718aa2f45207a97b3594ee346568ed95ea0d4"
+      },
+      {
+        "name": "blue_images_1_decision_003",
+        "cell": "blue_images_1",
+        "decision_id": 3,
+        "image_count": 1,
+        "expected_action": "grasp",
+        "proposed_action": "grasp",
+        "probabilities": {
+          "pre_grasp": 0.16128183924369435,
+          "approach": 0.20728706774752761,
+          "grasp": 0.2664151948923832,
+          "lift": 0.17172444962515118,
+          "transport": 0.03578201419139721,
+          "lower": 0.00845260948976336,
+          "release": 0.062933957637845,
+          "abort": 0.08612286717223812
+        },
+        "confidence": 0.2664151948923832,
+        "top_probability_ties": [
+          "grasp"
+        ],
+        "http_latency_ms": 8183.093894040212,
+        "input_tokens": 2031,
+        "encoding_path": "processor_images",
+        "image_sha256s": [
+          "2a66e24d6e3d7d4b7c63842d4ce9a4b64cad74170df55d1fffb320dab8300d9b"
+        ],
+        "request_sha256": "6ba4cc535b638c237421c1d80974353b80f655b323f4b13e7ed35ef0a94a72e6",
+        "response_sha256": "993068d933a9661c63dc65ad6c76f0c4168f1cc46d1649d7439bf2d6fe6b6fee"
+      },
+      {
+        "name": "blue_images_2_decision_007",
+        "cell": "blue_images_2",
+        "decision_id": 7,
+        "image_count": 2,
+        "expected_action": "release",
+        "proposed_action": "release",
+        "probabilities": {
+          "pre_grasp": 0.03902924564253632,
+          "approach": 0.06055039657384803,
+          "grasp": 0.0415562966318421,
+          "lift": 0.3294410598556046,
+          "transport": 0.05341012617133463,
+          "lower": 0.0882261174310399,
+          "release": 0.37348323427428876,
+          "abort": 0.014303523419505595
+        },
+        "confidence": 0.37348323427428876,
+        "top_probability_ties": [
+          "release"
+        ],
+        "http_latency_ms": 15966.900962172076,
+        "input_tokens": 2339,
+        "encoding_path": "processor_images",
+        "image_sha256s": [
+          "15437cfa084ef5e69f3b2055910a8de4051901895da86d2d95b25b92c4716667",
+          "81eb282d7002416f0dc2723541cf1f13684d9fdac4207e45385139a87aee55ff"
+        ],
+        "request_sha256": "b1779f843d564ea6e0ae484384ef2053e768d88febfe4ed984037bf0057592bf",
+        "response_sha256": "c13300b474bb033a0a0f51d537bac2430ae0490e5630062fb246388bc16a8ac5"
+      },
+      {
+        "name": "yellow_images_1_decision_006",
+        "cell": "yellow_images_1",
+        "decision_id": 6,
+        "image_count": 1,
+        "expected_action": "lower",
+        "proposed_action": "lift",
+        "probabilities": {
+          "pre_grasp": 0.07081554658216646,
+          "approach": 0.08028270083631428,
+          "grasp": 0.0228922298125128,
+          "lift": 0.26442905872901,
+          "transport": 0.20574173809749627,
+          "lower": 0.21906303488855763,
+          "release": 0.12455147079147257,
+          "abort": 0.012224220262469953
+        },
+        "confidence": 0.26442905872901,
+        "top_probability_ties": [
+          "lift"
+        ],
+        "http_latency_ms": 8083.886798005551,
+        "input_tokens": 2035,
+        "encoding_path": "processor_images",
+        "image_sha256s": [
+          "e1f8057a01fc413988e1681b04800887469a5e91a373af800b7fd595f4479c9c"
+        ],
+        "request_sha256": "73a70b72a67d205cd13edbb629ee09ce69cd558bfe66f2e2bc468eefef317b2b",
+        "response_sha256": "93d08f6cb408e459e76e1a344511a6c5b022fc2089904adfb877ec5e0c521c31"
+      },
+      {
+        "name": "blue_images_2_decision_002",
+        "cell": "blue_images_2",
+        "decision_id": 2,
+        "image_count": 2,
+        "expected_action": "approach",
+        "proposed_action": "approach",
+        "probabilities": {
+          "pre_grasp": 0.25946925140628724,
+          "approach": 0.3550743907743437,
+          "grasp": 0.22887190232316582,
+          "lift": 0.10124776839031645,
+          "transport": 0.023917265918160874,
+          "lower": 0.006405173824033485,
+          "release": 0.018609073539658887,
+          "abort": 0.006405173824033485
+        },
+        "confidence": 0.3550743907743437,
+        "top_probability_ties": [
+          "approach"
+        ],
+        "http_latency_ms": 16174.182506045327,
+        "input_tokens": 2340,
+        "encoding_path": "processor_images",
+        "image_sha256s": [
+          "f8fa5b606bc56f89fc509fe3350e1a7d596257e64118520c7dc9a0485bbce092",
+          "4a912daf9df389f0eb5df0577453307f332f6534f1de81d39863302e7be6d2a1"
+        ],
+        "request_sha256": "02a929de6b1e436d1bdec6eb1afc42fae97fa015bc41a024a3213e5f8903fe98",
+        "response_sha256": "defdd60b6cd19feaff9f63deb29b36a17d21d28d6260c753c8f89aa55799743c"
+      },
+      {
+        "name": "yellow_images_2_decision_004",
+        "cell": "yellow_images_2",
+        "decision_id": 4,
+        "image_count": 2,
+        "expected_action": "lift",
+        "proposed_action": "lift",
+        "probabilities": {
+          "pre_grasp": 0.11202798171761731,
+          "approach": 0.1270047273899241,
+          "grasp": 0.06781924559659655,
+          "lift": 0.3056846421322606,
+          "transport": 0.16323251891889712,
+          "lower": 0.04955865252292061,
+          "release": 0.08186401554037574,
+          "abort": 0.09280821618140801
+        },
+        "confidence": 0.3056846421322606,
+        "top_probability_ties": [
+          "lift"
+        ],
+        "http_latency_ms": 15979.712853906676,
+        "input_tokens": 2341,
+        "encoding_path": "processor_images",
+        "image_sha256s": [
+          "0db7d2bea302f8bdfe42517cc9efab384d5024d994ef002291ccadda89a2f81d",
+          "534c65f8447373ce2df41f359771f7f47112692ee4539d6eab12fdbed9687cc9"
+        ],
+        "request_sha256": "a7d622d131b9371cf6b795ad61c98060953d5ee1032a6ad234e48aa52b823881",
+        "response_sha256": "588c7fecc28d32f692f323023ccff2ca831a669f613b73f390b3c129f12c26e9"
+      },
+      {
+        "name": "blue_images_1_decision_007",
+        "cell": "blue_images_1",
+        "decision_id": 7,
+        "image_count": 1,
+        "expected_action": "release",
+        "proposed_action": "lift",
+        "probabilities": {
+          "pre_grasp": 0.03491713902078849,
+          "approach": 0.0448771639406544,
+          "grasp": 0.06962292704219378,
+          "lift": 0.3788026511483442,
+          "transport": 0.019852646690788435,
+          "lower": 0.057678265965717034,
+          "release": 0.3788026511483442,
+          "abort": 0.015446555043169455
+        },
+        "confidence": 0.3788026511483442,
+        "top_probability_ties": [
+          "lift",
+          "release"
+        ],
+        "http_latency_ms": 8990.211267024279,
+        "input_tokens": 2032,
+        "encoding_path": "processor_images",
+        "image_sha256s": [
+          "15437cfa084ef5e69f3b2055910a8de4051901895da86d2d95b25b92c4716667"
+        ],
+        "request_sha256": "c493604245f1efe36611543a76cde3b97ba5eba6b94256725631195ea4094a51",
+        "response_sha256": "72c5b7447f96710f9fce05a77af7e6a71d0aaad47e3a8ed0fe37443fc3af2286"
+      },
+      {
+        "name": "yellow_images_0_decision_001",
+        "cell": "yellow_images_0",
+        "decision_id": 1,
+        "image_count": 0,
+        "expected_action": "pre_grasp",
+        "proposed_action": "pre_grasp",
+        "probabilities": {
+          "pre_grasp": 0.42716859057150364,
+          "approach": 0.24287289803260237,
+          "grasp": 0.1889697429911801,
+          "lift": 0.03937539647399949,
+          "transport": 0.010544945575188754,
+          "lower": 0.0026522659489569425,
+          "release": 0.009903704262903445,
+          "abort": 0.07851245614366525
+        },
+        "confidence": 0.42716859057150364,
+        "top_probability_ties": [
+          "pre_grasp"
+        ],
+        "http_latency_ms": 291.0280970390886,
+        "input_tokens": 1725,
+        "encoding_path": "tokenizer_only",
+        "image_sha256s": [],
+        "request_sha256": "5344db7ce950e62afcc7645faa6bec0086eb8f78a07b64c70ef9c869703b91b8",
+        "response_sha256": "bd3b68b42e9c9fb42688bbc1f92dd65a0e1dc64a2f2558a678f63b9b66e0f221"
+      },
+      {
+        "name": "blue_images_1_decision_002",
+        "cell": "blue_images_1",
+        "decision_id": 2,
+        "image_count": 1,
+        "expected_action": "approach",
+        "proposed_action": "approach",
+        "probabilities": {
+          "pre_grasp": 0.3062841558502773,
+          "approach": 0.3472305429584071,
+          "grasp": 0.18541761321080968,
+          "lift": 0.09299023692004202,
+          "transport": 0.01709135918566104,
+          "lower": 0.004873519544296556,
+          "release": 0.016052028206305465,
+          "abort": 0.030060544124200884
+        },
+        "confidence": 0.3472305429584071,
+        "top_probability_ties": [
+          "approach"
+        ],
+        "http_latency_ms": 8379.210215061903,
+        "input_tokens": 2033,
+        "encoding_path": "processor_images",
+        "image_sha256s": [
+          "f8fa5b606bc56f89fc509fe3350e1a7d596257e64118520c7dc9a0485bbce092"
+        ],
+        "request_sha256": "ddc3a76939aed08aa9bf7dab1d20d3afe2df6ef6cbd92f0f7abf33dcd0e7f470",
+        "response_sha256": "41f1ef8a0daa9eac94cc8ede54b2cef233386739416b18bed11bc9456145156f"
+      },
+      {
+        "name": "blue_images_0_decision_001",
+        "cell": "blue_images_0",
+        "decision_id": 1,
+        "image_count": 0,
+        "expected_action": "pre_grasp",
+        "proposed_action": "pre_grasp",
+        "probabilities": {
+          "pre_grasp": 0.42898756432536705,
+          "approach": 0.24390710649552114,
+          "grasp": 0.18977442310762227,
+          "lift": 0.037138436764885804,
+          "transport": 0.009341064924320647,
+          "lower": 0.0026635598966288057,
+          "release": 0.009341064924320647,
+          "abort": 0.07884677956133367
+        },
+        "confidence": 0.42898756432536705,
+        "top_probability_ties": [
+          "pre_grasp"
+        ],
+        "http_latency_ms": 294.50327390804887,
+        "input_tokens": 1725,
+        "encoding_path": "tokenizer_only",
+        "image_sha256s": [],
+        "request_sha256": "853423a165b331b5accf3cab75fd0ceb0af03fa0c0177171d85fb4bfd971da8b",
+        "response_sha256": "a730a67cb10019aec1d0f2775e55ca6c43299c32918a9fbf6400f5673ad76f43"
+      },
+      {
+        "name": "blue_images_0_decision_002",
+        "cell": "blue_images_0",
+        "decision_id": 2,
+        "image_count": 0,
+        "expected_action": "approach",
+        "proposed_action": "approach",
+        "probabilities": {
+          "pre_grasp": 0.30832573544323444,
+          "approach": 0.30832573544323444,
+          "grasp": 0.1866535474018239,
+          "lift": 0.08791761587238645,
+          "transport": 0.015176390260032762,
+          "lower": 0.004607669068422196,
+          "release": 0.016159025968479616,
+          "abort": 0.07283428054238611
+        },
+        "confidence": 0.30832573544323444,
+        "top_probability_ties": [
+          "pre_grasp",
+          "approach"
+        ],
+        "http_latency_ms": 290.98684899508953,
+        "input_tokens": 1726,
+        "encoding_path": "tokenizer_only",
+        "image_sha256s": [],
+        "request_sha256": "54004b342a2bd41f4b9258dabb33ab3747c4fd282ffa66866c939fd53ea57bc3",
+        "response_sha256": "b6976a6c51863b9bf262d53f93806d6fec114cf6ad23f35e3aadc8685f1d4efc"
+      },
+      {
+        "name": "blue_images_2_decision_001",
+        "cell": "blue_images_2",
+        "decision_id": 1,
+        "image_count": 2,
+        "expected_action": "pre_grasp",
+        "proposed_action": "pre_grasp",
+        "probabilities": {
+          "pre_grasp": 0.40253736273812263,
+          "approach": 0.2941526278818122,
+          "grasp": 0.228868455808742,
+          "lift": 0.03710494654603349,
+          "transport": 0.007261356591733951,
+          "lower": 0.002661158099970784,
+          "release": 0.009936906892127884,
+          "abort": 0.017477185441457085
+        },
+        "confidence": 0.40253736273812263,
+        "top_probability_ties": [
+          "pre_grasp"
+        ],
+        "http_latency_ms": 17581.365226069465,
+        "input_tokens": 2339,
+        "encoding_path": "processor_images",
+        "image_sha256s": [
+          "f1885e0503931d0d91b628f9cd8c62d074343c3b90df9edf57de790650cf48fc",
+          "9f3ff60657b1a209c61f3db964426b3a5d781a8ab8d98af894de4a8e2251bede"
+        ],
+        "request_sha256": "70b87a24f633871ace479fb555a531c5cd5ee09b861a1954731c06ebf5d0e691",
+        "response_sha256": "80e057e6b24f124931361185e94472b385da88731a4421fd3f33793a6056df2a"
+      },
+      {
+        "name": "yellow_images_0_decision_006",
+        "cell": "yellow_images_0",
+        "decision_id": 6,
+        "image_count": 0,
+        "expected_action": "lower",
+        "proposed_action": "abort",
+        "probabilities": {
+          "pre_grasp": 0.156029260401796,
+          "approach": 0.13762985547064424,
+          "grasp": 0.06088434435366053,
+          "lift": 0.24206550194515516,
+          "transport": 0.05043889382215491,
+          "lower": 0.053704694321013796,
+          "release": 0.0571819477404203,
+          "abort": 0.24206550194515516
+        },
+        "confidence": 0.24206550194515516,
+        "top_probability_ties": [
+          "lift",
+          "abort"
+        ],
+        "http_latency_ms": 292.1770862303674,
+        "input_tokens": 1728,
+        "encoding_path": "tokenizer_only",
+        "image_sha256s": [],
+        "request_sha256": "c7b4ebd15056a32c7f5b574bec23f0554ce0f7d11866cbacc21c66e22de6c655",
+        "response_sha256": "06bce19e8dafb191a041a43a3397a3500dfb3c58970331b5acee91246db2fd55"
+      },
+      {
+        "name": "blue_images_2_decision_003",
+        "cell": "blue_images_2",
+        "decision_id": 3,
+        "image_count": 2,
+        "expected_action": "grasp",
+        "proposed_action": "grasp",
+        "probabilities": {
+          "pre_grasp": 0.12574442519852266,
+          "approach": 0.14255488987076775,
+          "grasp": 0.3222471936375289,
+          "lift": 0.22116122434961358,
+          "transport": 0.06714625607949139,
+          "lower": 0.021706076215369484,
+          "release": 0.08629955935074135,
+          "abort": 0.013140375297964904
+        },
+        "confidence": 0.3222471936375289,
+        "top_probability_ties": [
+          "grasp"
+        ],
+        "http_latency_ms": 17654.63222609833,
+        "input_tokens": 2338,
+        "encoding_path": "processor_images",
+        "image_sha256s": [
+          "2a66e24d6e3d7d4b7c63842d4ce9a4b64cad74170df55d1fffb320dab8300d9b",
+          "f25de64cb622419860c649ee7d491bc60a0db6eba069f2f9e90366a51b5db3c5"
+        ],
+        "request_sha256": "fff4b97ecb25116758fd5c644fd790ef20b36dabbd2f93ce99902b47d6fa56c2",
+        "response_sha256": "714d477c4ab20135e1fb25e36d601b491399dfd2b6b5aa11748ff5bea62b841d"
+      },
+      {
+        "name": "yellow_images_2_decision_006",
+        "cell": "yellow_images_2",
+        "decision_id": 6,
+        "image_count": 2,
+        "expected_action": "lower",
+        "proposed_action": "lower",
+        "probabilities": {
+          "pre_grasp": 0.06131422894579365,
+          "approach": 0.08390632983290161,
+          "grasp": 0.02110413040607741,
+          "lift": 0.24377464164617715,
+          "transport": 0.17813738661412476,
+          "lower": 0.25955848316829944,
+          "release": 0.13860161376712615,
+          "abort": 0.013603185619499867
+        },
+        "confidence": 0.25955848316829944,
+        "top_probability_ties": [
+          "lower"
+        ],
+        "http_latency_ms": 17115.479045081884,
+        "input_tokens": 2342,
+        "encoding_path": "processor_images",
+        "image_sha256s": [
+          "e1f8057a01fc413988e1681b04800887469a5e91a373af800b7fd595f4479c9c",
+          "9a141dc46e03789d35f42a88b5c9dbcc7e64ae485d6c71ac18ff00265a7d0822"
+        ],
+        "request_sha256": "98e38f54dec6b1c6c4900dd67aa4dad91259b820f1b84ae6392b2c7d7057b337",
+        "response_sha256": "2f4c71805bee3493be173f33b0870028902e18b14cd81c1ae526bb4e8a3937ad"
+      },
+      {
+        "name": "blue_images_0_decision_003",
+        "cell": "blue_images_0",
+        "decision_id": 3,
+        "image_count": 0,
+        "expected_action": "grasp",
+        "proposed_action": "approach",
+        "probabilities": {
+          "pre_grasp": 0.2517890565200469,
+          "approach": 0.32361125953480757,
+          "grasp": 0.18399387726603522,
+          "lift": 0.09227620966704206,
+          "transport": 0.036007198805223455,
+          "lower": 0.006215583637238336,
+          "release": 0.024712072104868817,
+          "abort": 0.08139474246473759
+        },
+        "confidence": 0.32361125953480757,
+        "top_probability_ties": [
+          "approach"
+        ],
+        "http_latency_ms": 292.31034917756915,
+        "input_tokens": 1724,
+        "encoding_path": "tokenizer_only",
+        "image_sha256s": [],
+        "request_sha256": "4f7df6cfabf2610cf7deb8f15525828410b2cf0f9f941382eff14d288fe56445",
+        "response_sha256": "5014be981c189136a55183cf06d1fc1d28f0fec91306fd4f5cb7f0dd829dcdb1"
+      },
+      {
+        "name": "blue_images_2_decision_006",
+        "cell": "blue_images_2",
+        "decision_id": 6,
+        "image_count": 2,
+        "expected_action": "lower",
+        "proposed_action": "lower",
+        "probabilities": {
+          "pre_grasp": 0.04198790943503837,
+          "approach": 0.06935820032204801,
+          "grasp": 0.015387821817221195,
+          "lift": 0.20150768465020777,
+          "transport": 0.24323815307531657,
+          "lower": 0.258987252254873,
+          "release": 0.15678512460854432,
+          "abort": 0.012747853836750736
+        },
+        "confidence": 0.258987252254873,
+        "top_probability_ties": [
+          "lower"
+        ],
+        "http_latency_ms": 16841.80951793678,
+        "input_tokens": 2342,
+        "encoding_path": "processor_images",
+        "image_sha256s": [
+          "ce4be0168dd27b6e30e238b57571e433b7848ffad237972b93974f7dffa58acb",
+          "0aa8920b9ab8d7fefa145306098f3c8da1bb4ed404a4aea8a946900dc7cec51d"
+        ],
+        "request_sha256": "02774406154feac96a828f835b8896e68258e1abd08bda0ecaa79067833963b2",
+        "response_sha256": "5a71b56361630d217926a74424bf08b8309d3ba0a7588ec86f9a6db973368aff"
+      },
+      {
+        "name": "yellow_images_0_decision_007",
+        "cell": "yellow_images_0",
+        "decision_id": 7,
+        "image_count": 0,
+        "expected_action": "release",
+        "proposed_action": "lift",
+        "probabilities": {
+          "pre_grasp": 0.08976470465804896,
+          "approach": 0.1083541864575241,
+          "grasp": 0.04793344822643068,
+          "lift": 0.31480345765132856,
+          "transport": 0.025595978026582072,
+          "lower": 0.08430608496477249,
+          "release": 0.24493605505054064,
+          "abort": 0.08430608496477249
+        },
+        "confidence": 0.31480345765132856,
+        "top_probability_ties": [
+          "lift"
+        ],
+        "http_latency_ms": 296.27322196029127,
+        "input_tokens": 1725,
+        "encoding_path": "tokenizer_only",
+        "image_sha256s": [],
+        "request_sha256": "dc00414e0f75e6025e5ae739e04e89774ceba8c1f63ad0aefeaaac89766e2313",
+        "response_sha256": "b798edcda836f54108d3fe99b92bf80c4bb12cbe49a2bc48a620e9fefbbc456b"
+      },
+      {
+        "name": "blue_images_0_decision_004",
+        "cell": "blue_images_0",
+        "decision_id": 4,
+        "image_count": 0,
+        "expected_action": "lift",
+        "proposed_action": "abort",
+        "probabilities": {
+          "pre_grasp": 0.1585601642006461,
+          "approach": 0.17975768739504655,
+          "grasp": 0.10882130614774217,
+          "lift": 0.23103312570924336,
+          "transport": 0.054575823614649153,
+          "lower": 0.008848021052726893,
+          "release": 0.027370746170702454,
+          "abort": 0.23103312570924336
+        },
+        "confidence": 0.23103312570924336,
+        "top_probability_ties": [
+          "lift",
+          "abort"
+        ],
+        "http_latency_ms": 291.6240459308028,
+        "input_tokens": 1727,
+        "encoding_path": "tokenizer_only",
+        "image_sha256s": [],
+        "request_sha256": "ed0db40769a34816d7ced4daafbabc3c383e810a2bb67c09749f90561f482258",
+        "response_sha256": "70cc69a8ab1707609ed2ad999bf59f8d52e06fb7db8737f6cf2c48141a6fe101"
+      },
+      {
+        "name": "yellow_images_2_decision_001",
+        "cell": "yellow_images_2",
+        "decision_id": 1,
+        "image_count": 2,
+        "expected_action": "pre_grasp",
+        "proposed_action": "pre_grasp",
+        "probabilities": {
+          "pre_grasp": 0.4454870622905712,
+          "approach": 0.25328814021726875,
+          "grasp": 0.20983347629288734,
+          "lift": 0.043722746380985694,
+          "transport": 0.012467332671079603,
+          "lower": 0.002945096792604585,
+          "release": 0.010328409463961604,
+          "abort": 0.0219277358906413
+        },
+        "confidence": 0.4454870622905712,
+        "top_probability_ties": [
+          "pre_grasp"
+        ],
+        "http_latency_ms": 16297.50361898914,
+        "input_tokens": 2339,
+        "encoding_path": "processor_images",
+        "image_sha256s": [
+          "4fc9733a07b34a02229d8f8df187a7339c623da7ffaec5a7956ecfce547df081",
+          "0f2e62cf9cbddc88573069b79122e937575e028d437c76c48b2a82e8a9636b72"
+        ],
+        "request_sha256": "1facdfc384f075ce76de62d4f771822fbffcc80822a86f96c33a29bac0421b84",
+        "response_sha256": "fb514af235daf9941b4613b40123d35263eb8d14dbe03585d66fea4a7c464fbd"
+      },
+      {
+        "name": "blue_images_1_decision_006",
+        "cell": "blue_images_1",
+        "decision_id": 6,
+        "image_count": 1,
+        "expected_action": "lower",
+        "proposed_action": "lower",
+        "probabilities": {
+          "pre_grasp": 0.04774947036622647,
+          "approach": 0.05413298056284929,
+          "grasp": 0.015435761740401396,
+          "lift": 0.2152232696925702,
+          "transport": 0.24399594776602213,
+          "lower": 0.24399594776602213,
+          "release": 0.1674566694506182,
+          "abort": 0.012009952655290201
+        },
+        "confidence": 0.24399594776602213,
+        "top_probability_ties": [
+          "transport",
+          "lower"
+        ],
+        "http_latency_ms": 8990.740471053869,
+        "input_tokens": 2035,
+        "encoding_path": "processor_images",
+        "image_sha256s": [
+          "ce4be0168dd27b6e30e238b57571e433b7848ffad237972b93974f7dffa58acb"
+        ],
+        "request_sha256": "80b513070e9ad0e14c2bf85a0495499eeed2bbc13a0644c63712fd995b0ffbd1",
+        "response_sha256": "bb5d1de30af41fa9ca7f5ecff5986c07141632b0f2ac72cc4cc38a4375c8b7f7"
+      }
+    ]
+  },
+  "processor_tokenizer_audits": [
+    {
+      "name": "blue_images_0_decision_007",
+      "actual_image_count": 0,
+      "encoding_path": "tokenizer_only",
+      "input_tokens": 1725,
+      "normalized_rgb_sha256s": [],
+      "image_grid_thw": [],
+      "vision_token_counts": {
+        "<|vision_start|>": 0,
+        "<|vision_end|>": 0,
+        "<|image_pad|>": 0,
+        "<|video_pad|>": 0
+      }
+    },
+    {
+      "name": "blue_images_1_decision_001",
+      "actual_image_count": 1,
+      "normalized_rgb_sha256s": [
+        "bceb72acb899df7c2128e383342c0f340a314585cbbb4831e4b4905577fc3665"
+      ],
+      "image_grid_thw": [
+        [
+          1,
+          30,
+          40
+        ]
+      ],
+      "input_tokens": 2032,
+      "encoding_path": "processor_images"
+    },
+    {
+      "name": "yellow_images_1_decision_003",
+      "actual_image_count": 1,
+      "normalized_rgb_sha256s": [
+        "e7359ac4a10cbfc3418a55eadb216359c5b55b09e467272cead221f46f6bf54a"
+      ],
+      "image_grid_thw": [
+        [
+          1,
+          30,
+          40
+        ]
+      ],
+      "input_tokens": 2031,
+      "encoding_path": "processor_images"
+    },
+    {
+      "name": "blue_images_2_decision_004",
+      "actual_image_count": 2,
+      "normalized_rgb_sha256s": [
+        "9bdd0b9c9cf1d0a440cb1332fa251a186baaeef0de9b8d3ffcd2b1028475560e",
+        "164326c97c30f833ce86a87457cdabc07a0e0fb1a989307a7f0facad62a16de4"
+      ],
+      "image_grid_thw": [
+        [
+          1,
+          30,
+          40
+        ],
+        [
+          1,
+          30,
+          40
+        ]
+      ],
+      "input_tokens": 2341,
+      "encoding_path": "processor_images"
+    },
+    {
+      "name": "blue_images_0_decision_005",
+      "actual_image_count": 0,
+      "encoding_path": "tokenizer_only",
+      "input_tokens": 1728,
+      "normalized_rgb_sha256s": [],
+      "image_grid_thw": [],
+      "vision_token_counts": {
+        "<|vision_start|>": 0,
+        "<|vision_end|>": 0,
+        "<|image_pad|>": 0,
+        "<|video_pad|>": 0
+      }
+    },
+    {
+      "name": "yellow_images_0_decision_002",
+      "actual_image_count": 0,
+      "encoding_path": "tokenizer_only",
+      "input_tokens": 1726,
+      "normalized_rgb_sha256s": [],
+      "image_grid_thw": [],
+      "vision_token_counts": {
+        "<|vision_start|>": 0,
+        "<|vision_end|>": 0,
+        "<|image_pad|>": 0,
+        "<|video_pad|>": 0
+      }
+    },
+    {
+      "name": "yellow_images_2_decision_003",
+      "actual_image_count": 2,
+      "normalized_rgb_sha256s": [
+        "e7359ac4a10cbfc3418a55eadb216359c5b55b09e467272cead221f46f6bf54a",
+        "2274dc6283c4bc9c0cde947cd0eee2696dab2aa581730ddb21f2bd81dbaafccf"
+      ],
+      "image_grid_thw": [
+        [
+          1,
+          30,
+          40
+        ],
+        [
+          1,
+          30,
+          40
+        ]
+      ],
+      "input_tokens": 2338,
+      "encoding_path": "processor_images"
+    },
+    {
+      "name": "blue_images_1_decision_005",
+      "actual_image_count": 1,
+      "normalized_rgb_sha256s": [
+        "20d572a2bed976b79acedd1eb1202017789264c5bdb7abc18d4971676bdd39c6"
+      ],
+      "image_grid_thw": [
+        [
+          1,
+          30,
+          40
+        ]
+      ],
+      "input_tokens": 2035,
+      "encoding_path": "processor_images"
+    },
+    {
+      "name": "blue_images_1_decision_004",
+      "actual_image_count": 1,
+      "normalized_rgb_sha256s": [
+        "9bdd0b9c9cf1d0a440cb1332fa251a186baaeef0de9b8d3ffcd2b1028475560e"
+      ],
+      "image_grid_thw": [
+        [
+          1,
+          30,
+          40
+        ]
+      ],
+      "input_tokens": 2034,
+      "encoding_path": "processor_images"
+    },
+    {
+      "name": "yellow_images_2_decision_005",
+      "actual_image_count": 2,
+      "normalized_rgb_sha256s": [
+        "ea7374172b3bb156d121afdc59d4548b205e52fec4cc12f0ea11ba629a8498aa",
+        "9bc183365aac7a99deef50fd54e374d247b53af2702cf977d0b4c99f91ac4b33"
+      ],
+      "image_grid_thw": [
+        [
+          1,
+          30,
+          40
+        ],
+        [
+          1,
+          30,
+          40
+        ]
+      ],
+      "input_tokens": 2342,
+      "encoding_path": "processor_images"
+    },
+    {
+      "name": "yellow_images_1_decision_002",
+      "actual_image_count": 1,
+      "normalized_rgb_sha256s": [
+        "5de7d4554246374527f3f69f596d34efb638ecc1a1a369c847c2201ff693cbea"
+      ],
+      "image_grid_thw": [
+        [
+          1,
+          30,
+          40
+        ]
+      ],
+      "input_tokens": 2033,
+      "encoding_path": "processor_images"
+    },
+    {
+      "name": "yellow_images_0_decision_004",
+      "actual_image_count": 0,
+      "encoding_path": "tokenizer_only",
+      "input_tokens": 1727,
+      "normalized_rgb_sha256s": [],
+      "image_grid_thw": [],
+      "vision_token_counts": {
+        "<|vision_start|>": 0,
+        "<|vision_end|>": 0,
+        "<|image_pad|>": 0,
+        "<|video_pad|>": 0
+      }
+    },
+    {
+      "name": "yellow_images_1_decision_004",
+      "actual_image_count": 1,
+      "normalized_rgb_sha256s": [
+        "8508a6b54182e3d0bca0cc0a6dae5fe7b5f75ab106473e2add1c8f57360a0e40"
+      ],
+      "image_grid_thw": [
+        [
+          1,
+          30,
+          40
+        ]
+      ],
+      "input_tokens": 2034,
+      "encoding_path": "processor_images"
+    },
+    {
+      "name": "blue_images_2_decision_005",
+      "actual_image_count": 2,
+      "normalized_rgb_sha256s": [
+        "20d572a2bed976b79acedd1eb1202017789264c5bdb7abc18d4971676bdd39c6",
+        "59ada426288fa841c08759d3304bb911fb838efa14b13b7240a42c92c89df0da"
+      ],
+      "image_grid_thw": [
+        [
+          1,
+          30,
+          40
+        ],
+        [
+          1,
+          30,
+          40
+        ]
+      ],
+      "input_tokens": 2342,
+      "encoding_path": "processor_images"
+    },
+    {
+      "name": "yellow_images_1_decision_005",
+      "actual_image_count": 1,
+      "normalized_rgb_sha256s": [
+        "ea7374172b3bb156d121afdc59d4548b205e52fec4cc12f0ea11ba629a8498aa"
+      ],
+      "image_grid_thw": [
+        [
+          1,
+          30,
+          40
+        ]
+      ],
+      "input_tokens": 2035,
+      "encoding_path": "processor_images"
+    },
+    {
+      "name": "yellow_images_1_decision_001",
+      "actual_image_count": 1,
+      "normalized_rgb_sha256s": [
+        "921034f102a2018bd0fc4ad5c8af9ffc83556439350e044cb8628e3d5885d706"
+      ],
+      "image_grid_thw": [
+        [
+          1,
+          30,
+          40
+        ]
+      ],
+      "input_tokens": 2032,
+      "encoding_path": "processor_images"
+    },
+    {
+      "name": "yellow_images_0_decision_003",
+      "actual_image_count": 0,
+      "encoding_path": "tokenizer_only",
+      "input_tokens": 1724,
+      "normalized_rgb_sha256s": [],
+      "image_grid_thw": [],
+      "vision_token_counts": {
+        "<|vision_start|>": 0,
+        "<|vision_end|>": 0,
+        "<|image_pad|>": 0,
+        "<|video_pad|>": 0
+      }
+    },
+    {
+      "name": "yellow_images_1_decision_007",
+      "actual_image_count": 1,
+      "normalized_rgb_sha256s": [
+        "e25f1e50371cd173f190c28ce27504b98741279996b3fb3b6d780abb85ba7dcd"
+      ],
+      "image_grid_thw": [
+        [
+          1,
+          30,
+          40
+        ]
+      ],
+      "input_tokens": 2032,
+      "encoding_path": "processor_images"
+    },
+    {
+      "name": "yellow_images_0_decision_005",
+      "actual_image_count": 0,
+      "encoding_path": "tokenizer_only",
+      "input_tokens": 1728,
+      "normalized_rgb_sha256s": [],
+      "image_grid_thw": [],
+      "vision_token_counts": {
+        "<|vision_start|>": 0,
+        "<|vision_end|>": 0,
+        "<|image_pad|>": 0,
+        "<|video_pad|>": 0
+      }
+    },
+    {
+      "name": "blue_images_0_decision_006",
+      "actual_image_count": 0,
+      "encoding_path": "tokenizer_only",
+      "input_tokens": 1728,
+      "normalized_rgb_sha256s": [],
+      "image_grid_thw": [],
+      "vision_token_counts": {
+        "<|vision_start|>": 0,
+        "<|vision_end|>": 0,
+        "<|image_pad|>": 0,
+        "<|video_pad|>": 0
+      }
+    },
+    {
+      "name": "yellow_images_2_decision_007",
+      "actual_image_count": 2,
+      "normalized_rgb_sha256s": [
+        "e25f1e50371cd173f190c28ce27504b98741279996b3fb3b6d780abb85ba7dcd",
+        "d112b4f851276ce6cff25d62705231c76ed499679ed64f8d7208137e16511b87"
+      ],
+      "image_grid_thw": [
+        [
+          1,
+          30,
+          40
+        ],
+        [
+          1,
+          30,
+          40
+        ]
+      ],
+      "input_tokens": 2339,
+      "encoding_path": "processor_images"
+    },
+    {
+      "name": "yellow_images_2_decision_002",
+      "actual_image_count": 2,
+      "normalized_rgb_sha256s": [
+        "5de7d4554246374527f3f69f596d34efb638ecc1a1a369c847c2201ff693cbea",
+        "72227e99cf1b7602647de9d95c61b6f210e816ed7b93fbecbd90350fbf6680d9"
+      ],
+      "image_grid_thw": [
+        [
+          1,
+          30,
+          40
+        ],
+        [
+          1,
+          30,
+          40
+        ]
+      ],
+      "input_tokens": 2340,
+      "encoding_path": "processor_images"
+    },
+    {
+      "name": "blue_images_1_decision_003",
+      "actual_image_count": 1,
+      "normalized_rgb_sha256s": [
+        "d3df2c3f74e0805141f8867013fc18a63f4ca10253e4f07d0148525056d455e0"
+      ],
+      "image_grid_thw": [
+        [
+          1,
+          30,
+          40
+        ]
+      ],
+      "input_tokens": 2031,
+      "encoding_path": "processor_images"
+    },
+    {
+      "name": "blue_images_2_decision_007",
+      "actual_image_count": 2,
+      "normalized_rgb_sha256s": [
+        "64aa66973f7505bc1bdb60ab5adfc69b24cc7b5eea00ed033353ff946df44c81",
+        "fd96016c5fe163d734a326215db05e2b7885b48513b47ead2a869b0bc2957453"
+      ],
+      "image_grid_thw": [
+        [
+          1,
+          30,
+          40
+        ],
+        [
+          1,
+          30,
+          40
+        ]
+      ],
+      "input_tokens": 2339,
+      "encoding_path": "processor_images"
+    },
+    {
+      "name": "yellow_images_1_decision_006",
+      "actual_image_count": 1,
+      "normalized_rgb_sha256s": [
+        "5cc22624e828cb79095ffd902266cc712d566c21443ceb98a9d961c041748ef5"
+      ],
+      "image_grid_thw": [
+        [
+          1,
+          30,
+          40
+        ]
+      ],
+      "input_tokens": 2035,
+      "encoding_path": "processor_images"
+    },
+    {
+      "name": "blue_images_2_decision_002",
+      "actual_image_count": 2,
+      "normalized_rgb_sha256s": [
+        "a7fff3ef67d941b1393fcb37e14571f2fb68b43dff4b268a5058dca3e1844d74",
+        "c9a3dd887b97df0f87e4b702e1e200d59203140bd71986758f15565d94d54df2"
+      ],
+      "image_grid_thw": [
+        [
+          1,
+          30,
+          40
+        ],
+        [
+          1,
+          30,
+          40
+        ]
+      ],
+      "input_tokens": 2340,
+      "encoding_path": "processor_images"
+    },
+    {
+      "name": "yellow_images_2_decision_004",
+      "actual_image_count": 2,
+      "normalized_rgb_sha256s": [
+        "8508a6b54182e3d0bca0cc0a6dae5fe7b5f75ab106473e2add1c8f57360a0e40",
+        "fbd661b064f5e4f4d611eecfcd97ff6fb1fc6e96e21c2ba0ae238b2f0de33bc2"
+      ],
+      "image_grid_thw": [
+        [
+          1,
+          30,
+          40
+        ],
+        [
+          1,
+          30,
+          40
+        ]
+      ],
+      "input_tokens": 2341,
+      "encoding_path": "processor_images"
+    },
+    {
+      "name": "blue_images_1_decision_007",
+      "actual_image_count": 1,
+      "normalized_rgb_sha256s": [
+        "64aa66973f7505bc1bdb60ab5adfc69b24cc7b5eea00ed033353ff946df44c81"
+      ],
+      "image_grid_thw": [
+        [
+          1,
+          30,
+          40
+        ]
+      ],
+      "input_tokens": 2032,
+      "encoding_path": "processor_images"
+    },
+    {
+      "name": "yellow_images_0_decision_001",
+      "actual_image_count": 0,
+      "encoding_path": "tokenizer_only",
+      "input_tokens": 1725,
+      "normalized_rgb_sha256s": [],
+      "image_grid_thw": [],
+      "vision_token_counts": {
+        "<|vision_start|>": 0,
+        "<|vision_end|>": 0,
+        "<|image_pad|>": 0,
+        "<|video_pad|>": 0
+      }
+    },
+    {
+      "name": "blue_images_1_decision_002",
+      "actual_image_count": 1,
+      "normalized_rgb_sha256s": [
+        "a7fff3ef67d941b1393fcb37e14571f2fb68b43dff4b268a5058dca3e1844d74"
+      ],
+      "image_grid_thw": [
+        [
+          1,
+          30,
+          40
+        ]
+      ],
+      "input_tokens": 2033,
+      "encoding_path": "processor_images"
+    },
+    {
+      "name": "blue_images_0_decision_001",
+      "actual_image_count": 0,
+      "encoding_path": "tokenizer_only",
+      "input_tokens": 1725,
+      "normalized_rgb_sha256s": [],
+      "image_grid_thw": [],
+      "vision_token_counts": {
+        "<|vision_start|>": 0,
+        "<|vision_end|>": 0,
+        "<|image_pad|>": 0,
+        "<|video_pad|>": 0
+      }
+    },
+    {
+      "name": "blue_images_0_decision_002",
+      "actual_image_count": 0,
+      "encoding_path": "tokenizer_only",
+      "input_tokens": 1726,
+      "normalized_rgb_sha256s": [],
+      "image_grid_thw": [],
+      "vision_token_counts": {
+        "<|vision_start|>": 0,
+        "<|vision_end|>": 0,
+        "<|image_pad|>": 0,
+        "<|video_pad|>": 0
+      }
+    },
+    {
+      "name": "blue_images_2_decision_001",
+      "actual_image_count": 2,
+      "normalized_rgb_sha256s": [
+        "bceb72acb899df7c2128e383342c0f340a314585cbbb4831e4b4905577fc3665",
+        "dc06fdb0a1edf354a2681a05a46ccc04a497e4e74ca7b1f57eea26b6b4cec857"
+      ],
+      "image_grid_thw": [
+        [
+          1,
+          30,
+          40
+        ],
+        [
+          1,
+          30,
+          40
+        ]
+      ],
+      "input_tokens": 2339,
+      "encoding_path": "processor_images"
+    },
+    {
+      "name": "yellow_images_0_decision_006",
+      "actual_image_count": 0,
+      "encoding_path": "tokenizer_only",
+      "input_tokens": 1728,
+      "normalized_rgb_sha256s": [],
+      "image_grid_thw": [],
+      "vision_token_counts": {
+        "<|vision_start|>": 0,
+        "<|vision_end|>": 0,
+        "<|image_pad|>": 0,
+        "<|video_pad|>": 0
+      }
+    },
+    {
+      "name": "blue_images_2_decision_003",
+      "actual_image_count": 2,
+      "normalized_rgb_sha256s": [
+        "d3df2c3f74e0805141f8867013fc18a63f4ca10253e4f07d0148525056d455e0",
+        "ce2b00219ca6e800d9bf6745e062db3f5bba1ad729ac647420f6aba236267024"
+      ],
+      "image_grid_thw": [
+        [
+          1,
+          30,
+          40
+        ],
+        [
+          1,
+          30,
+          40
+        ]
+      ],
+      "input_tokens": 2338,
+      "encoding_path": "processor_images"
+    },
+    {
+      "name": "yellow_images_2_decision_006",
+      "actual_image_count": 2,
+      "normalized_rgb_sha256s": [
+        "5cc22624e828cb79095ffd902266cc712d566c21443ceb98a9d961c041748ef5",
+        "d5cf64e9ebed42cd7ecaa0ace0e160a3e62aceb089bc4f0c5ec8d23840e8bd36"
+      ],
+      "image_grid_thw": [
+        [
+          1,
+          30,
+          40
+        ],
+        [
+          1,
+          30,
+          40
+        ]
+      ],
+      "input_tokens": 2342,
+      "encoding_path": "processor_images"
+    },
+    {
+      "name": "blue_images_0_decision_003",
+      "actual_image_count": 0,
+      "encoding_path": "tokenizer_only",
+      "input_tokens": 1724,
+      "normalized_rgb_sha256s": [],
+      "image_grid_thw": [],
+      "vision_token_counts": {
+        "<|vision_start|>": 0,
+        "<|vision_end|>": 0,
+        "<|image_pad|>": 0,
+        "<|video_pad|>": 0
+      }
+    },
+    {
+      "name": "blue_images_2_decision_006",
+      "actual_image_count": 2,
+      "normalized_rgb_sha256s": [
+        "dc3cdf9086e71e4095517cd22f8d23dadde655892f7c6d72da274c4f83176719",
+        "f7f09fbeac4ea981121f7eb571823e01efc1f51d9b0446f83f8a87df80fb9845"
+      ],
+      "image_grid_thw": [
+        [
+          1,
+          30,
+          40
+        ],
+        [
+          1,
+          30,
+          40
+        ]
+      ],
+      "input_tokens": 2342,
+      "encoding_path": "processor_images"
+    },
+    {
+      "name": "yellow_images_0_decision_007",
+      "actual_image_count": 0,
+      "encoding_path": "tokenizer_only",
+      "input_tokens": 1725,
+      "normalized_rgb_sha256s": [],
+      "image_grid_thw": [],
+      "vision_token_counts": {
+        "<|vision_start|>": 0,
+        "<|vision_end|>": 0,
+        "<|image_pad|>": 0,
+        "<|video_pad|>": 0
+      }
+    },
+    {
+      "name": "blue_images_0_decision_004",
+      "actual_image_count": 0,
+      "encoding_path": "tokenizer_only",
+      "input_tokens": 1727,
+      "normalized_rgb_sha256s": [],
+      "image_grid_thw": [],
+      "vision_token_counts": {
+        "<|vision_start|>": 0,
+        "<|vision_end|>": 0,
+        "<|image_pad|>": 0,
+        "<|video_pad|>": 0
+      }
+    },
+    {
+      "name": "yellow_images_2_decision_001",
+      "actual_image_count": 2,
+      "normalized_rgb_sha256s": [
+        "921034f102a2018bd0fc4ad5c8af9ffc83556439350e044cb8628e3d5885d706",
+        "a762efdfa6cfcdd82d7c534ae5340748fde9ce2fbea4927cde728cc8f300059f"
+      ],
+      "image_grid_thw": [
+        [
+          1,
+          30,
+          40
+        ],
+        [
+          1,
+          30,
+          40
+        ]
+      ],
+      "input_tokens": 2339,
+      "encoding_path": "processor_images"
+    },
+    {
+      "name": "blue_images_1_decision_006",
+      "actual_image_count": 1,
+      "normalized_rgb_sha256s": [
+        "dc3cdf9086e71e4095517cd22f8d23dadde655892f7c6d72da274c4f83176719"
+      ],
+      "image_grid_thw": [
+        [
+          1,
+          30,
+          40
+        ]
+      ],
+      "input_tokens": 2035,
+      "encoding_path": "processor_images"
+    }
+  ],
+  "dual_stability": [
+    {
+      "cell": "blue_images_2",
+      "stage": 4,
+      "old_choice": "lift",
+      "new_choice": "lift",
+      "probabilities_exact": true,
+      "max_absolute_probability_drift": 0.0
+    },
+    {
+      "cell": "yellow_images_2",
+      "stage": 3,
+      "old_choice": "grasp",
+      "new_choice": "grasp",
+      "probabilities_exact": true,
+      "max_absolute_probability_drift": 0.0
+    },
+    {
+      "cell": "yellow_images_2",
+      "stage": 5,
+      "old_choice": "transport",
+      "new_choice": "transport",
+      "probabilities_exact": true,
+      "max_absolute_probability_drift": 0.0
+    },
+    {
+      "cell": "blue_images_2",
+      "stage": 5,
+      "old_choice": "transport",
+      "new_choice": "transport",
+      "probabilities_exact": true,
+      "max_absolute_probability_drift": 0.0
+    },
+    {
+      "cell": "yellow_images_2",
+      "stage": 7,
+      "old_choice": "release",
+      "new_choice": "release",
+      "probabilities_exact": true,
+      "max_absolute_probability_drift": 0.0
+    },
+    {
+      "cell": "yellow_images_2",
+      "stage": 2,
+      "old_choice": "approach",
+      "new_choice": "approach",
+      "probabilities_exact": true,
+      "max_absolute_probability_drift": 0.0
+    },
+    {
+      "cell": "blue_images_2",
+      "stage": 7,
+      "old_choice": "release",
+      "new_choice": "release",
+      "probabilities_exact": true,
+      "max_absolute_probability_drift": 0.0
+    },
+    {
+      "cell": "blue_images_2",
+      "stage": 2,
+      "old_choice": "approach",
+      "new_choice": "approach",
+      "probabilities_exact": true,
+      "max_absolute_probability_drift": 0.0
+    },
+    {
+      "cell": "yellow_images_2",
+      "stage": 4,
+      "old_choice": "lift",
+      "new_choice": "lift",
+      "probabilities_exact": true,
+      "max_absolute_probability_drift": 0.0
+    },
+    {
+      "cell": "blue_images_2",
+      "stage": 1,
+      "old_choice": "pre_grasp",
+      "new_choice": "pre_grasp",
+      "probabilities_exact": true,
+      "max_absolute_probability_drift": 0.0
+    },
+    {
+      "cell": "blue_images_2",
+      "stage": 3,
+      "old_choice": "grasp",
+      "new_choice": "grasp",
+      "probabilities_exact": true,
+      "max_absolute_probability_drift": 0.0
+    },
+    {
+      "cell": "yellow_images_2",
+      "stage": 6,
+      "old_choice": "lower",
+      "new_choice": "lower",
+      "probabilities_exact": true,
+      "max_absolute_probability_drift": 0.0
+    },
+    {
+      "cell": "blue_images_2",
+      "stage": 6,
+      "old_choice": "lower",
+      "new_choice": "lower",
+      "probabilities_exact": true,
+      "max_absolute_probability_drift": 0.0
+    },
+    {
+      "cell": "yellow_images_2",
+      "stage": 1,
+      "old_choice": "pre_grasp",
+      "new_choice": "pre_grasp",
+      "probabilities_exact": true,
+      "max_absolute_probability_drift": 0.0
+    }
+  ],
+  "exact_top_probability_ties": [
+    {
+      "cell": "yellow_images_0",
+      "stage": 2,
+      "choice": "approach",
+      "ties": [
+        "pre_grasp",
+        "approach"
+      ]
+    },
+    {
+      "cell": "yellow_images_0",
+      "stage": 4,
+      "choice": "abort",
+      "ties": [
+        "lift",
+        "abort"
+      ]
+    },
+    {
+      "cell": "blue_images_1",
+      "stage": 7,
+      "choice": "lift",
+      "ties": [
+        "lift",
+        "release"
+      ]
+    },
+    {
+      "cell": "blue_images_0",
+      "stage": 2,
+      "choice": "approach",
+      "ties": [
+        "pre_grasp",
+        "approach"
+      ]
+    },
+    {
+      "cell": "yellow_images_0",
+      "stage": 6,
+      "choice": "abort",
+      "ties": [
+        "lift",
+        "abort"
+      ]
+    },
+    {
+      "cell": "blue_images_0",
+      "stage": 4,
+      "choice": "abort",
+      "ties": [
+        "lift",
+        "abort"
+      ]
+    },
+    {
+      "cell": "blue_images_1",
+      "stage": 6,
+      "choice": "lower",
+      "ties": [
+        "transport",
+        "lower"
+      ]
+    }
+  ],
+  "performance": [
+    {
+      "images": 0,
+      "count": 14,
+      "input_tokens": {
+        "min": 1724,
+        "max": 1728,
+        "median": 1726.0
+      },
+      "http_seconds": {
+        "min": 0.26753958803601563,
+        "max": 0.736833075992763,
+        "median": 0.29100747301708907
+      }
+    },
+    {
+      "images": 1,
+      "count": 14,
+      "input_tokens": {
+        "min": 2031,
+        "max": 2035,
+        "median": 2033.0
+      },
+      "http_seconds": {
+        "min": 8.072466940851882,
+        "max": 8.990740471053869,
+        "median": 8.136181141482666
+      }
+    },
+    {
+      "images": 2,
+      "count": 14,
+      "input_tokens": {
+        "min": 2338,
+        "max": 2342,
+        "median": 2340.0
+      },
+      "http_seconds": {
+        "min": 15.83402080507949,
+        "max": 17.65463222609833,
+        "median": 16.037084204494022
+      }
+    }
+  ],
+  "final_stage_metrics": [
+    {
+      "id": "blue_images_0",
+      "agreement": 2,
+      "lower_probability": 0.04318946712082492,
+      "release_probability": 0.232918158270209
+    },
+    {
+      "id": "blue_images_1",
+      "agreement": 6,
+      "lower_probability": 0.24399594776602213,
+      "release_probability": 0.3788026511483442
+    },
+    {
+      "id": "blue_images_2",
+      "agreement": 7,
+      "lower_probability": 0.258987252254873,
+      "release_probability": 0.37348323427428876
+    },
+    {
+      "id": "yellow_images_0",
+      "agreement": 2,
+      "lower_probability": 0.053704694321013796,
+      "release_probability": 0.24493605505054064
+    },
+    {
+      "id": "yellow_images_1",
+      "agreement": 6,
+      "lower_probability": 0.21906303488855763,
+      "release_probability": 0.41538390164897315
+    },
+    {
+      "id": "yellow_images_2",
+      "agreement": 7,
+      "lower_probability": 0.25955848316829944,
+      "release_probability": 0.4190388382623652
+    }
+  ],
+  "run_files_sha256": {
+    "manifest.json": "436044d1ad103d7cd2099474dd77942a8cda42bc3efb6fd567a83bd1cc26cfe9",
+    "summary.json": "0a52669e58d59b81b09fab8a7245e9e390ebea0c1c2be0ff08ce6a265f9a38e5",
+    "final_health.json": "3f113fe3b3cd73a3d5ad5de530369b6f1331b927d02a5f5c600f4cf9a551bea7",
+    "decisions.jsonl": "d6ca6c6acc9ac5e98d58b8a02d6d24b9ac3fcf423053daca951a93ec6dbd65d7",
+    "report.html": "4ce765178c9e9d371ae83fe4269d3428157e43c4d7260411e7223a8db72036e6"
+  },
+  "scope": "Fixed already-observed scene with seven correlated states. Delete only images from previous Chinese spatial prompt. Text/state still contain previous action, proprioception and tool/goal geometry; not independent success, generalization or visual understanding."
+}
