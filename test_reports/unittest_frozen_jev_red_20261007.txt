@@ -1,0 +1,170 @@
+test_all14_actual_bodies_frozen_and_raw_kept_before_basic_validation (tests.test_frozen_jev_run.FrozenJevTests.test_all14_actual_bodies_frozen_and_raw_kept_before_basic_validation) ... ERROR
+test_duplicate_call_or_restart_cannot_reuse_a_consumed_slot (tests.test_frozen_jev_run.FrozenJevTests.test_duplicate_call_or_restart_cannot_reuse_a_consumed_slot) ... ERROR
+test_health_get_is_not_a_prediction_and_wrong_method_is_denied (tests.test_frozen_jev_run.FrozenJevTests.test_health_get_is_not_a_prediction_and_wrong_method_is_denied) ... ERROR
+test_http_error_retains_safe_body_and_request_id_but_no_retry (tests.test_frozen_jev_run.FrozenJevTests.test_http_error_retains_safe_body_and_request_id_but_no_retry) ... ERROR
+test_incomplete_freeze_is_rejected (tests.test_frozen_jev_run.FrozenJevTests.test_incomplete_freeze_is_rejected) ... ERROR
+test_non_json_response_evidence_is_not_lost (tests.test_frozen_jev_run.FrozenJevTests.test_non_json_response_evidence_is_not_lost) ... ERROR
+test_private_echo_and_size_limit_do_not_persist_body (tests.test_frozen_jev_run.FrozenJevTests.test_private_echo_and_size_limit_do_not_persist_body) ... ERROR
+test_wrong_order_body_or_host_never_sent (tests.test_frozen_jev_run.FrozenJevTests.test_wrong_order_body_or_host_never_sent) ... ERROR
+
+======================================================================
+ERROR: test_all14_actual_bodies_frozen_and_raw_kept_before_basic_validation (tests.test_frozen_jev_run.FrozenJevTests.test_all14_actual_bodies_frozen_and_raw_kept_before_basic_validation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_frozen_jev_run.py", line 33, in test_all14_actual_bodies_frozen_and_raw_kept_before_basic_validation
+    capture=self.capture();client=JevClient(token='CPU-fixture-secret');client.opener=capture
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_frozen_jev_run.py", line 28, in capture
+    return module().CaptureOpener(self.frozen,self.root/'wire',self.inner,token='CPU-fixture-secret')
+           ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_frozen_jev_run.py", line 10, in module
+    return importlib.import_module('tools.run_frozen_jev')
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'tools.run_frozen_jev'
+
+======================================================================
+ERROR: test_duplicate_call_or_restart_cannot_reuse_a_consumed_slot (tests.test_frozen_jev_run.FrozenJevTests.test_duplicate_call_or_restart_cannot_reuse_a_consumed_slot)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_frozen_jev_run.py", line 48, in test_duplicate_call_or_restart_cannot_reuse_a_consumed_slot
+    capture=self.capture();capture.open(self.request(),timeout=60)
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_frozen_jev_run.py", line 28, in capture
+    return module().CaptureOpener(self.frozen,self.root/'wire',self.inner,token='CPU-fixture-secret')
+           ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_frozen_jev_run.py", line 10, in module
+    return importlib.import_module('tools.run_frozen_jev')
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'tools.run_frozen_jev'
+
+======================================================================
+ERROR: test_health_get_is_not_a_prediction_and_wrong_method_is_denied (tests.test_frozen_jev_run.FrozenJevTests.test_health_get_is_not_a_prediction_and_wrong_method_is_denied)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_frozen_jev_run.py", line 65, in test_health_get_is_not_a_prediction_and_wrong_method_is_denied
+    capture=self.capture();capture.open(urllib.request.Request('https://api.typesafe.ai/v1/models'),timeout=60)
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_frozen_jev_run.py", line 28, in capture
+    return module().CaptureOpener(self.frozen,self.root/'wire',self.inner,token='CPU-fixture-secret')
+           ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_frozen_jev_run.py", line 10, in module
+    return importlib.import_module('tools.run_frozen_jev')
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'tools.run_frozen_jev'
+
+======================================================================
+ERROR: test_http_error_retains_safe_body_and_request_id_but_no_retry (tests.test_frozen_jev_run.FrozenJevTests.test_http_error_retains_safe_body_and_request_id_but_no_retry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_frozen_jev_run.py", line 54, in test_http_error_retains_safe_body_and_request_id_but_no_retry
+    capture=self.capture();error=urllib.error.HTTPError(JEV_URL,422,'fixture',{'x-typesafe-request-id':'error-id'},io.BytesIO(b'{"detail":"fixture"}'));self.inner.open.side_effect=error
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_frozen_jev_run.py", line 28, in capture
+    return module().CaptureOpener(self.frozen,self.root/'wire',self.inner,token='CPU-fixture-secret')
+           ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_frozen_jev_run.py", line 10, in module
+    return importlib.import_module('tools.run_frozen_jev')
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'tools.run_frozen_jev'
+
+======================================================================
+ERROR: test_incomplete_freeze_is_rejected (tests.test_frozen_jev_run.FrozenJevTests.test_incomplete_freeze_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_frozen_jev_run.py", line 74, in test_incomplete_freeze_is_rejected
+    with self.assertRaises(LabError):module().CaptureOpener(bad,self.root/'wire',self.inner,token='CPU-fixture-secret')
+                                     ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_frozen_jev_run.py", line 10, in module
+    return importlib.import_module('tools.run_frozen_jev')
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'tools.run_frozen_jev'
+
+======================================================================
+ERROR: test_non_json_response_evidence_is_not_lost (tests.test_frozen_jev_run.FrozenJevTests.test_non_json_response_evidence_is_not_lost)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_frozen_jev_run.py", line 69, in test_non_json_response_evidence_is_not_lost
+    self.body=b'fixture invalid JSON';capture=self.capture();client=JevClient(token='CPU-fixture-secret');client.opener=capture
+                                              ~~~~~~~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_frozen_jev_run.py", line 28, in capture
+    return module().CaptureOpener(self.frozen,self.root/'wire',self.inner,token='CPU-fixture-secret')
+           ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_frozen_jev_run.py", line 10, in module
+    return importlib.import_module('tools.run_frozen_jev')
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'tools.run_frozen_jev'
+
+======================================================================
+ERROR: test_private_echo_and_size_limit_do_not_persist_body (tests.test_frozen_jev_run.FrozenJevTests.test_private_echo_and_size_limit_do_not_persist_body)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_frozen_jev_run.py", line 61, in test_private_echo_and_size_limit_do_not_persist_body
+    self.body=body;capture=module().CaptureOpener(self.frozen,Path(folder)/'wire',self.inner,token='CPU-fixture-secret')
+                           ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_frozen_jev_run.py", line 10, in module
+    return importlib.import_module('tools.run_frozen_jev')
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'tools.run_frozen_jev'
+
+======================================================================
+ERROR: test_wrong_order_body_or_host_never_sent (tests.test_frozen_jev_run.FrozenJevTests.test_wrong_order_body_or_host_never_sent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_frozen_jev_run.py", line 43, in test_wrong_order_body_or_host_never_sent
+    capture=self.capture();wrong=self.request();wrong.data=b'{}'
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_frozen_jev_run.py", line 28, in capture
+    return module().CaptureOpener(self.frozen,self.root/'wire',self.inner,token='CPU-fixture-secret')
+           ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_frozen_jev_run.py", line 10, in module
+    return importlib.import_module('tools.run_frozen_jev')
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'tools.run_frozen_jev'
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.036s
+
+FAILED (errors=8)
