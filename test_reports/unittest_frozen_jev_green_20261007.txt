@@ -1,0 +1,38 @@
+test_all14_actual_bodies_frozen_and_raw_kept_before_basic_validation (tests.test_frozen_jev_run.FrozenJevTests.test_all14_actual_bodies_frozen_and_raw_kept_before_basic_validation) ... ok
+test_cli_complete14_with_fake_network_and_frozen_source_gate (tests.test_frozen_jev_run.FrozenJevTests.test_cli_complete14_with_fake_network_and_frozen_source_gate) ... ok
+test_cli_requires_authorization_before_any_io (tests.test_frozen_jev_run.FrozenJevTests.test_cli_requires_authorization_before_any_io) ... usage: run_frozen_jev [-h] --source SOURCE --reference REFERENCE
+                      --frozen FROZEN --output OUTPUT
+                      --wire-output WIRE_OUTPUT --lifecycle LIFECYCLE
+                      [--key-file KEY_FILE] [--authorize-fourteen-calls]
+run_frozen_jev: error: Explicit new14call authorization required
+ok
+test_duplicate_call_or_restart_cannot_reuse_a_consumed_slot (tests.test_frozen_jev_run.FrozenJevTests.test_duplicate_call_or_restart_cannot_reuse_a_consumed_slot) ... ok
+test_health_get_is_not_a_prediction_and_wrong_method_is_denied (tests.test_frozen_jev_run.FrozenJevTests.test_health_get_is_not_a_prediction_and_wrong_method_is_denied) ... ok
+test_http_error_retains_safe_body_and_request_id_but_no_retry (tests.test_frozen_jev_run.FrozenJevTests.test_http_error_retains_safe_body_and_request_id_but_no_retry) ... ok
+test_incomplete_freeze_is_rejected (tests.test_frozen_jev_run.FrozenJevTests.test_incomplete_freeze_is_rejected) ... ok
+test_non_json_response_evidence_is_not_lost (tests.test_frozen_jev_run.FrozenJevTests.test_non_json_response_evidence_is_not_lost) ... ok
+test_private_echo_and_size_limit_do_not_persist_body (tests.test_frozen_jev_run.FrozenJevTests.test_private_echo_and_size_limit_do_not_persist_body) ... ok
+test_wrong_order_body_or_host_never_sent (tests.test_frozen_jev_run.FrozenJevTests.test_wrong_order_body_or_host_never_sent) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.159s
+
+OK
+{
+  "started_utc": "2026-10-07T07:56:34.769956+00:00",
+  "kind": "new_complete_english_jev_group",
+  "validation_policy": "jev_sdk_basic_v1",
+  "frozen_sha256": "ad04f5b3dc89c91b2a265c4c3fdd2bef3d5b487987f156300add9c2cf3a013a4",
+  "driver_sha256": "b46dc94d30508f2496bb77a9aa22648fcd4cd9f459cf53a57e365458b7c79832",
+  "model": "jev-1.13.0",
+  "api_completed": 14,
+  "http_prediction_attempts": 14,
+  "complete": true,
+  "automatic_retries": 0,
+  "new_isaac_process_started": false,
+  "model_had_control": false,
+  "old32batch_resumed": false,
+  "error": null,
+  "ended_utc": "2026-10-07T07:56:34.792803+00:00",
+  "actual_transport_attempts": 14
+}

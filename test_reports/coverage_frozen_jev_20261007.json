@@ -1,0 +1,13 @@
+{
+  "method": "stdlib trace / AST statement lines, not branch coverage",
+  "file": "tools/run_frozen_jev.py",
+  "statement_lines": 63,
+  "covered_lines": 61,
+  "line_percent": 96.83,
+  "uncovered_lines": [
+    71,
+    74
+  ],
+  "cpu_tests": 10,
+  "real_api_calls": 0
+}

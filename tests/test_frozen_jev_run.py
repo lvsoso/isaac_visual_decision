@@ -1,7 +1,7 @@
 """Frozen14 wire capture contracts; no real API or credentials."""
 import copy,importlib,io,json,tempfile,unittest,urllib.error,urllib.request
 from pathlib import Path
-from unittest.mock import Mock
+from unittest.mock import Mock,patch
 from visual_lab.core import ACTIONS,LabError
 from visual_lab.jev import JEV_URL,JevClient,jev_payload
 from tools.freeze_text_study import body_sha256
@@ -72,5 +72,22 @@ class FrozenJevTests(unittest.TestCase):
     def test_incomplete_freeze_is_rejected(self):
         bad=copy.deepcopy(self.frozen);bad['planned_order'].pop()
         with self.assertRaises(LabError):module().CaptureOpener(bad,self.root/'wire',self.inner,token='CPU-fixture-secret')
+    def test_cli_complete14_with_fake_network_and_frozen_source_gate(self):
+        mod=module();self.frozen.update(code_sha256=mod.binding_code_hashes(),driver_sha256=mod.sha256_file(Path(mod.__file__)),
+            model='jev-1.13.0',validation_policy='jev_sdk_basic_v1',count=14,seed=20261006,reference_files_sha256={'fixture':'hash'})
+        frozen=self.root/'frozen.json';frozen.write_text(json.dumps(self.frozen));client=JevClient(token='CPU-fixture-secret');client.opener=self.inner
+        def replay(source,reference,output,actual_client,**kwargs):
+            for job in self.frozen['planned_order']:actual_client.predict(self.frozen['requests'][job['name']])
+            return {'complete':True,'api_completed':14,'error':None}
+        args=['run_frozen_jev','--source',str(self.root/'source'),'--reference',str(self.root/'reference'),'--frozen',str(frozen),
+              '--output',str(self.root/'output'),'--wire-output',str(self.root/'wire'),'--lifecycle',str(self.root/'life.json'),'--authorize-fourteen-calls']
+        with patch.object(mod.sys,'argv',args),patch.object(mod,'JevClient',return_value=client),patch.object(mod,'binding_reference',return_value={'files_sha256':{'fixture':'hash'}}),patch.object(mod,'binding_inputs',return_value=self.frozen['requests']),patch.object(mod,'run_binding_replay',side_effect=replay),patch.object(mod,'build_binding_report'):
+            self.assertEqual(mod.main(),0)
+        life=json.loads((self.root/'life.json').read_text());self.assertTrue(life['complete']);self.assertEqual(life['actual_transport_attempts'],14);self.assertEqual(self.inner.open.call_count,14)
+    def test_cli_requires_authorization_before_any_io(self):
+        mod=module();args=['run_frozen_jev']
+        for name in ['source','reference','frozen','output','wire-output','lifecycle']:args.extend(['--'+name,str(self.root/name)])
+        with patch.object(mod.sys,'argv',args),self.assertRaises(SystemExit) as raised:mod.main()
+        self.assertEqual(raised.exception.code,2);self.inner.open.assert_not_called()
 
 if __name__=='__main__':unittest.main()
