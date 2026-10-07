@@ -71,7 +71,7 @@ def audit(report,jev,wire,frozen,lifecycle,sdk,output,csv_output):
         'groups':groups,'scope':'Fixed-executor trajectory suggestion agreement, not autonomous success/calibration/significance. Seven correlated states; vendor APIs/precision and confidence definitions differ. Intern28historical, Jev14new; no pure-single-run claim.'})
     matrix.sort(key=lambda r:(r['color'],r['stage']))
     with csv_output.open('x',newline='') as f:
-        writer=csv.DictWriter(f,fieldnames=list(matrix[0]));writer.writeheader();writer.writerows(matrix)
+        writer=csv.DictWriter(f,fieldnames=list(matrix[0]),lineterminator='\n');writer.writeheader();writer.writerows(matrix)
     return comparisons
 
 if __name__=='__main__':

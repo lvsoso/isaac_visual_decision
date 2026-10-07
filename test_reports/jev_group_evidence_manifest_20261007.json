@@ -1,6 +1,9 @@
 {
   "archive_sha256": "3a01485059d0a9ebfe81b544c6bb09d9852ade34a4773ae1caa175a0dbeed090",
   "archive_member_count": 212,
+  "csv_delivery_note": "Repository CSV uses canonical LF to match Git; sealed archive retains original CRLF export. All14 parsed rows and values are identical; no new inference or historical raw response changes.",
+  "repository_csv_lf_sha256": "7f68e894c3ec5a0994747ba6dd6c3441efbb9f46bd0edc2f70341e4ede043151",
+  "archived_csv_crlf_sha256": "cafb056b68d1f087eef8e0633c93b45c7ce431098e68d2258b4b9a7702f5a473",
   "private_key_absence_verified": true,
   "modified_and_new_files_private_key_absence_verified": true,
   "archive_includes_new34_raw_http_and_historical28_intern": true,
