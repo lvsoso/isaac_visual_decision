@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="10 个外部具身项目与开放决策模型的源码调研：实际输入、动作空间、测试协议、指标与证据边界。">
+  <title>决策模型与具身智能：输入与测试方法源码调研</title>
+  <style>
+    :root { --paper:#f5f2e9; --surface:#fffdf7; --ink:#202c34; --muted:#5b686e; --line:#d9d8cc; --accent:#175b60; --warm:#9a542c; --warn:#fff1df; --serif:Georgia,"Songti SC","STSong",serif; --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif; --mono:"SFMono-Regular",Consolas,monospace; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:110px; }
+    body { margin:0; color:var(--ink); background:var(--paper); font:15px/1.8 var(--sans); }
+    a { color:var(--accent); text-underline-offset:3px; overflow-wrap:anywhere; }
+    button,input { font:inherit; }
+    button { cursor:pointer; }
+    button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible { outline:3px solid var(--warm); outline-offset:4px; }
+    [hidden] { display:none !important; }
+    .shell { max-width:1400px; margin:auto; padding:0 48px; }
+    .masthead { padding:25px 0 16px; border-bottom:1px solid var(--ink); display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .wordmark { font:700 14px/1.2 var(--mono); letter-spacing:1.8px; }
+    .dateline { color:var(--muted); font:12px/1.6 var(--mono); text-align:right; }
+    .hero { display:grid; grid-template-columns:1fr 310px; gap:54px; padding:54px 0 42px; }
+    .eyebrow { color:var(--accent); font:700 11px/1.6 var(--mono); letter-spacing:2px; text-transform:uppercase; }
+    h1 { font:500 clamp(32px,4vw,52px)/1.25 var(--serif); letter-spacing:-1px; margin:13px 0 20px; }
+    .lead { font-size:17px; max-width:740px; margin:0; color:var(--muted); }
+    .hero-note { border-left:2px solid var(--accent); padding:12px 0 12px 23px; align-self:center; }
+    .hero-note strong { display:block; font-size:22px; margin-bottom:8px; }
+    .hero-note p { margin:0 0 8px; font-size:13px; color:var(--muted); }
+    .scope { display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }
+    .tag { display:inline-block; border:1px solid var(--line); padding:2px 9px; color:var(--muted); font-size:11px; line-height:1.7; background:var(--surface); }
+    .tag.solid { background:var(--accent); color:white; border-color:var(--accent); }
+    .toolbar { position:sticky; top:0; z-index:10; background:var(--paper); border-top:1px solid var(--ink); border-bottom:1px solid var(--line); padding:13px 0; display:flex; align-items:center; flex-wrap:wrap; gap:10px 24px; }
+    .tabs { display:flex; flex-wrap:wrap; gap:4px; }
+    .tabs button { border:0; border-radius:0; background:transparent; padding:7px 11px; font-weight:600; font-size:13px; color:var(--muted); }
+    .tabs button[aria-current="page"] { color:var(--surface); background:var(--ink); }
+    .searchbox { display:flex; align-items:center; gap:8px; margin-left:auto; }
+    .searchbox input { width:220px; background:var(--surface); border:1px solid var(--line); border-radius:0; padding:7px 10px; font-size:12px; }
+    .utility { border:1px solid var(--line); color:var(--ink); background:transparent; padding:7px 12px; font-size:12px; }
+    .search-status { color:var(--muted); font-size:12px; padding-top:12px; min-height:34px; }
+    main { min-height:50vh; }
+    .section-head { display:flex; align-items:baseline; gap:18px; border-bottom:1px solid var(--line); padding:25px 0 14px; margin-bottom:24px; }
+    .section-num { color:var(--warm); font:500 28px var(--serif); }
+    h2 { font:500 27px/1.4 var(--serif); margin:0; }
+    h3 { font-size:17px; line-height:1.5; margin:25px 0 12px; }
+    h4 { font-size:13px; margin:0 0 8px; color:var(--accent); }
+    p { margin:0 0 13px; }
+    .callout { padding:19px 23px; border-left:3px solid var(--warm); background:var(--warn); margin:22px 0; }
+    .callout p:last-child { margin-bottom:0; }
+    .small { font-size:12px; color:var(--muted); }
+    .summary-grid { display:grid; grid-template-columns:1fr 1fr; gap:0 30px; margin:20px 0 32px; }
+    .finding { display:grid; grid-template-columns:32px 1fr; gap:10px; padding:18px 0; border-bottom:1px solid var(--line); }
+    .finding .number { font:23px var(--serif); color:var(--warm); }
+    .finding strong { display:block; margin-bottom:5px; }
+    .finding p { margin:0; font-size:13px; color:var(--muted); }
+    .table-wrap { overflow:auto; border:1px solid var(--line); background:var(--surface); margin:18px 0 24px; }
+    table { border-collapse:collapse; width:100%; font-size:12px; line-height:1.7; }
+    th { background:#eaece3; color:var(--muted); font-size:11px; text-align:left; white-space:nowrap; }
+    th,td { padding:13px 15px; border-bottom:1px solid var(--line); vertical-align:top; }
+    tr:last-child td { border-bottom:0; }
+    td:first-child { min-width:140px; }
+    td .open-project { font-weight:700; border:0; background:transparent; color:var(--accent); text-align:left; padding:0; text-decoration:underline; text-underline-offset:3px; }
+    .table-min { min-width:840px; }
+    .input-layers { display:grid; grid-template-columns:repeat(5,1fr); margin:20px 0; border:1px solid var(--line); }
+    .layer { padding:20px 16px; border-right:1px solid var(--line); background:var(--surface); }
+    .layer:last-child { border-right:0; }
+    .layer span { display:block; color:var(--warm); font:11px var(--mono); margin-bottom:12px; }
+    .layer strong { display:block; font-size:13px; margin-bottom:8px; }
+    .layer p { font-size:12px; margin:0; color:var(--muted); }
+    .view-intro { max-width:930px; color:var(--muted); }
+    .project { background:var(--surface); border:1px solid var(--line); margin:22px 0 34px; scroll-margin-top:110px; }
+    .project-head { padding:25px 28px 20px; border-bottom:1px solid var(--line); display:grid; grid-template-columns:1fr auto; gap:20px; }
+    .project-head h3 { margin:6px 0 10px; font:500 30px var(--serif); }
+    .project-head p { font-size:13px; max-width:850px; margin:0; }
+    .repo-link { align-self:start; font-size:12px; }
+    .meta-line { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:8px; }
+    .revision { color:var(--muted); font:11px/1.6 var(--mono); padding:10px 28px; border-bottom:1px solid var(--line); overflow-wrap:anywhere; }
+    .project-body { padding:24px 28px 26px; }
+    .project-body h3 { margin:0 0 9px; font-size:15px; }
+    .flow { display:flex; align-items:stretch; flex-wrap:wrap; gap:7px; margin-bottom:24px; }
+    .flow-step { flex:1; min-width:130px; border:1px solid var(--line); padding:11px 12px; background:#f1f3ec; font-size:12px; }
+    .flow-step b { display:block; color:var(--accent); font-size:10px; margin-bottom:4px; }
+    .flow-arrow { align-self:center; color:var(--muted); font:18px var(--mono); }
+    .two-col { display:grid; grid-template-columns:1fr 1fr; gap:26px; }
+    .facts { margin:0; padding:0; list-style:none; }
+    .facts li { position:relative; margin:0 0 11px; padding-left:13px; font-size:13px; }
+    .facts li:before { content:""; position:absolute; left:0; top:11px; height:3px; width:4px; background:var(--accent); }
+    .test-block { border-top:1px solid var(--line); margin-top:18px; padding-top:22px; }
+    .evidence { color:var(--muted); font-size:11px; display:inline-block; margin-left:5px; }
+    details { margin-top:17px; border:1px solid var(--line); }
+    summary { padding:12px 15px; font-size:13px; cursor:pointer; background:#f3f2e9; }
+    .detail-content { padding:16px; }
+    .example-label { color:var(--warm); font-size:11px; font-weight:700; margin-bottom:8px; }
+    pre { margin:0 0 12px; padding:16px; background:#23343a; color:#ecf3ee; font:12px/1.7 var(--mono); overflow:auto; tab-size:2; }
+    code { font-family:var(--mono); font-size:0.9em; }
+    .source-list { padding:0; margin:0; list-style:none; }
+    .source-list li { padding:8px 0; border-bottom:1px dotted var(--line); font-size:12px; overflow-wrap:anywhere; }
+    .source-list li:last-child { border:0; }
+    .warning { background:var(--warn); border-left:3px solid var(--warm); padding:15px 17px; margin:20px 0 0; }
+    .warning strong { font-size:13px; }
+    .warning p { font-size:12px; margin:7px 0 0; }
+    .empty { padding:36px 20px; color:var(--muted); border:1px dashed var(--line); }
+    .ladder { margin:22px 0; border-left:2px solid var(--accent); padding-left:22px; }
+    .rung { margin:0 0 24px; }
+    .rung span { color:var(--warm); font:11px var(--mono); }
+    .rung h3 { margin:4px 0 6px; }
+    .rung p { font-size:13px; color:var(--muted); }
+    .formula-box { padding:22px; border:1px solid var(--line); background:var(--surface); margin:24px 0; }
+    .formula-controls { display:flex; align-items:center; flex-wrap:wrap; gap:12px 25px; margin:18px 0; }
+    .formula-controls label { font-size:12px; }
+    .formula-controls input[type="range"] { vertical-align:middle; accent-color:var(--accent); }
+    .formula-values { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; }
+    .formula-values div { border-top:1px solid var(--line); padding-top:12px; }
+    .formula-values span { font-size:11px; color:var(--muted); display:block; }
+    .formula-values output { display:block; color:var(--accent); font:26px var(--serif); margin:5px 0; }
+    .registry-entry { margin-bottom:23px; padding-bottom:20px; border-bottom:1px solid var(--line); }
+    .registry-entry h3 { margin:0 0 6px; }
+    .registry-entry .commit { font:11px var(--mono); overflow-wrap:anywhere; color:var(--muted); }
+    footer { border-top:1px solid var(--ink); margin:50px 0 0; padding:24px 0 36px; display:flex; justify-content:space-between; gap:20px; color:var(--muted); font-size:11px; }
+    .skip { position:absolute; top:-80px; left:20px; padding:10px; background:var(--surface); z-index:30; }
+    .skip:focus { top:10px; }
+    @media(max-width:1000px) { .shell{padding:0 25px}.hero{grid-template-columns:1fr 230px;gap:28px}.input-layers{grid-template-columns:1fr 1fr}.layer{border-bottom:1px solid var(--line)}.toolbar{gap:10px}.searchbox{margin-left:0}.project-head{grid-template-columns:1fr}.repo-link{justify-self:start} }
+    @media(max-width:640px) { body{font-size:14px}.shell{padding:0 17px}.masthead{align-items:start}.dateline{font-size:10px}.wordmark{font-size:11px}.hero{display:block;padding:30px 0}.hero-note{margin-top:25px}.lead{font-size:15px}.toolbar{position:static}.tabs{width:100%}.tabs button{font-size:12px;padding:7px 9px}.searchbox{width:100%}.searchbox input{width:100%}.utility{white-space:nowrap}.summary-grid,.two-col{grid-template-columns:1fr}.input-layers{grid-template-columns:1fr}.layer{border-right:0}.section-head{gap:12px}h2{font-size:23px}.project-head,.project-body{padding:19px 17px}.revision{padding:10px 17px}.project-head h3{font-size:25px}.flow{display:grid;grid-template-columns:1fr}.flow-arrow{display:none}.formula-values{grid-template-columns:1fr}footer{display:block}footer span{display:block;margin-bottom:8px} }
+    @media print { body{background:white;font-size:10pt}.shell{padding:0;max-width:none}.masthead,.hero{padding-top:12px}.hero{grid-template-columns:1fr 220px}.toolbar,.search-status,.skip,.utility{display:none !important}.view[hidden],.project[hidden],.registry-entry[hidden],tr[hidden]{display:block !important}.view{break-before:page}.view:first-child{break-before:auto}tr[hidden]{display:table-row !important}.project{break-inside:auto}.project-head,.flow,.warning{break-inside:avoid}.project-body{padding:18px}.two-col{grid-template-columns:1fr 1fr}details{break-inside:avoid}details>.detail-content{display:block !important}summary{display:none}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f4f4f4;color:black}.table-wrap{overflow:visible}.table-min{min-width:0}th,td{padding:6px;font-size:8pt}a{color:inherit}.empty{display:none !important} }
+    @media(prefers-reduced-motion:reduce) { html{scroll-behavior:auto} }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#report-main">跳到报告正文</a>
+  <div class="shell">
+    <header class="masthead"><div class="wordmark">DECISION / EMBODIMENT</div><div class="dateline">SOURCE REVIEW · 2026-10-07<br>独立调研 · 固定源码快照</div></header>
+    <div class="hero">
+      <div><div class="eyebrow">Research Dossier / Inputs &amp; Evaluation</div><h1>模型到底看到了什么，<br>测试到底证明了什么。</h1><p class="lead">对 6 个具身项目与 4 个开放决策模型逐项核对输入构造、候选空间、执行代码、保存例子与评测协议。不是演示集锦，也不是模型排行榜。</p><div class="scope"><span class="tag solid">10 个外部项目</span><span class="tag">源码 + 保存工件</span><span class="tag">不含本项目报告</span><span class="tag">未运行模型 / 机器人</span></div></div>
+      <aside class="hero-note"><strong>先看数据边界，<br>再看成功数字。</strong><p>“模型输入”只算实际进入模型请求的内容。相机画面、仿真状态、控制器信息与评分真值分开描述。</p><p>全部运行成绩标为作者报告。源码可解释机制，但不替代实验复现。</p></aside>
+    </div>
+    <nav class="toolbar" aria-label="报告章节"><div class="tabs"><button type="button" data-target="overview" aria-current="page">结论与对照</button><button type="button" data-target="embodied">具身项目 · 6</button><button type="button" data-target="models">决策模型 · 4</button><button type="button" data-target="methods">测试方法</button><button type="button" data-target="sources">证据索引</button></div><div class="searchbox"><input id="search" type="search" aria-label="搜索外部项目、输入字段或测试指标" placeholder="搜索项目、RGB、Brier、预演…"><button class="utility" id="print" type="button">打印 / PDF</button></div></nav>
+    <div id="search-status" class="search-status" role="status" aria-live="polite">点击项目名查看代码与例子；可按关键词检索全部项目。</div>
+    <main id="report-main">
+      <section class="view" id="overview" data-view="overview" aria-labelledby="overview-title">
+        <div class="section-head"><span class="section-num">01</span><h2 id="overview-title">不要把不同测试当成同一个问题</h2></div>
+        <div class="summary-grid">
+          <div class="finding"><span class="number">1</span><div><strong>Jev 不看图，观测先被翻译为文字。</strong><p>当前 Jev 1.13 是 text-only。六个具身项目中的 Jev 路径都将观测转为坐标、关系、接触、可见性或候选效果；Intern-Decision 则有真实图片编码路径。</p></div></div>
+          <div class="finding"><span class="number">2</span><div><strong>状态选对，不等于闭环任务做成。</strong><p>文本准确率、合成空间探针、单回合演示、物理任务成功率、API 吞吐是五类证据，分母和成功定义不同，不能直接互换。</p></div></div>
+          <div class="finding"><span class="number">3</span><div><strong>动作候选里已经包含大量工程能力。</strong><p>IK、预设抓取姿态、动态候选过滤、仿真分支和安全否决由程序提供。jev-libero 甚至先计算候选动作的反事实结果，再让模型选择。</p></div></div>
+          <div class="finding"><span class="number">4</span><div><strong>“成功”可能没有验证完整操作。</strong><p>jev-libero 的 soup 记录通过原始 LIBERO 判据时物体仍被夹住；EmbodiedJev 的两局终态通过包含失抓落盘；无人机 crossed_barrier 只表示跨第一道梁。</p></div></div>
+          <div class="finding"><span class="number">5</span><div><strong>同一个 confidence 数值，也不是同一把尺。</strong><p>Jev / Kev 的 Choice confidence 对均匀基线归一化；Intern 用 max(P)；SemIf 默认读出未校准；AnyJev L0 是无标签纠偏，不是监督概率校准。</p></div></div>
+          <div class="finding"><span class="number">6</span><div><strong>最新代码不一定对应旧演示。</strong><p>EmbodiedJev LIBERO v1 与 v2、RoboJEV 不同评测 campaign、AnyJev 旧 L1 与当前 L0/Tacit 都必须分版本。保存示例的 schema 也可能落后于 HEAD。</p></div></div>
+        </div>
+        <h3>输入不是单一的“state”：先区分五层</h3>
+        <div class="input-layers"><div class="layer"><span>DATA / 01</span><strong>原始图像</strong><p>RGB 字节、像素与图像 token。Intern 支持；Jev 不支持。上传图像不等于已证明视觉控制能力。</p></div><div class="layer"><span>DATA / 02</span><strong>视觉派生状态</strong><p>RGB-D 前处理得到坐标、距离、标签、可见性。能力归属：感知代码与决策模型分开。</p></div><div class="layer"><span>DATA / 03</span><strong>仿真特权状态</strong><p>直接读对象真值坐标、理想接触、geom ID。可做决策隔离实验，但不是现实感知链。</p></div><div class="layer"><span>DATA / 04</span><strong>反事实候选效果</strong><p>仿真器先执行分支，回传碰撞、进展乃至成功标志。模型做筛选，预测来自仿真器。</p></div><div class="layer"><span>DATA / 05</span><strong>监督与评分真值</strong><p>label、targets、y、独立物理 evaluator。只进训练损失或离线评分，不能混入待测证据。</p></div></div>
+        <h3>六个具身项目：它们到底在测哪一段？</h3><p class="small">窄屏可在表格内横向滚动；点击项目名展开对应源码分析。</p><div class="table-wrap"><table class="table-min"><thead><tr><th>项目</th><th>实际模型输入</th><th>模型输出 / 执行者</th><th>主要测试</th><th>最重要的边界</th></tr></thead><tbody id="embodied-matrix"></tbody></table></div>
+        <h3>四个决策模型：输入相似，读出机制不同</h3><div class="table-wrap"><table class="table-min"><thead><tr><th>项目</th><th>输入与模态</th><th>候选概率从哪里来</th><th>主要测试</th><th>不能推出</th></tr></thead><tbody id="model-matrix"></tbody></table></div>
+        <div class="callout"><strong>没有足够证据支持跨项目模型排名。</strong><p>这些仓库改变了输入信息量、动作粒度、控制器、重试、时间预算或 baseline 能力。报告不把各自展示的成功率、速度倍率和费用倍率拼成一张“谁最强”的榜单。</p></div>
+        <p class="small">正文中的证据分为：固定 SHA 源码、仓库保存工件、作者实验报告、本报告归纳。没有运行付费 API、下载模型权重、启动机器人或验证 GPU 性能。HTML 页面验证仅检查报告本身。</p>
+      </section>
+      <section class="view" id="embodied" data-view="embodied" hidden aria-labelledby="embodied-title"><div class="section-head"><span class="section-num">02</span><h2 id="embodied-title">具身项目：从观测到执行</h2></div><p class="view-intro">每项都给出实际输入、问题依赖、代码负责的部分、测试协议与失败口径。展开“输入例子”查看真实保存字段或明确标注的重构示意。</p><div id="embodied-projects"></div><p class="empty" id="embodied-empty" hidden>该分类没有匹配项目。请清空搜索，或切换“决策模型”。</p></section>
+      <section class="view" id="models" data-view="models" hidden aria-labelledby="models-title"><div class="section-head"><span class="section-num">03</span><h2 id="models-title">决策模型：从提示到候选分布</h2></div><p class="view-intro">结构化输出接口相似，并不代表架构、校准、图片支持、问题隔离或计算预算相同。这里分析的是公开代码，不把文本测试当作机器人实验。</p><div id="model-projects"></div><p class="empty" id="models-empty" hidden>该分类没有匹配项目。请清空搜索，或切换“具身项目”。</p></section>
+      <section class="view" id="methods" data-view="methods" hidden aria-labelledby="methods-title">
+        <div class="section-head"><span class="section-num">04</span><h2 id="methods-title">它们的测试思路，可以拆成五层</h2></div>
+        <div class="ladder"><div class="rung"><span>LEVEL 1 / CONTRACT</span><h3>接口、约束与软件回归</h3><p>验证 schema、合法候选、概率形状、取消、过期响应、快照恢复、传输失败和硬安全门。RoboJEV、jev-libero、EmbodiedJev 有 mock / 离线软件测试；官方 Jev SDK 的 live integration 主要断言返回字段和范围。它们证明软件契约，不证明语义判断正确或机器人完成任务。</p></div><div class="rung"><span>LEVEL 2 / OFFLINE DECISIONS</span><h3>冻结状态集与合成探针</h3><p>给固定 state + question + candidates，独立标签评分，保存完整输出。Kev、SemIf、Intern 的文字套件和 RoboJev 的空间 / standing-order 探针属于此层。训练 label 与评测 y 必须剥离；按场景、题族、轨迹分组，而不只是按单行随机划分。</p></div><div class="rung"><span>LEVEL 3 / CALIBRATION &amp; SYSTEMS</span><h3>概率、顺序、共享缓存与延迟</h3><p>固定模型 / 提示 / 输入后测试 NLL、Brier、ECE、候选重排、原始与共享缓存一致性、风险-覆盖、网络 / 推理 / 排队时延。SemIf 的 direct-vs-generation 是系统实验，不是等质量证明；AnyJev L0 的停止证书保证与自身全轮答案一致，不保证正确。</p></div><div class="rung"><span>LEVEL 4 / SIM CLOSED LOOP</span><h3>模型真实接管后的独立回合</h3><p>同初态、同动作菜单、同执行器和预算，执行模型选择，重新观测，用独立物理谓词评分。RoboJEV 的固定种子 + 独立规则策略是较清晰范例；jev-libero 额外享有分支预演，应单列设置。保存所有失败、无效响应、预算耗尽和复试历史。</p></div><div class="rung"><span>LEVEL 5 / HARDWARE</span><h3>真实感知、异步时序与硬安全</h3><p>alee792/RoboJev 提供真机观察与事件驱动工程，但缺少完整公开运行日志和系统性成功率评测。必须记录标定、感知失败、快照年龄、力 / 温度 / 工作区限制。网络模型不能替代高频飞控、关节伺服或独立急停。</p></div></div>
+        <h3>常见指标：分母与语义必须一起写</h3>
+        <div class="table-wrap"><table class="table-min"><thead><tr><th>指标</th><th>含义 / 常用计算</th><th>这些项目中的陷阱</th></tr></thead><tbody><tr><td>准确率 / agreement</td><td>argmax 与参考标签一致数 / 预先确定的总数</td><td>参考可能是人工标签、几何标签、参考模型众数或固定序列；它们不是同一“真值”。多字段一行不等于一个决策。</td></tr><tr><td>物理成功率</td><td>满足独立终态谓词的回合 / 全部计划回合</td><td>必须说明是否需要松爪、稳定支撑、撤离、零碰撞；不得把“到达容器”自动写成“完整放置”。</td></tr><tr><td>Brier</td><td>常见多类形式 mean Σk(pk − yk)²，取值随定义 / 类别数而变</td><td>已知分布 pilot 用期望 Brier，含不可约随机性；不能与一次采样标签的经验 Brier 或二类单项版本直接比。</td></tr><tr><td>ECE</td><td>按 confidence 分箱，Σb nb/N × |accb − confb|</td><td>分箱、confidence 定义、参考分布、拟合/测试是否同批都改变口径。温度缩放不改变 argmax。</td></tr><tr><td>风险-覆盖</td><td>coverage = 被接受样本 / 全部样本；risk = 接受子集错误数 / 接受数</td><td>评测集上找出的 coverage@5% 不是部署保证；阈值应在独立校准集确定，再评价 held-out 风险。</td></tr><tr><td>选项翻转</td><td>重排后映回语义候选 ID，检查选择是否改变</td><td>不能比较 A/B 字母。SemIf 的选项翻转与 BF16 shared-vs-fresh 翻转是两个不同实验。</td></tr><tr><td>调用频率 / 延迟</td><td>尝试数、完成数、采用数分别计数；p50/p95 + 模型/排队/网络分解</td><td>控制循环 10 Hz ≠ Jev 10 Hz；80 调用 / 65 s ≈ 1.23 Hz。仿真暂停等待、剪去 API 等待的视频不证明实时性。</td></tr><tr><td>费用</td><td>实际计费用量 / 回合，包含两层模型、重试、失败和拒绝</td><td>有的作者用官方单价估算；单次成功录像与含失败的完整 campaign 不能同分母比较。</td></tr></tbody></table></div>
+        <div class="formula-box"><h3>交互例子：max(P) 和 Jev Choice confidence 并不相等</h3><p class="small">纯数学示意，不是模型输出或校准结果。将同一 p_max 代入两种统计量；不能据此估计动作成功率。</p><div class="formula-controls"><label>候选数 <input id="candidate-count" type="range" min="2" max="16" value="8"> <output id="candidate-value">8</output></label><label>最高候选概率 <input id="pmax" type="range" min="13" max="100" value="80"> <output id="pmax-value">0.80</output></label></div><div class="formula-values"><div><span>Intern 的 confidence 口径</span><output id="confidence-max">0.80</output><code>max(P)</code></div><div><span>Jev / Kev Choice 口径</span><output id="confidence-choice">0.771</output><code>(p_max − 1/n) / (1 − 1/n)</code></div><div><span>物理任务成功概率</span><output>未知</output><span>缺少该任务与执行器上的独立标定</span></div></div><p class="small" style="margin-top:15px">公式来源：<a href="https://docs.typesafe.ai/confidence#choice" target="_blank" rel="noopener noreferrer">TypeSafe Confidence</a>。Intern 读出来源见其固定 SHA 的 inference/engine.py。Score 与 Noul 不能直接套用 Choice 公式。</p></div>
+        <h3>从这些代码归纳出的合理对照设计</h3><div class="table-wrap"><table class="table-min"><thead><tr><th>实验</th><th>只改变什么</th><th>必须固定什么</th><th>建议保留的证据</th></tr></thead><tbody><tr><td>输入来源消融</td><td>真值坐标 / 视觉估计 / 原始 RGB / 历史 / 反事实预演</td><td>任务、初态、候选、执行器、版本、预算；不支持 RGB 的模型只做文字组</td><td>实际 wire payload、观测时间、感知来源、候选生成逻辑；原始图只作审计时需明确</td></tr><tr><td>读出机制对照</td><td>生成 JSON / direct logits / trained pointer / L0 / adaptive CoT</td><td>同底座、同提示信息、候选语义与总计算预算</td><td>accuracy、无效输出、候选顺序敏感性、吞吐和推理 token；多次 forward 与推理升级预算</td></tr><tr><td>闭环与恢复</td><td>规则、FSM、模型选择</td><td>同一套动作能力与前置条件、IK、安全门、观察与时序</td><td>独立回合成功、跌落、碰撞、超时、abort；每次建议 / 执行 / 被否决分别记录</td></tr><tr><td>受控失败反例</td><td>空抓、失抓、遮挡、目标移动、感知冲突、API过期</td><td>成功判据、拒绝与重试政策、场景分组划分</td><td>合理动作集合而非唯一脚本标签；危险继续率、错误释放率、错误接受率</td></tr></tbody></table></div>
+        <div class="callout"><strong>这是跨外部项目的归纳，不是已完成的新实验。</strong><p>公平 baseline 必须具有相同可执行动作。若规则没有 climb 而模型有，或模型能读仿真预演而 baseline 不能，就应报告为“信息 / 动作能力增量”，不能归因于纯模型决策优势。</p></div>
+        <h3>官方 Jev SDK 的测试，为什么也不能当作模型质量测试</h3><p>固定 SDK <code>f078f1e208a0d885154dc758344ae4fce77ac168</code> 的 <a href="https://github.com/typesafe-ai/typesafe-sdk-python/blob/f078f1e208a0d885154dc758344ae4fce77ac168/tests/test_integration.py" target="_blank" rel="noopener noreferrer">test_integration.py</a> 给“重复扣费”state 同时问 billing Noul、tone Choice、urgency Score，主要检查模型名、用量、合法范围、候选集合、legend 与概率和。它没有断言该样本的语义 gold label，更没有机器人成功条件。<a href="https://github.com/typesafe-ai/typesafe-sdk-python/blob/f078f1e208a0d885154dc758344ae4fce77ac168/src/typesafe_sdk/_core/questions.py" target="_blank" rel="noopener noreferrer">questions.py</a> 验证输入契约；SDK 开源不等于 Jev 内部训练实现公开。</p>
+      </section>
+      <section class="view" id="sources" data-view="sources" hidden aria-labelledby="sources-title"><div class="section-head"><span class="section-num">05</span><h2 id="sources-title">证据索引与版本边界</h2></div><p class="view-intro">GitHub 默认分支与提交通过 API 查询后固定。下面链接直接指向 commit SHA，不随 main/master 后续更新。指标来源的保存版本可能更早；每项“不能推出”的说明保留了这一限制。</p><div class="callout"><strong>阅读顺序：请求构造 → 执行 / 成功判据 → 保存样例 → 测试脚本 → 作者报告。</strong><p>文档与代码不一致时，以具体代码和原始工件描述该快照，保留矛盾，不把旧说明悄悄补成新成绩。报告未声称已独立复现。</p></div><div id="source-registry"></div><h3>官方接口与定义</h3><ul class="source-list"><li><a href="https://docs.typesafe.ai/models" target="_blank" rel="noopener noreferrer">TypeSafe Models</a>：Jev 1.13 text-only；网页为调研日读取，非不可变版本。</li><li><a href="https://docs.typesafe.ai/concepts/state" target="_blank" rel="noopener noreferrer">TypeSafe State</a>：文字 / JSON 状态与问题分离。</li><li><a href="https://docs.typesafe.ai/confidence" target="_blank" rel="noopener noreferrer">TypeSafe Confidence</a>：Choice / Score / Noul 的概率和统计量定义。</li><li><a href="https://github.com/typesafe-ai/typesafe-sdk-python/tree/f078f1e208a0d885154dc758344ae4fce77ac168" target="_blank" rel="noopener noreferrer">TypeSafe Python SDK @ f078f1e</a>：公开接口测试，不是 Jev 模型内部代码。</li></ul><p class="small" style="margin-top:22px">研究与页面日期：2026-10-07。运行数据来自上游；无新增模型或机器人试次。所有短示例明确区分“原文字段节选”“旧 schema 记录”“接口重构”，不将删减片段当作可直接执行的完整请求。</p></section>
+    </main>
+    <footer><span>决策模型与具身智能 / 输入与测试方法源码调研</span><span>独立 research worktree · 无外部脚本 / 字体 / CDN · 可离线打开</span></footer>
+    <noscript><div class="callout">此报告的项目详解由内嵌 JavaScript 生成。请启用 JavaScript 查看 10 个项目与源码索引；报告不会发起模型或 API 请求。</div></noscript>
+  </div>
+  <script>
+    'use strict';
+    const projects = [
+      {
+        id:'robojev-sim',name:'RoboJEV · Panda',repo:'lykycy123/RoboJEV',branch:'main',sha:'2c920c29e5e76cc57908b3c05907d7c5d91565c1',group:'embodied',tags:['MuJoCo / Panda','意图 → 运动','固定种子配对'],
+        thesis:'用特权几何与真实接触驱动两阶段决策。它的强项是保留失败、独立成功谓词与规则对照，而不是视觉模型评测。',
+        matrix:['仿真坐标、夹持、指接触、目标误差、近期8次动作','意图 → 四题XYZ/夹爪；本地DLS IK与摩擦接触','五任务×10种子×两策略；另40集输入消融','无RGB；runtime排除口径；不同campaign不可池化'],
+        flow:['MuJoCo几何 / 接触','state + recent_actions','intent → motor四题','DLS IK / 接触物理'],
+        input:[
+          ['model/state/questions为HTTP外层。state含robot、objects、target、relations、recent_actions及任务/时间/ID元数据；机器人位置/姿态、夹爪宽度、指接触、held_object来自仿真。机器人基座系、米、wxyz四元数，英语说明，无RGB。',1],
+          ['保留recent_actions，默认最近8次；第二请求加入jev_intent。状态可含当前包含、支撑辅助事实，但不是未来分支after.success。',1],
+          ['full_geometry是额外特权几何输入消融；不能把更详细真值观测叫作感知能力提升。',5]
+        ],
+        decision:[
+          ['默认至少两次串行API：意图选择，再X/Y/Z各negative/zero/positive及gripper open/hold/close，同一motor请求回答四通道。',0],
+          ['控制器归一非零方向为1 cm位移，靠近插孔轴线时4 mm；姿态保持向下，DLS IK/关节控制/摩擦接触由程序负责。',6],
+          ['API调用与恢复期间暂停物理；无效响应不执行。规则策略独立运行，不是Jev失误后的fallback。',3]
+        ],
+        tests:[
+          ['历史五任务×seeds0–9×JEV/规则共100回合、分两份冻结源码实验；JEV抓放/推物/台座堆放/插入/单门为10/10、10/10、8/10、10/10、5/10；规则为10/10、10/10、10/10、10/10、8/10。每任务只有10个样本。',9],
+          ['普通抓放成功要求曾抬起≥50mm、释放、完全包含、底部误差≤5mm、线速度<0.02m/s、角速度<0.2rad/s持续0.5秒；不要求撤回。挑战任务另加合法过门/净空/碰撞检查。',2],
+          ['evaluate_suite按任务×种子×策略槽位统计；runtime_error从分母排除，完成的失败保留。报告完整运行覆盖和模型响应错误，不能只给成功录像。',3],
+          ['另40回合：单/双门×10种子×legacy/full_geometry；单门3/10 vs 2/10，双门均0/10。40集含5成功、23碰撞、2预算、10响应校验失败；113恢复传输异常与38个HTTP402另记。',5]
+        ],
+        cautions:['历史100集与新40集是不同实验，不能相加做统一成功率。离线回放验证也不增加独立试次。','full_geometry没有观察到提升；10个配对样本不足以证明等价或普遍变差。','“zero-shot”仅指不做当前任务模型训练，不代表没有手工任务提示、特权状态或几何执行器。'],
+        example:{label:'公开失败状态摘要原文节选；不是完整HTTP请求',code:JSON.stringify({held_object:'cube',measured:{beyond_gate:true,transport_ready:false,object_bottom_m:0.05176976070145248}},null,2),note:'单门legacy seed0，第346次决策的公开摘要。完整线上state还包括robot/object/goal和history；这个片段不能单独重放请求。',source:4},
+        sources:[['src/jev_vla_sim/policy.py','210-250','两阶段请求与motor依赖'],['src/jev_vla_sim/state.py','11-76','观测和recent_actions构造'],['src/jev_vla_sim/tasks.py','82-115','普通任务独立成功谓词'],['scripts/evaluate_suite.py','18-77','槽位与分母/运行错误口径'],['site/data/observation-resilient-failures.json','43-82','公开失败状态摘要'],['site/data/observation-resilient.json','479-520','40集输入消融统计'],['README.md','','历史100集、控制粒度与作者边界'],['src/jev_vla_sim/challenge.py','183-227','挑战任务成功/失败检查'],['src/jev_vla_sim/double_gate.py','90-141','双门检查'],['site/data/results.json','3-429','历史100回合两策略逐任务结果'],['src/jev_vla_sim/types.py','46-69','完整state字段与单位契约']]
+      },
+      {
+        id:'jev-libero',name:'jev-libero',repo:'Dimweaker/jev-libero',branch:'main',sha:'3bdad985b225aeccc39fbe5863c6eea2e81c515a',group:'embodied',tags:['LIBERO / MuJoCo','反事实物理预演','三级选择'],
+        thesis:'模型拿到的不是单纯当前观测：完整可恢复仿真先预演27原子输入，候选的效果/碰撞/成功事实参与选择。',
+        matrix:['当前特权状态 + 历史真实结果 + 预演候选效果 / success投影','intent → contact/motion family → atomic input；仿真器预测','六份开发记录、快照/回放/几何/预测一致性测试','soup通过包含判据但仍夹持；没有完整LIBERO成功率评测'],
+        flow:['完整MuJoCo快照','27动作 / 一二步分支预演','意图 → 类别 → input','执行 / 原LIBERO评分'],
+        input:[
+          ['各任务JSON决定测量与投影：微波炉angle_open_degrees、contact、current_intent、recent_real_outcomes；soup还有goal_xy_error_mm、goal_distance_mm、双侧接触。',0],
+          ['recent_real_outcomes：意图最近3次、motor最近2次。英语结构化state，决策模型不接收RGB。',0],
+          ['预演after.success、接触、距离、进展可投影进候选criteria或汇总；不是模型自己预测的概率。task_complete等来自仿真oracle。',1]
+        ],
+        decision:[
+          ['原子菜单27项：世界XYZ各±3/10/40mm共18项、各轴±10°旋转6项、open/close/hold。不是只选宏技能。',7],
+          ['三级串行：意图 → 接触/运动类别 → 输入；意图和策略可缓存，因此每步不固定两次API。',0],
+          ['每候选最多8个20Hz环境步/0.4模拟秒；仅一阶可行池全空时寻找两步见证，只执行第一步。快照包含controller/gripper/cache/clocks/RNG，不只qpos/qvel。',10],
+          ['执行后预测/实际flattened state误差>1e-7即报错；这验证分支/现场一致，不证明真实世界模型准确。FCL测碰撞距离。',2]
+        ],
+        tests:[
+          ['共六份开发记录，初态索引均0：微波炉seed1/2/3为成功/无候选失败/成功；抽屉seed1成功；soup同seed1初版60步失败，改契约后40步通过。不是冻结单策略独立样本。',3],
+          ['成功直接使用原LIBERO check_success。soup summary为success:true、40 decisions、314 steps、62 API calls；但final_state双指接触仍true，external_contacts为空。',4],
+          ['因此只能写“通过原包含判据、物体仍夹持”，未验证release与稳定落放。终止还包含决策上限、无候选、预算、打断和error。',5],
+          ['回归覆盖snapshot恢复、控制回放、几何与两步预演。保存493条API均HTTP200不等于全部网络尝试无错；api_calls并未涵盖所有失败尝试。',3]
+        ],
+        cautions:['候选先由真实仿真器预测，是信息与规划能力增量，不是决策模型从视频学到动力学。','micro动作、仿真预演、task oracle与不同成功谓词，不可直接对照纯技能选择的成功率。','初版失败后的contract修订重试必须保留，不把不同版本合成多种子成功率。'],
+        example:{label:'microwave_seed1/api.jsonl.gz第1行完整request原文',code:JSON.stringify({model:'typesafe/jev-1.13',state:{task:'close the microwave',angle_open_degrees:86.03,contact:'none',current_intent:null,recent_real_outcomes:[],prediction_scope:'Each primitive was simulated for up to 8 environment steps (0.4s). Reposition candidates additionally have a verified two-primitive witness. Only one selected primitive executes.'},questions:{intent:{type:'choice',instructions:'Choose the next physical objective from feasible effect contracts. Prefer task closure when available and avoid unnecessary release of productive contact. If contact is not yet possible, approaching is useful. These are simulator predictions, not Jev predictions.',criteria:{approach_target:{meaning:'Reduce actual gripper-to-moving-door surface separation without predicted obstacle contact. Useful before contact, not an already reached waypoint.',primitive_count:4,can_finish_task:false,predicted_surface_gap_reduction_mm_range:[2.37,37],predicted_closing_degrees_range:[0,0],predicted_obstacle_force_N_range:[0,0]}}}}},null,2),note:'完整请求直接包含仿真预测范围，且这个首步只有approach_target一个合法意图；不能用它证明复杂意图判别。该候选对应4个预演原子输入。压缩记录没有伪造文本行锚点。JSON重新格式化展示，字段和值保持原样。',source:6},
+        sources:[['src/jev_libero/policy.py','124-183','三级请求与历史'],['src/jev_libero/tasks/microwave.json','208-290','预演after.success向候选投影'],['src/jev_libero/world.py','170-184','原LIBERO成功判定'],['docs/results.md','5-56','完整开发记录和失败'],['examples/records/alphabet_soup_seed1/summary.json','2-14','soup成功/计数/seed'],['examples/records/alphabet_soup_seed1/final_state.json','23-29','soup仍夹持、无外部支撑'],['examples/records/microwave_seed1/api.jsonl.gz','','实际请求压缩记录'],['docs/architecture.md','','动作、快照、几何与一致性检查'],['src/jev_libero/runner.py','217-250','终止与预测现场一致性检查'],['src/jev_libero/tasks/alphabet_soup.json','925-927','task_complete投影'],['src/jev_libero/world.py','187-354','快照与原子输入/两步预演']]
+      },
+      {
+        id:'jev-robot-control',name:'jev-robot-control',repo:'openroboto-ai/jev-robot-control',branch:'main',sha:'7a4ed8b72c3c17d7aa790678ed9660df67c10dd3',group:'embodied',tags:['MuJoCo / xArm7','Jev vs LLM','原始轨迹审计'],
+        thesis:'相同结构化状态、意图/方向动作与共享执行器，比较一个固定初态上的控制过程；原始记录清楚，统计覆盖很窄。',
+        matrix:['TCP、抓取/放置offset、held/contacts、previous_intent/feedback','意图 → XYZ/夹爪；共享步幅、IK与物理','苹果入盘seed0每模型一局 + 原响应/轨迹回放验证','各组分母1；LLM自报概率不能和Jev原生概率排名'],
+        flow:['MuJoCo位置 / 接触反馈','state + previous_intent','intent → motor四题','共享IK / 0.32秒步进'],
+        input:[
+          ['TCP毫米坐标、fruit_grasp_minus_tcp与放置减TCP向量、held、finger_contacts、grasp_secured、plate_contact、当前入盘/稳定事实。没有图像或预演。',0],
+          ['previous_intent、feedback不是完整动作历史列表。motor加入selected_intent；LLM用messages获得同状态与题目，Jev使用state/questions接口。',0]
+        ],
+        decision:[
+          ['每循环两次串行调用：approach/grasp/lift/carry/lower/release/withdraw/finish，再XYZ negative/hold/positive与gripper open/hold/close四题。',0],
+          ['模型选方向，不返回绝对坐标/关节力矩；程序按接近目标缩放18/4/2mm、固定姿态IK、工作区与0.32秒物理步执行。',1],
+          ['API异常直接结束，无重试或静默回退；调用数在收到JSON后增加，因此失败HTTP/超时不进入该成功接收计数。budget_exhausted是循环上限，不是美元预算。',2]
+        ],
+        tests:[
+          ['苹果入盘×seed0×每控制器一局，160循环上限。作者报告Jev113循环成功、GPT106循环成功，早期mini160循环未完成。每组分母只有1。',4],
+          ['物理成功：XY距盘中心<53mm、Z28–43mm、盘底接触、张开指令、速度<15mm/s连续0.4秒，TCP最后≥145mm；提示finish160mm不是实际停止阈值。',1],
+          ['最新Jev/GPT并发独立仿真，mini来自早期配对，不是同时间第三组。模型版本、推理设置、计费与原始响应保存在工件中。',4],
+          ['离线verifier重新执行控制，逐saved qpos按1e-7核对，并验证source hashes、请求、费用与物理结果；验证这三份轨迹，不产生新模型试次。',5]
+        ],
+        cautions:['一次成功或315倍费用差，不能推导总体成功率、泛化或更可靠视觉控制。','Jev原生候选概率与LLM JSON自报概率并非同来源，两者均未校准到该物理成功事件。','回放剪去API等待；必须用原始wall time谈延迟，而不是视频播放速度。'],
+        example:{label:'最新Jev保存第1循环intent.observation原文节选',code:JSON.stringify({tcp_mm:[320,-100.1,200],fruit_grasp_minus_tcp_mm:[60.2,-28.9,-172.2],held:false,previous_intent:null},null,2),note:'这是观测字段片段，完整请求还包括task、对齐/接触反馈与questions。该记录可用于审计模型真正知道的几何信息。',source:3},
+        sources:[['incremental_policy.py','76-135','Jev/LLM请求构造'],['incremental_env.py','142-205','观测、执行与真实成功阈值'],['incremental_run.py','64-113','两次调用/终止/计数'],['incremental-gpt6-comparisons/20260919-200239-715974-0/jev/20260919-200239-0-jev.json','45-106','真实保存第1循环观测'],['docs/RESULTS.md','3-25','实验协议与作者结果'],['verify_replay.py','','逐状态重执行验证']]
+      },
+      {
+        id:'embodied-jev', name:'EmbodiedJev', repo:'FBddcz/embodied-jev', branch:'main', sha:'f08de2e4e20d6cd69fea9c57ac1062c3ef510f1e', group:'embodied', tags:['MuJoCo / Panda','多种观测','分层 XYZ'],
+        thesis:'不是单一 Jev 视觉模型，而是多输入、多控制模式工作台；同一页面上的相机、模型与执行者必须按路径拆开。',
+        matrix:['Jev：坐标 / 几何 / 接触 / 最近执行；直接 RGB 仅用于支持图片的 chat 路径','技能或子目标 + XYZ / 夹爪；IK与安全由代码执行','mock + MuJoCo回合 + Meta-World / LIBERO开发对照','两局落盘终态包含失抓；LIBERO v1/v2不能混算'],
+        flow:['真值或RGB-D检测','结构化误差 / 接触','子目标 → XYZ / 夹爪','代码IK / 安全 / 物理'],
+        input:[
+          ['privileged 直接读 TCP、物体和目标真值坐标、双指接触、支撑及稳定状态；这是仿真状态，不是看图得到的位置。',0],
+          ['rgbd 路径用外部 / 腕部 RGB、深度、颜色阈值、标定回投和已知 4 cm 方块先验估计位置；接触身份、安全预演和评分仍来自仿真。',0],
+          ['Jev 实际收到毫米坐标、目标误差、对齐 / cube_held 等事实和最近两步执行结果。vision 原始 RGB 路径只允许支持图像的 chat / Claude。',1]
+        ],
+        decision:[
+          ['skills 先由代码筛阶段，选择 direct / gentle / hold；单候选可不问模型，不能将这部分计作推理能力。',2],
+          ['hierarchical 先串行选八个子目标 approach…finish，再一请求同时回答 X/Y/Z 三方向和夹爪三选一；通道分布不是联合成功率。',1],
+          ['每轴 2–12 mm 步幅、IK、安全预演由程序提供。物理步长 2 ms，API 等待时暂停物理；低概率暂停，非法响应或API错误停止，无静默规则回退。',2]
+        ],
+        tests:[
+          ['软件回归测试覆盖 mock 接口、分层状态、动作方向、取消与安全。冻结清单与真实跑完该清单是不同证据。',3],
+          ['Jev 分层两局均为 seed 7，终态通过；第80/81步失抓后落盘，未主动选择 release。不能把两局解释为精确放置成功率。',4],
+          ['Meta-World hierarchy-v2：三任务 × seed 0/1，作者报告两模型各5/6，含超时后补测。LIBERO waypoint-v1完整开发结果为GPT 2/2、混合1/2；不能只展示混合成功一局。',5],
+          ['终态要求支撑、XY范围、低速稳定≥0.4秒、张爪和撤离；允许失抓落盘后满足终态，不等于按照预期技能完成。',2]
+        ],
+        cautions:['原始视觉、视觉估计、仿真真值三个设置不能池化。','当前 LIBERO candidate-supervisor-v2 是 GPT 生成候选 → Jev 选择 → servo；旧 waypoint-v1 结果不能归给 v2。','旧 JEV_RESULTS.md“代码/完整轨迹未发布”已经过时；当前提交含 hierarchical.py 和真实 .json.gz。'],
+        example:{label:'保存记录原文字段节选；非完整 wire 请求', code:JSON.stringify({tcp_mm:[380,-80,220],cube_mm:[436.2,-150.1,19.9],grasp_minus_tcp_mm:[56.3,-70.1,-199.1],cube_held:false,recent_steps:[]},null,2),note:'来自 episode.history[0].decision_inputs.phase.state。仅展示实际送入分层子目标问题的部分字段，不把回放画面算作 Jev 输入。',source:4},
+        sources:[['src/embodied_jev/perception.py','71-380','RGB-D估计与观测来源'],['src/embodied_jev/hierarchical.py','61-181','分层状态、候选与问题'],['src/embodied_jev/runtime.py','454-675','执行边界、停止与成功检查'],['tests/test_hierarchical.py','47-244','输入与动作回归测试'],['docs/results/jev-hierarchical-live-2026-09-20.json.gz','','真实88步保存记录'],['docs/results/libero-vision/RESULTS.md','3-43','LIBERO完整开发结果与v1边界']]
+      },
+      {
+        id:'robojev-hardware', name:'RoboJev · WidowX', repo:'alee792/robojev', branch:'nw/widowx-doom-loop-fc1569', sha:'76ebe5c964fef105e3f2e44e0c5315f1519b5e78', group:'embodied', tags:['真实机械臂','RGB-D → 文字','事件驱动'],
+        thesis:'真机路线是传统深度感知 + 文字场景报告 + 动作原语；最值得看的是异步新鲜度与硬安全，不是通用成功率。',
+        matrix:['腕部RGB-D检测的标签、距离、关系、本体、standing orders与历史','九道问题同批；代码过滤原语、多数票、执行和硬限位','合成API空间探针 + 真机单次演示 + 软件回归','sim采用运动学绑定；真机日志未完整公开，缺独立任务评分'],
+        flow:['D405深度检测 / 轨迹记忆','语言场景报告 + orders','9题并行 / 原语选择','异步控制 + 硬安全'],
+        input:[
+          ['真机 D405 彩色与对齐深度先回投到基座系，RANSAC找桌面、点云聚类、过滤腕部与手指。FastSAM / VLM命名可选，默认关闭；图片不送Jev。',0],
+          ['state 包含 standing orders、用户任务、对象标签/外观、厘米距离与区间、方位、可达性、可见/最后看到时间、运动、支撑关系、holding、本体、当前原语、上次结果和最近四个动作。',0],
+          ['simcam位置检测来自渲染RGB-D，不是直接对象坐标oracle；但holding由真值距离触发的mocap绑定产生。virtual模式更直接生成脚本Detection。',3]
+        ],
+        decision:[
+          ['v1一请求九题：target、place、next的三种措辞、speed Score、evade、orders_violated Noul、task_done Noul。place/next依赖上一已提交target，不是本请求答案串行生成。',1],
+          ['原语候选按前置条件过滤；next三题多数票、概率门与连续确认控制切换。具体抓取姿态、工作区、速度、外力与温度限制由代码负责。',1],
+          ['10Hz是调度，不是API频率。事件变化才请求，静态最多1秒再问；最多4个在途，乱序或快照>0.4秒丢弃；0.5秒无新鲜结果hold，2秒rise。',2],
+          ['线上jev.py文件头称no retries，实际首次快速529/连接错误可重试一次；探针脚本的无重试不能概括线上循环。',6]
+        ],
+        tests:[
+          ['空间探针 seed=6：3/10/40个物体 × 25场景 × numbers/bands/both，225条响应；用几何代码独立算closest/left/right等标签。',7],
+          ['e08 orders实际5变体×5=25，非注释里的约150。探针保存覆盖不一致，不能宣称每次场景和请求都完整公开。',4],
+          ['真机作者报告重复纸杯抓放与失误恢复，但为单次连续演示，不是独立随机任务样本；task_done来自模型，缺公开独立物理成功率。',5],
+          ['sim.py将table与objects碰撞关闭，并按真值距离把mocap对象绑定EE；不能把这一仿真抓持当作真实接触抓取。',3],
+          ['真实人手避让、scene camera闭环、真实VLM key、FastSAM live、mat真机任务未测。日志被gitignore，无法由仓库重新计算真机分布。',5]
+        ],
+        cautions:['论文式“非特权相机输入”与整个系统无真值依赖不是一回事，holding和物理约束应分开。','一次重复操作录像不等于若干独立成功率样本；API吞吐也不是机器人任务分母。','参数、感知阈值、纸杯抓取姿态高度拟合当前桌面与物体。'],
+        example:{label:'e08_orders 合成API探针原文节选；不是真机采样',code:JSON.stringify({task:'Pick up the red cup A and place it in the bowl C.',gripper:{holding:'nothing',state:'open'},objects:[{label:'red cup A',distance_from_gripper:'18 cm (near)',bearing_from_gripper:'+5° (dead ahead)'}]},null,2),note:'该例用于standing-order变体测试；真实线上报告由state.py生成，字段和感知来源更丰富。不能拿合成JSON证明相机标定或抓取成功。',source:4},
+        sources:[['src/robojev/state.py','29-90','线上文字场景构造'],['src/robojev/questions/v1.py','17-112','九题与候选'],['src/robojev/loop.py','336-423','异步、过期与新鲜度'],['src/robojev/arm/sim.py','55-217','关闭碰撞与mocap抓持'],['experiments/e08_orders.py','12-50','保存例子的合成探针入口'],['docs/assessment.md','58-103','作者承认的拟合与未测试边界'],['src/robojev/jev.py','1-83','线上传输和重试实际实现'],['experiments/e06_spatial.py','','空间探针与几何标签']]
+      },
+      {
+        id:'jev-drone',name:'jev-drone',repo:'RomanSlack/jev-drone',branch:'main',sha:'974b47378c14c6dcf7d11f7c813fba0f5f4d8b6a',group:'embodied',tags:['MuJoCo无人机','分频控制','异步战术'],
+        thesis:'模型低频解释局面，普通代码高频感知/飞控/反射。camera-only不代表现实视觉语义感知，赛道和隧道还用了不同安全架构。',
+        matrix:['深度 + 仿真segmentation ID派生扇区距离、目标可见性与运动','maneuver / risk / target_lost；代码guidance、反射和飞控','固定障碍赛道 + 起点seed扰动 + 7个手工场景','规则缺climb；单局模型演示；第一道梁不是全程成功'],
+        flow:['96×72深度 / geom IDs','扇区与目标符号摘要','3题战术判断 ≤3Hz','50Hz反射 / 500Hz飞控'],
+        input:[
+          ['Eye用MuJoCo depth和segmentation geom IDs，经body/geom映射识别rover、floor、airframe和隧道壳体。未直接送目标世界坐标，但对象身份仍是仿真特权。',0],
+          ['当前state包含五/九扇区range、blocked数量、path ahead、上中下可通行距离、周围空间、最近障碍方位及target visible/bearing/range/pixels/unseen time。',0],
+          ['扇区用最近三帧中值，目标记忆最后看到时间；普通请求加mission、aircraft、observed，没有动作历史/执行结果。隧道另加速度和预计碰撞时间。',1]
+        ],
+        decision:[
+          ['普通赛道一次问六选maneuver、三档risk Score和target_truly_lost Noul。场景指纹变化才问，上限3Hz、160次尝试；单worker/队列1，结果>1.5秒不用。',1],
+          ['50Hz guidance映射动作，2.2m近障反射覆盖Jev；climb受上方空间约束。感知约15Hz、飞控500Hz，不是模型500Hz。80次/65秒整局平均≈1.23Hz。',2],
+          ['隧道用steer/height各五档Score，多worker、防乱序、0.3秒过期后中性转向但继续跟踪；没有普通赛道近障反射，不可套同一安全保证。',3]
+        ],
+        tests:[
+          ['当前tree未见自动化单测套件；主要是参数化episode、手工场景问答和遥测。seed扰动起点，障碍布局与目标运动固定。',2],
+          ['作者新赛道baseline seeds0/1/2，对照Jev seed1单局65秒，报告≈77.5m、82%目标可见、零碰撞；此前简单场景匹配3种子两组均跨障0/3。',5],
+          ['baseline没有climb能力，新赛道通关只能证明补足动作能力，不能隔离模型对同能力规则策略的优势。手工6/7与隧道最佳94%可见是不同小样本。',5],
+          ['crossed_barrier仅x>19.8，检查第一道梁；collisions计不同被撞geom数；distance_flown_m为起终点欧氏位移，不是路径长。没有完整赛道成功谓词。',2]
+        ],
+        cautions:['geom-ID语义检测不能无缝视为真实无人机相机感知。','隧道约2000调用零错误是API吞吐证据，不能写成2000次安全飞行。','旧site/data/flight.json与当前Eye schema不同，例子必须保留版本说明。'],
+        example:{label:'网站旧schema保存记录节选；不是当前完整请求',code:JSON.stringify({sector_range_m:{center:2.39},obstruction_top_above_drone_m:0.14,target:{visible:true,range_m:4.28}},null,2),note:'当前Eye已改为free_ahead_above/level/below_m等字段。旧top-edge字段展示历史观测如何被文字化，不代表当前接口仍要求它。',source:4},
+        sources:[['flight.py','178-353','深度、geom身份、当前观测字段'],['tactics.py','17-209','普通赛道请求与异步'],['run.py','161-375','guidance、安全与指标定义'],['tunnel_tactics.py','83-179','隧道另一控制架构'],['site/data/flight.json','1','旧schema保存例子'],['README.md','61-146','作者结果与承认的baseline限制']]
+      },
+      {
+        id:'intern-decision',name:'Intern-Decision',repo:'InternLM/Intern-Decision',branch:'main',sha:'3572c8a68b5df5dafe02d0e093989ba8ec0183bc',group:'models',tags:['支持图片','一次前向','masked决策token'],
+        thesis:'支持图片的结构化决策接口；训练和推理对齐到decision marker前一位置。文字套件、随机分布pilot与视觉机器人闭环是三种证据。',
+        matrix:['JSON state + 有序images + questions；训练另附targets','marker前一位置合法答案token logits / softmax','七套文字/决策准确率 + 96条已知分布校准pilot','图片接口不等于多视角控制已验证；原训练/校准数据未公开'],
+        flow:['state / ordered images / criteria','processor + JSON决策骨架','marker前一位置logits','候选分布 / max(P)'],
+        input:[
+          ['state可为JSON；questions含type/instructions/criteria。choice是标签→描述对象，score是有序等级，noul是no/yes；最多62候选。HTTP每请求1–16题。',[0,11]],
+          ['CLI/训练使用有序本地图片路径；HTTP只收上传字节/base64或data URL，不允许远程URL/服务器路径；最多8图，EXIF校正、转RGB、私有临时PNG后清理。',1],
+          ['HF图片经checkpoint processor编码，文本独走tokenizer；默认8192 tokens超长拒绝而非截断。训练targets[field].label或旧answer不进证据文本。',2]
+        ],
+        decision:[
+          ['编译器按插入顺序将候选映成单token符号，建助手JSON骨架。在marker处写训练label，其余-100；collator causal shift。',3],
+          ['HF/XTuner均取marker位置减一的logits，仅保留合法候选再softmax，一次forward回答多个字段，不AR生成答案。后字段看到marker骨架，不是前字段已选答案。',[2,12]],
+          ['confidence=max(P)，score为期望等级，noul为yes概率。分布是给定候选的条件概率，不是技能可执行或完整任务成功概率。',4]
+        ],
+        tests:[
+          ['七套共10751行/12351决策：Jevbench48/72/111、Typed Decision400行2000决策、ToolACE310、AGNews7600、WildJailBreak2210；Average对七套等权，不是所有决策微平均。',5],
+          ['96-case pilot：24题族、48参数组各配正序/逆序候选，参考分布来自分数/枚举/解析/DP；不是96次独立随机实验，测期望Brier/ECE而非机器人成功。',6],
+          ['fit只用validation_role=calibration做硬标签NLL，selection仅报告；检查checkpoint、重复ID与T=1采集。但不自动排除语义重复或训练污染。',7],
+          ['原训练数据、私有校准/validation记录、图片与准备流程未公开；可以审计接口与loss，不能独立重建原训练或预设温度拟合。',8]
+        ],
+        cautions:['公开Jevbench被定位为开发诊断，不能自动叫独立held-out。','README的90.02%等文字套件结果不能证明视觉抓放或总体优于Jev。','HF与XTuner是不同执行设置，BF16/内核概率不保证逐位一致；温度缩放不会改变argmax。'],
+        example:{label:'按公开schema/合成例裁短重构；不是真实训练语料',code:JSON.stringify({state:{left_box:'red',right_box:'blue'},images:[],questions:{box:{type:'choice',instructions:'Which box is red?',criteria:{left:'The left box',right:'The right box'}}},targets:{box:{label:'left'}}},null,2),note:'这是一条可接受的文字训练记录形状。推理时删除targets；图片测试须在images中提供图像，不能把空images例称视觉实验。',source:0},
+        sources:[['src/inputs/schema.py','34-163','输入/监督schema'],['src/service/uploads.py','13-85','HTTP上传安全与图片限制'],['src/inference/hf_backend.py','50-99','编码及marker前一位置'],['src/inputs/masked.py','61-266','训练label与causal shift'],['src/inference/engine.py','55-83','predict读出与confidence'],['docs/EVALUATION.md','25-230','七套评测口径与开发边界'],['src/eval/known_distribution.py','461-528','96条配对分布生成'],['src/eval/fit.py','20-82','校准角色与身份验证'],['docs/DATA.md','3-13','非公开训练/校准资料边界'],['src/eval/score_known_distribution.py','20-92','期望分布评分与原生choice'],['src/eval/calibration.py','19-107','NLL温度拟合方法'],['src/inference/pipeline.py','18-31','HTTP每次1–16题验证'],['src/inference/xtuner_backend.py','61-100','XTuner读出与causal对齐']]
+      },
+      {
+        id:'kev',name:'Kev',repo:'jaredpalmer/kev',branch:'main',sha:'5e42a7a03f28134853dd3ff77461457e921e5ec1',group:'models',tags:['文本','训练pointer head','LoRA / full FT'],
+        thesis:'接口兼容Jev，但核心是训练后的候选pointer head。它回答候选问题，而不是从自然语言解释里解析动作。',
+        matrix:['文本化state + questions(type / instructions / criteria)','decide与候选结束hidden vectors → pointer logits','冻结文字套件、校准、coverage、置换与服务计时','文字表现不证明感知/动力学；旧baseline有截断和候选限制'],
+        flow:['state文本 + 独立问题行','Qwen backbone + LoRA','trained pointer head','候选softmax / calibrated T'],
+        input:[
+          ['state接受文字或JSON，展开为文本，不是图片张量。训练label：choice用键、noul布尔、score等级；还支持候选软目标。',0],
+          ['api_request剥离label与元数据，再给基线模型；标签不是模型证据。适配机器人时输入只能来自独立感知/本体/历史。',1]
+        ],
+        decision:[
+          ['用<decide>与候选结束hidden vectors的训练pointer head打分，再softmax；不是SemIf式直接读取A/B语言模型token分布。正常路径无AR生成。',0],
+          ['attention-only可用block-causal mask隔离问题；Qwen3.5 hybrid用独立rows。cache只保留state前缀。问题隔离不保证候选顺序无偏。',0],
+          ['训练可LoRA+head或full FT，CE硬/软标签，可选Brier、等级与置换一致性loss；不同checkpoint并非统一训练配方。Choice confidence使用均匀基线归一。',1]
+        ],
+        tests:[
+          ['冻结train/calibration/development/test，限制eval-only来源、锁定test并规范化state去重；不等于模糊语义去重或排除预训练污染。',2],
+          ['当前校准脚本要求来源/训练分离，按source/group五折OOF；历史temperature曾用训练来源development，不能将每一发布温度均写成严格held-out。',3],
+          ['指标含accuracy、多类Brier、10等宽箱ECE、候选置换、coverage@5%、拒绝覆盖。coverage在评测集上寻找经验错误率阈值，不是上线保证。',4],
+          ['旧baseline只支持K≤8、截到1200tokens；不能称所有比较信息完全一致。serve latency是批次模型耗时、不含排队，远端客户端时间另含网络。',5]
+        ],
+        cautions:['校准减少过度自信，不保证可执行动作、安全或多步成功。','option-isolation可选且hybrid不支持，不能把问题隔离误写成候选也相互隔离。','不同硬件、长度、batch与cache命中条件下的毫秒数不能直接与云API端到端比较。'],
+        example:{label:'test_api.py原文请求节选；省略另一题及model别名',code:JSON.stringify({state:{document:'I was charged twice. Please fix this ASAP.'},questions:{billing:{type:'noul',instructions:'Is this ticket about billing?',criteria:{true:'Explicitly about charges',false:'Not about charges'}}}},null,2),note:'这是API契约测试样例，不是机器人状态，不是模型训练数据。',source:6},
+        sources:[['kev/model.py','87-218','提示、pointer读出与隔离'],['kev/train.py','41-118','训练目标与监督'],['kev/suite.py','316-359','冻结数据划分'],['scripts/calibrate_checkpoint.py','97-157','来源分离与OOF校准'],['kev/metrics.py','64-146','accuracy/Brier/ECE/coverage'],['kev/serve.py','132-191','服务计时边界'],['tests/test_api.py','51-54','实际API请求例子'],['kev/model.py','364-462','hybrid独立question rows']]
+      },
+      {
+        id:'semif',name:'SemIf-OpenJev',repo:'TheoLeeCJ/SemIf-OpenJev',branch:'master',sha:'23cf1f39fc9534fe81437200959b6dfc7106e45a',group:'models',tags:['文本','免项目微调','direct token logits'],
+        thesis:'从冻结开放模型读取候选字母的条件logits。主要回答“无需生成能否更快做同一批判断”，不自动回答“质量是否等价”。',
+        matrix:['id / state / question / options[{id,description}]；无图像通路','回答位置A/B/C token logits限制候选后softmax','authored144、扰动、WANLI、TypeSafe102、shape777与生成对照','shared有数值翻转；默认概率未校准；无具身回合'],
+        flow:['文字state + criterion','候选A/B/C描述','一次forward最后位置logits','conditional scores / optional T'],
+        input:[
+          ['每行id/state/question/options，候选2–16项；state字符串/对象/数组统一JSON文本化。评测label、group_id、family、target_distribution不进入实际提示。',0],
+          ['没有图像输入路径。Direct关闭thinking，一次forward取最后位置候选单token分数。reranker逐候选yes/no log-odds再跨候选归一。',0]
+        ],
+        decision:[
+          ['不做项目微调，基础模型当然已经训练。默认标注为未校准条件候选分数，不是任务成功概率。',0],
+          ['shared仅复用相同state前缀，兄弟题各自编码、cache分支；架构隔离不保证BF16数值逐位一致。',1],
+          ['有监督温度后处理按NLL拟合；同group变体放同折、5-fold OOF；发布温度用全标签拟合，不能用同批全量拟合ECE冒充held-out。',2]
+        ],
+        tests:[
+          ['authored144 + 108扰动、WANLI固定256、TypeSafe公开102、Every等；TypeSafe目标来自参考答案平均分布/唯一众数，测modal agreement，非现实事件真值。',3],
+          ['accuracy分母保留缺失/无效/无法解析；主表还有family balanced accuracy。Brier多类和、ECE10等宽箱，output coverage与risk/coverage另算。',3],
+          ['shape777 shared对fresh有6/777 argmax变化（serial5）；选项反转另有10/36翻转，两个指标不混算。',5],
+          ['同模型同state/硬件/进程，direct与21项紧凑yes/no生成数组中位时间约5.21倍差异；选择一致率仅18/21，不能写等质量加速。warm wall time不含模型加载。',4]
+        ],
+        cautions:['“免训练”只指不新增项目微调，不代表没有基础预训练。','历史公开Jev输出没有对应实时服务延迟，因此不能做速度排名。','37×21合成负载和文字决策集，不是37个机器人场景或777次物理动作。'],
+        example:{label:'examples/decisions.jsonl第2行原文',code:JSON.stringify({id:'route-1',state:'Customer asks to reset a forgotten password and says the reset email never arrived.',question:'Which queue should handle this request?',options:[{id:'account_access',description:'Account access and authentication support.'},{id:'billing',description:'Billing and payment support.'},{id:'sales',description:'Sales and product evaluation.'}]},null,2),note:'测试标签不在该请求中。返回candidate ID，而不是生成描述或坐标。',source:6},
+        sources:[['src/semif_phase1/direct.py','33-77','Direct读出与条件分数'],['src/semif_phase1/shared.py','54-164','共享前缀与独立分支'],['benchmarks/calibrate.py','176-236','分组OOF温度校准'],['benchmarks/evaluate.py','41-147','指标/无效分母'],['benchmarks/decision_vs_generation.py','60-185','生成对照的同条件与时序'],['results/phase1-summary.json','','提交的结果与翻转'],['examples/decisions.jsonl','2','真实请求示例']]
+      },
+      {
+        id:'anyjev',name:'AnyJev / Tacit',repo:'nokia-applied-research/AnyJev',branch:'main',sha:'f82fe03bc0d01c9e340b4f8880b744e78ea6116d',group:'models',tags:['文本','L0无标签纠偏','Tacit / adaptive CoT'],
+        thesis:'同一个仓库包含免训练Decider和已训练Tacit；“一次读出”和“自适应推理”不能混称同一无生成方法。',
+        matrix:['Decider:state+Question列表；Tacit:state/question/options/kind','raw token logits；L0轮换/先验纠偏；Tacit可升级AR推理','历史Banking等 + 当前JevBench231 / bev-decision46320','L0非监督校准；Tacit训练过程未完整公开，无机器人闭环'],
+        flow:['文字state + question + options','raw / K轮L0 / Tacit','可选margin → AR CoT','条件分布 + route / budget'],
+        input:[
+          ['Decider输入可文本化state与Question，choice 2–26个字符串候选、Noul Yes/No、score有序等级；Tacit调用state/question/options/kind。没有图片编码。',0],
+          ['harness的y不进模型。L0按Question.key累计prior、cache和停止证书；同显示名称不表示同问题，任务历史与batch影响结果。',0]
+        ],
+        decision:[
+          ['HF取回答token logprobs；L0候选循环轮换，映回语义后几何平均，可除batch/content-free prior。batch prior从8个状态开始，包含当前待测state，是无标签transductive纠偏。',0],
+          ['HF Decider无生成；vLLM为logprobs请求1 token，不是长链。Tacit one_forward直接读；adaptive低margin时AR生成CoT后再读出，受滚动升级份额限制。',1],
+          ['HF共享前缀含state和当前question，主要复用选项轮换，不等于Kev的多题state cache。边界不匹配时回退完整提示。',2],
+          ['Tacit vLLM/server默认全词表top20取候选，缺失设0、全缺失退均匀；HF取完整候选logits，跨backend不是天然同一概率口径。',1]
+        ],
+        tests:[
+          ['历史Banking20作者保存raw→L0 accuracy 0.747→0.803、ECE 0.240→0.184；结果git_commit=null、旧runner缺失，不能按当前代码独立认证旧分箱/heldout。',5],
+          ['当前Tacit：JevBench公共231与bev-decision test 46320有效决策，过滤格式不合格输入、按存储顺序/千项块控制升级；指标accuracy、CoT份额、tokens，未实现Brier/ECE或物理成功率。',3],
+          ['自适应停止校准保证相对自身全轮答案的分歧控制，不保证真值正确。轮换分歧与任意排列不变性不是一个定义。',4],
+          ['Tacit宣称同模型推理自蒸馏；固定tree缺训练器、语料生成和完整划分/去重实现。无人工标签≠无伪监督，不能核实训练测试污染。',5]
+        ],
+        cautions:['当前0.3+明确删除L1/L2；历史JSON里的温度/n_calib=200不是现有受监督校准功能。','raw一轮 vs 八候选L0八轮，adaptive另加生成，必须分列计算预算。','server端到端时间含网络/调度；文字bev-decision选择不等于闭环自动驾驶评测。'],
+        example:{label:'tacit.py文件头真实调用节选',code:'d = tacit.decide(\n    state="Customer: my package was due last Monday and it still has not arrived.",\n    question="What does the customer want?",\n    options=["track_order", "cancel_order", "refund", "change_address"]\n)',note:'这是文本决策调用。adaptive=True是另一实验设置；不能把返回probs解释成执行refund或机器人skill的物理成功率。',source:1},
+        sources:[['anyjev/decider.py','455-579','L0、累计prior与依赖'],['anyjev/tacit.py','1-254','真实示例、读出、CoT、top20'],['anyjev/backends/hf.py','93-168','状态/问题前缀复用'],['scripts/eval_tacit.py','45-169','有效项过滤与当前评测'],['anyjev/calibrate/permute.py','69-76','轮换分歧定义'],['docs/levels.md','12-61','模式契约与L1/L2移除']]
+      }
+    ];
+
+    function escapeHtml(value) { return String(value).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
+    function sourceUrl(project, source) { const [path, lines] = source; return `https://github.com/${project.repo}/blob/${project.sha}/${path}${lines ? '#L' + lines.replace('-', '-L') : ''}`; }
+    function sourceKind(source) {
+      const path=source[0];
+      if(/\.(json|jsonl|gz)$/.test(path)&&!path.startsWith('src/'))return path.startsWith('examples/')&&!path.startsWith('examples/records/')?'示例':'作者记录';
+      if(/README\.md|RESULTS\.md|results\.md|assessment\.md/.test(path))return '作者报告';
+      if(/\.(py|ts|js)$/.test(path))return '源码';
+      if(path.endsWith('.json'))return '配置';
+      return '文档';
+    }
+    function sourceLink(project, index, compact=false) { const source=project.sources[index]; const kind=sourceKind(source); return `<a class="${compact?'evidence':''}" href="${escapeHtml(sourceUrl(project,source))}" target="_blank" rel="noopener noreferrer">${compact?'['+kind+' '+(index+1)+']':'['+kind+'] '+escapeHtml(source[2])+' · '+escapeHtml(source[0])+(source[1]?' : '+escapeHtml(source[1]):'')}</a>`; }
+    function list(project, items) { return '<ul class="facts">'+items.map(([text,index])=>'<li>'+escapeHtml(text)+(Array.isArray(index)?index:[index]).map(ref=>sourceLink(project,ref,true)).join('')+'</li>').join('')+'</ul>'; }
+    function sourceList(project) { return '<ul class="source-list">'+project.sources.map((source,index)=>'<li><span class="small">'+String(index+1).padStart(2,'0')+' / </span>'+sourceLink(project,index)+'</li>').join('')+'</ul>'; }
+    function renderProject(project) {
+      return `<article class="project" id="project-${project.id}" data-project="${project.id}"><header class="project-head"><div><div class="meta-line">${project.tags.map(tag=>'<span class="tag">'+escapeHtml(tag)+'</span>').join('')}</div><h3>${escapeHtml(project.name)}</h3><p>${escapeHtml(project.thesis)}</p></div><a class="repo-link" href="https://github.com/${project.repo}/tree/${project.sha}" target="_blank" rel="noopener noreferrer">固定版本仓库</a></header><div class="revision">${escapeHtml(project.repo)} · ${escapeHtml(project.branch)} @ ${project.sha}</div><div class="project-body"><div class="flow" aria-label="${escapeHtml(project.name)}数据与决策链">${project.flow.map((step,index)=>(index?'<span class="flow-arrow" aria-hidden="true">&gt;</span>':'')+'<div class="flow-step"><b>'+['OBSERVE','ENCODE / PLAN','DECIDE','EXECUTE / READOUT'][index]+'</b>'+escapeHtml(step)+'</div>').join('')}</div><div class="two-col"><section><h3>实际给模型的数据</h3>${list(project,project.input)}</section><section><h3>模型决定什么，代码决定什么</h3>${list(project,project.decision)}</section></div><section class="test-block"><h3>测试协议与已有证据</h3>${list(project,project.tests)}</section><details><summary>展开输入例子：${escapeHtml(project.example.label)}</summary><div class="detail-content"><div class="example-label">${escapeHtml(project.example.label)}</div><pre><code>${escapeHtml(project.example.code)}</code></pre><p class="small">${escapeHtml(project.example.note)} ${sourceLink(project,project.example.source,true)}</p></div></details><div class="warning"><strong>证据边界 / 不可直接推出</strong>${project.cautions.map(text=>'<p>'+escapeHtml(text)+'</p>').join('')}</div><details><summary>核对源码与保存工件 · ${project.sources.length} 项</summary><div class="detail-content">${sourceList(project)}</div></details></div></article>`;
+    }
+    function renderMatrix(project) { return `<tr data-project="${project.id}"><td><button type="button" class="open-project" data-open="${project.id}">${escapeHtml(project.name)}</button></td>${project.matrix.map(text=>'<td>'+escapeHtml(text)+'</td>').join('')}</tr>`; }
+    function render() {
+      for(const group of ['embodied','models']) {
+        const selected=projects.filter(project=>project.group===group);
+        document.getElementById(group==='models'?'model-projects':'embodied-projects').innerHTML=selected.map(renderProject).join('');
+        document.getElementById(group==='models'?'model-matrix':'embodied-matrix').innerHTML=selected.map(renderMatrix).join('');
+      }
+      document.getElementById('source-registry').innerHTML=projects.map(project=>`<article class="registry-entry" data-project="${project.id}"><h3>${escapeHtml(project.name)}</h3><p class="commit">${escapeHtml(project.repo)} · ${escapeHtml(project.branch)} · ${project.sha}</p>${sourceList(project)}</article>`).join('');
+    }
+    function filterProjects() {
+      const query=document.getElementById('search').value.trim().toLocaleLowerCase();
+      const matched=projects.filter(project=>JSON.stringify(project).toLocaleLowerCase().includes(query));
+      const ids=new Set(matched.map(project=>project.id));
+      document.querySelectorAll('[data-project]').forEach(element=>{element.hidden=!ids.has(element.dataset.project);});
+      for(const group of ['embodied','models']) document.getElementById(group+'-empty').hidden=matched.some(project=>project.group===group);
+      document.getElementById('search-status').textContent=query?`匹配 ${matched.length} / ${projects.length} 个项目；搜索覆盖全部分类，当前分类无结果时可切换。`:'点击项目名查看代码与例子；可按关键词检索全部项目。';
+    }
+    function selectView(target, updateHash=true) {
+      if(!document.querySelector(`.view[data-view="${target}"]`)) target='overview';
+      document.querySelectorAll('.view').forEach(view=>{view.hidden=view.dataset.view!==target;});
+      document.querySelectorAll('[data-target]').forEach(button=>{if(button.dataset.target===target)button.setAttribute('aria-current','page');else button.removeAttribute('aria-current');});
+      if(updateHash) history.replaceState(null,'','#'+target);
+    }
+    function openProject(id) {
+      const project=projects.find(item=>item.id===id); if(!project)return;
+      selectView(project.group,false);
+      history.replaceState(null,'','#project-'+id);
+      const article=document.getElementById('project-'+id);
+      article.querySelector('details').open=true;
+      article.scrollIntoView({block:'start'});
+    }
+    function handleHash() {
+      const hash=location.hash.slice(1);
+      if(hash.startsWith('project-')) { const id=hash.slice(8); const project=projects.find(item=>item.id===id); if(project){selectView(project.group,false);document.getElementById('project-'+id).scrollIntoView();return;} }
+      selectView(hash||'overview',false);
+    }
+    function updateFormula() {
+      const count=Number(document.getElementById('candidate-count').value);
+      const pinput=document.getElementById('pmax');pinput.min=String(Math.ceil(100/count));
+      if(Number(pinput.value)<Number(pinput.min))pinput.value=pinput.min;
+      const probability=Number(pinput.value)/100;
+      document.getElementById('candidate-value').textContent=count;
+      document.getElementById('pmax-value').textContent=probability.toFixed(2);
+      document.getElementById('confidence-max').textContent=probability.toFixed(2);
+      document.getElementById('confidence-choice').textContent=((probability-1/count)/(1-1/count)).toFixed(3);
+    }
+    render();
+    document.querySelectorAll('[data-target]').forEach(button=>button.addEventListener('click',()=>selectView(button.dataset.target)));
+    document.querySelectorAll('[data-open]').forEach(button=>button.addEventListener('click',()=>openProject(button.dataset.open)));
+    document.getElementById('search').addEventListener('input',filterProjects);
+    document.getElementById('candidate-count').addEventListener('input',updateFormula);
+    document.getElementById('pmax').addEventListener('input',updateFormula);
+    document.getElementById('print').addEventListener('click',()=>window.print());
+    let printDetails=[];
+    window.addEventListener('beforeprint',()=>{
+      printDetails=Array.from(document.querySelectorAll('details'),element=>[element,element.open]);
+      printDetails.forEach(([element])=>{element.open=true;});
+    });
+    window.addEventListener('afterprint',()=>{
+      printDetails.forEach(([element,wasOpen])=>{element.open=wasOpen;});
+      printDetails=[];
+    });
+    window.addEventListener('hashchange',handleHash);
+    handleHash();updateFormula();
+  </script>
+</body>
+</html>
