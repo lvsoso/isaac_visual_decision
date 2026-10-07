@@ -1,0 +1,45 @@
+test_changed_archived_blue_files_are_not_accepted (tests.test_candidate_reused_audit.ReusedAuditTests.test_changed_archived_blue_files_are_not_accepted) ... ERROR
+test_lifecycle_cannot_relabel_or_replace_reused_source (tests.test_candidate_reused_audit.ReusedAuditTests.test_lifecycle_cannot_relabel_or_replace_reused_source) ... ERROR
+test_original_nonreuse_report_path_is_unchanged (tests.test_candidate_reused_audit.ReusedAuditTests.test_original_nonreuse_report_path_is_unchanged) ... ERROR
+test_reused_blue_verified_separately_from_new_prediction_counts (tests.test_candidate_reused_audit.ReusedAuditTests.test_reused_blue_verified_separately_from_new_prediction_counts) ... ERROR
+
+======================================================================
+ERROR: test_changed_archived_blue_files_are_not_accepted (tests.test_candidate_reused_audit.ReusedAuditTests.test_changed_archived_blue_files_are_not_accepted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_reused_audit.py", line 25, in test_changed_archived_blue_files_are_not_accepted
+    with self.assertRaises(AssertionError):auditor.audit_reused(self.root,self.plan,self.life,self.config)
+                                           ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'candidate_reused_audit' has no attribute 'audit_reused'
+
+======================================================================
+ERROR: test_lifecycle_cannot_relabel_or_replace_reused_source (tests.test_candidate_reused_audit.ReusedAuditTests.test_lifecycle_cannot_relabel_or_replace_reused_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_reused_audit.py", line 28, in test_lifecycle_cannot_relabel_or_replace_reused_source
+    with self.assertRaises(AssertionError):auditor.audit_reused(self.root,self.plan,self.life,self.config)
+                                           ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'candidate_reused_audit' has no attribute 'audit_reused'
+
+======================================================================
+ERROR: test_original_nonreuse_report_path_is_unchanged (tests.test_candidate_reused_audit.ReusedAuditTests.test_original_nonreuse_report_path_is_unchanged)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_reused_audit.py", line 30, in test_original_nonreuse_report_path_is_unchanged
+    self.assertEqual(auditor.audit_reused(self.root,{}, {},self.config),[])
+                     ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'candidate_reused_audit' has no attribute 'audit_reused'
+
+======================================================================
+ERROR: test_reused_blue_verified_separately_from_new_prediction_counts (tests.test_candidate_reused_audit.ReusedAuditTests.test_reused_blue_verified_separately_from_new_prediction_counts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_reused_audit.py", line 20, in test_reused_blue_verified_separately_from_new_prediction_counts
+    records=auditor.audit_reused(self.root,self.plan,self.life,self.config)
+            ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'candidate_reused_audit' has no attribute 'audit_reused'
+
+----------------------------------------------------------------------
+Ran 4 tests in 1.590s
+
+FAILED (errors=4)
