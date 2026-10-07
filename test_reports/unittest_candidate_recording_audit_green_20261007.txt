@@ -1,0 +1,17 @@
+test_missing_frame_or_changed_recording_source_rejected (tests.test_candidate_recording_audit.RecordingAuditTests.test_missing_frame_or_changed_recording_source_rejected) ... ok
+test_recorded_frames_have_native_simulation_cadence_and_hashes (tests.test_candidate_recording_audit.RecordingAuditTests.test_recorded_frames_have_native_simulation_cadence_and_hashes) ... ok
+test_two_reused_shadows_can_precede_recording_without_new_shadow_launch (tests.test_candidate_recording_audit.RecordingAuditTests.test_two_reused_shadows_can_precede_recording_without_new_shadow_launch) ... ok
+test_actual_pair_admission_and_two_direct_choice_physical_successes (tests.test_candidate_45_evidence.Candidate45EvidenceTests.test_actual_pair_admission_and_two_direct_choice_physical_successes) ... ok
+test_changed_admission_is_not_accepted (tests.test_candidate_45_evidence.Candidate45EvidenceTests.test_changed_admission_is_not_accepted) ... ok
+test_changed_control_view_is_rejected (tests.test_candidate_45_evidence.Candidate45EvidenceTests.test_changed_control_view_is_rejected) ... ok
+test_control_response_cannot_be_reselected (tests.test_candidate_45_evidence.Candidate45EvidenceTests.test_control_response_cannot_be_reselected) ... ok
+test_blue_real_seven_of_seven_not_pair_admission_or_control (tests.test_candidate_41_evidence.Candidate41EvidenceTests.test_blue_real_seven_of_seven_not_pair_admission_or_control) ... ok
+test_changed_saved_request_is_rejected (tests.test_candidate_41_evidence.Candidate41EvidenceTests.test_changed_saved_request_is_rejected) ... ok
+test_summary_claim_cannot_make_six_of_seven_eligible (tests.test_candidate_41_evidence.Candidate41EvidenceTests.test_summary_claim_cannot_make_six_of_seven_eligible) ... ok
+test_tied_lower_choice_is_official_not_reselected (tests.test_candidate_41_evidence.Candidate41EvidenceTests.test_tied_lower_choice_is_official_not_reselected) ... ok
+test_run_label_does_not_become_last_details_label_on_second_stage (tests.test_candidate_report_labels.ReportLabelTests.test_run_label_does_not_become_last_details_label_on_second_stage) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 12.582s
+
+OK

@@ -23,6 +23,27 @@ def audit_reused(evidence,plan,life,config):
         records.append(record)
     return records
 
+def verify_admission_timing(evidence,plan,life):
+    ends=[r['ended_utc'] for r in life['runs'] if r['mode']=='shadow']
+    for record in plan.get('reused_shadows',[]):
+        events=Path(evidence)/Path(record['run_dir']).name/'events.jsonl'
+        ends.append(max(json.loads(line)['utc'] for line in events.read_text().splitlines()))
+    assert max(ends)<=min(r['started_utc'] for r in life['runs'] if r['mode']=='control')
+
+def audit_recording(directory,manifest,summary,plan):
+    assert manifest['recording_entry_sha256']==plan['source_sha256']['run_candidate_recording.py']
+    interval=manifest['record_every'];config=manifest['config'];frames=sorted((directory/'frames').glob('frame_*.png'))
+    assert type(interval) is int and interval>0
+    count=summary['physics_updates']//interval-config['warmup_frames']//interval
+    assert len(frames)==summary['recorded_frames']==count and count>0
+    assert [p.name for p in frames]==[f'frame_{i:06d}.png' for i in range(count)]
+    for path in frames:
+        with Image.open(path) as image:
+            assert list(image.size)==config['camera']['resolution'];image.verify()
+    fps=1/(config['physics_dt']*interval)
+    return {'frame_count':count,'fps':fps,'playback_seconds':count/fps,'api_waits_omitted':True,
+        'files_sha256':{str(p.relative_to(directory)):sha256_file(p) for p in frames}}
+
 def audit(evidence,output,report,plan_path=None):
     expected_path=plan_path or ROOT/'test_reports/candidate_control_plan_20261007.json'
     evidence=Path(evidence);plan_path=evidence/'experiment/plan.json';plan=json.loads(plan_path.read_text())
@@ -87,6 +108,7 @@ def audit(evidence,output,report,plan_path=None):
             gate=audit_shadow(directory,config,manifest['model_health']);shadow_checks.append(gate)
         runs.append({'mode':record['mode'],'color':record['color'],'run_dir':record['run_dir'],'summary':summary,'manifest':manifest,
             'runtime':runtime,'decisions':rows,'offline_verified':True,'shadow_admission_eligible':gate is not None})
+        if manifest.get('record_every'):runs[-1]['recording']=audit_recording(directory,manifest,summary,plan)
     control_runs=[r for r in runs if r['mode']=='control'];shadow_runs=[r for r in runs if r['mode']=='shadow']
     if life['control_started']:
         proof_path=evidence/'experiment/admission.json';proof=json.loads(proof_path.read_text())
@@ -97,7 +119,7 @@ def audit(evidence,output,report,plan_path=None):
             audited=next(r for r in shadow_checks if r['color']==original['color']);assert {k:v for k,v in original.items() if k!='directory'}=={k:v for k,v in audited.items() if k!='directory'}
         for r in control_runs:
             assert r['manifest']['admission']==proof and r['summary']['model_had_control'] is True
-        assert max(r['ended_utc'] for r in life['runs'] if r['mode']=='shadow')<=min(r['started_utc'] for r in life['runs'] if r['mode']=='control')
+        verify_admission_timing(evidence,plan,life)
     else:assert not control_runs
     assert new_calls<=plan['max_prediction_calls'] and life['automatic_retries']==0
     if life.get('final_health'):assert life['final_health']['requests_completed']==new_calls
