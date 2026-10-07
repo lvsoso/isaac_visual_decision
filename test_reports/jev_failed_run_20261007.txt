@@ -1,0 +1,17 @@
+{
+  "started_utc": "2026-10-07T07:11:54.879514+00:00",
+  "model_had_control": false,
+  "new_isaac_process_started": false,
+  "api_completed": 0,
+  "complete": false,
+  "preflight_sha256": "3a697526ac460653ef47096992283bbb860c765de26f619d027d8e283e88dce3",
+  "remote_gpu_groups_completed": 28,
+  "error": "ProtocolError: Probabilities must be in [0,1] and sum to 1",
+  "ended_utc": "2026-10-07T07:11:59.362478+00:00",
+  "http_prediction_attempts": 1
+}
+Traceback (most recent call last):
+  File "/private/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/opencode/ivd-text-study-os9yxtix/run_jev.py", line 28, in <module>
+    assert result['complete'],result['error'];assert calls[0]==14;build_binding_report(source,output,output/'report.html')
+           ~~~~~~^^^^^^^^^^^^
+AssertionError: ProtocolError: Probabilities must be in [0,1] and sum to 1

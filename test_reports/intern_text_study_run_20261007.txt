@@ -1,0 +1,111 @@
+1/14 zh/intern yellow_images_0_decision_005: abort reference=transport
+2/14 zh/intern yellow_images_0_decision_002: pre_grasp reference=approach
+3/14 zh/intern blue_images_0_decision_004: abort reference=lift
+4/14 zh/intern blue_images_0_decision_007: lower reference=release
+5/14 zh/intern yellow_images_0_decision_007: lower reference=release
+6/14 zh/intern blue_images_0_decision_002: pre_grasp reference=approach
+7/14 zh/intern blue_images_0_decision_006: abort reference=lower
+8/14 zh/intern yellow_images_0_decision_004: abort reference=lift
+9/14 zh/intern blue_images_0_decision_001: pre_grasp reference=pre_grasp
+10/14 zh/intern blue_images_0_decision_003: pre_grasp reference=grasp
+11/14 zh/intern yellow_images_0_decision_003: pre_grasp reference=grasp
+12/14 zh/intern yellow_images_0_decision_006: abort reference=lower
+13/14 zh/intern blue_images_0_decision_005: abort reference=transport
+14/14 zh/intern yellow_images_0_decision_001: pre_grasp reference=pre_grasp
+1/14 en/intern yellow_images_0_decision_005: abort reference=transport
+2/14 en/intern yellow_images_0_decision_002: pre_grasp reference=approach
+3/14 en/intern blue_images_0_decision_004: abort reference=lift
+4/14 en/intern blue_images_0_decision_007: lower reference=release
+5/14 en/intern yellow_images_0_decision_007: lower reference=release
+6/14 en/intern blue_images_0_decision_002: pre_grasp reference=approach
+7/14 en/intern blue_images_0_decision_006: lower reference=lower
+8/14 en/intern yellow_images_0_decision_004: abort reference=lift
+9/14 en/intern blue_images_0_decision_001: pre_grasp reference=pre_grasp
+10/14 en/intern blue_images_0_decision_003: pre_grasp reference=grasp
+11/14 en/intern yellow_images_0_decision_003: pre_grasp reference=grasp
+12/14 en/intern yellow_images_0_decision_006: lower reference=lower
+13/14 en/intern blue_images_0_decision_005: abort reference=transport
+14/14 en/intern yellow_images_0_decision_001: pre_grasp reference=pre_grasp
+{
+  "started_utc": "2026-10-07T07:06:09.931578+00:00",
+  "implementation_commit": "214dea0b8e4a60f2b8e4a61ceaa5a3df552b3322",
+  "new_isaac_process_started": false,
+  "model_had_control": false,
+  "freeze_manifest_sha256": "a50a05e550606a0934333a1802fae20958d3b2396abf650076618b060c620d14",
+  "preflight_sha256": "3a697526ac460653ef47096992283bbb860c765de26f619d027d8e283e88dce3",
+  "gpu_before": "NVIDIA L40, 128 MiB",
+  "service_command": [
+    "/root/gpufree-data/envs/ivd-model/bin/python",
+    "-u",
+    "/root/gpufree-share/isaac_visual_decision/serve_model.py",
+    "--checkpoint",
+    "/root/gpufree-data/models/Intern-Decision-4B",
+    "--trust-model-code",
+    "--expected-inference-sha256",
+    "c904e2c67ca0775621a22375ee373d2ba30b52117cda870c6c9ef74143b29863",
+    "--device",
+    "cuda",
+    "--dtype",
+    "bfloat16",
+    "--max-length",
+    "8192",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "8766",
+    "--allow-text-only-ablation"
+  ],
+  "complete": true,
+  "groups": {
+    "zh": {
+      "started_utc": "2026-10-07T07:06:16.992345+00:00",
+      "ended_utc": "2026-10-07T07:06:22.317342+00:00",
+      "complete": true,
+      "api_completed": 14,
+      "error": null,
+      "http_prediction_attempts": 14
+    },
+    "en": {
+      "started_utc": "2026-10-07T07:06:22.420728+00:00",
+      "ended_utc": "2026-10-07T07:06:27.604991+00:00",
+      "complete": true,
+      "api_completed": 14,
+      "error": null,
+      "http_prediction_attempts": 14
+    }
+  },
+  "service_pid": 59141,
+  "model_health": {
+    "status": "ok",
+    "bridge_schema": 1,
+    "supports_images": true,
+    "max_images": 2,
+    "supports_text_only_ablation": true,
+    "busy": false,
+    "requests_completed": 0,
+    "uptime_seconds": 0.415,
+    "bridge_source_sha256": "b3e73f0e5da226ee417623d6bbea11f2989fa1518fa4a683ec28878b72c11e4d",
+    "protocol_source_sha256": "354afcf57527d15d4e6e28579c95e47cd9f5d74beb242df610c820bfcc50339b",
+    "is_mock": false,
+    "checkpoint": "/root/gpufree-data/models/Intern-Decision-4B",
+    "inference_py_sha256": "c904e2c67ca0775621a22375ee373d2ba30b52117cda870c6c9ef74143b29863",
+    "config_sha256": "ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670",
+    "device": "cuda",
+    "dtype": "bfloat16",
+    "max_length": 8192,
+    "temperature": 1.99241824,
+    "vision_input_audit": true,
+    "text_input_audit": true,
+    "model_files_sha256": {
+      "config.json": "ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670",
+      "preprocessor_config.json": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516",
+      "tokenizer_config.json": "f26d55ed6da1fc0de69fbaefae7b855f762e36d0052c05f4fdec312f72a22ae1",
+      "chat_template.jinja": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+      "DOWNLOAD_RECEIPT.json": "79811b385a1e87a83798718b40eed08345601e64a468946f9baff46453e147b7"
+    }
+  },
+  "own_service_stopped": true,
+  "service_returncode": -15,
+  "gpu_compute_processes_after": "",
+  "ended_utc": "2026-10-07T07:06:27.950964+00:00"
+}

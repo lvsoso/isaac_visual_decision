@@ -1,0 +1,38 @@
+{
+  "complete": false,
+  "inference_attempts": 1,
+  "validated_decisions": 0,
+  "first_job": {
+    "group": "jev",
+    "name": "yellow_images_0_decision_005",
+    "cell": "yellow_images_0",
+    "decision_id": 5,
+    "image_count": 0
+  },
+  "error": "ProtocolError: Probabilities must be in [0,1] and sum to 1",
+  "raw_response_retained": false,
+  "probability_values": null,
+  "usage": null,
+  "response_model": null,
+  "cause_detail": "Original JSON not recoverable: pre-fix JevClient verified before runner persistence. Cannot distinguish invalid API probability data from client/API compatibility without original body. No normalization, prompt edit or retry.",
+  "lifecycle": {
+    "started_utc": "2026-10-07T07:11:54.879514+00:00",
+    "model_had_control": false,
+    "new_isaac_process_started": false,
+    "api_completed": 0,
+    "complete": false,
+    "preflight_sha256": "3a697526ac460653ef47096992283bbb860c765de26f619d027d8e283e88dce3",
+    "remote_gpu_groups_completed": 28,
+    "error": "ProtocolError: Probabilities must be in [0,1] and sum to 1",
+    "ended_utc": "2026-10-07T07:11:59.362478+00:00",
+    "http_prediction_attempts": 1
+  },
+  "gate": {
+    "before_first_jev_inference_utc": "2026-10-07T07:11:58.790721+00:00",
+    "all42_frozen_before_first_intern_inference": true,
+    "model": "jev-1.13.0",
+    "wire_requests_match": 14,
+    "preflight_sha256": "3a697526ac460653ef47096992283bbb860c765de26f619d027d8e283e88dce3"
+  },
+  "first_request_sha256": "26700b30b63147c7a542b41fb6e7aa61b923fdcebc3afceaaffa113058b4d245"
+}

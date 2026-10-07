@@ -1,0 +1,22 @@
+{
+  "checked_utc": "2026-10-07T07:20:35.076526+00:00",
+  "cpu_tests": 298,
+  "cpu_log_sha256": "c3fc3fc8d69066e98dd1c777b5b7b777faea0fb735620caa23011c7cff1d9967",
+  "syntax_check": "visual_lab and tools modules plus archived evidence drivers; not GPU dependency/import verification",
+  "independent_partial_audit_passed": true,
+  "intern_valid_responses": 28,
+  "jev_attempts": 1,
+  "jev_validated_decisions": 0,
+  "jev_raw_response_available": false,
+  "jev_retries": 0,
+  "report_rebuild_byte_identical": true,
+  "report_sha256": "dd1dc92c49d4369b82c01eb7db341174d86f77a28da4b0328cb69aa750fc203e",
+  "browser_desktop_checks": 215,
+  "browser_narrow_checks": 215,
+  "actual_private_key_not_in_new_artifacts_or_archive": true,
+  "git_diff_check_passed": true,
+  "old27_28_29_html_unchanged": true,
+  "new_model_requests_after_failure": 0,
+  "new_isaac_or_robot_control": false,
+  "scope": "CPU and presentation checks do not substitute Isaac GPU physics;28GPU model inferences were independently checked."
+}
