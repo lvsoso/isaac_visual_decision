@@ -1,0 +1,35 @@
+test_missing_frame_or_changed_recording_source_rejected (tests.test_candidate_recording_audit.RecordingAuditTests.test_missing_frame_or_changed_recording_source_rejected) ... ERROR
+test_recorded_frames_have_native_simulation_cadence_and_hashes (tests.test_candidate_recording_audit.RecordingAuditTests.test_recorded_frames_have_native_simulation_cadence_and_hashes) ... ERROR
+test_two_reused_shadows_can_precede_recording_without_new_shadow_launch (tests.test_candidate_recording_audit.RecordingAuditTests.test_two_reused_shadows_can_precede_recording_without_new_shadow_launch) ... ERROR
+
+======================================================================
+ERROR: test_missing_frame_or_changed_recording_source_rejected (tests.test_candidate_recording_audit.RecordingAuditTests.test_missing_frame_or_changed_recording_source_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_recording_audit.py", line 23, in test_missing_frame_or_changed_recording_source_rejected
+    with self.assertRaises(AssertionError):auditor.audit_recording(self.run,self.manifest,self.summary,self.plan)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'candidate_recording_auditor' has no attribute 'audit_recording'
+
+======================================================================
+ERROR: test_recorded_frames_have_native_simulation_cadence_and_hashes (tests.test_candidate_recording_audit.RecordingAuditTests.test_recorded_frames_have_native_simulation_cadence_and_hashes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_recording_audit.py", line 18, in test_recorded_frames_have_native_simulation_cadence_and_hashes
+    result=auditor.audit_recording(self.run,self.manifest,self.summary,self.plan)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'candidate_recording_auditor' has no attribute 'audit_recording'
+
+======================================================================
+ERROR: test_two_reused_shadows_can_precede_recording_without_new_shadow_launch (tests.test_candidate_recording_audit.RecordingAuditTests.test_two_reused_shadows_can_precede_recording_without_new_shadow_launch)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_recording_audit.py", line 31, in test_two_reused_shadows_can_precede_recording_without_new_shadow_launch
+    auditor.verify_admission_timing(self.root,plan,life)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'candidate_recording_auditor' has no attribute 'verify_admission_timing'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.014s
+
+FAILED (errors=3)
