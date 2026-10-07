@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/test_reports/jev_sdk_mock_driver_20261007.py", line 23, in <module>
+    if case=='gzip':assert result['sdk_call_parsed'] and result['offline_sdk_parsed'],'Decoded compressed entity must not be decoded twice'
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Decoded compressed entity must not be decoded twice
