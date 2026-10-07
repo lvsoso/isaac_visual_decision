@@ -1,0 +1,188 @@
+test_missing_candidates_or_nonfinite_values_diagnosed_without_filling (tests.test_jev_diagnostic.DiagnosticTests.test_missing_candidates_or_nonfinite_values_diagnosed_without_filling) ... ERROR
+test_non_json_or_http_error_body_retained_as_evidence_not_decision (tests.test_jev_diagnostic.DiagnosticTests.test_non_json_or_http_error_body_retained_as_evidence_not_decision) ... ERROR
+test_normal_response_tie_and_confidence_formula_remain_separate (tests.test_jev_diagnostic.DiagnosticTests.test_normal_response_tie_and_confidence_formula_remain_separate) ... ERROR
+test_oversized_body_is_not_archived (tests.test_jev_diagnostic.DiagnosticTests.test_oversized_body_is_not_archived) ... ERROR
+test_range_and_sum_failures_are_distinct_and_raw_not_mutated (tests.test_jev_diagnostic.DiagnosticTests.test_range_and_sum_failures_are_distinct_and_raw_not_mutated) ... ERROR
+test_request_frozen_and_one_call_budget_persisted (tests.test_jev_diagnostic.DiagnosticTests.test_request_frozen_and_one_call_budget_persisted) ... ERROR
+test_safe_invalid_probability_body_saved_exact_before_validation (tests.test_jev_diagnostic.DiagnosticTests.test_safe_invalid_probability_body_saved_exact_before_validation) ... ERROR
+test_secret_echo_never_written_even_when_json_escaped (tests.test_jev_diagnostic.DiagnosticTests.test_secret_echo_never_written_even_when_json_escaped) ... ERROR
+test_wrong_endpoint_changed_body_or_order_rejected_before_send (tests.test_jev_diagnostic.DiagnosticTests.test_wrong_endpoint_changed_body_or_order_rejected_before_send) ... ERROR
+
+======================================================================
+ERROR: test_missing_candidates_or_nonfinite_values_diagnosed_without_filling (tests.test_jev_diagnostic.DiagnosticTests.test_missing_candidates_or_nonfinite_values_diagnosed_without_filling)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_diagnostic.py", line 53, in test_missing_candidates_or_nonfinite_values_diagnosed_without_filling
+    r=raw();r['answers']['next_stage']['probabilities'].pop('abort');d=mod().audit_choice_response(r);self.assertEqual(d['missing_candidates'],['abort']);self.assertFalse(d['project_valid'])
+                                                                       ~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_diagnostic.py", line 7, in mod
+    def mod():return importlib.import_module('visual_lab.jev_diagnostic')
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.jev_diagnostic'
+
+======================================================================
+ERROR: test_non_json_or_http_error_body_retained_as_evidence_not_decision (tests.test_jev_diagnostic.DiagnosticTests.test_non_json_or_http_error_body_retained_as_evidence_not_decision)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_diagnostic.py", line 45, in test_non_json_or_http_error_body_retained_as_evidence_not_decision
+    c=self.capture();c.before_send(self.request());c.record_response(422,{'content-type':'text/plain'},b'fixture non-JSON error')
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_diagnostic.py", line 14, in capture
+    def capture(self):return mod().DiagnosticCapture(self.output,payload(),token='CPU-fixture-secret')
+                             ~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_diagnostic.py", line 7, in mod
+    def mod():return importlib.import_module('visual_lab.jev_diagnostic')
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.jev_diagnostic'
+
+======================================================================
+ERROR: test_normal_response_tie_and_confidence_formula_remain_separate (tests.test_jev_diagnostic.DiagnosticTests.test_normal_response_tie_and_confidence_formula_remain_separate)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_diagnostic.py", line 51, in test_normal_response_tie_and_confidence_formula_remain_separate
+    d=mod().audit_choice_response(raw());self.assertTrue(d['project_valid']);self.assertEqual(d['top_probability_ties'],list(ACTIONS));self.assertTrue(d['selected_is_argmax']);self.assertEqual(d['expected_confidence'],0.0)
+      ~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_diagnostic.py", line 7, in mod
+    def mod():return importlib.import_module('visual_lab.jev_diagnostic')
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.jev_diagnostic'
+
+======================================================================
+ERROR: test_oversized_body_is_not_archived (tests.test_jev_diagnostic.DiagnosticTests.test_oversized_body_is_not_archived)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_diagnostic.py", line 41, in test_oversized_body_is_not_archived
+    c=self.capture();c.before_send(self.request())
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_diagnostic.py", line 14, in capture
+    def capture(self):return mod().DiagnosticCapture(self.output,payload(),token='CPU-fixture-secret')
+                             ~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_diagnostic.py", line 7, in mod
+    def mod():return importlib.import_module('visual_lab.jev_diagnostic')
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.jev_diagnostic'
+
+======================================================================
+ERROR: test_range_and_sum_failures_are_distinct_and_raw_not_mutated (tests.test_jev_diagnostic.DiagnosticTests.test_range_and_sum_failures_are_distinct_and_raw_not_mutated)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_diagnostic.py", line 48, in test_range_and_sum_failures_are_distinct_and_raw_not_mutated
+    r=raw();r['answers']['next_stage']['probabilities']['abort']=-.01;saved=copy.deepcopy(r);d=mod().audit_choice_response(r)
+                                                                                               ~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_diagnostic.py", line 7, in mod
+    def mod():return importlib.import_module('visual_lab.jev_diagnostic')
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.jev_diagnostic'
+
+======================================================================
+ERROR: test_request_frozen_and_one_call_budget_persisted (tests.test_jev_diagnostic.DiagnosticTests.test_request_frozen_and_one_call_budget_persisted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_diagnostic.py", line 18, in test_request_frozen_and_one_call_budget_persisted
+    c=self.capture();c.before_send(self.request());self.assertEqual(c.attempts,1)
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_diagnostic.py", line 14, in capture
+    def capture(self):return mod().DiagnosticCapture(self.output,payload(),token='CPU-fixture-secret')
+                             ~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_diagnostic.py", line 7, in mod
+    def mod():return importlib.import_module('visual_lab.jev_diagnostic')
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.jev_diagnostic'
+
+======================================================================
+ERROR: test_safe_invalid_probability_body_saved_exact_before_validation (tests.test_jev_diagnostic.DiagnosticTests.test_safe_invalid_probability_body_saved_exact_before_validation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_diagnostic.py", line 31, in test_safe_invalid_probability_body_saved_exact_before_validation
+    c=self.capture();c.before_send(self.request());r=raw();r['answers']['next_stage']['probabilities']['abort']=0.0;body=json.dumps(r,indent=2).encode()
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_diagnostic.py", line 14, in capture
+    def capture(self):return mod().DiagnosticCapture(self.output,payload(),token='CPU-fixture-secret')
+                             ~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_diagnostic.py", line 7, in mod
+    def mod():return importlib.import_module('visual_lab.jev_diagnostic')
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.jev_diagnostic'
+
+======================================================================
+ERROR: test_secret_echo_never_written_even_when_json_escaped (tests.test_jev_diagnostic.DiagnosticTests.test_secret_echo_never_written_even_when_json_escaped)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_diagnostic.py", line 37, in test_secret_echo_never_written_even_when_json_escaped
+    c=self.capture();c.before_send(self.request());r=raw();r['debug']='CPU-fixture-secret';body=json.dumps(r).replace('CPU-fixture-secret','CPU-fixture-\\u0073ecret').encode()
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_diagnostic.py", line 14, in capture
+    def capture(self):return mod().DiagnosticCapture(self.output,payload(),token='CPU-fixture-secret')
+                             ~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_diagnostic.py", line 7, in mod
+    def mod():return importlib.import_module('visual_lab.jev_diagnostic')
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.jev_diagnostic'
+
+======================================================================
+ERROR: test_wrong_endpoint_changed_body_or_order_rejected_before_send (tests.test_jev_diagnostic.DiagnosticTests.test_wrong_endpoint_changed_body_or_order_rejected_before_send)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_diagnostic.py", line 24, in test_wrong_endpoint_changed_body_or_order_rejected_before_send
+    c=self.capture();dirty=payload();dirty['state']['task']='different'
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_diagnostic.py", line 14, in capture
+    def capture(self):return mod().DiagnosticCapture(self.output,payload(),token='CPU-fixture-secret')
+                             ~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_diagnostic.py", line 7, in mod
+    def mod():return importlib.import_module('visual_lab.jev_diagnostic')
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.jev_diagnostic'
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.010s
+
+FAILED (errors=9)
