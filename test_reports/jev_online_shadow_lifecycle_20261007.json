@@ -1,0 +1,192 @@
+{
+  "started_utc": "2026-10-07T08:25:12.707595+00:00",
+  "plan_sha256": "f42336ddf7a48b17642ac76526f74cfab1d492cb709c0fe17da4b62c8451b35c",
+  "implementation_and_freeze_commit": "210f4c0926980e4e6341c1570f7159160fee7042",
+  "launch_environment": {
+    "OMNI_KIT_ALLOW_ROOT": "1",
+    "LD_LIBRARY_PATH": ""
+  },
+  "model_had_control": false,
+  "gpu_before": "NVIDIA L40, 128 MiB",
+  "gpu_compute_before": "",
+  "automatic_retries": 0,
+  "max_prediction_calls": 14,
+  "runs": [
+    {
+      "color": "blue",
+      "started_utc": "2026-10-07T08:25:13.157377+00:00",
+      "command": [
+        "/root/gpufree-share/isaacsim/python.sh",
+        "/root/gpufree-share/isaac_visual_decision/run_jev_shadow.py",
+        "--isaac-root",
+        "/root/gpufree-share/isaacsim",
+        "--headless",
+        "--goal-color",
+        "blue",
+        "--run-dir",
+        "/root/gpufree-share/isaac_visual_decision/runs/35_jev_shadow_blue",
+        "--worker-python",
+        "/root/gpufree-data/envs/ivd-model/bin/python",
+        "--key-file",
+        "/root/gpufree-share/ts.key"
+      ],
+      "run_dir": "runs/35_jev_shadow_blue",
+      "ended_utc": "2026-10-07T08:27:01.238972+00:00",
+      "process_returncode": 0,
+      "log_sha256": "d3f5baffde6465564eebc3a15575f7c74e448e8c8f90700105b96079b585b5ed",
+      "summary": {
+        "physical_completion": true,
+        "strict_success": true,
+        "final_cube_position_m": [
+          0.47915345430374146,
+          0.49299249053001404,
+          0.024999940767884254
+        ],
+        "final_xy_error_m": 0.02199280919842071,
+        "final_z_error_m": 5.923211574693221e-08,
+        "release_reached": true,
+        "timeout_occurred": false,
+        "termination_reason": "completed",
+        "mode": "jev_online_shadow",
+        "goal_color": "blue",
+        "complete": true,
+        "api_attempts": 7,
+        "api_completed": 7,
+        "num_decisions": 7,
+        "proposed_actions": [
+          "pre_grasp",
+          "approach",
+          "pre_grasp",
+          "transport",
+          "transport",
+          "lower",
+          "release"
+        ],
+        "executed_actions": [
+          "pre_grasp",
+          "approach",
+          "grasp",
+          "lift",
+          "transport",
+          "lower",
+          "release"
+        ],
+        "shadow_reference_agreement": 5,
+        "error": null,
+        "model_called": true,
+        "real_model_evaluated": true,
+        "model_had_control": false,
+        "strict_success_is_executor_only": true,
+        "physics_updates": 776,
+        "recorded_frames": 0,
+        "wall_seconds": 26.617834201082587,
+        "model_input_source": "Live proprioception + configured target + measured-joint FK, no image or object truth",
+        "validation_policy": "jev_sdk_basic_v1",
+        "end_to_end_visual_localization": false,
+        "control_gate": {
+          "eligible": false,
+          "requirements": {
+            "complete": true,
+            "executor_physical_success": true,
+            "seven_valid_calls": true,
+            "seven_of_seven_agreement": false,
+            "no_error": true,
+            "shadow_only": true
+          },
+          "policy": "7/7 online shadow plus completed successful fixed-executor episode; candidate only, never automatic control authorization"
+        }
+      }
+    },
+    {
+      "color": "yellow",
+      "started_utc": "2026-10-07T08:27:01.296668+00:00",
+      "command": [
+        "/root/gpufree-share/isaacsim/python.sh",
+        "/root/gpufree-share/isaac_visual_decision/run_jev_shadow.py",
+        "--isaac-root",
+        "/root/gpufree-share/isaacsim",
+        "--headless",
+        "--goal-color",
+        "yellow",
+        "--run-dir",
+        "/root/gpufree-share/isaac_visual_decision/runs/36_jev_shadow_yellow",
+        "--worker-python",
+        "/root/gpufree-data/envs/ivd-model/bin/python",
+        "--key-file",
+        "/root/gpufree-share/ts.key"
+      ],
+      "run_dir": "runs/36_jev_shadow_yellow",
+      "ended_utc": "2026-10-07T08:28:02.679529+00:00",
+      "process_returncode": 0,
+      "log_sha256": "929c8ad7c3af81b2d9e1ef04937859163dede936cf00f9013acb456c9d252736",
+      "summary": {
+        "physical_completion": true,
+        "strict_success": true,
+        "final_cube_position_m": [
+          0.47915345430374146,
+          0.49299249053001404,
+          0.024999940767884254
+        ],
+        "final_xy_error_m": 0.02199280919842071,
+        "final_z_error_m": 5.923211574693221e-08,
+        "release_reached": true,
+        "timeout_occurred": false,
+        "termination_reason": "completed",
+        "mode": "jev_online_shadow",
+        "goal_color": "yellow",
+        "complete": true,
+        "api_attempts": 7,
+        "api_completed": 7,
+        "num_decisions": 7,
+        "proposed_actions": [
+          "pre_grasp",
+          "approach",
+          "pre_grasp",
+          "transport",
+          "transport",
+          "lower",
+          "release"
+        ],
+        "executed_actions": [
+          "pre_grasp",
+          "approach",
+          "grasp",
+          "lift",
+          "transport",
+          "lower",
+          "release"
+        ],
+        "shadow_reference_agreement": 5,
+        "error": null,
+        "model_called": true,
+        "real_model_evaluated": true,
+        "model_had_control": false,
+        "strict_success_is_executor_only": true,
+        "physics_updates": 776,
+        "recorded_frames": 0,
+        "wall_seconds": 26.40237878402695,
+        "model_input_source": "Live proprioception + configured target + measured-joint FK, no image or object truth",
+        "validation_policy": "jev_sdk_basic_v1",
+        "end_to_end_visual_localization": false,
+        "control_gate": {
+          "eligible": false,
+          "requirements": {
+            "complete": true,
+            "executor_physical_success": true,
+            "seven_valid_calls": true,
+            "seven_of_seven_agreement": false,
+            "no_error": true,
+            "shadow_only": true
+          },
+          "policy": "7/7 online shadow plus completed successful fixed-executor episode; candidate only, never automatic control authorization"
+        }
+      }
+    }
+  ],
+  "complete": true,
+  "driver_sha256": "7486a58b9f3cda09a6d9891aafbcdf765f6152f3e5bc78290a76e662f56d98d8",
+  "preflight_returncode": 0,
+  "whole_pair_control_eligible": false,
+  "ended_utc": "2026-10-07T08:28:02.780510+00:00",
+  "gpu_compute_after": ""
+}

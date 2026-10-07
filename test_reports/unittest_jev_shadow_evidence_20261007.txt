@@ -1,0 +1,117 @@
+test_changed_official_answer_or_probability_is_rejected (tests.test_jev_shadow_evidence.ShadowEvidenceTests.test_changed_official_answer_or_probability_is_rejected) ... /Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/test_reports/jev_online_shadow_auditor_20261007.py:39: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmpaujqrqn5/evidence/35_jev_shadow_blue/images/decision_001.png'>
+  assert sha256_file(png)==obs['image_sha256'];image=Image.open(png);assert list(image.size)==manifest['config']['camera']['resolution'];assert image.mode in ['RGB','RGBA']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/test_reports/jev_online_shadow_auditor_20261007.py:39: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmpaujqrqn5/evidence/35_jev_shadow_blue/images/decision_002.png'>
+  assert sha256_file(png)==obs['image_sha256'];image=Image.open(png);assert list(image.size)==manifest['config']['camera']['resolution'];assert image.mode in ['RGB','RGBA']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/traceback.py:269: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmpaujqrqn5/evidence/35_jev_shadow_blue/images/decision_003.png'>
+  tb.tb_frame.clear()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_cube_truth_leak_in_model_request_is_rejected (tests.test_jev_shadow_evidence.ShadowEvidenceTests.test_cube_truth_leak_in_model_request_is_rejected) ... /usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/traceback.py:269: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmpfqhqi8zt/evidence/35_jev_shadow_blue/images/decision_001.png'>
+  tb.tb_frame.clear()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_duplicate_http_request_id_is_rejected (tests.test_jev_shadow_evidence.ShadowEvidenceTests.test_duplicate_http_request_id_is_rejected) ... /Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/test_reports/jev_online_shadow_auditor_20261007.py:39: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmpx_bsprjc/evidence/35_jev_shadow_blue/images/decision_001.png'>
+  assert sha256_file(png)==obs['image_sha256'];image=Image.open(png);assert list(image.size)==manifest['config']['camera']['resolution'];assert image.mode in ['RGB','RGBA']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/traceback.py:269: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmpx_bsprjc/evidence/35_jev_shadow_blue/images/decision_002.png'>
+  tb.tb_frame.clear()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_fourteen_real_saved_calls_and_deterministic_offline_rebuild (tests.test_jev_shadow_evidence.ShadowEvidenceTests.test_fourteen_real_saved_calls_and_deterministic_offline_rebuild) ... /Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/test_reports/jev_online_shadow_auditor_20261007.py:39: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmp0wv5hjvy/evidence/35_jev_shadow_blue/images/decision_001.png'>
+  assert sha256_file(png)==obs['image_sha256'];image=Image.open(png);assert list(image.size)==manifest['config']['camera']['resolution'];assert image.mode in ['RGB','RGBA']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/test_reports/jev_online_shadow_auditor_20261007.py:39: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmp0wv5hjvy/evidence/35_jev_shadow_blue/images/decision_002.png'>
+  assert sha256_file(png)==obs['image_sha256'];image=Image.open(png);assert list(image.size)==manifest['config']['camera']['resolution'];assert image.mode in ['RGB','RGBA']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/test_reports/jev_online_shadow_auditor_20261007.py:39: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmp0wv5hjvy/evidence/35_jev_shadow_blue/images/decision_003.png'>
+  assert sha256_file(png)==obs['image_sha256'];image=Image.open(png);assert list(image.size)==manifest['config']['camera']['resolution'];assert image.mode in ['RGB','RGBA']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/test_reports/jev_online_shadow_auditor_20261007.py:39: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmp0wv5hjvy/evidence/35_jev_shadow_blue/images/decision_004.png'>
+  assert sha256_file(png)==obs['image_sha256'];image=Image.open(png);assert list(image.size)==manifest['config']['camera']['resolution'];assert image.mode in ['RGB','RGBA']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/test_reports/jev_online_shadow_auditor_20261007.py:39: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmp0wv5hjvy/evidence/35_jev_shadow_blue/images/decision_005.png'>
+  assert sha256_file(png)==obs['image_sha256'];image=Image.open(png);assert list(image.size)==manifest['config']['camera']['resolution'];assert image.mode in ['RGB','RGBA']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/test_reports/jev_online_shadow_auditor_20261007.py:39: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmp0wv5hjvy/evidence/35_jev_shadow_blue/images/decision_006.png'>
+  assert sha256_file(png)==obs['image_sha256'];image=Image.open(png);assert list(image.size)==manifest['config']['camera']['resolution'];assert image.mode in ['RGB','RGBA']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/test_reports/jev_online_shadow_auditor_20261007.py:39: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmp0wv5hjvy/evidence/35_jev_shadow_blue/images/decision_007.png'>
+  assert sha256_file(png)==obs['image_sha256'];image=Image.open(png);assert list(image.size)==manifest['config']['camera']['resolution'];assert image.mode in ['RGB','RGBA']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/test_reports/jev_online_shadow_auditor_20261007.py:39: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmp0wv5hjvy/evidence/36_jev_shadow_yellow/images/decision_001.png'>
+  assert sha256_file(png)==obs['image_sha256'];image=Image.open(png);assert list(image.size)==manifest['config']['camera']['resolution'];assert image.mode in ['RGB','RGBA']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/test_reports/jev_online_shadow_auditor_20261007.py:39: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmp0wv5hjvy/evidence/36_jev_shadow_yellow/images/decision_002.png'>
+  assert sha256_file(png)==obs['image_sha256'];image=Image.open(png);assert list(image.size)==manifest['config']['camera']['resolution'];assert image.mode in ['RGB','RGBA']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/test_reports/jev_online_shadow_auditor_20261007.py:39: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmp0wv5hjvy/evidence/36_jev_shadow_yellow/images/decision_003.png'>
+  assert sha256_file(png)==obs['image_sha256'];image=Image.open(png);assert list(image.size)==manifest['config']['camera']['resolution'];assert image.mode in ['RGB','RGBA']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/test_reports/jev_online_shadow_auditor_20261007.py:39: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmp0wv5hjvy/evidence/36_jev_shadow_yellow/images/decision_004.png'>
+  assert sha256_file(png)==obs['image_sha256'];image=Image.open(png);assert list(image.size)==manifest['config']['camera']['resolution'];assert image.mode in ['RGB','RGBA']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/test_reports/jev_online_shadow_auditor_20261007.py:39: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmp0wv5hjvy/evidence/36_jev_shadow_yellow/images/decision_005.png'>
+  assert sha256_file(png)==obs['image_sha256'];image=Image.open(png);assert list(image.size)==manifest['config']['camera']['resolution'];assert image.mode in ['RGB','RGBA']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/test_reports/jev_online_shadow_auditor_20261007.py:39: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmp0wv5hjvy/evidence/36_jev_shadow_yellow/images/decision_006.png'>
+  assert sha256_file(png)==obs['image_sha256'];image=Image.open(png);assert list(image.size)==manifest['config']['camera']['resolution'];assert image.mode in ['RGB','RGBA']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_shadow_evidence.py:16: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmp0wv5hjvy/evidence/36_jev_shadow_yellow/images/decision_007.png'>
+  return auditor.audit(self.evidence,ROOT/'test_reports/jev_shadow_plan_20261007.json',self.root/'report.json',self.root/'report.html')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_missing_gpu_runtime_evidence_is_rejected (tests.test_jev_shadow_evidence.ShadowEvidenceTests.test_missing_gpu_runtime_evidence_is_rejected) ... /Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/test_reports/jev_online_shadow_auditor_20261007.py:39: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmp9f7v0y7b/evidence/35_jev_shadow_blue/images/decision_001.png'>
+  assert sha256_file(png)==obs['image_sha256'];image=Image.open(png);assert list(image.size)==manifest['config']['camera']['resolution'];assert image.mode in ['RGB','RGBA']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/test_reports/jev_online_shadow_auditor_20261007.py:39: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmp9f7v0y7b/evidence/35_jev_shadow_blue/images/decision_002.png'>
+  assert sha256_file(png)==obs['image_sha256'];image=Image.open(png);assert list(image.size)==manifest['config']['camera']['resolution'];assert image.mode in ['RGB','RGBA']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/test_reports/jev_online_shadow_auditor_20261007.py:39: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmp9f7v0y7b/evidence/35_jev_shadow_blue/images/decision_003.png'>
+  assert sha256_file(png)==obs['image_sha256'];image=Image.open(png);assert list(image.size)==manifest['config']['camera']['resolution'];assert image.mode in ['RGB','RGBA']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/test_reports/jev_online_shadow_auditor_20261007.py:39: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmp9f7v0y7b/evidence/35_jev_shadow_blue/images/decision_004.png'>
+  assert sha256_file(png)==obs['image_sha256'];image=Image.open(png);assert list(image.size)==manifest['config']['camera']['resolution'];assert image.mode in ['RGB','RGBA']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/test_reports/jev_online_shadow_auditor_20261007.py:39: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmp9f7v0y7b/evidence/35_jev_shadow_blue/images/decision_005.png'>
+  assert sha256_file(png)==obs['image_sha256'];image=Image.open(png);assert list(image.size)==manifest['config']['camera']['resolution'];assert image.mode in ['RGB','RGBA']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/test_reports/jev_online_shadow_auditor_20261007.py:39: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmp9f7v0y7b/evidence/35_jev_shadow_blue/images/decision_006.png'>
+  assert sha256_file(png)==obs['image_sha256'];image=Image.open(png);assert list(image.size)==manifest['config']['camera']['resolution'];assert image.mode in ['RGB','RGBA']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/traceback.py:269: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmp9f7v0y7b/evidence/35_jev_shadow_blue/images/decision_007.png'>
+  tb.tb_frame.clear()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_six_of_seven_gate_or_false_eligibility_is_rejected (tests.test_jev_shadow_evidence.ShadowEvidenceTests.test_six_of_seven_gate_or_false_eligibility_is_rejected) ... /Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/test_reports/jev_online_shadow_auditor_20261007.py:39: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmp3vm42bgh/evidence/35_jev_shadow_blue/images/decision_001.png'>
+  assert sha256_file(png)==obs['image_sha256'];image=Image.open(png);assert list(image.size)==manifest['config']['camera']['resolution'];assert image.mode in ['RGB','RGBA']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/test_reports/jev_online_shadow_auditor_20261007.py:39: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmp3vm42bgh/evidence/35_jev_shadow_blue/images/decision_002.png'>
+  assert sha256_file(png)==obs['image_sha256'];image=Image.open(png);assert list(image.size)==manifest['config']['camera']['resolution'];assert image.mode in ['RGB','RGBA']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/test_reports/jev_online_shadow_auditor_20261007.py:39: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmp3vm42bgh/evidence/35_jev_shadow_blue/images/decision_003.png'>
+  assert sha256_file(png)==obs['image_sha256'];image=Image.open(png);assert list(image.size)==manifest['config']['camera']['resolution'];assert image.mode in ['RGB','RGBA']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/test_reports/jev_online_shadow_auditor_20261007.py:39: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmp3vm42bgh/evidence/35_jev_shadow_blue/images/decision_004.png'>
+  assert sha256_file(png)==obs['image_sha256'];image=Image.open(png);assert list(image.size)==manifest['config']['camera']['resolution'];assert image.mode in ['RGB','RGBA']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/test_reports/jev_online_shadow_auditor_20261007.py:39: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmp3vm42bgh/evidence/35_jev_shadow_blue/images/decision_005.png'>
+  assert sha256_file(png)==obs['image_sha256'];image=Image.open(png);assert list(image.size)==manifest['config']['camera']['resolution'];assert image.mode in ['RGB','RGBA']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/test_reports/jev_online_shadow_auditor_20261007.py:39: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmp3vm42bgh/evidence/35_jev_shadow_blue/images/decision_006.png'>
+  assert sha256_file(png)==obs['image_sha256'];image=Image.open(png);assert list(image.size)==manifest['config']['camera']['resolution'];assert image.mode in ['RGB','RGBA']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/traceback.py:269: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmp3vm42bgh/evidence/35_jev_shadow_blue/images/decision_007.png'>
+  tb.tb_frame.clear()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_snapshot_changed_while_waiting_is_rejected (tests.test_jev_shadow_evidence.ShadowEvidenceTests.test_snapshot_changed_while_waiting_is_rejected) ... /usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/traceback.py:269: ResourceWarning: unclosed file <_io.BufferedReader name='/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/tmp7pw7a439/evidence/35_jev_shadow_blue/images/decision_001.png'>
+  tb.tb_frame.clear()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 1.028s
+
+OK
