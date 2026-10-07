@@ -1,0 +1,36 @@
+{
+  "live_inference_calls": 0,
+  "sdk_version": "0.7.2",
+  "wheel_url": "https://files.pythonhosted.org/packages/99/5e/2b97ba9b0b77612e3a480ddb60c0c0325b4809ef57a7b565341d65ef7bec/typesafe_sdk-0.7.2-py3-none-any.whl",
+  "verified_wheel_sha256": "0a961148187d52e18276ed7f2d02617cfac48e3b97673cb631a8749397d43d1e",
+  "installed_source_matches_wheel": true,
+  "installed_source_sha256": {
+    "_core/response_types.py": "cf06ac0dffa02b3fd1abcf26f962c4bed13b146064b56b11b19dfbef87dfe0df",
+    "_core/schemas/base.py": "6c7cc098d30e1fb715fa44bdb0b20e73eaa646b184169a146852f8752f3ebfad",
+    "_core/transport.py": "dd2d2c0a29f4a084def920a2d5dbee0c0e687e1012026ba73521165f6f298fab",
+    "_schemas/models.py": "ef4df0873cf8934b29adb4fddd894b694d9469a53bd6b35f22bdc508d26df707"
+  },
+  "source_review_commit": "f078f1e208a0d885154dc758344ae4fce77ac168",
+  "versions": {
+    "typesafe-sdk": "0.7.2",
+    "httpx2": "2.13.1",
+    "httpcore2": "2.13.1",
+    "pydantic": "2.13.5",
+    "pydantic-core": "2.46.5",
+    "tenacity": "9.1.4"
+  },
+  "docs": [
+    "https://docs.typesafe.ai/sdk/python/usage.md",
+    "https://docs.typesafe.ai/sdk/python/api/types/responses.md",
+    "https://docs.typesafe.ai/sdk/python/api/clients/sync.md",
+    "https://docs.typesafe.ai/primitives/choice.md"
+  ],
+  "findings": [
+    "Original request structure supported, raw dictionaries permitted.",
+    "ChoiceSDKschema describes approximately1 but imposes no sum/range validators in reviewed source.",
+    "No probability normalization in reviewedSDKparse.",
+    "SDK raw_http_response and x-typesafe-request-id available.",
+    "Explicit RetryPolicy(max_retries=0); debug response bodies not redacted, logging disabled."
+  ],
+  "scope": "Read-only official source/package check, no actual inference or claims about lost prior response."
+}

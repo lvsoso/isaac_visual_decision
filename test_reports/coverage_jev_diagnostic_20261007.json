@@ -1,0 +1,30 @@
+{
+  "method": "stdlib trace / AST statement line counts; not branch coverage",
+  "cpu_contracts": 9,
+  "official_sdk_mock_cases": 7,
+  "real_api_calls": 0,
+  "files": {
+    "visual_lab/jev_diagnostic.py": {
+      "statement_lines": 48,
+      "covered_lines": 45,
+      "line_percent": 93.75,
+      "uncovered_lines": [
+        21,
+        36,
+        64
+      ]
+    },
+    "tools/diagnose_jev.py": {
+      "statement_lines": 50,
+      "covered_lines": 45,
+      "line_percent": 90.0,
+      "uncovered_lines": [
+        65,
+        66,
+        67,
+        68,
+        69
+      ]
+    }
+  }
+}

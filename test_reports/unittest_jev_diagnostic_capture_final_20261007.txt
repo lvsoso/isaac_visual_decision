@@ -1,0 +1,14 @@
+test_missing_candidates_or_nonfinite_values_diagnosed_without_filling (tests.test_jev_diagnostic.DiagnosticTests.test_missing_candidates_or_nonfinite_values_diagnosed_without_filling) ... ok
+test_non_json_or_http_error_body_retained_as_evidence_not_decision (tests.test_jev_diagnostic.DiagnosticTests.test_non_json_or_http_error_body_retained_as_evidence_not_decision) ... ok
+test_normal_response_tie_and_confidence_formula_remain_separate (tests.test_jev_diagnostic.DiagnosticTests.test_normal_response_tie_and_confidence_formula_remain_separate) ... ok
+test_oversized_body_is_not_archived (tests.test_jev_diagnostic.DiagnosticTests.test_oversized_body_is_not_archived) ... ok
+test_range_and_sum_failures_are_distinct_and_raw_not_mutated (tests.test_jev_diagnostic.DiagnosticTests.test_range_and_sum_failures_are_distinct_and_raw_not_mutated) ... ok
+test_request_frozen_and_one_call_budget_persisted (tests.test_jev_diagnostic.DiagnosticTests.test_request_frozen_and_one_call_budget_persisted) ... ok
+test_safe_invalid_probability_body_saved_exact_before_validation (tests.test_jev_diagnostic.DiagnosticTests.test_safe_invalid_probability_body_saved_exact_before_validation) ... ok
+test_secret_echo_never_written_even_when_json_escaped (tests.test_jev_diagnostic.DiagnosticTests.test_secret_echo_never_written_even_when_json_escaped) ... ok
+test_wrong_endpoint_changed_body_or_order_rejected_before_send (tests.test_jev_diagnostic.DiagnosticTests.test_wrong_endpoint_changed_body_or_order_rejected_before_send) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.066s
+
+OK
