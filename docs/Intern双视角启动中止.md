@@ -2,6 +2,9 @@
 
 用户授权先蓝黄在线shadow、两色均7/7且物理成功后才各一回合受限Isaac接管。冻结计划 `0126b98` 已推送，22项新CPU契约与365项回归通过；但实际远端启动暴露了CPU模拟未覆盖的启动器环境变化。
 
+- [失败过程与完整冻结／生命周期HTML](reports/candidate_control_startup_20261007.html)
+- [失败审计JSON](../test_reports/candidate_control_startup_audit_20261007.json) · [原始证据包](../test_reports/candidate_control_startup_evidence_20261007.tar.gz)
+
 ## 实际发生了什么
 
 - 2026-10-07 08:54:54–08:55:02 UTC，L40加载了独立Intern模型服务，CUDA/BF16来源／模板／校准检查通过。
@@ -22,3 +25,5 @@
 这是工程启动错误，**不能记成模型不达7/7，也不能声称已完成接管测试**。原失败计划、日志和工件保留，不覆盖或续跑本批；修复后CPU检查不能代替新GPU验证。后续真实实验须用新的冻结计划／输出目录，经用户确认再运行。
 
 原失败证据包SHA256：`acfad897b219e674eaef701c5be92c56eedb208c82703f3be21a9c85419a44c1`。
+
+修复增加 `--check-launch-only`：仅使用官方python.sh验证启动环境，不访问模型HTTP，不创建SimulationApp、场景、动作或回合目录。驱动器对新批次要求计划中明确指定新的 `experiment_dir`，旧计划不自动复用。

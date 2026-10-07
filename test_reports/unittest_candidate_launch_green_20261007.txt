@@ -1,0 +1,11 @@
+test_isaac_launcher_can_add_its_own_libraries_after_empty_prelaunch (tests.test_candidate_launch.LaunchTests.test_isaac_launcher_can_add_its_own_libraries_after_empty_prelaunch) ... ok
+test_launch_only_never_constructs_client_or_creates_run_directory (tests.test_candidate_launch.LaunchTests.test_launch_only_never_constructs_client_or_creates_run_directory) ... ok
+test_prelaunch_declaration_must_be_present_and_empty (tests.test_candidate_launch.LaunchTests.test_prelaunch_declaration_must_be_present_and_empty) ... ok
+test_relative_and_sibling_prefix_paths_are_rejected (tests.test_candidate_launch.LaunchTests.test_relative_and_sibling_prefix_paths_are_rejected) ... ok
+test_root_opt_in_still_required_and_direct_empty_is_allowed (tests.test_candidate_launch.LaunchTests.test_root_opt_in_still_required_and_direct_empty_is_allowed) ... ok
+test_system_python_library_cannot_precede_isaac (tests.test_candidate_launch.LaunchTests.test_system_python_library_cannot_precede_isaac) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.031s
+
+OK

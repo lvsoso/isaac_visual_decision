@@ -1,0 +1,232 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; style-src 'unsafe-inline'; connect-src 'none'"><title>Intern双视角：在线shadow与受限仿真接管</title><style>body{font:15px/1.7 system-ui;max-width:1200px;margin:24px auto;padding:0 20px;background:#101a20;color:#e2edf2}section{border:1px solid #354a55;padding:16px;margin:18px 0}.views{display:flex;flex-wrap:wrap;gap:10px}.views img{max-width:100%;width:540px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}table{border-collapse:collapse;width:100%}td,th{padding:5px;border-bottom:1px solid #354a55;text-align:left}</style>
+<h1>Intern双视角：在线shadow与受限仿真接管</h1><p>固定Intern-Decision-4B、中文空间描述、两张同时视图。shadow由固定执行器推进；control由模型选择既有技能，低层目标仍来自配置。Jev排除。</p>
+<p>真实新推理 0 次；shadow 0 回合；模型接管 0 回合；接管物理成功 0 回合。</p>
+<p>只验证已观察的固定Isaac场景。不代表独立泛化、扰动恢复或实体机械臂安全。完整原输入、响应、八概率与审计帧保留，无归一化或重选choice。</p>
+<section><h2>shadow / blue</h2><pre>{}</pre></section>
+<details><summary>准入／进程／冻结计划</summary><pre>{
+  &quot;lifecycle&quot;: {
+    &quot;kind&quot;: &quot;intern_dual_live_authorized_experiment&quot;,
+    &quot;started_utc&quot;: &quot;2026-10-07T08:54:54.775696+00:00&quot;,
+    &quot;plan_sha256&quot;: &quot;69818667efcd9211d52c6eabca273af0c903324f535a260828566b68e04260e4&quot;,
+    &quot;git_head&quot;: &quot;0126b98440bc426d0ee783c7bea890f9d645ae9f&quot;,
+    &quot;gpu_before&quot;: &quot;NVIDIA L40, 129 MiB&quot;,
+    &quot;gpu_compute_before&quot;: &quot;&quot;,
+    &quot;source_sha256&quot;: {
+      &quot;run_candidate.py&quot;: &quot;26854253e821563d18089c64332318d61e083686ed974095832f783219835803&quot;,
+      &quot;serve_model.py&quot;: &quot;f548baef34c6631721a48f15a8a0e10d2ad72a14b0f3a22a6dc9828a26f1e907&quot;,
+      &quot;visual_lab/__init__.py&quot;: &quot;ee35301b55f5da7f6a1f412279bccc541e0a9111df8941996db9cef1a871a75b&quot;,
+      &quot;visual_lab/audit.py&quot;: &quot;9b0ab935c222b2316ff1e6ea3ab10969b9ed1904a0db1319ceca3464680f4ca6&quot;,
+      &quot;visual_lab/candidate_control.py&quot;: &quot;547ba3ff4352feedde439ccbccd979bbe50b7fbeaba0bbd94d53649362874951&quot;,
+      &quot;visual_lab/capture.py&quot;: &quot;4efdfb9287fd2e00769991e0d0e0f0aa8b376e9f6d4c8c635957a70baff5d328&quot;,
+      &quot;visual_lab/client.py&quot;: &quot;7abd9923ceb75d748b18517d90e79624a40f81417673fe03869d87db7f27685f&quot;,
+      &quot;visual_lab/core.py&quot;: &quot;21f9991aa3a62cc49580b863fd14e50f884ec93f6ed557165747512618089471&quot;,
+      &quot;visual_lab/factorial.py&quot;: &quot;ee8cf74b76a8f08849ca8e3a2bec4d2fa5453fac1c8cc8e837c91e7bf85d2b77&quot;,
+      &quot;visual_lab/goal_binding.py&quot;: &quot;e18d9ac9446a97b4f768e85749578d164dda3316e07b9a16b990d7969f07716e&quot;,
+      &quot;visual_lab/image_ablation.py&quot;: &quot;64ca1df16550f22e85acce10ecaff0cdb5e1935de0c916d48bb481c41b8a2476&quot;,
+      &quot;visual_lab/jev.py&quot;: &quot;5814c08884d8bec975394a54ba033e794cd6b7aca85e6fff29c755e69aa58a1b&quot;,
+      &quot;visual_lab/jev_diagnostic.py&quot;: &quot;ffa7932a14202db64ccbca5af5aacf7fad6eb8c25c9e4092d89ceaf7f8e2b12d&quot;,
+      &quot;visual_lab/jev_shadow.py&quot;: &quot;0f06216b6c5d6714e54a43a06410298a9a38a0446f552c742f8fc4e3e0a5a6e6&quot;,
+      &quot;visual_lab/modality_prompts.py&quot;: &quot;77266fc21e9ae03973c97b34b67722447bddc9880e08ac2db61dd7ad75cbfa14&quot;,
+      &quot;visual_lab/png.py&quot;: &quot;da421559b77b50a365721ae1c89e0688c6f1e67a56c6024ad9a2169185bce9c4&quot;,
+      &quot;visual_lab/prompt_variants.py&quot;: &quot;1a556afc2597749305ad57eb35cf37fb00d204f0d8e2aa58e36bb048799a00d5&quot;,
+      &quot;visual_lab/protocol.py&quot;: &quot;354afcf57527d15d4e6e28579c95e47cd9f5d74beb242df610c820bfcc50339b&quot;,
+      &quot;visual_lab/runner.py&quot;: &quot;4fae7f9cf2830f80c0948ca68d7aeae4f821b196f1c9c6ec2f1e224a758d7dff&quot;,
+      &quot;visual_lab/server.py&quot;: &quot;b3e73f0e5da226ee417623d6bbea11f2989fa1518fa4a683ec28878b72c11e4d&quot;,
+      &quot;visual_lab/sim.py&quot;: &quot;83eef33e2c73c30fdc9e4f4b0b68a1992841e127eab3d94985b9632fbf120fa2&quot;,
+      &quot;visual_lab/text_english.py&quot;: &quot;735fdc9f730fd662e647d67330a5a21b691f2a2e11a9fc8c92bd4844c79f6400&quot;,
+      &quot;visual_lab/upstream.py&quot;: &quot;663662e902b65dd8799e2a81e7e6e91e927c848e1ac3b468fcbd224d285f87ba&quot;
+    },
+    &quot;automatic_retries&quot;: 0,
+    &quot;runs&quot;: [
+      {
+        &quot;mode&quot;: &quot;shadow&quot;,
+        &quot;color&quot;: &quot;blue&quot;,
+        &quot;run_dir&quot;: &quot;runs/37_intern_dual_shadow_blue&quot;,
+        &quot;max_decisions&quot;: 7,
+        &quot;started_utc&quot;: &quot;2026-10-07T08:55:02.261248+00:00&quot;,
+        &quot;service_count_before&quot;: 0,
+        &quot;command&quot;: [
+          &quot;/root/gpufree-share/isaacsim/python.sh&quot;,
+          &quot;/root/gpufree-share/isaac_visual_decision/run_candidate.py&quot;,
+          &quot;--isaac-root&quot;,
+          &quot;/root/gpufree-share/isaacsim&quot;,
+          &quot;--headless&quot;,
+          &quot;--mode&quot;,
+          &quot;shadow&quot;,
+          &quot;--goal-color&quot;,
+          &quot;blue&quot;,
+          &quot;--run-dir&quot;,
+          &quot;/root/gpufree-share/isaac_visual_decision/runs/37_intern_dual_shadow_blue&quot;
+        ],
+        &quot;isaac_process_pid&quot;: 106624,
+        &quot;process_returncode&quot;: 1,
+        &quot;ended_utc&quot;: &quot;2026-10-07T08:55:02.699248+00:00&quot;,
+        &quot;service_count_after&quot;: 0
+      }
+    ],
+    &quot;complete&quot;: false,
+    &quot;control_started&quot;: false,
+    &quot;launch_environment&quot;: {
+      &quot;OMNI_KIT_ALLOW_ROOT&quot;: &quot;1&quot;,
+      &quot;LD_LIBRARY_PATH&quot;: &quot;&quot;
+    },
+    &quot;service_command&quot;: [
+      &quot;/root/gpufree-data/envs/ivd-model/bin/python&quot;,
+      &quot;-u&quot;,
+      &quot;/root/gpufree-share/isaac_visual_decision/serve_model.py&quot;,
+      &quot;--checkpoint&quot;,
+      &quot;/root/gpufree-data/models/Intern-Decision-4B&quot;,
+      &quot;--trust-model-code&quot;,
+      &quot;--expected-inference-sha256&quot;,
+      &quot;c904e2c67ca0775621a22375ee373d2ba30b52117cda870c6c9ef74143b29863&quot;,
+      &quot;--device&quot;,
+      &quot;cuda&quot;,
+      &quot;--dtype&quot;,
+      &quot;bfloat16&quot;,
+      &quot;--max-length&quot;,
+      &quot;8192&quot;,
+      &quot;--host&quot;,
+      &quot;127.0.0.1&quot;,
+      &quot;--port&quot;,
+      &quot;8766&quot;
+    ],
+    &quot;service_pid&quot;: 106509,
+    &quot;initial_health&quot;: {
+      &quot;status&quot;: &quot;ok&quot;,
+      &quot;bridge_schema&quot;: 1,
+      &quot;supports_images&quot;: true,
+      &quot;max_images&quot;: 2,
+      &quot;supports_text_only_ablation&quot;: false,
+      &quot;busy&quot;: false,
+      &quot;requests_completed&quot;: 0,
+      &quot;uptime_seconds&quot;: 0.41,
+      &quot;bridge_source_sha256&quot;: &quot;b3e73f0e5da226ee417623d6bbea11f2989fa1518fa4a683ec28878b72c11e4d&quot;,
+      &quot;protocol_source_sha256&quot;: &quot;354afcf57527d15d4e6e28579c95e47cd9f5d74beb242df610c820bfcc50339b&quot;,
+      &quot;is_mock&quot;: false,
+      &quot;checkpoint&quot;: &quot;/root/gpufree-data/models/Intern-Decision-4B&quot;,
+      &quot;inference_py_sha256&quot;: &quot;c904e2c67ca0775621a22375ee373d2ba30b52117cda870c6c9ef74143b29863&quot;,
+      &quot;config_sha256&quot;: &quot;ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670&quot;,
+      &quot;device&quot;: &quot;cuda&quot;,
+      &quot;dtype&quot;: &quot;bfloat16&quot;,
+      &quot;max_length&quot;: 8192,
+      &quot;temperature&quot;: 1.99241824,
+      &quot;vision_input_audit&quot;: true,
+      &quot;text_input_audit&quot;: true,
+      &quot;model_files_sha256&quot;: {
+        &quot;config.json&quot;: &quot;ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670&quot;,
+        &quot;preprocessor_config.json&quot;: &quot;27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516&quot;,
+        &quot;tokenizer_config.json&quot;: &quot;f26d55ed6da1fc0de69fbaefae7b855f762e36d0052c05f4fdec312f72a22ae1&quot;,
+        &quot;chat_template.jinja&quot;: &quot;a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715&quot;,
+        &quot;DOWNLOAD_RECEIPT.json&quot;: &quot;79811b385a1e87a83798718b40eed08345601e64a468946f9baff46453e147b7&quot;
+      }
+    },
+    &quot;error&quot;: &quot;AssertionError: First failed episode stops remaining launches; no fallback or retry&quot;,
+    &quot;isaac_returncode&quot;: 1,
+    &quot;service_returncode&quot;: -15,
+    &quot;ended_utc&quot;: &quot;2026-10-07T08:55:02.933936+00:00&quot;,
+    &quot;gpu_compute_after&quot;: &quot;&quot;,
+    &quot;own_processes_closed&quot;: true
+  },
+  &quot;plan&quot;: {
+    &quot;kind&quot;: &quot;user_authorized_two_stage_intern_simulation&quot;,
+    &quot;frozen_utc&quot;: &quot;2026-10-07T08:53:44.424405+00:00&quot;,
+    &quot;implementation_commit&quot;: &quot;11e4f2972de9b93d774724485aa4ca21e873f3b2&quot;,
+    &quot;variant&quot;: &quot;zh_named_relative&quot;,
+    &quot;model_identity&quot;: {
+      &quot;is_mock&quot;: false,
+      &quot;checkpoint&quot;: &quot;/root/gpufree-data/models/Intern-Decision-4B&quot;,
+      &quot;max_images&quot;: 2,
+      &quot;inference_py_sha256&quot;: &quot;c904e2c67ca0775621a22375ee373d2ba30b52117cda870c6c9ef74143b29863&quot;,
+      &quot;config_sha256&quot;: &quot;ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670&quot;,
+      &quot;temperature&quot;: 1.99241824,
+      &quot;device&quot;: &quot;cuda&quot;,
+      &quot;dtype&quot;: &quot;bfloat16&quot;,
+      &quot;max_length&quot;: 8192,
+      &quot;vision_input_audit&quot;: true,
+      &quot;bridge_source_sha256&quot;: &quot;b3e73f0e5da226ee417623d6bbea11f2989fa1518fa4a683ec28878b72c11e4d&quot;,
+      &quot;protocol_source_sha256&quot;: &quot;354afcf57527d15d4e6e28579c95e47cd9f5d74beb242df610c820bfcc50339b&quot;,
+      &quot;model_files_sha256&quot;: {
+        &quot;config.json&quot;: &quot;ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670&quot;,
+        &quot;preprocessor_config.json&quot;: &quot;27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516&quot;,
+        &quot;tokenizer_config.json&quot;: &quot;f26d55ed6da1fc0de69fbaefae7b855f762e36d0052c05f4fdec312f72a22ae1&quot;,
+        &quot;chat_template.jinja&quot;: &quot;a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715&quot;,
+        &quot;DOWNLOAD_RECEIPT.json&quot;: &quot;79811b385a1e87a83798718b40eed08345601e64a468946f9baff46453e147b7&quot;
+      }
+    },
+    &quot;reference_health_sha256&quot;: &quot;94f26d79936b0392e3d1ed2683dfa2080427404c1f6b179f79cdf5c363b0922d&quot;,
+    &quot;isaac_root&quot;: &quot;/root/gpufree-share/isaacsim&quot;,
+    &quot;isaac_python&quot;: &quot;/root/gpufree-share/isaacsim/python.sh&quot;,
+    &quot;model_python&quot;: &quot;/root/gpufree-data/envs/ivd-model/bin/python&quot;,
+    &quot;checkpoint&quot;: &quot;/root/gpufree-data/models/Intern-Decision-4B&quot;,
+    &quot;inference_sha256&quot;: &quot;c904e2c67ca0775621a22375ee373d2ba30b52117cda870c6c9ef74143b29863&quot;,
+    &quot;tutorial_sha256&quot;: &quot;56d2128daf7b3abfeb26f909dcd656f629ac342970a736068df2a79aaf43ec15&quot;,
+    &quot;source_sha256&quot;: {
+      &quot;run_candidate.py&quot;: &quot;26854253e821563d18089c64332318d61e083686ed974095832f783219835803&quot;,
+      &quot;serve_model.py&quot;: &quot;f548baef34c6631721a48f15a8a0e10d2ad72a14b0f3a22a6dc9828a26f1e907&quot;,
+      &quot;visual_lab/__init__.py&quot;: &quot;ee35301b55f5da7f6a1f412279bccc541e0a9111df8941996db9cef1a871a75b&quot;,
+      &quot;visual_lab/audit.py&quot;: &quot;9b0ab935c222b2316ff1e6ea3ab10969b9ed1904a0db1319ceca3464680f4ca6&quot;,
+      &quot;visual_lab/candidate_control.py&quot;: &quot;547ba3ff4352feedde439ccbccd979bbe50b7fbeaba0bbd94d53649362874951&quot;,
+      &quot;visual_lab/capture.py&quot;: &quot;4efdfb9287fd2e00769991e0d0e0f0aa8b376e9f6d4c8c635957a70baff5d328&quot;,
+      &quot;visual_lab/client.py&quot;: &quot;7abd9923ceb75d748b18517d90e79624a40f81417673fe03869d87db7f27685f&quot;,
+      &quot;visual_lab/core.py&quot;: &quot;21f9991aa3a62cc49580b863fd14e50f884ec93f6ed557165747512618089471&quot;,
+      &quot;visual_lab/factorial.py&quot;: &quot;ee8cf74b76a8f08849ca8e3a2bec4d2fa5453fac1c8cc8e837c91e7bf85d2b77&quot;,
+      &quot;visual_lab/goal_binding.py&quot;: &quot;e18d9ac9446a97b4f768e85749578d164dda3316e07b9a16b990d7969f07716e&quot;,
+      &quot;visual_lab/image_ablation.py&quot;: &quot;64ca1df16550f22e85acce10ecaff0cdb5e1935de0c916d48bb481c41b8a2476&quot;,
+      &quot;visual_lab/jev.py&quot;: &quot;5814c08884d8bec975394a54ba033e794cd6b7aca85e6fff29c755e69aa58a1b&quot;,
+      &quot;visual_lab/jev_diagnostic.py&quot;: &quot;ffa7932a14202db64ccbca5af5aacf7fad6eb8c25c9e4092d89ceaf7f8e2b12d&quot;,
+      &quot;visual_lab/jev_shadow.py&quot;: &quot;0f06216b6c5d6714e54a43a06410298a9a38a0446f552c742f8fc4e3e0a5a6e6&quot;,
+      &quot;visual_lab/modality_prompts.py&quot;: &quot;77266fc21e9ae03973c97b34b67722447bddc9880e08ac2db61dd7ad75cbfa14&quot;,
+      &quot;visual_lab/png.py&quot;: &quot;da421559b77b50a365721ae1c89e0688c6f1e67a56c6024ad9a2169185bce9c4&quot;,
+      &quot;visual_lab/prompt_variants.py&quot;: &quot;1a556afc2597749305ad57eb35cf37fb00d204f0d8e2aa58e36bb048799a00d5&quot;,
+      &quot;visual_lab/protocol.py&quot;: &quot;354afcf57527d15d4e6e28579c95e47cd9f5d74beb242df610c820bfcc50339b&quot;,
+      &quot;visual_lab/runner.py&quot;: &quot;4fae7f9cf2830f80c0948ca68d7aeae4f821b196f1c9c6ec2f1e224a758d7dff&quot;,
+      &quot;visual_lab/server.py&quot;: &quot;b3e73f0e5da226ee417623d6bbea11f2989fa1518fa4a683ec28878b72c11e4d&quot;,
+      &quot;visual_lab/sim.py&quot;: &quot;83eef33e2c73c30fdc9e4f4b0b68a1992841e127eab3d94985b9632fbf120fa2&quot;,
+      &quot;visual_lab/text_english.py&quot;: &quot;735fdc9f730fd662e647d67330a5a21b691f2a2e11a9fc8c92bd4844c79f6400&quot;,
+      &quot;visual_lab/upstream.py&quot;: &quot;663662e902b65dd8799e2a81e7e6e91e927c848e1ac3b468fcbd224d285f87ba&quot;,
+      &quot;tools/run_candidate_experiment.py&quot;: &quot;fc4e7a847859f8630e44a148a2e6dc68b7b9d82a128e03f7112cca5ec8662b67&quot;,
+      &quot;test_reports/gpu_modality_prompts_20261006.json&quot;: &quot;94f26d79936b0392e3d1ed2683dfa2080427404c1f6b179f79cdf5c363b0922d&quot;
+    },
+    &quot;config_sha256&quot;: &quot;49aa61caccdd11a0f9c94882de2de87001a8b377430de04fc2672d12db1bc8f9&quot;,
+    &quot;runs&quot;: [
+      {
+        &quot;mode&quot;: &quot;shadow&quot;,
+        &quot;color&quot;: &quot;blue&quot;,
+        &quot;run_dir&quot;: &quot;runs/37_intern_dual_shadow_blue&quot;,
+        &quot;max_decisions&quot;: 7
+      },
+      {
+        &quot;mode&quot;: &quot;shadow&quot;,
+        &quot;color&quot;: &quot;yellow&quot;,
+        &quot;run_dir&quot;: &quot;runs/38_intern_dual_shadow_yellow&quot;,
+        &quot;max_decisions&quot;: 7
+      },
+      {
+        &quot;mode&quot;: &quot;control&quot;,
+        &quot;color&quot;: &quot;blue&quot;,
+        &quot;run_dir&quot;: &quot;runs/39_intern_dual_control_blue&quot;,
+        &quot;max_decisions&quot;: 10
+      },
+      {
+        &quot;mode&quot;: &quot;control&quot;,
+        &quot;color&quot;: &quot;yellow&quot;,
+        &quot;run_dir&quot;: &quot;runs/40_intern_dual_control_yellow&quot;,
+        &quot;max_decisions&quot;: 10
+      }
+    ],
+    &quot;max_prediction_calls&quot;: 34,
+    &quot;automatic_retries&quot;: 0,
+    &quot;api_timeout_seconds&quot;: 60,
+    &quot;launch_environment&quot;: {
+      &quot;OMNI_KIT_ALLOW_ROOT&quot;: &quot;1&quot;,
+      &quot;LD_LIBRARY_PATH&quot;: &quot;&quot;
+    },
+    &quot;control_is_conditional&quot;: &quot;Both real online shadows 7/7 with complete successful fixed physical execution and independently verified immutable admission evidence; no Jev control&quot;,
+    &quot;control_authorized&quot;: true,
+    &quot;physical_hardware_authorized&quot;: false,
+    &quot;scope&quot;: &quot;One already-observed fixed Isaac scene, skill selection not low-level torque/coordinate control; no perturbation/generalization claims&quot;,
+    &quot;state_values_prefrozen&quot;: false,
+    &quot;each_request_frozen_before_inference&quot;: true,
+    &quot;stop_policy&quot;: &quot;First error/abort/timeout/physical failure stops remaining launches, no retries or baseline fallback; valid shadow mismatch does not control and rejects admission after both shadows.&quot;
+  }
+}</pre></details></body></html>

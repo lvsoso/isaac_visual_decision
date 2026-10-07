@@ -1,6 +1,7 @@
 """CPU regression for the observed prelaunch/postlaunch Isaac library distinction."""
-import importlib,unittest
+import contextlib,importlib,io,json,unittest
 from pathlib import Path
+from unittest.mock import patch
 from visual_lab.core import ProtocolError
 
 class LaunchTests(unittest.TestCase):
@@ -26,5 +27,11 @@ class LaunchTests(unittest.TestCase):
     def test_relative_and_sibling_prefix_paths_are_rejected(self):
         for ld in ['kit','/fixture/isaac-other/lib','/fixture/isaac/../system/lib']:
             with self.assertRaises(ProtocolError):self.m.launch_environment(self.root,self.env(ld))
+    def test_launch_only_never_constructs_client_or_creates_run_directory(self):
+        argv=['run_candidate.py','--mode','shadow','--goal-color','blue','--isaac-root',str(self.root),'--run-dir','unused','--check-launch-only']
+        output=io.StringIO()
+        with patch('sys.argv',argv),patch.dict(self.m.os.environ,self.env(':/fixture/isaac/kit'),clear=True),patch.object(self.m,'DecisionClient') as client,patch.object(self.m,'AuditLog') as log,contextlib.redirect_stdout(output):
+            self.assertEqual(self.m.main(),0)
+        client.assert_not_called();log.assert_not_called();record=json.loads(output.getvalue());self.assertEqual(record['model_calls'],0);self.assertFalse(record['simulation_app_started'])
 
 if __name__=='__main__':unittest.main()

@@ -13,7 +13,7 @@ def utc():return datetime.datetime.now(datetime.timezone.utc).isoformat()
 def query(args):return subprocess.run(args,capture_output=True,text=True,check=True).stdout.strip()
 
 def execute(plan_path):
-    plan=json.loads(plan_path.read_text());out=ROOT/'runs/37_40_intern_dual_experiment'
+    plan=json.loads(plan_path.read_text());out=ROOT/plan['experiment_dir']
     assert not out.exists(),'Fresh experiment outputs required'
     assert all(not (ROOT/job['run_dir']).exists() for job in plan['runs'])
     assert all(sha256_file(ROOT/name)==h for name,h in plan['source_sha256'].items()),'Frozen source changed'
@@ -26,6 +26,7 @@ def execute(plan_path):
         'gpu_compute_before':'','source_sha256':code_hashes(),'automatic_retries':0,'runs':[],'complete':False,'control_started':False}
     life_path=out/'lifecycle.json';write_json(life_path,life);service=None;child=None;child_stream=None;service_stream=None
     env=dict(os.environ);env['OMNI_KIT_ALLOW_ROOT']='1';env['LD_LIBRARY_PATH']=''
+    env['IVD_ISAAC_PRELAUNCH_LD_LIBRARY_PATH']=env['LD_LIBRARY_PATH']
     for key in ['PYTHONPATH','PYTHONHOME']:env.pop(key,None)
     life['launch_environment']={k:env[k] for k in ['OMNI_KIT_ALLOW_ROOT','LD_LIBRARY_PATH']}
     client=DecisionClient('http://127.0.0.1:8766/v1/decisions',timeout=60)
