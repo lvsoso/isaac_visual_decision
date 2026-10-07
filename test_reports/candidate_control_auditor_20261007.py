@@ -8,10 +8,17 @@ from visual_lab.core import ACTIONS,judge_episode
 from visual_lab.prompt_variants import verify_response
 
 ROOT=Path(__file__).resolve().parents[1]
-def audit(evidence,output,report):
+def verify_frozen_plan(archived_path,expected_path):
+    plan=json.loads(Path(archived_path).read_text())
+    assert plan==json.loads(Path(expected_path).read_text()),'Archived plan must match the explicitly selected frozen batch'
+    return plan
+
+def audit(evidence,output,report,plan_path=None):
+    expected_path=plan_path or ROOT/'test_reports/candidate_control_plan_20261007.json'
     evidence=Path(evidence);plan_path=evidence/'experiment/plan.json';plan=json.loads(plan_path.read_text())
     life=json.loads((evidence/'experiment/lifecycle.json').read_text());config=json.loads((ROOT/'configs/default.json').read_text())
-    assert life['plan_sha256']==sha256_file(plan_path) and plan==json.loads((ROOT/'test_reports/candidate_control_plan_20261007.json').read_text())
+    assert life['plan_sha256']==sha256_file(plan_path)
+    verify_frozen_plan(plan_path,expected_path)
     assert life['launch_environment']=={'OMNI_KIT_ALLOW_ROOT':'1','LD_LIBRARY_PATH':''}
     assert plan['control_authorized'] is True and plan['physical_hardware_authorized'] is False
     assert life['source_sha256']=={name:plan['source_sha256'][name] for name in life['source_sha256']}
@@ -115,4 +122,5 @@ def render(payload,report):
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
     for name in ['evidence','output','report']:parser.add_argument('--'+name,type=Path,required=True)
+    parser.add_argument('--plan-path',type=Path,help='Explicit immutable batch plan; defaults to original aborted batch')
     payload=audit(**vars(parser.parse_args()));print(json.dumps({k:v for k,v in payload.items() if k not in ['runs','lifecycle','plan']},ensure_ascii=False,indent=2))

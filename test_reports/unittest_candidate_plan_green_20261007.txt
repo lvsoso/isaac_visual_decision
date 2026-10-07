@@ -1,0 +1,9 @@
+test_changed_template_version_or_budget_is_rejected (tests.test_candidate_frozen_plan.FrozenPlanTests.test_changed_template_version_or_budget_is_rejected) ... ok
+test_explicit_new_plan_is_verified_without_replacing_old_plan (tests.test_candidate_frozen_plan.FrozenPlanTests.test_explicit_new_plan_is_verified_without_replacing_old_plan) ... ok
+test_new_plan_cannot_be_reported_as_old_aborted_batch (tests.test_candidate_frozen_plan.FrozenPlanTests.test_new_plan_cannot_be_reported_as_old_aborted_batch) ... ok
+test_zero_prediction_no_scene_no_control_and_deterministic_report (tests.test_candidate_startup_evidence.StartupEvidenceTests.test_zero_prediction_no_scene_no_control_and_deterministic_report) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.011s
+
+OK
