@@ -1,0 +1,55 @@
+test_isaac_launcher_can_add_its_own_libraries_after_empty_prelaunch (tests.test_candidate_launch.LaunchTests.test_isaac_launcher_can_add_its_own_libraries_after_empty_prelaunch) ... ERROR
+test_prelaunch_declaration_must_be_present_and_empty (tests.test_candidate_launch.LaunchTests.test_prelaunch_declaration_must_be_present_and_empty) ... ERROR
+test_relative_and_sibling_prefix_paths_are_rejected (tests.test_candidate_launch.LaunchTests.test_relative_and_sibling_prefix_paths_are_rejected) ... ERROR
+test_root_opt_in_still_required_and_direct_empty_is_allowed (tests.test_candidate_launch.LaunchTests.test_root_opt_in_still_required_and_direct_empty_is_allowed) ... ERROR
+test_system_python_library_cannot_precede_isaac (tests.test_candidate_launch.LaunchTests.test_system_python_library_cannot_precede_isaac) ... ERROR
+
+======================================================================
+ERROR: test_isaac_launcher_can_add_its_own_libraries_after_empty_prelaunch (tests.test_candidate_launch.LaunchTests.test_isaac_launcher_can_add_its_own_libraries_after_empty_prelaunch)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_launch.py", line 12, in test_isaac_launcher_can_add_its_own_libraries_after_empty_prelaunch
+    record=self.m.launch_environment(self.root,env)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'run_candidate' has no attribute 'launch_environment'
+
+======================================================================
+ERROR: test_prelaunch_declaration_must_be_present_and_empty (tests.test_candidate_launch.LaunchTests.test_prelaunch_declaration_must_be_present_and_empty)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_launch.py", line 19, in test_prelaunch_declaration_must_be_present_and_empty
+    with self.assertRaises(ProtocolError):self.m.launch_environment(self.root,env)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'run_candidate' has no attribute 'launch_environment'
+
+======================================================================
+ERROR: test_relative_and_sibling_prefix_paths_are_rejected (tests.test_candidate_launch.LaunchTests.test_relative_and_sibling_prefix_paths_are_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_launch.py", line 28, in test_relative_and_sibling_prefix_paths_are_rejected
+    with self.assertRaises(ProtocolError):self.m.launch_environment(self.root,self.env(ld))
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'run_candidate' has no attribute 'launch_environment'
+
+======================================================================
+ERROR: test_root_opt_in_still_required_and_direct_empty_is_allowed (tests.test_candidate_launch.LaunchTests.test_root_opt_in_still_required_and_direct_empty_is_allowed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_launch.py", line 23, in test_root_opt_in_still_required_and_direct_empty_is_allowed
+    self.assertEqual(self.m.launch_environment(self.root,self.env())['inside_isaac_ld_library_path'],'')
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'run_candidate' has no attribute 'launch_environment'
+
+======================================================================
+ERROR: test_system_python_library_cannot_precede_isaac (tests.test_candidate_launch.LaunchTests.test_system_python_library_cannot_precede_isaac)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_launch.py", line 16, in test_system_python_library_cannot_precede_isaac
+    with self.assertRaises(ProtocolError):self.m.launch_environment(self.root,self.env('/usr/local/lib:/fixture/isaac/kit'))
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'run_candidate' has no attribute 'launch_environment'
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.054s
+
+FAILED (errors=5)
