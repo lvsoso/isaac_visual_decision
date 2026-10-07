@@ -1,0 +1,71 @@
+test_bad_launch_environment_never_calls_model (tests.test_candidate_recording.CandidateRecordingTests.test_bad_launch_environment_never_calls_model) ... ok
+test_driver_selects_recording_entry_only_for_positive_interval (tests.test_candidate_recording.CandidateRecordingTests.test_driver_selects_recording_entry_only_for_positive_interval) ... ok
+test_failed_admission_never_creates_run_or_initializes_isaac (tests.test_candidate_recording.CandidateRecordingTests.test_failed_admission_never_creates_run_or_initializes_isaac) ... ok
+test_invalid_interval_or_missing_admission_never_starts_scene (tests.test_candidate_recording.CandidateRecordingTests.test_invalid_interval_or_missing_admission_never_starts_scene) ... ok
+test_recording_uses_same_gated_model_loop_and_native_scene_recorder (tests.test_candidate_recording.CandidateRecordingTests.test_recording_uses_same_gated_model_loop_and_native_scene_recorder) ... ok
+test_any_extra_host_gpu_pid_remains_terminal (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_any_extra_host_gpu_pid_remains_terminal) ... ok
+test_baseline_requires_exactly_one_gpu_process_after_idle_precheck (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_baseline_requires_exactly_one_gpu_process_after_idle_precheck) ... ok
+test_gpu_host_pid_need_not_equal_container_service_pid (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_gpu_host_pid_need_not_equal_container_service_pid) ... ok
+test_lost_or_replaced_model_gpu_process_is_rejected (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_lost_or_replaced_model_gpu_process_is_rejected) ... ok
+test_same_namespace_also_passes_without_special_case (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_same_namespace_also_passes_without_special_case) ... ok
+test_whitespace_order_and_container_pid_are_recorded_separately (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_whitespace_order_and_container_pid_are_recorded_separately) ... ok
+test_changed_extra_file_cannot_be_reused_by_summary_claim (tests.test_candidate_reuse.ReuseTests.test_changed_extra_file_cannot_be_reused_by_summary_claim) ... ok
+test_duplicate_color_or_relaunch_of_successful_shadow_refused (tests.test_candidate_reuse.ReuseTests.test_duplicate_color_or_relaunch_of_successful_shadow_refused) ... ok
+test_existing_two_new_shadows_remain_supported (tests.test_candidate_reuse.ReuseTests.test_existing_two_new_shadows_remain_supported) ... ok
+test_no_model_inference_or_scene_is_used_to_verify_saved_blue (tests.test_candidate_reuse.ReuseTests.test_no_model_inference_or_scene_is_used_to_verify_saved_blue) ... ok
+test_real_blue_reaudited_and_not_in_new_launches (tests.test_candidate_reuse.ReuseTests.test_real_blue_reaudited_and_not_in_new_launches) ... ok
+test_unsupported_color_or_changed_model_source_is_rejected (tests.test_candidate_reuse.ReuseTests.test_unsupported_color_or_changed_model_source_is_rejected) ... ok
+test_abort_stops_even_shadow_no_retract_or_extra_physics (tests.test_candidate_control.CandidateTests.test_abort_stops_even_shadow_no_retract_or_extra_physics) ... [shadow/blue] 1/7 proposed=abort; execute=abort
+ok
+test_api_error_timeout_and_bad_vision_stop_before_next_motion (tests.test_candidate_control.CandidateTests.test_api_error_timeout_and_bad_vision_stop_before_next_motion) ... ok
+test_control_executes_model_choice_not_reference_sequence (tests.test_candidate_control.CandidateTests.test_control_executes_model_choice_not_reference_sequence) ... [control/blue] 1/10 proposed=lift; execute=lift
+[control/blue] 2/10 proposed=release; execute=release
+ok
+test_control_repeat_budget_is_terminal_no_baseline_fallback (tests.test_candidate_control.CandidateTests.test_control_repeat_budget_is_terminal_no_baseline_fallback) ... [control/blue] 1/10 proposed=lift; execute=lift
+[control/blue] 2/10 proposed=lift; execute=lift
+[control/blue] 3/10 proposed=lift; execute=lift
+[control/blue] 4/10 proposed=lift; execute=lift
+[control/blue] 5/10 proposed=lift; execute=lift
+[control/blue] 6/10 proposed=lift; execute=lift
+[control/blue] 7/10 proposed=lift; execute=lift
+[control/blue] 8/10 proposed=lift; execute=lift
+[control/blue] 9/10 proposed=lift; execute=lift
+[control/blue] 10/10 proposed=lift; execute=lift
+ok
+test_control_without_admission_never_calls_or_moves (tests.test_candidate_control.CandidateTests.test_control_without_admission_never_calls_or_moves) ... ok
+test_gate_cannot_accept_synthetic_or_summary_only_success (tests.test_candidate_control.CandidateTests.test_gate_cannot_accept_synthetic_or_summary_only_success) ... ok
+test_pair_gate_rejects_single_color_and_bad_config (tests.test_candidate_control.CandidateTests.test_pair_gate_rejects_single_color_and_bad_config) ... ok
+test_phase_timeout_stops_without_retract (tests.test_candidate_control.CandidateTests.test_phase_timeout_stops_without_retract) ... [shadow/blue] 1/7 proposed=pre_grasp; execute=pre_grasp
+[shadow/blue] 2/7 proposed=approach; execute=approach
+[shadow/blue] 3/7 proposed=grasp; execute=grasp
+ok
+test_physics_changed_during_wait_stops_before_motion (tests.test_candidate_control.CandidateTests.test_physics_changed_during_wait_stops_before_motion) ... ok
+test_prompt_is_exact_original_zh_named_relative_without_labels (tests.test_candidate_control.CandidateTests.test_prompt_is_exact_original_zh_named_relative_without_labels) ... ok
+test_service_counter_change_refused_before_next_motion (tests.test_candidate_control.CandidateTests.test_service_counter_change_refused_before_next_motion) ... ok
+test_shadow_fixed_actions_and_seven_valid_calls (tests.test_candidate_control.CandidateTests.test_shadow_fixed_actions_and_seven_valid_calls) ... [shadow/blue] 1/7 proposed=pre_grasp; execute=pre_grasp
+[shadow/blue] 2/7 proposed=approach; execute=approach
+[shadow/blue] 3/7 proposed=grasp; execute=grasp
+[shadow/blue] 4/7 proposed=lift; execute=lift
+[shadow/blue] 5/7 proposed=transport; execute=transport
+[shadow/blue] 6/7 proposed=lower; execute=lower
+[shadow/blue] 7/7 proposed=release; execute=release
+ok
+test_shadow_wrong_suggestion_does_not_control (tests.test_candidate_control.CandidateTests.test_shadow_wrong_suggestion_does_not_control) ... [shadow/blue] 1/7 proposed=lift; execute=pre_grasp
+[shadow/blue] 2/7 proposed=lift; execute=approach
+[shadow/blue] 3/7 proposed=lift; execute=grasp
+[shadow/blue] 4/7 proposed=lift; execute=lift
+[shadow/blue] 5/7 proposed=lift; execute=transport
+[shadow/blue] 6/7 proposed=lift; execute=lower
+[shadow/blue] 7/7 proposed=lift; execute=release
+ok
+test_tampered_vision_response_archived_but_not_executed (tests.test_candidate_control.CandidateTests.test_tampered_vision_response_archived_but_not_executed) ... ok
+test_wrong_provenance_health_refused (tests.test_candidate_control.CandidateTests.test_wrong_provenance_health_refused) ... ok
+test_actual_pair_admission_and_two_direct_choice_physical_successes (tests.test_candidate_45_evidence.Candidate45EvidenceTests.test_actual_pair_admission_and_two_direct_choice_physical_successes) ... ok
+test_changed_admission_is_not_accepted (tests.test_candidate_45_evidence.Candidate45EvidenceTests.test_changed_admission_is_not_accepted) ... ok
+test_changed_control_view_is_rejected (tests.test_candidate_45_evidence.Candidate45EvidenceTests.test_changed_control_view_is_rejected) ... ok
+test_control_response_cannot_be_reselected (tests.test_candidate_45_evidence.Candidate45EvidenceTests.test_control_response_cannot_be_reselected) ... ok
+
+----------------------------------------------------------------------
+Ran 36 tests in 15.003s
+
+OK

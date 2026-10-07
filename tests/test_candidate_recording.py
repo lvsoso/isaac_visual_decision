@@ -6,7 +6,7 @@ from visual_lab.core import ProtocolError
 
 class CandidateRecordingTests(unittest.TestCase):
     def setUp(self):
-        self.m=importlib.import_module('run_candidate_recording');self.tmp=tempfile.TemporaryDirectory();self.root=Path(self.tmp.name)
+        self.m=importlib.import_module('run_candidate_recording');self.tmp=tempfile.TemporaryDirectory();self.root=Path(self.tmp.name).resolve()
         self.argv=['--mode','control','--goal-color','blue','--run-dir',str(self.root/'run'),'--isaac-root',str(self.root/'isaac'),
             '--headless','--admission',str(self.root/'admission.json'),'--record-every','3']
     def tearDown(self):self.tmp.cleanup()
@@ -23,7 +23,7 @@ class CandidateRecordingTests(unittest.TestCase):
             loop=stack.enter_context(patch.object(self.m,'run_candidate',return_value={'complete':True,'strict_success':True}))
             with contextlib.redirect_stdout(io.StringIO()):code=self.m.main(self.argv)
         self.assertEqual(code,0);gate.assert_called_once();loop.assert_called_once()
-        self.assertEqual(loop.call_args.args[4:6],('blue','control'))
+        self.assertEqual(loop.call_args.args[3:5],('blue','control'))
         self.assertEqual(factory.call_args.kwargs['record_every'],3);self.assertEqual(factory.call_args.kwargs['record_directory'],self.root/'run/frames')
         manifest=json.loads((self.root/'run/manifest.json').read_text());self.assertEqual(manifest['record_every'],3)
         self.assertEqual(manifest['source_sha256'],self.m.code_hashes());self.assertTrue(manifest['model_had_control'])

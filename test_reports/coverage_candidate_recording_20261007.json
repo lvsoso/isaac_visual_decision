@@ -1,0 +1,29 @@
+{
+  "method": "stdlib trace / selected AST statement-lines, not branch/full-driver coverage",
+  "cpu_tests": 5,
+  "real_model_calls": 0,
+  "gpu_verified_by_tests": false,
+  "files": {
+    "run_candidate_recording.py": {
+      "selected_functions": [
+        "main"
+      ],
+      "statement_lines": 28,
+      "covered_lines": 26,
+      "line_percent": 92.86,
+      "uncovered_lines": [
+        51,
+        52
+      ]
+    },
+    "tools/run_candidate_experiment.py": {
+      "selected_functions": [
+        "episode_command"
+      ],
+      "statement_lines": 9,
+      "covered_lines": 9,
+      "line_percent": 100.0,
+      "uncovered_lines": []
+    }
+  }
+}

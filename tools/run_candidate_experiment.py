@@ -38,6 +38,18 @@ def verify_gpu_after_episode(baseline,report):
 def admission_directories(plan):
     return [ROOT/r['run_dir'] for r in plan.get('reused_shadows',[])]+[ROOT/j['run_dir'] for j in plan['runs'] if j['mode']=='shadow']
 
+def episode_command(plan,job,admission):
+    entry='run_candidate.py';record=[]
+    if 'record_every' in job:
+        interval=job['record_every']
+        if type(interval) is not int or interval<1 or job['mode']!='control':
+            raise ProtocolError('Recording requires control and a positive integer sampling interval')
+        entry='run_candidate_recording.py';record=['--record-every',str(interval)]
+    command=[plan['isaac_python'],str(ROOT/entry),'--isaac-root',plan['isaac_root'],'--headless',
+        '--mode',job['mode'],'--goal-color',job['color'],'--run-dir',str(ROOT/job['run_dir'])]
+    if job['mode']=='control':command+=['--admission',str(admission)]
+    return command+record
+
 def verify_reused_shadows(plan,config,health):
     check_health(health);reused=plan.get('reused_shadows',[])
     colors=[r['color'] for r in reused]+[j['color'] for j in plan['runs'] if j['mode']=='shadow']
@@ -105,9 +117,7 @@ def execute(plan_path):
                         print('CONTROL_NOT_STARTED: dual-shadow admission rejected',flush=True);break
                 validate_admission(out/'admission.json',load_config(ROOT/'configs/default.json'),client.health())
                 life['control_started']=True
-            command=[plan['isaac_python'],str(ROOT/'run_candidate.py'),'--isaac-root',plan['isaac_root'],'--headless',
-                '--mode',job['mode'],'--goal-color',job['color'],'--run-dir',str(ROOT/job['run_dir'])]
-            if job['mode']=='control':command+=['--admission',str(out/'admission.json')]
+            command=episode_command(plan,job,out/'admission.json')
             health=check_health(client.health());before=health['requests_completed']
             record={**job,'started_utc':utc(),'service_count_before':before,'command':command};life['runs'].append(record);write_json(life_path,life)
             print('START',job['mode'],job['color'],utc(),flush=True)
