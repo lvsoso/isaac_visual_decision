@@ -27,3 +27,10 @@
 原失败证据包SHA256：`acfad897b219e674eaef701c5be92c56eedb208c82703f3be21a9c85419a44c1`。
 
 修复增加 `--check-launch-only`：仅使用官方python.sh验证启动环境，不访问模型HTTP，不创建SimulationApp、场景、动作或回合目录。驱动器对新批次要求计划中明确指定新的 `experiment_dir`，旧计划不自动复用。
+
+## 修复验证状态
+
+- 修复 `8f7547f` 已提交推送并安全快进至GPU主机，Notebook未跟踪文件保留。
+- 6项启动契约及完整 **372项CPU回归**通过；失败报告离线复建字节一致。
+- [实际官方启动器环境检查](../test_reports/candidate_launch_remote_check_20261007.json)通过：允许Isaac自身kit／插件库，并保留启动前空LD声明。模型调用0、SimulationApp未启动、回合目录未创建、GPU计算进程前后均为空。
+- 上述启动器检查**不是在线shadow或模型控制试验**。原37–40批次仍是未完成；等待用户确认后才以新计划／目录进行真实GPU试验。

@@ -1,0 +1,25 @@
+{
+  "kind": "actual_official_isaac_launcher_environment_check_only",
+  "implementation_commit": "8f7547f3e8af1e5770f21f3c26e3fd44760ab652",
+  "prelaunch": {
+    "OMNI_KIT_ALLOW_ROOT": "1",
+    "LD_LIBRARY_PATH": ""
+  },
+  "result": {
+    "launch_check_passed": true,
+    "before_python_sh": {
+      "OMNI_KIT_ALLOW_ROOT": "1",
+      "LD_LIBRARY_PATH": ""
+    },
+    "inside_isaac_ld_library_path": ":/root/gpufree-share/isaacsim/.:/root/gpufree-share/isaacsim/exts/isaacsim.robot.schema/plugins/lib:/root/gpufree-share/isaacsim/extsDeprecated/isaacsim.robot_motion.lula/pip_prebundle:/root/gpufree-share/isaacsim/exts/isaacsim.robot_motion.cumotion/pip_prebundle:/root/gpufree-share/isaacsim/exts/isaacsim.robot_motion.pink/pip_prebundle:/root/gpufree-share/isaacsim/exts/isaacsim.asset.exporter.urdf/pip_prebundle:/root/gpufree-share/isaacsim/kit:/root/gpufree-share/isaacsim/kit/kernel/plugins:/root/gpufree-share/isaacsim/kit/libs/iray:/root/gpufree-share/isaacsim/kit/plugins:/root/gpufree-share/isaacsim/kit/plugins/bindings-python:/root/gpufree-share/isaacsim/kit/plugins/carb_gfx:/root/gpufree-share/isaacsim/kit/plugins/rtx:/root/gpufree-share/isaacsim/kit/plugins/gpu.foundation",
+    "model_calls": 0,
+    "simulation_app_started": false
+  },
+  "returncode": 0,
+  "model_calls": 0,
+  "simulation_app_started": false,
+  "run_directory_created": false,
+  "gpu_compute_before": "",
+  "gpu_compute_after": "",
+  "scope": "Launcher environment regression only, no scene, robot, model HTTP or repeat experimental episode"
+}
