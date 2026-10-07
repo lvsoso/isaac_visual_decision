@@ -57,5 +57,19 @@ class JevTests(unittest.TestCase):
   client=mod().JevClient(token='CPU-fixture-secret');client.opener=Mock();client.opener.open.return_value=io.BytesIO(b'not JSON')
   with self.assertRaises(Exception):client.predict(self.request())
   self.assertEqual(client.requests_completed,0)
+ def test_success_body_cannot_echo_private_key_into_artifacts(self):
+  client=mod().JevClient(token='CPU-fixture-secret');client.opener=Mock();raw=self.raw();raw['debug']='CPU-fixture-secret'
+  client.opener.open.return_value=io.BytesIO(json.dumps(raw).encode())
+  with self.assertRaises(Exception) as raised:client.predict(self.request())
+  self.assertNotIn('CPU-fixture-secret',str(raised.exception));self.assertEqual(client.requests_completed,0)
+ def test_health_uses_cached_models_list_and_size_and_network_errors_stop(self):
+  client=mod().JevClient(token='CPU-fixture-secret');client.opener=Mock();client.opener.open.return_value=io.BytesIO(b'{"models":[{"name":"jev-latest","release_date":"fixture"}]}')
+  self.assertEqual(client.health()['model'],'jev-1.13.0');client.health();client.opener.open.assert_called_once()
+  for response in [b'x'*(2*1024*1024+1),b'[]',b'{}']:
+   c=mod().JevClient(token='CPU-fixture-secret');c.opener=Mock();c.opener.open.return_value=io.BytesIO(response)
+   with self.assertRaises(Exception):c.health()
+  c=mod().JevClient(token='CPU-fixture-secret');c.opener=Mock();c.opener.open.side_effect=urllib.error.URLError('CPU-fixture-secret')
+  with self.assertRaises(Exception) as raised:c.health()
+  self.assertNotIn('CPU-fixture-secret',str(raised.exception))
 
 if __name__=='__main__':unittest.main()

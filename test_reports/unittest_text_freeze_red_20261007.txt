@@ -1,0 +1,58 @@
+test_busy_service_rejected_before_call (tests.test_goal_binding.BindingReplayTests.test_busy_service_rejected_before_call) ... ok
+test_changed_service_count_or_request_invalidates (tests.test_goal_binding.BindingReplayTests.test_changed_service_count_or_request_invalidates) ... ok
+test_exact14_requests_frozen_before_first_call (tests.test_goal_binding.BindingReplayTests.test_exact14_requests_frozen_before_first_call) ... ok
+test_failure_stops_without_retry (tests.test_goal_binding.BindingReplayTests.test_failure_stops_without_retry) ... ok
+test_reference_tamper_rejected_before_any_new_call (tests.test_goal_binding.BindingReplayTests.test_reference_tamper_rejected_before_any_new_call) ... ok
+test_changed_request_fails_before_prediction (tests.test_text_freeze.TextFreezeTests.test_changed_request_fails_before_prediction) ... ERROR
+test_freezes42requests_three_groups_and_actual_body_hashes (tests.test_text_freeze.TextFreezeTests.test_freezes42requests_three_groups_and_actual_body_hashes) ... ERROR
+test_translation_has_no_cjk_and_retains_numeric_evidence_and_labels (tests.test_jev_text.EnglishTests.test_translation_has_no_cjk_and_retains_numeric_evidence_and_labels) ... ok
+test_confidence_formula_is_not_top_probability_and_ties_preserved (tests.test_jev_text.JevTests.test_confidence_formula_is_not_top_probability_and_ties_preserved) ... ok
+test_health_uses_cached_models_list_and_size_and_network_errors_stop (tests.test_jev_text.JevTests.test_health_uses_cached_models_list_and_size_and_network_errors_stop) ... ok
+test_http_error_does_not_leak_key_or_response_body_and_never_retries (tests.test_jev_text.JevTests.test_http_error_does_not_leak_key_or_response_body_and_never_retries) ... ok
+test_https_fixed_host_no_redirect_and_single_call (tests.test_jev_text.JevTests.test_https_fixed_host_no_redirect_and_single_call) ... ok
+test_missing_key_and_non_json_responses_are_not_fabricated (tests.test_jev_text.JevTests.test_missing_key_and_non_json_responses_are_not_fabricated) ... ok
+test_payload_removes_empty_images_only_and_pins_model (tests.test_jev_text.JevTests.test_payload_removes_empty_images_only_and_pins_model) ... ok
+test_success_body_cannot_echo_private_key_into_artifacts (tests.test_jev_text.JevTests.test_success_body_cannot_echo_private_key_into_artifacts) ... FAIL
+test_wrong_model_bad_candidates_or_usage_are_rejected (tests.test_jev_text.JevTests.test_wrong_model_bad_candidates_or_usage_are_rejected) ... ok
+
+======================================================================
+ERROR: test_changed_request_fails_before_prediction (tests.test_text_freeze.TextFreezeTests.test_changed_request_fails_before_prediction)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_text_freeze.py", line 21, in test_changed_request_fails_before_prediction
+    m=importlib.import_module('tools.freeze_text_study');ref=self.reference();f=m.freeze_text_study(self.source,ref,self.root/'freeze',allow_mock=True)
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'tools.freeze_text_study'
+
+======================================================================
+ERROR: test_freezes42requests_three_groups_and_actual_body_hashes (tests.test_text_freeze.TextFreezeTests.test_freezes42requests_three_groups_and_actual_body_hashes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_text_freeze.py", line 12, in test_freezes42requests_three_groups_and_actual_body_hashes
+    m=importlib.import_module('tools.freeze_text_study');ref=self.reference();frozen=self.root/'freeze'
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'tools.freeze_text_study'
+
+======================================================================
+FAIL: test_success_body_cannot_echo_private_key_into_artifacts (tests.test_jev_text.JevTests.test_success_body_cannot_echo_private_key_into_artifacts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_text.py", line 63, in test_success_body_cannot_echo_private_key_into_artifacts
+    with self.assertRaises(Exception) as raised:client.predict(self.request())
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+AssertionError: Exception not raised
+
+----------------------------------------------------------------------
+Ran 16 tests in 1.165s
+
+FAILED (failures=1, errors=2)
