@@ -1,4 +1,4 @@
-"""Delete only images from frozen Chinese spatial prompts; never control a robot."""
+"""Replay frozen image conditions with explicit legacy or matched prompts; no control."""
 from __future__ import annotations
 import base64
 import copy
@@ -14,22 +14,26 @@ from .factorial import GOAL_COLORS, load_snapshots
 from .prompt_variants import STABLE_HEALTH_KEYS, prompt_request, source_hashes, validate_capture, verify_response
 from .protocol import validate_request
 from .server import VISION_TOKENS
+from .modality_prompts import PROMPT_POLICIES, adapt_modality
 
 IMAGE_HEALTH_KEYS = (*STABLE_HEALTH_KEYS, 'text_input_audit', 'supports_text_only_ablation')
 REFERENCE_HEALTH_KEYS = tuple(key for key in STABLE_HEALTH_KEYS if key not in {'bridge_source_sha256', 'protocol_source_sha256'})
 
 
-def image_cells() -> list[dict]:
-    return [{'id':f'{color}_images_{views}', 'color':color, 'views':views, 'variant':'zh_named_relative'}
+def image_cells(prompt_policy='legacy_deletion') -> list[dict]:
+    if prompt_policy not in PROMPT_POLICIES: raise ProtocolError('Unknown prompt policy')
+    return [{'id':f'{color}_images_{views}', 'color':color, 'views':views, 'variant':'zh_named_relative' if prompt_policy=='legacy_deletion' else prompt_policy}
             for color in GOAL_COLORS for views in range(3)]
 
 
-def image_request(pngs: list[bytes], state: dict, views: list[dict], guidance: dict, cell: dict) -> dict:
+def image_request(pngs: list[bytes], state: dict, views: list[dict], guidance: dict, cell: dict, *, prompt_policy='legacy_deletion') -> dict:
+    if prompt_policy not in PROMPT_POLICIES: raise ProtocolError('Unknown prompt policy')
     count = cell.get('views')
     if type(count) is not int or count not in range(3):
         raise ProtocolError('Require exactly zero, one or two images')
     request = prompt_request(pngs, state, views, guidance, {'variant':'zh_named_relative', 'color':cell['color']})
-    request['images'] = request['images'][:count]
+    if prompt_policy=='modality_aware_v1': request=adapt_modality(request,count)
+    else: request['images'] = request['images'][:count]
     validate_request(request, allow_empty_images=True)
     return request
 
@@ -66,9 +70,9 @@ def verify_image_response(pngs: list[bytes], raw: dict, health: dict, *, allow_m
     return parsed
 
 
-def summarize_images(rows: list[dict]) -> dict:
+def summarize_images(rows: list[dict], *, prompt_policy='legacy_deletion') -> dict:
     cells = []
-    for cell in image_cells():
+    for cell in image_cells(prompt_policy):
         selected = sorted((row for row in rows if row['cell'] == cell['id']), key=lambda row:row['decision_id'])
         final = [row for row in selected if row['expected_action'] in {'lower', 'release'}]
         cells.append({**cell, 'num_decisions':len(selected), 'baseline_agreement':sum(row['proposed_action']==row['expected_action'] for row in selected),
@@ -91,8 +95,9 @@ def summarize_images(rows: list[dict]) -> dict:
                               'low_cell':a['id'], 'high_cell':b['id'], 'agreement_count_delta':b['baseline_agreement']-a['baseline_agreement'],
                               'final_two_count_delta':b['final_two_agreement']-a['final_two_agreement'],
                               'mean_expected_probability_delta':b['mean_expected_action_probability']-a['mean_expected_action_probability'], 'stages':stages})
+    scope=('Input-matched prompt comparison, including prompt/camera metadata adaptation, not pure image causality. ' if prompt_policy=='modality_aware_v1' else 'Legacy image deletion with mismatched visual requirements in text-only prompts, not a fair text-only baseline. ')
     return {'cells':cells, 'conditional_contrasts':contrasts,
-            'scope':'Image deletion diagnostic on one already-observed scene with seven correlated states; not image understanding, autonomous success or independent generalization.'}
+            'scope':scope+'One already-observed scene with seven correlated states; not image understanding, autonomous success or independent generalization.'}
 
 
 def check_image_reference(reference: Path, source: Path, requests: dict, health: dict) -> dict:
@@ -129,10 +134,64 @@ def check_image_reference(reference: Path, source: Path, requests: dict, health:
 
 
 def image_source_hashes() -> dict:
-    return {name:sha256_file(Path(__file__).with_name(name)) for name in ['image_ablation.py','prompt_variants.py','factorial.py','protocol.py','core.py','server.py']}
+    return {name:sha256_file(Path(__file__).with_name(name)) for name in ['image_ablation.py','modality_prompts.py','prompt_variants.py','factorial.py','protocol.py','core.py','server.py']}
 
 
-def run_image_replay(source: Path, output: Path, client, *, reference: Path | None=None, seed=20261006, allow_mock=False) -> dict:
+def check_legacy_text_reference(reference: Path, source: Path, requests: dict, health: dict, *, allow_mock=False) -> dict:
+    if (reference/'INVALIDATED.json').exists(): raise LabError('Invalidated legacy reference')
+    manifest=json.loads((reference/'manifest.json').read_text());summary=json.loads((reference/'summary.json').read_text())
+    if (summary.get('complete') is not True or summary.get('api_completed')!=42 or len(summary.get('decisions',[]))!=42
+            or summary.get('mock_backend') is not bool(allow_mock) or manifest.get('prompt_policy','legacy_deletion')!='legacy_deletion'):
+        raise LabError('Require complete legacy-deletion reference in correct real/mock mode')
+    if manifest['source_files_sha256']!=source_hashes(source): raise LabError('Legacy capture hash mismatch')
+    if any(manifest['model_health'].get(key)!=health.get(key) for key in IMAGE_HEALTH_KEYS): raise ProtocolError('Legacy model/service provenance mismatch')
+    bundle=load_snapshots(source);rows=[];old_requests={};responses={}
+    for row in summary['decisions']:
+        if row['image_count']!=0: continue
+        name=f"{row['cell']}_decision_{row['decision_id']:03d}"
+        for directory,key in [('requests','request'),('responses','response')]:
+            if sha256_file(reference/directory/(name+'.json'))!=row[key+'_sha256']: raise LabError('Legacy artifact hash mismatch')
+        old=json.loads((reference/'requests'/(name+'.json')).read_text());raw=json.loads((reference/'responses'/(name+'.json')).read_text())
+        record=bundle['records'][row['decision_id']-1];color=row['cell'].split('_')[0]
+        pngs=[(source/asset['path']).read_bytes() for asset in record['images'][color]]
+        if old!=image_request(pngs,record['model_state'],bundle['view_metadata'],record['goal_guidance'],{'color':color,'views':0}):
+            raise LabError('Legacy request does not reproduce original image-deletion construction')
+        current=requests[name]
+        if any(current['state'].get(key)!=value for key,value in old['state'].items() if key not in {'observation','camera_views'}):
+            raise LabError('Shared legacy/current state evidence changed')
+        parsed=verify_image_response([],raw,manifest['model_health'],allow_mock=allow_mock)
+        if parsed.action!=row['proposed_action'] or parsed.probabilities!=row['probabilities'] or row['expected_action']!=record['expected_action']:
+            raise LabError('Legacy response/reference/summary mismatch')
+        rows.append(copy.deepcopy(row));old_requests[name]=old;responses[name]=raw
+    if len(rows)!=14 or {(r['cell'],r['decision_id']) for r in rows}!={(f'{color}_images_0',s) for color in GOAL_COLORS for s in range(1,8)}:
+        raise LabError('Require fourteen distinct legacy text-only decisions')
+    return {'path':str(reference),'files_sha256':{name:sha256_file(reference/name) for name in ['manifest.json','summary.json']},
+            'text_rows':rows,'requests':old_requests,'responses':responses,
+            'warning':'Legacy no-image prompts demanded images: preserved for prompt-mismatch diagnosis, not a fair text-only capability baseline.'}
+
+
+def summarize_text_revision(rows: list[dict], legacy: dict | None) -> list[dict]:
+    if legacy is None: return []
+    result=[]
+    old={(r['cell'],r['decision_id']):r for r in legacy['text_rows']}
+    for color in GOAL_COLORS:
+        cell=f'{color}_images_0';selected=sorted((r for r in rows if r['cell']==cell),key=lambda r:r['decision_id'])
+        if len(selected)!=7: continue
+        stages=[]
+        for r in selected:
+            prior=old[(cell,r['decision_id'])]
+            stages.append({'decision_id':r['decision_id'],'expected_action':r['expected_action'],'old_choice':prior['proposed_action'],'new_choice':r['proposed_action'],
+                           'expected_probability_delta':r['probabilities'][r['expected_action']]-prior['probabilities'][r['expected_action']]})
+        previous=[old[(cell,s)] for s in range(1,8)]
+        result.append({'color':color,'images':0,'old_agreement':sum(r['proposed_action']==r['expected_action'] for r in previous),
+                       'new_agreement':sum(r['proposed_action']==r['expected_action'] for r in selected),'stages':stages,
+                       'scope':'Prompt correction package, same zero-image input and numeric evidence; not a single-sentence or pure-image effect.'})
+    return result
+
+
+def run_image_replay(source: Path, output: Path, client, *, reference: Path | None=None, legacy_reference: Path | None=None,
+                     prompt_policy='legacy_deletion', seed=20261006, allow_mock=False) -> dict:
+    cells=image_cells(prompt_policy)
     source,output = source.resolve(),output.resolve()
     if output.exists(): raise FileExistsError(output)
     bundle,_ = validate_capture(source,allow_mock=allow_mock)
@@ -144,18 +203,19 @@ def run_image_replay(source: Path, output: Path, client, *, reference: Path | No
     if not allow_mock and (not health.get('vision_input_audit') or not health.get('text_input_audit') or health.get('device')!='cuda' or health.get('dtype')!='bfloat16'):
         raise ProtocolError('Require audited official CUDA/BF16 image and text service')
     requests,order = {},[]
-    cells = image_cells()
     for record in bundle['records']:
         for cell in cells:
             pngs = [(source/asset['path']).read_bytes() for asset in record['images'][cell['color']]]
             name = f"{cell['id']}_decision_{record['decision_id']:03d}"
-            requests[name] = image_request(pngs,record['model_state'],bundle['view_metadata'],record['goal_guidance'],cell)
+            requests[name] = image_request(pngs,record['model_state'],bundle['view_metadata'],record['goal_guidance'],cell,prompt_policy=prompt_policy)
             order.append({'name':name,'cell':cell['id'],'decision_id':record['decision_id']})
     random.Random(seed).shuffle(order)
     reference_info = None
     if not allow_mock:
         if reference is None: raise LabError('Require pinned real prompt reference replay')
         reference_info = check_image_reference(reference.resolve(),source,requests,health)
+        if prompt_policy=='modality_aware_v1' and legacy_reference is None: raise LabError('Require pinned legacy no-image reference for prompt correction')
+    legacy_info=check_legacy_text_reference(legacy_reference.resolve(),source,requests,health,allow_mock=allow_mock) if legacy_reference is not None else None
     output.mkdir(parents=True,exist_ok=False)
     (output/'requests').mkdir();(output/'responses').mkdir()
     for name,request in requests.items(): write_json(output/'requests'/(name+'.json'),request)
@@ -163,7 +223,8 @@ def run_image_replay(source: Path, output: Path, client, *, reference: Path | No
     manifest = {'kind':'paired_image_ablation','source':str(source),'source_files_sha256':pinned,'model_health':health,'seed':seed,
                 'cells':cells,'planned_order':order,'planned_request_sha256':hashes,'reference_replay':reference_info,
                 'synthetic_fixture':allow_mock,'model_had_control':False,'source_sha256':code,
-                'design':'Only images change; zh_named_relative state/questions including two-camera text are identical across image counts.'}
+                'prompt_policy':prompt_policy,'legacy_text_reference':legacy_info,
+                'design':('Input-matched prompts: no-image text-only criteria/instructions, accurate single camera, exact historical dual control; not pure image causality.' if prompt_policy=='modality_aware_v1' else 'Legacy deletion: only images change; original visual requirements retained, not a fair text-only baseline.')}
     write_json(output/'manifest.json',manifest)
     rows,error = [],None
     try:
@@ -197,7 +258,8 @@ def run_image_replay(source: Path, output: Path, client, *, reference: Path | No
         if any(sha256_file(output/'requests'/(name+'.json'))!=digest for name,digest in hashes.items()): raise LabError('Frozen request hash changed during replay')
     except Exception as exc:
         error = f'{type(exc).__name__}: {exc}'
-    result = {'complete':len(rows)==42 and error is None,'api_completed':len(rows),'error':error,'mock_backend':allow_mock,
-              'real_model_evaluated':not allow_mock and bool(rows),'model_had_control':False,**summarize_images(rows),'decisions':rows}
+    result = {'complete':len(rows)==42 and error is None,'api_completed':len(rows),'error':error,'mock_backend':allow_mock,'prompt_policy':prompt_policy,
+              'legacy_text_contrasts':summarize_text_revision(rows,legacy_info),
+              'real_model_evaluated':not allow_mock and bool(rows),'model_had_control':False,**summarize_images(rows,prompt_policy=prompt_policy),'decisions':rows}
     write_json(output/'summary.json',result)
     return result

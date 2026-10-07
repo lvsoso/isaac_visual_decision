@@ -1,0 +1,115 @@
+{
+  "tests": 271,
+  "passed": true,
+  "real_gpu_model_evaluated": false,
+  "legacy_offline_artifact_verification": {
+    "dual_reference_byte_exact": 14,
+    "same_zero_image_legacy_rows_validated": 14
+  },
+  "synthetic_browser_fixture_dir": "/private/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/opencode/ivd-modality-ui-synthetic-5f4wndkr",
+  "coverage": [
+    {
+      "function": "image_cells",
+      "covered": 3,
+      "executable": 3,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "image_request",
+      "covered": 9,
+      "executable": 9,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "verify_image_response",
+      "covered": 29,
+      "executable": 29,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "summarize_images",
+      "covered": 27,
+      "executable": 27,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "check_image_reference",
+      "covered": 27,
+      "executable": 30,
+      "percent": 90.0,
+      "uncovered": [
+        109,
+        112,
+        129
+      ]
+    },
+    {
+      "function": "image_source_hashes",
+      "covered": 1,
+      "executable": 1,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "check_legacy_text_reference",
+      "covered": 25,
+      "executable": 30,
+      "percent": 83.33,
+      "uncovered": [
+        145,
+        158,
+        161,
+        164,
+        167
+      ]
+    },
+    {
+      "function": "summarize_text_revision",
+      "covered": 16,
+      "executable": 16,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "run_image_replay",
+      "covered": 68,
+      "executable": 72,
+      "percent": 94.44,
+      "uncovered": [
+        204,
+        215,
+        216,
+        217
+      ]
+    },
+    {
+      "function": "adapt_modality",
+      "covered": 14,
+      "executable": 15,
+      "percent": 93.33,
+      "uncovered": [
+        33
+      ]
+    },
+    {
+      "function": "build_image_report",
+      "covered": 60,
+      "executable": 67,
+      "percent": 89.55,
+      "uncovered": [
+        31,
+        34,
+        41,
+        43,
+        47,
+        65,
+        71
+      ]
+    }
+  ],
+  "scope": "CPU unit/integration and offline artifact validation. Browser mock fixture is not model/GPU quality evidence."
+}

@@ -3,11 +3,11 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>无图、单图与双图 · 图片贡献诊断</title><style>{{STYLE}}</style></head>
 <body><main class="wrap">
-<header class="mast"><div class="wordmark">IVD / IMAGE STUDY 028</div><div class="mast-right"><span class="status">{{STATUS}}</span><button id="theme" type="button">切换明暗</button></div></header>
-<h1>拿走图片，决策还会一样吗？</h1>
+<header class="mast"><div class="wordmark" id="wordmark">IVD / IMAGE STUDY 028</div><div class="mast-right"><span class="status">{{STATUS}}</span><button id="theme" type="button">切换明暗</button></div></header>
+<h1 id="study-title">拿走图片，决策还会一样吗？</h1>
 <p class="lede">固定中文任务、目标颜色指认、空间描述、上一动作、本体状态和全部候选。唯一删除的是图片：0 / 1 / 2 张，蓝黄两种文字背景，42 次冻结状态推理。</p>
 <div class="summary-line"><div class="metric"><strong>6 × 7</strong><span>两种颜色 × 三种图片输入 · 42 次</span></div><div class="metric"><strong id="best-score">—</strong><span>最高 baseline 一致项，非自主成功率</span></div><div class="metric"><strong id="last-two">—</strong><span>最后两步一致项，每组范围</span></div><div class="metric"><strong class="small">NO CONTROL</strong><span>复用冻结观测，没有执行新动作</span></div></div>
-<aside class="scope"><b>严格图片删除</b>　state / questions 连同两相机文字说明均不变；无图不是黑图，也没有占位图片。仍有上一动作、关节 / 工具目标信息，不是“什么都不提供”。七个相关状态不是42个独立任务，概率不是机器人成功率。</aside>
+<aside class="scope" id="study-scope"><b>旧诊断 · 提示失配</b>　只删除图片但仍要求看图，不是公平纯文本能力基线；原工件保留，不把2/7→7/7解释成干净的视觉收益。七个相关状态不是42个独立任务，概率不是机器人成功率。</aside>
 <div class="section-head"><h2>01 / 六条件完整动作矩阵</h2><small>参考动作仅用于评估，不进入模型state。≋ 表示最高概率完全并列</small></div>
 <div class="table-scroll"><table class="matrix"><thead id="matrix-head"></thead><tbody id="matrix-body"></tbody></table></div>
 <div class="legend"><span class="good">与 baseline 一致</span><span class="warn">不一致</span><button id="export-csv" type="button">导出42条完整概率 CSV</button></div>
@@ -17,10 +17,11 @@
 <section class="workspace"><div class="pane"><div class="decision-head"><div><div class="eyebrow">ACTUAL IMAGE INPUT / NO SUBSTITUTES</div><h3>实际模型图片输入</h3></div><span id="image-count" class="frame-note"></span></div><div id="frames"></div><p class="frame-note">单图只发送原第一相机；双图为同一冻结状态的同时视角。无图页不展示参考图，避免误认为模型实际见过。</p></div>
 <div class="pane"><div class="decision-head"><div><div class="eyebrow">OFFICIAL CHOICE / UNMODIFIED</div><div class="chosen" id="choice-label"></div><div class="expected" id="expected-label"></div></div><div id="confidence" class="frame-note"></div></div><div id="tie-note" class="tie" hidden></div><div id="probabilities" class="probability-list"></div>
 <div class="telemetry"><div><span>HTTP 延迟</span><strong id="latency"></strong></div><div><span>完整输入 tokens / 上限</span><strong id="tokens"></strong></div><div><span>实际编码路径</span><strong id="encoding"></strong></div></div>
-<details open><summary>实际 state · 各图片数量下完全相同</summary><pre id="state-json"></pre></details><details><summary>实际 instructions / criteria · 全部八候选保留</summary><pre id="questions-json"></pre></details><details><summary>原始响应 · tokenizer / processor 审计</summary><pre id="response-json"></pre></details>
+<details open><summary id="state-summary">实际 state · 各图片数量下完全相同</summary><pre id="state-json"></pre></details><details><summary>实际 instructions / criteria · 全部八候选保留</summary><pre id="questions-json"></pre></details><details><summary>原始响应 · tokenizer / processor 审计</summary><pre id="response-json"></pre></details>
 <div class="request-tools"><button id="download-request" type="button">下载当前请求 JSON（语义还原）</button><button id="download-response" type="button">下载当前响应 JSON</button></div></div></section>
-<section class="comparison"><div class="comparison-title"><div><div class="eyebrow">IMAGE COUNT ONLY / PAIRED CONTRASTS</div><h2>03 / 同一文字状态的图片贡献</h2></div><label>配对 <select id="contrast"><option value="images_0_to_1">无图 → 单图</option><option value="images_1_to_2">单图 → 双图</option><option value="images_0_to_2">无图 → 双图</option></select></label></div><p id="contrast-label" class="frame-note"></p><div id="delta" class="delta"></div><small>Δ 是参考动作概率的绝对百分点差值（后者 − 前者），不是成功率或统计显著性。</small><div class="table-scroll"><table><thead><tr><th>候选动作</th><th id="low-name"></th><th id="high-name"></th><th>Δ 百分点</th></tr></thead><tbody id="comparison-body"></tbody></table></div></section>
-<section class="audit"><details><summary>冻结设计、顺序与历史双图稳定性对照</summary><p class="frame-note">每个条件只改 images，42份请求及交错顺序在第一次推理前冻结。无图仍保留原提示中提及图像的措辞；这不是优化过的纯文本提示。双图14份请求逐字节复现27批次中文明确颜色 / 空间描述，重新推理不借用旧概率。桥接 / 协议源码为显式无图支持及审计改变；官方权重、系统提示、模板、温度不变。无图选择若一致只能说明当前文本 / 本体信息足以复现，不证明图像无用或模型已理解图像。</p><pre id="design-json"></pre></details><details><summary>全部6组图片数量配对</summary><pre id="contrasts-json"></pre></details><details><summary>GPU图片批准、模型来源、原请求 / 响应 SHA256</summary><pre id="provenance-json"></pre></details></section>
+<section class="comparison"><div class="comparison-title"><div><div class="eyebrow" id="comparison-eyebrow">PAIRED INPUT CONDITIONS</div><h2 id="comparison-title">03 / 图片输入条件配对</h2></div><label>配对 <select id="contrast"><option value="images_0_to_1">无图 → 单图</option><option value="images_1_to_2">单图 → 双图</option><option value="images_0_to_2">无图 → 双图</option></select></label></div><p id="contrast-label" class="frame-note"></p><div id="delta" class="delta"></div><small id="contrast-caveat">Δ 是参考动作概率的绝对百分点差值（后者 − 前者），不是成功率或统计显著性。</small><div class="table-scroll"><table><thead><tr><th>候选动作</th><th id="low-name"></th><th id="high-name"></th><th>Δ 百分点</th></tr></thead><tbody id="comparison-body"></tbody></table></div></section>
+<section class="comparison" id="legacy-section" hidden><div class="comparison-title"><div><div class="eyebrow">SAME ZERO IMAGES / PROMPT CORRECTION</div><h2>04 / 旧无图提示 → 优化无图提示</h2></div><span id="legacy-score" class="frame-note"></span></div><p class="frame-note">两者都没有图片，数值证据不变；旧提示仍要求看图，属于提示失配。此处显示提示适配整包差值，不是纯图片因果效应，不将旧2/7当作合格纯文本基线。</p><div class="delta" id="legacy-choice"></div><div class="table-scroll"><table><thead><tr><th>候选动作</th><th>旧无图概率</th><th>优化无图概率</th><th>Δ 百分点</th></tr></thead><tbody id="legacy-body"></tbody></table></div><details><summary>旧无图实际请求（images=[]，仅用于复盘）</summary><pre id="legacy-request-json"></pre></details><details><summary>旧无图原始响应 / 工件SHA256</summary><pre id="legacy-response-json"></pre></details></section>
+<section class="audit"><details><summary>冻结设计、顺序与历史双图稳定性对照</summary><p class="frame-note" id="design-note">旧机械删图：42份请求及交错顺序在第一次推理前冻结，但无图仍保留看图措辞，不是公平纯文本基线。双图14份输入复现历史提示，重新推理不借用旧概率。官方权重、系统提示、模板、温度不变。没有模型接管或独立新场景。</p><pre id="design-json"></pre></details><details><summary>全部6组配对与无图提示修正差值</summary><pre id="contrasts-json"></pre></details><details><summary>GPU图片批准、模型来源、原请求 / 响应 SHA256</summary><pre id="provenance-json"></pre></details></section>
 <footer class="footer"><span>2026-10-06 · Intern-Decision-4B</span><span>OFFLINE / READ-ONLY / NO ROBOT ACTIONS</span></footer>
 <noscript>请启用 JavaScript 查看内嵌数据；报告不连接网络或机器人。</noscript></main>
 <script id="report-data" type="application/json">{{DATA}}</script><script>
@@ -28,6 +29,7 @@
 const D=JSON.parse(document.getElementById('report-data').textContent),$=id=>document.getElementById(id),pretty=value=>JSON.stringify(value,null,2),pct=value=>(value*100).toFixed(2)+'%',pp=value=>(value>=0?'+':'')+(value*100).toFixed(2)+' pp';
 const node=(tag,text,cls)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;};
 const cells=new Map(D.summary.cells.map(c=>[c.id,c])),rows=new Map(D.summary.decisions.map(r=>[r.cell+'_'+r.decision_id,r]));
+const adapted=D.manifest.prompt_policy==='modality_aware_v1';
 const rowFor=(id,s)=>rows.get(id+'_'+s),keyFor=(id,s)=>id+'_decision_'+String(s).padStart(3,'0'),ties=row=>D.actions.filter(a=>row.probabilities[a]===Math.max(...Object.values(row.probabilities)));
 let cell='blue_images_0',stage=6;
 function label(id){const c=cells.get(id);return(c.color==='blue'?'蓝框文字':'黄框文字')+' / '+['无图','单图','双图'][c.views];}
@@ -42,6 +44,14 @@ function renderComparison(){
   const contrast=D.summary.conditional_contrasts.find(c=>c.color===$('color').value&&c.factor===$('contrast').value),a=rowFor(contrast.low_cell,stage),b=rowFor(contrast.high_cell,stage);
   $('contrast-label').textContent=label(contrast.low_cell)+' → '+label(contrast.high_cell);$('low-name').textContent=a.proposed_action+'（前者）';$('high-name').textContent=b.proposed_action+'（后者）';$('delta').textContent=a.expected_action+' 概率 '+pp(b.probabilities[a.expected_action]-a.probabilities[a.expected_action]);$('comparison-body').replaceChildren();
   D.actions.forEach(action=>{const tr=node('tr');[action,pct(a.probabilities[action]),pct(b.probabilities[action]),pp(b.probabilities[action]-a.probabilities[action])].forEach(text=>tr.append(node('td',text,action===a.expected_action?'expected-row':'')));$('comparison-body').append(tr);});
+  const legacy=D.manifest.legacy_text_reference;
+  $('legacy-section').hidden=!legacy;
+  if(legacy){
+    const id=$('color').value+'_images_0',old=legacy.text_rows.find(r=>r.cell===id&&r.decision_id===stage),current=rowFor(id,stage),key=keyFor(id,stage),pair=D.summary.legacy_text_contrasts.find(p=>p.color===$('color').value);
+    $('legacy-score').textContent='旧 '+pair.old_agreement+'/7 → 优化 '+pair.new_agreement+'/7';$('legacy-choice').textContent='阶段 '+stage+'：旧 '+old.proposed_action+' → 优化 '+current.proposed_action;$('legacy-body').replaceChildren();
+    D.actions.forEach(action=>{const tr=node('tr');[action,pct(old.probabilities[action]),pct(current.probabilities[action]),pp(current.probabilities[action]-old.probabilities[action])].forEach(text=>tr.append(node('td',text,action===current.expected_action?'expected-row':'')));$('legacy-body').append(tr);});
+    $('legacy-request-json').textContent=pretty(legacy.requests[key]);$('legacy-response-json').textContent=pretty({response:legacy.responses[key],original_request_sha256:old.request_sha256,original_response_sha256:old.response_sha256});
+  }
 }
 function render(){
   const row=rowFor(cell,stage),key=keyFor(cell,stage),request=D.requests[key],raw=D.responses[key];
@@ -63,6 +73,13 @@ const scores=D.summary.cells.map(c=>c.baseline_agreement),finals=D.summary.cells
 $('download-request').addEventListener('click',()=>{const r=D.requests[keyFor(cell,stage)];download(keyFor(cell,stage)+'_request.json',pretty({state:r.state,images:r.image_paths.map(path=>({type:'image/png',data:D.assets[path].data.split(',')[1]})),questions:r.questions}));});
 $('download-response').addEventListener('click',()=>download(keyFor(cell,stage)+'_response.json',pretty(D.responses[keyFor(cell,stage)])));
 $('export-csv').addEventListener('click',()=>{const lines=[['cell','stage','image_count','expected_action','official_action','http_latency_ms','input_tokens','encoding_path',...D.actions.map(a=>'p_'+a)].join(',')];D.summary.decisions.slice().sort((a,b)=>a.cell.localeCompare(b.cell)||a.decision_id-b.decision_id).forEach(r=>lines.push([r.cell,r.decision_id,r.image_count,r.expected_action,r.proposed_action,r.http_latency_ms,r.input_tokens??'',r.encoding_path??'',...D.actions.map(a=>r.probabilities[a])].join(',')));download('image_42_decisions.csv','\ufeff'+lines.join('\n'),'text/csv;charset=utf-8');});
-$('design-json').textContent=pretty({design:D.manifest.design,planned_order:D.manifest.planned_order,reference_replay:D.manifest.reference_replay});$('contrasts-json').textContent=pretty(D.summary.conditional_contrasts);$('provenance-json').textContent=pretty({source_paths:D.source_paths,review:D.review,manifest:D.manifest,final_health:D.final_health,request_response_sha256:D.summary.decisions.map(r=>({cell:r.cell,stage:r.decision_id,request:r.request_sha256,response:r.response_sha256}))});
+$('design-json').textContent=pretty({prompt_policy:D.manifest.prompt_policy,design:D.manifest.design,planned_order:D.manifest.planned_order,reference_replay:D.manifest.reference_replay});$('contrasts-json').textContent=pretty({input_conditions:D.summary.conditional_contrasts,text_prompt_revision:D.summary.legacy_text_contrasts||[]});$('provenance-json').textContent=pretty({source_paths:D.source_paths,review:D.review,manifest:D.manifest,final_health:D.final_health,request_response_sha256:D.summary.decisions.map(r=>({cell:r.cell,stage:r.decision_id,request:r.request_sha256,response:r.response_sha256}))});
+if(adapted){
+  document.title='输入匹配提示 · 无图、单图与双图';$('wordmark').textContent='IVD / MATCHED PROMPT STUDY 029';$('study-title').textContent='没有图片，就不再要求看图。';
+  document.querySelector('.lede').textContent='无图使用优化纯文字提示，单图说明实际第一相机，双图沿用原有效提示作稳定性对照。任务 / 工具数值 / 上一动作不变；42份新请求在推理前冻结。';
+  $('study-scope').textContent='提示适配：无图移除看图命令、视觉criteria与虚构相机输入；允许基于数值和记录综合建议，不证明夹持。条件差值包含提示与相机元数据适配，不是纯图片因果效应。七个相关状态不是42个独立任务，模型无控制权。';
+  $('state-summary').textContent='实际 state · 数值相同，observation / 相机说明匹配实际输入';$('comparison-eyebrow').textContent='INPUT-MATCHED PROMPTS / NOT PURE IMAGE CAUSALITY';$('comparison-title').textContent='03 / 各自匹配输入的提示条件';$('contrast-caveat').textContent='Δ 包含图片、提示与相机元数据适配，不是纯图片因果效应、成功率或统计显著性。';
+  $('design-note').textContent='新提示在推理前固定：无图仅文字 / 本体 / 配置与FK，移除看图要求并允许上下文推断；单图只声明第一视角；双图14份输入与27 / 28有效双图逐字节一致，重新推理。旧无图工件仅用于提示失配的修正对照；不调整候选、平局、温度、官方系统提示 / 模板，没有机器人接管。';
+}
 if(D.synthetic_fixture)document.querySelector('.lede').textContent='合成契约测试：只验证展示 / 传输格式，不是模型或GPU能力证据。';choose(cell,stage);
 </script></body></html>

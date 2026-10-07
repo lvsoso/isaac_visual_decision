@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create a self-contained audited42-request image deletion report."""
+"""Create a self-contained audited42-request image/prompt conditions report."""
 from __future__ import annotations
 import argparse
 import base64
@@ -11,7 +11,7 @@ from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from visual_lab.audit import sha256_file
 from visual_lab.core import ACTIONS, LabError
-from visual_lab.image_ablation import IMAGE_HEALTH_KEYS, image_cells, image_request, summarize_images, verify_image_response
+from visual_lab.image_ablation import IMAGE_HEALTH_KEYS, image_cells, image_request, summarize_images, summarize_text_revision, verify_image_response
 from visual_lab.prompt_variants import source_hashes, validate_capture
 
 
@@ -21,6 +21,8 @@ def build_image_report(source: Path, replay: Path, output: Path, *, allow_mock=F
     if (replay/'INVALIDATED.json').exists(): raise LabError('Invalidated image replay')
     summary=json.loads((replay/'summary.json').read_text())
     manifest=json.loads((replay/'manifest.json').read_text())
+    policy=manifest.get('prompt_policy','legacy_deletion')
+    if summary.get('prompt_policy','legacy_deletion')!=policy: raise LabError('Prompt policy metadata mismatch')
     if summary.get('complete') is not True or summary.get('api_completed')!=42 or len(summary.get('decisions',[]))!=42:
         raise LabError('Require complete42-request image replay')
     if summary.get('mock_backend') is not bool(allow_mock) or manifest.get('synthetic_fixture') is not bool(allow_mock) or manifest['model_health'].get('is_mock') is not bool(allow_mock):
@@ -32,15 +34,17 @@ def build_image_report(source: Path, replay: Path, output: Path, *, allow_mock=F
         raise LabError('Final service provenance/count mismatch')
     bundle,review=validate_capture(source,allow_mock=allow_mock)
     if source_hashes(source)!=manifest['source_files_sha256']: raise LabError('Capture source hash mismatch')
-    cells={cell['id']:cell for cell in image_cells()}
-    if manifest.get('cells')!=image_cells(): raise LabError('Frozen image design mismatch')
+    cells={cell['id']:cell for cell in image_cells(policy)}
+    if manifest.get('cells')!=image_cells(policy): raise LabError('Frozen image design mismatch')
     expected={(cell,stage) for cell in cells for stage in range(1,8)}
     if {(row['cell'],row['decision_id']) for row in summary['decisions']}!=expected:
         raise LabError('Require every distinct cell/stage pair')
     if [(row['name'],row['cell'],row['decision_id']) for row in summary['decisions']]!=[(job['name'],job['cell'],job['decision_id']) for job in manifest['planned_order']]:
         raise LabError('Frozen inference order mismatch')
-    regenerated=summarize_images(summary['decisions'])
+    regenerated=summarize_images(summary['decisions'],prompt_policy=policy)
     if any(summary[key]!=regenerated[key] for key in ['cells','conditional_contrasts']): raise LabError('Summary computed metrics mismatch')
+    if summary.get('legacy_text_contrasts',[])!=summarize_text_revision(summary['decisions'],manifest.get('legacy_text_reference')):
+        raise LabError('Legacy text prompt contrasts mismatch')
     assets,requests,responses={},{},{}
     for record in bundle['records']:
         for images in record['images'].values():
@@ -57,8 +61,8 @@ def build_image_report(source: Path, replay: Path, output: Path, *, allow_mock=F
         cell=cells[row['cell']]
         all_paths=[asset['path'] for asset in record['images'][cell['color']]]
         all_pngs=[(source/path).read_bytes() for path in all_paths]
-        if request!=image_request(all_pngs,record['model_state'],bundle['view_metadata'],record['goal_guidance'],cell):
-            raise LabError('Actual request differs from frozen image-only construction')
+        if request!=image_request(all_pngs,record['model_state'],bundle['view_metadata'],record['goal_guidance'],cell,prompt_policy=policy):
+            raise LabError('Actual request differs from frozen prompt-policy construction')
         paths=all_paths[:cell['views']]
         parsed=verify_image_response(all_pngs[:cell['views']],raw,manifest['model_health'],allow_mock=allow_mock)
         if (parsed.action!=row['proposed_action'] or parsed.probabilities!=row['probabilities'] or parsed.confidence!=row['confidence']
@@ -74,7 +78,7 @@ def build_image_report(source: Path, replay: Path, output: Path, *, allow_mock=F
     encoded=encoded.replace('&',r'\u0026').replace('<',r'\u003c').replace('>',r'\u003e').replace('\u2028',r'\u2028').replace('\u2029',r'\u2029')
     lab=Path(__file__).resolve().parents[1]/'visual_lab'
     style=(lab/'factorial_report.html').read_text().split('<style>',1)[1].split('</style>',1)[0]
-    status='合成契约测试 · 非真实模型 / 非GPU证据' if allow_mock else '真实模型 · 固定42请求 · 无图为真正空输入 · 无控制权'
+    status='合成契约测试 · 非真实模型 / 非GPU证据' if allow_mock else ('真实模型 · 提示适配 · 固定42请求 · 无控制权' if policy=='modality_aware_v1' else '旧机械删图 · 无图提示失配 · 非公平纯文本基线')
     content=(lab/'image_report.html').read_text().replace('{{STYLE}}',style).replace('{{STATUS}}',html.escape(status)).replace('{{DATA}}',encoded)
     output.parent.mkdir(parents=True,exist_ok=True)
     with output.open('x',encoding='utf-8') as stream:stream.write(content)
