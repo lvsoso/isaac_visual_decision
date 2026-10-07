@@ -1,0 +1,65 @@
+test_changed_extra_file_cannot_be_reused_by_summary_claim (tests.test_candidate_reuse.ReuseTests.test_changed_extra_file_cannot_be_reused_by_summary_claim) ... ERROR
+test_duplicate_color_or_relaunch_of_successful_shadow_refused (tests.test_candidate_reuse.ReuseTests.test_duplicate_color_or_relaunch_of_successful_shadow_refused) ... ERROR
+test_existing_two_new_shadows_remain_supported (tests.test_candidate_reuse.ReuseTests.test_existing_two_new_shadows_remain_supported) ... ERROR
+test_no_model_inference_or_scene_is_used_to_verify_saved_blue (tests.test_candidate_reuse.ReuseTests.test_no_model_inference_or_scene_is_used_to_verify_saved_blue) ... ERROR
+test_real_blue_reaudited_and_not_in_new_launches (tests.test_candidate_reuse.ReuseTests.test_real_blue_reaudited_and_not_in_new_launches) ... ERROR
+test_unsupported_color_or_changed_model_source_is_rejected (tests.test_candidate_reuse.ReuseTests.test_unsupported_color_or_changed_model_source_is_rejected) ... ERROR
+
+======================================================================
+ERROR: test_changed_extra_file_cannot_be_reused_by_summary_claim (tests.test_candidate_reuse.ReuseTests.test_changed_extra_file_cannot_be_reused_by_summary_claim)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_reuse.py", line 26, in test_changed_extra_file_cannot_be_reused_by_summary_claim
+    with self.assertRaises(ProtocolError):self.m.verify_reused_shadows(self.plan,self.config,self.health)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'tools.run_candidate_experiment' has no attribute 'verify_reused_shadows'
+
+======================================================================
+ERROR: test_duplicate_color_or_relaunch_of_successful_shadow_refused (tests.test_candidate_reuse.ReuseTests.test_duplicate_color_or_relaunch_of_successful_shadow_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_reuse.py", line 30, in test_duplicate_color_or_relaunch_of_successful_shadow_refused
+    with self.assertRaises(ProtocolError):self.m.verify_reused_shadows(plan,self.config,self.health)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'tools.run_candidate_experiment' has no attribute 'verify_reused_shadows'
+
+======================================================================
+ERROR: test_existing_two_new_shadows_remain_supported (tests.test_candidate_reuse.ReuseTests.test_existing_two_new_shadows_remain_supported)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_reuse.py", line 37, in test_existing_two_new_shadows_remain_supported
+    self.assertEqual(self.m.verify_reused_shadows(plan,self.config,self.health),[])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'tools.run_candidate_experiment' has no attribute 'verify_reused_shadows'
+
+======================================================================
+ERROR: test_no_model_inference_or_scene_is_used_to_verify_saved_blue (tests.test_candidate_reuse.ReuseTests.test_no_model_inference_or_scene_is_used_to_verify_saved_blue)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_reuse.py", line 33, in test_no_model_inference_or_scene_is_used_to_verify_saved_blue
+    self.m.verify_reused_shadows(self.plan,self.config,self.health)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'tools.run_candidate_experiment' has no attribute 'verify_reused_shadows'
+
+======================================================================
+ERROR: test_real_blue_reaudited_and_not_in_new_launches (tests.test_candidate_reuse.ReuseTests.test_real_blue_reaudited_and_not_in_new_launches)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_reuse.py", line 20, in test_real_blue_reaudited_and_not_in_new_launches
+    reused=self.m.verify_reused_shadows(self.plan,self.config,self.health)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'tools.run_candidate_experiment' has no attribute 'verify_reused_shadows'
+
+======================================================================
+ERROR: test_unsupported_color_or_changed_model_source_is_rejected (tests.test_candidate_reuse.ReuseTests.test_unsupported_color_or_changed_model_source_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_reuse.py", line 41, in test_unsupported_color_or_changed_model_source_is_rejected
+    with self.assertRaises(ProtocolError):self.m.verify_reused_shadows(plan,self.config,self.health)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'tools.run_candidate_experiment' has no attribute 'verify_reused_shadows'
+
+----------------------------------------------------------------------
+Ran 6 tests in 2.544s
+
+FAILED (errors=6)
