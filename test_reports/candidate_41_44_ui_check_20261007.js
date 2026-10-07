@@ -4,7 +4,12 @@ window.addEventListener('load',()=>{
   check('offline network CSP',document.querySelector('meta[http-equiv="Content-Security-Policy"]').content.includes("connect-src 'none'"));
   check('correct count and scope',document.body.textContent.includes('真实新推理 '+E.new_model_predictions+' 次')&&document.body.textContent.includes('低层目标仍来自配置'));
   check('Jev excluded',document.body.textContent.includes('Jev排除'));
-  check('immutable new plan',E.plan.experiment_dir==='runs/41_44_intern_dual_experiment'&&E.plan.renewed_user_authorization===true);
+   check('immutable new plan',['runs/41_44_intern_dual_experiment','runs/45_47_intern_dual_experiment'].includes(E.plan.experiment_dir)&&E.plan.renewed_user_authorization===true);
+   if(E.reused_shadow_evidence){
+    check('historical blue not new inference',E.reused_model_predictions===7&&E.reused_is_not_new_inference===true&&document.body.textContent.includes('未重跑、不计入新推理'));
+    check('two admitted colors and actual controls',E.shadow_pair_eligible&&E.control_runs===2&&E.control_physical_successes===2&&E.new_model_predictions===21);
+    check('reused evidence exact',JSON.stringify(JSON.parse(document.querySelector('details pre').textContent))===JSON.stringify(E.reused_shadow_evidence));
+   }
   const sections=[...document.querySelectorAll('section')],images=[...document.images];
   const rows=E.runs.flatMap(r=>r.decisions||[]);check('ordered images count',images.length===2*rows.length);
   check('sections count',sections.length===E.runs.length+rows.length);
