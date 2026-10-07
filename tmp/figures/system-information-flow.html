@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>图1：信息流与能力分工</title>
+<style>
+:root{--paper:#f5f5f5;--paper-2:#ececec;--ink:#2d3142;--muted:#4f5d75;--rule:#bfc0c0;--accent:#eb6c36;--accent-tint:rgba(235,108,54,.08);--link:#2e5aa8;--sans:'Geist','Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;--serif:'Instrument Serif','Noto Serif SC','Songti SC',serif;--mono:'Geist Mono',ui-monospace,monospace}
+*{box-sizing:border-box}body{margin:0;padding:32px;background:var(--paper);color:var(--ink);font:15px/1.8 var(--sans)}main{max-width:1360px;margin:auto;min-width:0}h1{font:400 28px/1.4 var(--serif);margin:8px 0 20px}.eyebrow{font:11px var(--mono);letter-spacing:.1em;color:var(--muted)}.diagram-container{overflow-x:auto;max-width:100%;min-width:0}svg{display:block;width:100%;min-width:1280px}.name{font:600 12px var(--sans);fill:var(--ink)}.note{font:400 12px var(--sans);fill:var(--muted)}.tag{font:500 8px var(--mono);fill:var(--muted)}.edge{font:400 8px var(--mono);fill:var(--muted)}.summary{color:var(--muted)}@media print{body{padding:0}.diagram-container{overflow:visible}svg{min-width:0}}
+</style>
+</head><body><main>
+<p class="eyebrow">01 / ARCHITECTURE · STATIC · DOC-WIDE</p>
+<h1>模型选择技能，控制器执行运动</h1>
+<div class="diagram-container">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="system-information-flow-title system-information-flow-desc">
+<title id="system-information-flow-title">信息流与能力分工</title>
+<desc id="system-information-flow-desc">当前观测经请求构造送入Intern选择技能，控制器执行后重新观察，配置几何辅助两端而物体真值仅用于私有核验。</desc>
+<defs><marker id="system-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#4f5d75"/></marker><marker id="system-api" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#2e5aa8"/></marker></defs>
+<rect width="1280" height="720" fill="#f5f5f5"/>
+<!-- Connectors precede all nodes; labels sit 8px off their strokes. -->
+<g fill="none" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#system-arrow)">
+<path d="M304 304 H384"/><path d="M912 304 H992"/>
+<path d="M496 172 V240"/><path d="M1096 172 V240"/>
+<path d="M1096 368 V456 Q1096 464 1088 464 H200 Q192 464 192 456 V368" stroke-dasharray="5 4"/>
+</g>
+<path d="M608 304 H688" fill="none" stroke="#2e5aa8" stroke-width="1.2" marker-end="url(#system-api)"/>
+<g fill="#f5f5f5"><rect x="316" y="272" width="56" height="24"/><rect x="620" y="272" width="56" height="24"/><rect x="924" y="272" width="56" height="24"/><rect x="504" y="184" width="100" height="24"/><rect x="1104" y="184" width="96" height="24"/><rect x="572" y="432" width="140" height="24"/></g>
+<g text-anchor="middle"><text class="edge" x="344" y="288">OBSERVE</text><text class="edge" x="648" y="288">HTTP</text><text class="edge" x="952" y="288">CHOICE</text><text class="note" x="554" y="200">目标与FK辅助</text><text class="note" x="1152" y="200">已知抓放目标</text><text class="note" x="642" y="448">执行后重新观察</text></g>
+<!-- Geometry sources are distinct: auxiliary model state versus skill targets. -->
+<rect x="384" y="72" width="224" height="100" rx="6" fill="#ececec" stroke="#bfc0c0"/>
+<text class="tag" x="404" y="96">AUXILIARY STATE</text><text class="name" x="404" y="120">配置目标＋实测关节FK</text><text class="note" x="404" y="148">不是视觉估计的物体坐标</text>
+<rect x="992" y="72" width="208" height="100" rx="6" fill="#ececec" stroke="#bfc0c0"/>
+<text class="tag" x="1012" y="96">SKILL GEOMETRY</text><text class="name" x="1012" y="120">配置抓取点／放置点</text><text class="note" x="1012" y="148">连续运动仍依赖已知几何</text>
+<rect x="80" y="240" width="224" height="128" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text class="tag" x="100" y="264">ISAAC / OBSERVATION</text><text class="name" x="100" y="292">当前双视角RGB＋本体状态</text><text class="note" x="100" y="320">UR10e与Robotiq夹爪</text><text class="note" x="100" y="344">API等待期间物理暂停</text>
+<rect x="384" y="240" width="224" height="128" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text class="tag" x="404" y="264">INPUT CONTRACT</text><text class="name" x="404" y="292">任务、技能条件与历史结果</text><text class="note" x="404" y="320">中文空间描述＋八候选</text><text class="note" x="404" y="344">不含私有真值或参考答案</text>
+<rect x="688" y="240" width="224" height="128" rx="6" fill="rgba(235,108,54,.08)" stroke="#eb6c36" stroke-width="1.2"/>
+<text class="tag" x="708" y="264">INTERN-DECISION-4B</text><text class="name" x="708" y="292">选择下一项宏技能</text><text class="note" x="708" y="320">保留原choice、概率与confidence</text><text class="note" x="708" y="344">不输出关节角、扭矩或坐标</text>
+<rect x="992" y="240" width="208" height="128" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text class="tag" x="1012" y="264">SKILL EXECUTOR</text><text class="name" x="1012" y="292">控制器执行连续运动</text><text class="note" x="1012" y="320">到位检查与动作结果</text><text class="note" x="1012" y="344">松爪后自动retract</text>
+<rect x="80" y="540" width="1120" height="80" rx="6" fill="#ececec" stroke="#bfc0c0" stroke-dasharray="5 4"/>
+<text class="name" x="104" y="568">私有审计与评分：物体真值、参考动作、快照、原请求／响应与终态判据</text><text class="note" x="104" y="596">只用于核验与证据保存，不向模型提供真值或期望动作；成功也不等于纯视觉自主定位。</text>
+<line x1="80" y1="660" x2="1200" y2="660" stroke="#bfc0c0"/>
+<text class="note" x="80" y="688">图例：实线＝实际输入／执行　虚线回路＝重新观察　橙色＝模型决策节点　虚线区域＝私有核验</text>
+</svg></div>
+<p class="summary">依据：docs/Intern双视角受限仿真接管结果.md、docs/概念与实验边界.md。静态图，不表示实时异步控制。字体声明沿用技能规范，离线由本机中文／系统字体回退。</p>
+</main></body></html>

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>图3：输入匹配重测结果</title>
+<style>
+:root{--paper:#f5f5f5;--ink:#2d3142;--muted:#4f5d75;--accent:#eb6c36;--sans:'Geist','Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;--serif:'Instrument Serif','Noto Serif SC','Songti SC',serif;--mono:'Geist Mono',ui-monospace,monospace}*{box-sizing:border-box}body{margin:0;padding:32px;color:var(--ink);background:var(--paper);font:15px/1.8 var(--sans)}main{max-width:1360px;margin:auto;min-width:0}h1{font:400 28px/1.4 var(--serif);margin:8px 0 20px}.eyebrow{font:11px var(--mono);letter-spacing:.1em;color:var(--muted)}.diagram-container{overflow-x:auto;max-width:100%;min-width:0}svg{display:block;width:100%;min-width:1280px}.row{font:600 12px var(--sans);fill:var(--ink)}.note{font:400 12px var(--sans);fill:var(--muted)}.tick{font:400 11px var(--mono);fill:var(--muted)}.value{font:500 11px var(--mono);fill:var(--ink)}.summary{color:var(--muted)}@media print{body{padding:0}.diagram-container{overflow:visible}svg{min-width:0}}
+</style></head><body><main><p class="eyebrow">03 / BAR CHART · RAW COUNTS, NOT SUCCESS RATE</p><h1>双视角在本轮输入匹配诊断中达到7/7</h1><div class="diagram-container">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="matched-input-results-title matched-input-results-desc">
+<title id="matched-input-results-title">输入匹配重测结果</title><desc id="matched-input-results-desc">42次冻结状态推理中无图蓝黄各1/7、单图蓝5/7黄6/7、双图蓝黄各7/7参考一致，提示也随输入模态调整，不能解释为纯图片效应或抓放成功率。</desc>
+<rect width="1280" height="720" fill="#f5f5f5"/>
+<text class="note" x="80" y="84">指标：七个冻结状态中的参考动作一致项｜所有六条件使用真实模型，不控制机器人</text>
+<text class="note" x="80" y="112">蓝／黄＝目标框颜色；每条件7个相关状态，不能当成7次独立任务</text>
+<!-- Plot: baseline x=304, one count=112px, maximum x=1088. -->
+<g stroke="rgba(45,49,66,.12)" stroke-width=".8"><line x1="304" y1="160" x2="304" y2="584"/><line x1="416" y1="160" x2="416" y2="584"/><line x1="528" y1="160" x2="528" y2="584"/><line x1="640" y1="160" x2="640" y2="584"/><line x1="752" y1="160" x2="752" y2="584"/><line x1="864" y1="160" x2="864" y2="584"/><line x1="976" y1="160" x2="976" y2="584"/><line x1="1088" y1="160" x2="1088" y2="584"/></g>
+<line x1="304" y1="584" x2="1088" y2="584" stroke="#bfc0c0"/>
+<g text-anchor="middle" class="tick"><text x="304" y="608">0</text><text x="416" y="608">1</text><text x="528" y="608">2</text><text x="640" y="608">3</text><text x="752" y="608">4</text><text x="864" y="608">5</text><text x="976" y="608">6</text><text x="1088" y="608">7</text></g>
+<g class="row" text-anchor="end"><text x="280" y="196">无图 · 蓝</text><text x="280" y="264">无图 · 黄</text><text x="280" y="332">单图 · 蓝</text><text x="280" y="400">单图 · 黄</text><text x="280" y="468">双图 · 蓝</text><text x="280" y="536">双图 · 黄</text></g>
+<g fill="#4f5d75"><rect x="304" y="168" width="112" height="48"/><rect x="304" y="236" width="112" height="48"/><rect x="304" y="304" width="560" height="48"/><rect x="304" y="372" width="672" height="48"/></g>
+<g fill="#eb6c36"><rect x="304" y="440" width="784" height="48"/><rect x="304" y="508" width="784" height="48"/></g>
+<g class="value"><text x="432" y="196">1/7</text><text x="432" y="264">1/7</text><text x="880" y="332">5/7</text><text x="992" y="400">6/7</text><text x="1104" y="468">7/7</text><text x="1104" y="536">7/7</text></g>
+<text class="note" x="304" y="636">一致项（0—7）；提示已匹配无图／单图／双图，差值包含图像与文案变化。</text>
+<line x1="80" y1="660" x2="1200" y2="660" stroke="#bfc0c0"/>
+<text class="note" x="80" y="688">图例：灰色＝无图／单图条件　橙色＝双图条件　所有数字均为原始计数，不是物理成功率</text>
+</svg></div><p class="summary">依据：docs/输入匹配提示对照结果.md与其42次真实响应。旧机械删图实验的2/7未混入。没有误差条，因为这里展示固定状态诊断计数而非独立任务总体估计。</p></main></body></html>

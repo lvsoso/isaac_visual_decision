@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>图2：实验阶段进程</title>
+<style>
+:root{--paper:#f5f5f5;--ink:#2d3142;--muted:#4f5d75;--accent:#eb6c36;--sans:'Geist','Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;--serif:'Instrument Serif','Noto Serif SC','Songti SC',serif;--mono:'Geist Mono',ui-monospace,monospace}*{box-sizing:border-box}body{margin:0;padding:32px;color:var(--ink);background:var(--paper);font:15px/1.8 var(--sans)}main{max-width:1360px;margin:auto;min-width:0}h1{font:400 28px/1.4 var(--serif);margin:8px 0 20px}.eyebrow{font:11px var(--mono);letter-spacing:.1em;color:var(--muted)}.diagram-container{overflow-x:auto;max-width:100%;min-width:0}svg{display:block;width:100%;min-width:1280px}.name{font:600 12px var(--sans);fill:var(--ink)}.note{font:400 12px var(--sans);fill:var(--muted)}.metric{font:400 11px var(--mono);fill:var(--ink)}.tag{font:500 8px var(--mono);fill:var(--muted)}.summary{color:var(--muted)}@media print{body{padding:0}.diagram-container{overflow:visible}svg{min-width:0}}
+</style></head><body><main><p class="eyebrow">02 / PROGRESSION · ORDINAL, NOT ELAPSED TIME</p><h1>先诊断输入，再准入接管</h1><div class="diagram-container">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="experiment-progression-title experiment-progression-desc">
+<title id="experiment-progression-title">实验阶段进程</title><desc id="experiment-progression-desc">六个按先后排序的阶段从物理链路、因素和提示诊断推进到输入匹配、在线准入与实际模型接管，离线一致项不代替物理成功。</desc>
+<rect width="1280" height="720" fill="#f5f5f5"/>
+<text class="note" x="80" y="96">阶段顺序示意｜不按时长缩放，不将重放／审计计作独立任务</text>
+<line x1="120" y1="360" x2="1160" y2="360" stroke="#bfc0c0"/>
+<g stroke="#bfc0c0" fill="none"><path d="M140 360 V304"/><path d="M340 360 V428"/><path d="M540 360 V304"/><path d="M740 360 V428"/><path d="M940 360 V304"/><path d="M1140 360 V428"/></g>
+<g fill="#4f5d75"><circle cx="140" cy="360" r="4"/><circle cx="340" cy="360" r="4"/><circle cx="540" cy="360" r="4"/><circle cx="740" cy="360" r="4"/><circle cx="940" cy="360" r="4"/></g><circle cx="1140" cy="360" r="6" fill="#eb6c36"/>
+<g text-anchor="middle" class="metric"><text x="140" y="392">01</text><text x="340" y="392">02</text><text x="540" y="392">03</text><text x="740" y="392">04</text><text x="940" y="392">05</text><text x="1140" y="392">06</text></g>
+<g text-anchor="middle">
+<text class="tag" x="140" y="196">BASELINE / INITIAL SHADOW</text><text class="name" x="140" y="224">物理与采集链路</text><text class="note" x="140" y="252">基线成功，早期shadow 3/7</text><text class="note" x="140" y="280">清楚看到目标不等于判断正确</text>
+<text class="tag" x="340" y="460">FACTORIAL / 56 CALLS</text><text class="name" x="340" y="488">三因素八组合</text><text class="note" x="340" y="516">一致项4/7或5/7</text><text class="note" x="340" y="544">八组下降／释放均0/2</text>
+<text class="tag" x="540" y="196">PROMPTS / 84 CALLS</text><text class="name" x="540" y="224">语言与空间表达</text><text class="note" x="540" y="252">中文空间描述两色7/7</text><text class="note" x="540" y="280">离线结果仍无模型控制</text>
+<text class="tag" x="740" y="460">MATCHED INPUT / 42 CALLS</text><text class="name" x="740" y="488">修正无图提示失配</text><text class="note" x="740" y="516">无图1/7，单图5/7或6/7</text><text class="note" x="740" y="544">双图两色7/7</text>
+<text class="tag" x="940" y="196">LIVE SHADOW / ADMISSION</text><text class="name" x="940" y="224">真实在线双色准入</text><text class="note" x="940" y="252">Jev各5/7，不接管</text><text class="note" x="940" y="280">Intern各7/7，复用41蓝证据</text>
+<rect x="1052" y="432" width="176" height="132" rx="6" fill="rgba(235,108,54,.08)" stroke="#eb6c36"/>
+<text class="tag" x="1140" y="460">CONTROL / RECORDING</text><text class="name" x="1140" y="488">模型实际选择技能</text><text class="note" x="1140" y="516">蓝／黄各一回合成功</text><text class="note" x="1140" y="544">另录一回合，不重拍</text>
+</g>
+<line x1="80" y1="660" x2="1200" y2="660" stroke="#bfc0c0"/>
+<text class="note" x="80" y="688">图例：编号＝阶段顺序（不是时间刻度）　x/7＝参考动作一致项　橙色＝实际接管交付</text>
+</svg></div><p class="summary">依据：TEST_REPORT.md及各实验结果文档。省略逐次实现、软件回归与启动诊断，失败批次在报告附录中保留；不将这一进程图视为统一冻结评测。</p></main></body></html>

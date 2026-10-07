@@ -1,0 +1,144 @@
+{
+  "kind": "static_document_verification",
+  "scope": "Document only; not model quality or new GPU validation",
+  "report_sha256": "3c796f28d63869babafa700c2a17020d94e3dbea62cae768f5e73ea8f2dcc282",
+  "deterministic_rebuild": true,
+  "local_links_checked": 70,
+  "diagram_skill_checks": [
+    {
+      "file": "tmp/figures/system-information-flow.html",
+      "result": "OK /Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tmp/figures/system-information-flow.html"
+    },
+    {
+      "file": "tmp/figures/experiment-progression.html",
+      "result": "OK /Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tmp/figures/experiment-progression.html"
+    },
+    {
+      "file": "tmp/figures/matched-input-results.html",
+      "result": "OK /Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tmp/figures/matched-input-results.html"
+    }
+  ],
+  "chart_counts": [
+    1,
+    1,
+    5,
+    6,
+    7,
+    7
+  ],
+  "browser": {
+    "report-desktop": {
+      "passed": true,
+      "checks": [
+        "SVG count",
+        "no global horizontal overflow",
+        "accessible SVG labels",
+        "local SVG scrolling and width contract",
+        "SVG labels remain within canvas",
+        "no SVG text-to-text overlap",
+        "CJK readable type floor",
+        "no remote resource elements",
+        "embedded real still",
+        "7 main chapters plus summary and appendices",
+        "12 visible chapter navigation links",
+        "deferred scope retained",
+        "print styles present"
+      ],
+      "viewport": [
+        1440,
+        1013
+      ],
+      "fontFallback": "\"Geist Mono\", ui-monospace, monospace",
+      "screenshot_sha256": "97aba9529e3369671cf233255b09fc5be2c592deae8c83b08b91a11be74e881b"
+    },
+    "report-narrow": {
+      "passed": true,
+      "checks": [
+        "SVG count",
+        "no global horizontal overflow",
+        "accessible SVG labels",
+        "local SVG scrolling and width contract",
+        "reachable diagram right edge",
+        "reachable diagram right edge",
+        "reachable diagram right edge",
+        "SVG labels remain within canvas",
+        "no SVG text-to-text overlap",
+        "CJK readable type floor",
+        "no remote resource elements",
+        "embedded real still",
+        "7 main chapters plus summary and appendices",
+        "12 visible chapter navigation links",
+        "deferred scope retained",
+        "print styles present"
+      ],
+      "viewport": [
+        500,
+        1013
+      ],
+      "fontFallback": "\"Geist Mono\", ui-monospace, monospace",
+      "screenshot_sha256": "17a1aec039b18673fb6774bb68353929fbda4f771fb98a07415a9e4d380a6a87"
+    },
+    "system-information-flow": {
+      "passed": true,
+      "checks": [
+        "SVG count",
+        "no global horizontal overflow",
+        "accessible SVG labels",
+        "local SVG scrolling and width contract",
+        "SVG labels remain within canvas",
+        "no SVG text-to-text overlap",
+        "CJK readable type floor",
+        "no remote resource elements"
+      ],
+      "viewport": [
+        1440,
+        1013
+      ],
+      "fontFallback": "\"Geist Mono\", ui-monospace, monospace",
+      "screenshot_sha256": "c0c6dae4cf367df408ad9caf393b8b6699c405653c228db1cbe766118c23f773"
+    },
+    "experiment-progression": {
+      "passed": true,
+      "checks": [
+        "SVG count",
+        "no global horizontal overflow",
+        "accessible SVG labels",
+        "local SVG scrolling and width contract",
+        "SVG labels remain within canvas",
+        "no SVG text-to-text overlap",
+        "CJK readable type floor",
+        "no remote resource elements"
+      ],
+      "viewport": [
+        1440,
+        1013
+      ],
+      "fontFallback": "Geist, \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+      "screenshot_sha256": "fe8f6c45286a210750f82f5645a9cf043b8c14ab7dc1bec819f22fd8594c7a06"
+    },
+    "matched-input-results": {
+      "passed": true,
+      "checks": [
+        "SVG count",
+        "no global horizontal overflow",
+        "accessible SVG labels",
+        "local SVG scrolling and width contract",
+        "SVG labels remain within canvas",
+        "no SVG text-to-text overlap",
+        "CJK readable type floor",
+        "no remote resource elements"
+      ],
+      "viewport": [
+        1440,
+        1013
+      ],
+      "fontFallback": "Geist, \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+      "screenshot_sha256": "a3d6bc172d57cea05a2b7d0f171dbc38f78c7d4d81dc2223114db2c4b8786b91"
+    }
+  },
+  "fixture_dir": "/private/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/opencode/ivd-summary-report-6ae6eadu",
+  "extra_model_calls": 0,
+  "extra_isaac_runs": 0,
+  "print_pdf_not_verified": true,
+  "lifecycle": "Owned browser processes are bounded and cleaned; no claim of natural clean CLI exit"
+}
