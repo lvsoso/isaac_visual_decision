@@ -1,0 +1,65 @@
+test_any_extra_host_gpu_pid_remains_terminal (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_any_extra_host_gpu_pid_remains_terminal) ... ERROR
+test_baseline_requires_exactly_one_gpu_process_after_idle_precheck (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_baseline_requires_exactly_one_gpu_process_after_idle_precheck) ... ERROR
+test_gpu_host_pid_need_not_equal_container_service_pid (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_gpu_host_pid_need_not_equal_container_service_pid) ... ERROR
+test_lost_or_replaced_model_gpu_process_is_rejected (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_lost_or_replaced_model_gpu_process_is_rejected) ... ERROR
+test_same_namespace_also_passes_without_special_case (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_same_namespace_also_passes_without_special_case) ... ERROR
+test_whitespace_order_and_container_pid_are_recorded_separately (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_whitespace_order_and_container_pid_are_recorded_separately) ... ERROR
+
+======================================================================
+ERROR: test_any_extra_host_gpu_pid_remains_terminal (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_any_extra_host_gpu_pid_remains_terminal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_gpu_supervision.py", line 17, in test_any_extra_host_gpu_pid_remains_terminal
+    baseline=self.m.gpu_baseline('1491493, [Not Found], 8000 MiB',container_service_pid=114184)
+             ^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'tools.run_candidate_experiment' has no attribute 'gpu_baseline'
+
+======================================================================
+ERROR: test_baseline_requires_exactly_one_gpu_process_after_idle_precheck (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_baseline_requires_exactly_one_gpu_process_after_idle_precheck)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_gpu_supervision.py", line 26, in test_baseline_requires_exactly_one_gpu_process_after_idle_precheck
+    with self.assertRaises(ProtocolError):self.m.gpu_baseline(report,container_service_pid=114184)
+                                          ^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'tools.run_candidate_experiment' has no attribute 'gpu_baseline'
+
+======================================================================
+ERROR: test_gpu_host_pid_need_not_equal_container_service_pid (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_gpu_host_pid_need_not_equal_container_service_pid)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_gpu_supervision.py", line 8, in test_gpu_host_pid_need_not_equal_container_service_pid
+    baseline=self.m.gpu_baseline('1491493, [Not Found], 428 MiB',container_service_pid=114184)
+             ^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'tools.run_candidate_experiment' has no attribute 'gpu_baseline'
+
+======================================================================
+ERROR: test_lost_or_replaced_model_gpu_process_is_rejected (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_lost_or_replaced_model_gpu_process_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_gpu_supervision.py", line 21, in test_lost_or_replaced_model_gpu_process_is_rejected
+    baseline=self.m.gpu_baseline('1491493, [Not Found], 8000 MiB',container_service_pid=114184)
+             ^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'tools.run_candidate_experiment' has no attribute 'gpu_baseline'
+
+======================================================================
+ERROR: test_same_namespace_also_passes_without_special_case (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_same_namespace_also_passes_without_special_case)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_gpu_supervision.py", line 14, in test_same_namespace_also_passes_without_special_case
+    baseline=self.m.gpu_baseline('114184, /env/bin/python, 8000 MiB',container_service_pid=114184)
+             ^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'tools.run_candidate_experiment' has no attribute 'gpu_baseline'
+
+======================================================================
+ERROR: test_whitespace_order_and_container_pid_are_recorded_separately (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_whitespace_order_and_container_pid_are_recorded_separately)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_gpu_supervision.py", line 28, in test_whitespace_order_and_container_pid_are_recorded_separately
+    baseline=self.m.gpu_baseline(' 1491493 , [Not Found], 8000 MiB\n',container_service_pid=114184)
+             ^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'tools.run_candidate_experiment' has no attribute 'gpu_baseline'
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.049s
+
+FAILED (errors=6)

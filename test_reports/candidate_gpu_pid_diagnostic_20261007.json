@@ -1,0 +1,16 @@
+{
+  "own_process_pid": 114184,
+  "cuda_allocation_elements": 1,
+  "reported_compute_processes": "1491493, [Not Found], 428 MiB",
+  "own_process_status_namespace": [
+    "NStgid:\t114184",
+    "NSpid:\t114184"
+  ],
+  "model_weights_loaded": false,
+  "model_predictions": 0,
+  "isaac_scene_started": false,
+  "kind": "GPU process PID accounting diagnosis only",
+  "gpu_compute_before": "",
+  "gpu_compute_after": "",
+  "scope": "One-element CUDA allocation without model weights, inference, Isaac or motion; independent diagnostic, not original episode process snapshot"
+}
