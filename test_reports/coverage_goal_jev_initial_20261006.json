@@ -1,0 +1,72 @@
+{
+  "method": "stdlib trace with AST statement-line denominators; CPU fixture coverage only",
+  "tests_run": 19,
+  "passed": true,
+  "files": {
+    "visual_lab/goal_binding.py": {
+      "statement_lines": 120,
+      "covered_lines": 109,
+      "line_percent": 90.83,
+      "uncovered_lines": [
+        31,
+        44,
+        47,
+        58,
+        80,
+        85,
+        92,
+        93,
+        108,
+        151,
+        152
+      ]
+    },
+    "visual_lab/text_english.py": {
+      "statement_lines": 22,
+      "covered_lines": 22,
+      "line_percent": 100.0,
+      "uncovered_lines": []
+    },
+    "visual_lab/jev.py": {
+      "statement_lines": 40,
+      "covered_lines": 34,
+      "line_percent": 85.0,
+      "uncovered_lines": [
+        47,
+        54,
+        55,
+        56,
+        57,
+        58
+      ]
+    },
+    "tools/make_text_study_report.py": {
+      "statement_lines": 30,
+      "covered_lines": 9,
+      "line_percent": 30.0,
+      "uncovered_lines": [
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        39,
+        40,
+        41
+      ]
+    }
+  }
+}
