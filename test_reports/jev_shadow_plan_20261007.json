@@ -1,0 +1,72 @@
+{
+  "kind": "authorized_online_jev_shadow_plan",
+  "frozen_utc": "2026-10-07T08:22:48.849124+00:00",
+  "implementation_commit": "783b584d8a623f982661fb33669b5ecc7688d6d4",
+  "model": "jev-1.13.0",
+  "validation_policy": "jev_sdk_basic_v1",
+  "instructions": "No images or video are provided in this request, only text and proprioceptive state. Do not require observing unavailable images or invent appearance, contact or object position. The red cube is the manipulated object and the ground outline specified in task is the target. Combine current numbers, previous_action, previous_result and the meanings of all skills to select the most reasonable single next skill. Progress may be inferred from available execution records and position, but an inference is not a new measurement. previous_action is context, not a mandatory sequence; do not select by a lookup table based only on the previous action. reached means executor or pose convergence, not successful grasping. Finger joints near 0.0 mean open and near 0.5 mean closed; closed fingers do not prove holding. goal_guidance describes a configured target and joint-FK tool point, not the object position. The tool point and finger link are not object centers. Absence of images alone does not require stopping or choosing abort. Do not automatically treat unknown holding as object loss, or proximity to the target as proof of a grasp. Match skill conditions and exclusions to available evidence. Choose abort when evidence conflicts, supports unrecoverable failure, or no skill can reasonably and safely advance. These are online shadow action suggestions, not object-state proofs, and will not directly control a robot. Return one existing candidate only; no coordinates or explanation are required.",
+  "criteria": {
+    "pre_grasp": "Move the gripper to a high aligned pose above the red cube's pickup region. Consider this when the fingers are open and current records and position do not yet support completed pickup alignment. Do not repeat if already aligned or the records support having entered the carrying process. This skill does not open closed fingers.",
+    "approach": "Keep the fingers open and descend to the red cube's pickup height. Use current position and execution records to determine whether the gripper is above the pickup region but has not reached pickup height. Do not use with closed fingers, after entering the carrying process, or when already at pickup height.",
+    "grasp": "Close the fingers at the pickup position. Applicable when fingers are open and position and execution records support having reached pickup height. Do not repeat if fingers are closed or the carrying process has begun. Closing alone does not prove successful grasping.",
+    "lift": "Raise the newly closed gripper, attempting to carry the object off the pickup ground. Use finger state, tool height and execution records to determine whether lifting has not yet completed. If current position and records support an already raised state, do not repeat pickup lifting. Lifting neither transports horizontally nor releases the object.",
+    "transport": "Move the gripper and any possibly carried object horizontally toward the ground target specified in task. Applicable when records and numbers support completed lifting, fingers are closed and the tool has not reached the target's horizontal position. Do not use if fingers are open, existing information indicates object loss, or already above the target.",
+    "lower": "Lower the closed gripper and any possibly carried object toward the target placement height. Use horizontal tool-to-target distance, relative placement height and execution records to determine whether above the target but still too high. Do not continue lowering when far from the target, existing information indicates object loss, or already at placement height. Tool position is not object-position ground truth.",
+    "release": "Open the fingers, leaving any possibly carried object at the target and ending the task, followed by automatic retraction. Applicable when fingers are closed and position and execution records support having reached the target placement height. Do not release far from the target or above placement height. This is not a general retry or arbitrary-location opening skill.",
+    "abort": "Stop the current task when existing information supports object loss, execution or numbers contradict each other, required recovery is unavailable, or no available skill can reasonably and safely advance. An unknown state itself is not evidence that failure has occurred."
+  },
+  "only_prompt_wording_change_from_offline": true,
+  "source_sha256": {
+    "run_jev_shadow.py": "40ed72470a28faeff6b6e1b284a8ad9d6d64bfc8b1f847687ba8a22838e5f7bd",
+    "tools/jev_shadow_worker.py": "8d2b643413cdfacc507a706725f6604b09ea37fbf378e8a82d1e6b4fc0a7f544",
+    "tools/run_frozen_jev.py": "b46dc94d30508f2496bb77a9aa22648fcd4cd9f459cf53a57e365458b7c79832",
+    "visual_lab/__init__.py": "ee35301b55f5da7f6a1f412279bccc541e0a9111df8941996db9cef1a871a75b",
+    "visual_lab/audit.py": "9b0ab935c222b2316ff1e6ea3ab10969b9ed1904a0db1319ceca3464680f4ca6",
+    "visual_lab/capture.py": "4efdfb9287fd2e00769991e0d0e0f0aa8b376e9f6d4c8c635957a70baff5d328",
+    "visual_lab/client.py": "7abd9923ceb75d748b18517d90e79624a40f81417673fe03869d87db7f27685f",
+    "visual_lab/core.py": "21f9991aa3a62cc49580b863fd14e50f884ec93f6ed557165747512618089471",
+    "visual_lab/factorial.py": "ee8cf74b76a8f08849ca8e3a2bec4d2fa5453fac1c8cc8e837c91e7bf85d2b77",
+    "visual_lab/goal_binding.py": "e18d9ac9446a97b4f768e85749578d164dda3316e07b9a16b990d7969f07716e",
+    "visual_lab/image_ablation.py": "64ca1df16550f22e85acce10ecaff0cdb5e1935de0c916d48bb481c41b8a2476",
+    "visual_lab/jev.py": "5814c08884d8bec975394a54ba033e794cd6b7aca85e6fff29c755e69aa58a1b",
+    "visual_lab/jev_diagnostic.py": "ffa7932a14202db64ccbca5af5aacf7fad6eb8c25c9e4092d89ceaf7f8e2b12d",
+    "visual_lab/jev_shadow.py": "0f06216b6c5d6714e54a43a06410298a9a38a0446f552c742f8fc4e3e0a5a6e6",
+    "visual_lab/modality_prompts.py": "77266fc21e9ae03973c97b34b67722447bddc9880e08ac2db61dd7ad75cbfa14",
+    "visual_lab/png.py": "da421559b77b50a365721ae1c89e0688c6f1e67a56c6024ad9a2169185bce9c4",
+    "visual_lab/prompt_variants.py": "1a556afc2597749305ad57eb35cf37fb00d204f0d8e2aa58e36bb048799a00d5",
+    "visual_lab/protocol.py": "354afcf57527d15d4e6e28579c95e47cd9f5d74beb242df610c820bfcc50339b",
+    "visual_lab/runner.py": "4fae7f9cf2830f80c0948ca68d7aeae4f821b196f1c9c6ec2f1e224a758d7dff",
+    "visual_lab/server.py": "b3e73f0e5da226ee417623d6bbea11f2989fa1518fa4a683ec28878b72c11e4d",
+    "visual_lab/sim.py": "83eef33e2c73c30fdc9e4f4b0b68a1992841e127eab3d94985b9632fbf120fa2",
+    "visual_lab/text_english.py": "735fdc9f730fd662e647d67330a5a21b691f2a2e11a9fc8c92bd4844c79f6400",
+    "visual_lab/upstream.py": "663662e902b65dd8799e2a81e7e6e91e927c848e1ac3b468fcbd224d285f87ba"
+  },
+  "config_sha256": "49aa61caccdd11a0f9c94882de2de87001a8b377430de04fc2672d12db1bc8f9",
+  "planned_runs": [
+    {
+      "color": "blue",
+      "run_dir": "runs/35_jev_shadow_blue",
+      "max_prediction_calls": 7
+    },
+    {
+      "color": "yellow",
+      "run_dir": "runs/36_jev_shadow_yellow",
+      "max_prediction_calls": 7
+    }
+  ],
+  "isaac_root": "/root/gpufree-share/isaacsim",
+  "worker_python": "/root/gpufree-data/envs/ivd-model/bin/python",
+  "launch_environment": {
+    "OMNI_KIT_ALLOW_ROOT": "1",
+    "LD_LIBRARY_PATH": ""
+  },
+  "simulation_device": "cuda",
+  "active_gpu": 0,
+  "model_had_control": false,
+  "max_prediction_calls": 14,
+  "automatic_retries": 0,
+  "future_measurement_values_prefrozen": false,
+  "per_request_freeze": "Live state is sampled while physics paused; exact payload archived and hashed before HTTP; private pre/post snapshots never sent to Jev.",
+  "control_admission": "Per-combination real shadow7/7 + fixed physical success + complete7valid calls/no errors; both colors required for whole pair. Qualification only; no control launch authorized.",
+  "stop_policy": "API/physics/runtime failure stops without replay/retry or silent baseline fallback; blue failure prevents yellow launch. Valid shadow suggestions do not change fixed actions."
+}
