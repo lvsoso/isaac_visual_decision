@@ -1,0 +1,23 @@
+{
+  "kind": "unchanged_original_archive_in_git_safe_chunks",
+  "original_sha256": "c36954922177e8dec264e9c764ddc19a5821c7a5881be38dc932c692f5ce4c94",
+  "original_bytes": 131076414,
+  "parts": [
+    {
+      "path": "test_reports/candidate_48_recording_evidence_20261007.tar.gz.part001",
+      "bytes": 50331648,
+      "sha256": "8341d88ba1af72d664b8b5acc4d66b04e9861ac3dd9a10cd7caf0a89bb83945b"
+    },
+    {
+      "path": "test_reports/candidate_48_recording_evidence_20261007.tar.gz.part002",
+      "bytes": 50331648,
+      "sha256": "39666c48dde4d84e4b313eacefd6917eace60ac53a366fbcaea8384cbd44b694"
+    },
+    {
+      "path": "test_reports/candidate_48_recording_evidence_20261007.tar.gz.part003",
+      "bytes": 30413118,
+      "sha256": "22376297e81eff14a1229675b31f98e3a25d6dd9a69011ac571e3959bc762dd6"
+    }
+  ],
+  "reassembly": "Concatenate listed parts in order; bytes are the original archive, not a rewritten or filtered archive"
+}

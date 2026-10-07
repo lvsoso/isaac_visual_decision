@@ -5,6 +5,8 @@ runs/
 models/
 .env
 *.mp4
+# Explicitly delivered, verified representative model-control video.
+!/docs/videos/intern_dual_control_blue_20261007.mp4
 # Uploaded run diagnostics are local artifacts, not source code.
 /summary.json
 /events.jsonl

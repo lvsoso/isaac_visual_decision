@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; media-src 'self'; img-src 'self'; style-src 'unsafe-inline'; connect-src 'none'">
+<title>Intern模型接管 · 蓝色抓放录像</title>
+<style>body{font:16px/1.7 system-ui;max-width:900px;margin:32px auto;padding:0 20px;background:#101a20;color:#e2edf2}video{display:block;width:100%;max-width:800px;height:auto;border:1px solid #354a55;border-radius:8px}a{color:#7ee5c2}small{color:#b9cbd4}h1{font-size:26px}</style>
+<h1>Intern模型接管 · 蓝色抓放录像</h1>
+<p>新48回合真实Isaac录制，模型根据中文空间描述＋双视角选择技能。7次实际决策直接执行，物理抓放成功；不是固定序列演示或旧回合录像。</p>
+<video controls playsinline preload="metadata" poster="../videos/intern_dual_control_blue_20261007.jpg" aria-label="蓝色模型接管下的Isaac机械臂抓放录像">
+<source src="../videos/intern_dual_control_blue_20261007.mp4" type="video/mp4">
+浏览器不支持内嵌视频，请使用下方MP4下载链接。
+</video>
+<p><a href="../videos/intern_dual_control_blue_20261007.mp4" download>下载MP4</a> · <a href="candidate_48_recording_20261007.html">双视角原输入／原响应／全部概率与审计</a> · <a href="../Intern模型接管代表录像.md">录像说明</a></p>
+<p><strong>10.9秒，20fps，218张连续真实采样帧。</strong>按仿真时间播放，省略了暂停的API等待及初始化预热。视频不是实际运行耗时；没有生成动作或插值补帧。</p>
+<p>字幕来自实际执行事件。七个“Model choice”阶段由模型选择；“Automatic retract”是控制器自动回撤，随后静置，不冒充额外模型决策。录像展示第一相机，模型仍接收两张同时视图。</p>
+<small>仅在原画面外增加文字边栏；技能运动目标仍来自既有配置。本次只新增一回合，没有重跑双色shadow、失败重拍或扩大场景。</small>
+</html>

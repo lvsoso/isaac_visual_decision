@@ -1,0 +1,46 @@
+{
+  "results": {
+    "desktop": {
+      "passed": true,
+      "checks": [
+        "real MP4 metadata",
+        "native controls",
+        "omitted API waits disclosed",
+        "supported H264 MP4",
+        "no media error",
+        "no horizontal overflow"
+      ],
+      "viewport": [
+        1440,
+        1013
+      ]
+    },
+    "narrow": {
+      "passed": true,
+      "checks": [
+        "real MP4 metadata",
+        "native controls",
+        "omitted API waits disclosed",
+        "supported H264 MP4",
+        "no media error",
+        "no horizontal overflow"
+      ],
+      "viewport": [
+        500,
+        1013
+      ]
+    }
+  },
+  "video_sha256": "bd0b3edefa4698a570323d9cfc0000b36d6d5a451ac5dc53838a1f0415400a13",
+  "page_sha256": "19f17388d90c66040012690166e44e90e06bcb54089071f4d35f31724164f6cb",
+  "fixture_dir": "/private/var/folders/38/gc519q3j3p96d90ybwr3whvm0000gq/T/opencode/candidate-48-video-ui-2f0yf869",
+  "screenshots_sha256": {
+    "desktop": "54e845445c8bf05a76090bc53bee47e8eb66affebc060472fcad5c094da13abf",
+    "narrow": "25dc66f4254e2f370093ec20e5ba4c62df5ca86ee6f30f3f9817d93223165e5f"
+  },
+  "delivered_page_scripts": 0,
+  "extra_model_or_gpu_calls": 0,
+  "headless_async_seek_play_not_verified": true,
+  "prior_async_harness_attempts": "Two virtual-time dump-DOM attempts timed out before async result; no extra simulation or inference. Check now covers synchronous metadata/layout only; full decode was independently checked with FFmpeg.",
+  "scope": "Actual local MP4 metadata/codec/player layout; no full browser playback or simulator verification"
+}
