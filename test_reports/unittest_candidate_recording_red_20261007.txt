@@ -1,0 +1,85 @@
+test_bad_launch_environment_never_calls_model (tests.test_candidate_recording.CandidateRecordingTests.test_bad_launch_environment_never_calls_model) ... ERROR
+test_driver_selects_recording_entry_only_for_positive_interval (tests.test_candidate_recording.CandidateRecordingTests.test_driver_selects_recording_entry_only_for_positive_interval) ... ERROR
+test_failed_admission_never_creates_run_or_initializes_isaac (tests.test_candidate_recording.CandidateRecordingTests.test_failed_admission_never_creates_run_or_initializes_isaac) ... ERROR
+test_invalid_interval_or_missing_admission_never_starts_scene (tests.test_candidate_recording.CandidateRecordingTests.test_invalid_interval_or_missing_admission_never_starts_scene) ... ERROR
+test_recording_uses_same_gated_model_loop_and_native_scene_recorder (tests.test_candidate_recording.CandidateRecordingTests.test_recording_uses_same_gated_model_loop_and_native_scene_recorder) ... ERROR
+
+======================================================================
+ERROR: test_bad_launch_environment_never_calls_model (tests.test_candidate_recording.CandidateRecordingTests.test_bad_launch_environment_never_calls_model)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_recording.py", line 9, in setUp
+    self.m=importlib.import_module('run_candidate_recording');self.tmp=tempfile.TemporaryDirectory();self.root=Path(self.tmp.name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_candidate_recording'
+
+======================================================================
+ERROR: test_driver_selects_recording_entry_only_for_positive_interval (tests.test_candidate_recording.CandidateRecordingTests.test_driver_selects_recording_entry_only_for_positive_interval)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_recording.py", line 9, in setUp
+    self.m=importlib.import_module('run_candidate_recording');self.tmp=tempfile.TemporaryDirectory();self.root=Path(self.tmp.name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_candidate_recording'
+
+======================================================================
+ERROR: test_failed_admission_never_creates_run_or_initializes_isaac (tests.test_candidate_recording.CandidateRecordingTests.test_failed_admission_never_creates_run_or_initializes_isaac)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_recording.py", line 9, in setUp
+    self.m=importlib.import_module('run_candidate_recording');self.tmp=tempfile.TemporaryDirectory();self.root=Path(self.tmp.name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_candidate_recording'
+
+======================================================================
+ERROR: test_invalid_interval_or_missing_admission_never_starts_scene (tests.test_candidate_recording.CandidateRecordingTests.test_invalid_interval_or_missing_admission_never_starts_scene)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_recording.py", line 9, in setUp
+    self.m=importlib.import_module('run_candidate_recording');self.tmp=tempfile.TemporaryDirectory();self.root=Path(self.tmp.name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_candidate_recording'
+
+======================================================================
+ERROR: test_recording_uses_same_gated_model_loop_and_native_scene_recorder (tests.test_candidate_recording.CandidateRecordingTests.test_recording_uses_same_gated_model_loop_and_native_scene_recorder)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_recording.py", line 9, in setUp
+    self.m=importlib.import_module('run_candidate_recording');self.tmp=tempfile.TemporaryDirectory();self.root=Path(self.tmp.name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_candidate_recording'
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.004s
+
+FAILED (errors=5)
