@@ -1,0 +1,233 @@
+test_42_requests_all_frozen_before_inference_and_14_each_image_count (tests.test_image_ablation.ImageReplayContracts.test_42_requests_all_frozen_before_inference_and_14_each_image_count) ... ERROR
+test_api_failure_stops_without_retry_or_placeholder_image (tests.test_image_ablation.ImageReplayContracts.test_api_failure_stops_without_retry_or_placeholder_image) ... ERROR
+test_changed_health_source_or_frozen_request_invalidates (tests.test_image_ablation.ImageReplayContracts.test_changed_health_source_or_frozen_request_invalidates) ... ERROR
+test_real_mode_synthetic_and_missing_capability_reject_before_output (tests.test_image_ablation.ImageReplayContracts.test_real_mode_synthetic_and_missing_capability_reject_before_output) ... ERROR
+test_wrong_actual_image_count_marks_incomplete (tests.test_image_ablation.ImageReplayContracts.test_wrong_actual_image_count_marks_incomplete) ... ERROR
+test_html_keeps_zero_image_inputs_empty_and_embeds_42_actual_requests (tests.test_image_ablation.ImageReportContracts.test_html_keeps_zero_image_inputs_empty_and_embeds_42_actual_requests) ... ERROR
+test_bad_image_count_is_not_silently_clamped (tests.test_image_ablation.ImageRequestContracts.test_bad_image_count_is_not_silently_clamped) ... ERROR
+test_dual_request_matches_27_prompt_and_whitelist_blocks_truth (tests.test_image_ablation.ImageRequestContracts.test_dual_request_matches_27_prompt_and_whitelist_blocks_truth) ... ERROR
+test_six_cells_only_change_image_list (tests.test_image_ablation.ImageRequestContracts.test_six_cells_only_change_image_list) ... ERROR
+test_zero_image_real_flags_require_actual_tokenizer_only_evidence (tests.test_image_ablation.ImageResponseContracts.test_zero_image_real_flags_require_actual_tokenizer_only_evidence) ... ERROR
+test_default_health_does_not_enable_text_ablation (tests.test_image_ablation.TextOnlyContracts.test_default_health_does_not_enable_text_ablation) ... ERROR
+test_default_still_rejects_empty_images (tests.test_image_ablation.TextOnlyContracts.test_default_still_rejects_empty_images) ... ok
+test_explicit_builder_and_validation_allow_true_empty_list (tests.test_image_ablation.TextOnlyContracts.test_explicit_builder_and_validation_allow_true_empty_list) ... ERROR
+test_opt_in_http_has_zero_png_paths_and_no_fake_hash (tests.test_image_ablation.TextOnlyContracts.test_opt_in_http_has_zero_png_paths_and_no_fake_hash) ... ERROR
+test_missing_text_audit_or_visual_special_token_is_rejected (tests.test_image_ablation.TokenizerAuditContracts.test_missing_text_audit_or_visual_special_token_is_rejected) ... ERROR
+test_official_text_path_clears_stale_multimodal_audit (tests.test_image_ablation.TokenizerAuditContracts.test_official_text_path_clears_stale_multimodal_audit) ... ERROR
+test_tokenizer_records_actual_length_zero_vision_tokens_without_changing_batch (tests.test_image_ablation.TokenizerAuditContracts.test_tokenizer_records_actual_length_zero_vision_tokens_without_changing_batch) ... ERROR
+test_truncation_rejected_before_tokenization (tests.test_image_ablation.TokenizerAuditContracts.test_truncation_rejected_before_tokenization) ... ERROR
+
+======================================================================
+ERROR: test_42_requests_all_frozen_before_inference_and_14_each_image_count (tests.test_image_ablation.ImageReplayContracts.test_42_requests_all_frozen_before_inference_and_14_each_image_count)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_image_ablation.py", line 165, in setUp
+    self.a=importlib.import_module('visual_lab.image_ablation')
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.image_ablation'
+
+======================================================================
+ERROR: test_api_failure_stops_without_retry_or_placeholder_image (tests.test_image_ablation.ImageReplayContracts.test_api_failure_stops_without_retry_or_placeholder_image)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_image_ablation.py", line 165, in setUp
+    self.a=importlib.import_module('visual_lab.image_ablation')
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.image_ablation'
+
+======================================================================
+ERROR: test_changed_health_source_or_frozen_request_invalidates (tests.test_image_ablation.ImageReplayContracts.test_changed_health_source_or_frozen_request_invalidates)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_image_ablation.py", line 165, in setUp
+    self.a=importlib.import_module('visual_lab.image_ablation')
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.image_ablation'
+
+======================================================================
+ERROR: test_real_mode_synthetic_and_missing_capability_reject_before_output (tests.test_image_ablation.ImageReplayContracts.test_real_mode_synthetic_and_missing_capability_reject_before_output)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_image_ablation.py", line 165, in setUp
+    self.a=importlib.import_module('visual_lab.image_ablation')
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.image_ablation'
+
+======================================================================
+ERROR: test_wrong_actual_image_count_marks_incomplete (tests.test_image_ablation.ImageReplayContracts.test_wrong_actual_image_count_marks_incomplete)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_image_ablation.py", line 165, in setUp
+    self.a=importlib.import_module('visual_lab.image_ablation')
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.image_ablation'
+
+======================================================================
+ERROR: test_html_keeps_zero_image_inputs_empty_and_embeds_42_actual_requests (tests.test_image_ablation.ImageReportContracts.test_html_keeps_zero_image_inputs_empty_and_embeds_42_actual_requests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_image_ablation.py", line 165, in setUp
+    self.a=importlib.import_module('visual_lab.image_ablation')
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.image_ablation'
+
+======================================================================
+ERROR: test_bad_image_count_is_not_silently_clamped (tests.test_image_ablation.ImageRequestContracts.test_bad_image_count_is_not_silently_clamped)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_image_ablation.py", line 125, in setUp
+    self.a=importlib.import_module('visual_lab.image_ablation')
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.image_ablation'
+
+======================================================================
+ERROR: test_dual_request_matches_27_prompt_and_whitelist_blocks_truth (tests.test_image_ablation.ImageRequestContracts.test_dual_request_matches_27_prompt_and_whitelist_blocks_truth)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_image_ablation.py", line 125, in setUp
+    self.a=importlib.import_module('visual_lab.image_ablation')
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.image_ablation'
+
+======================================================================
+ERROR: test_six_cells_only_change_image_list (tests.test_image_ablation.ImageRequestContracts.test_six_cells_only_change_image_list)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_image_ablation.py", line 125, in setUp
+    self.a=importlib.import_module('visual_lab.image_ablation')
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.image_ablation'
+
+======================================================================
+ERROR: test_zero_image_real_flags_require_actual_tokenizer_only_evidence (tests.test_image_ablation.ImageResponseContracts.test_zero_image_real_flags_require_actual_tokenizer_only_evidence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_image_ablation.py", line 220, in test_zero_image_real_flags_require_actual_tokenizer_only_evidence
+    a=importlib.import_module('visual_lab.image_ablation')
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.image_ablation'
+
+======================================================================
+ERROR: test_default_health_does_not_enable_text_ablation (tests.test_image_ablation.TextOnlyContracts.test_default_health_does_not_enable_text_ablation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_image_ablation.py", line 68, in test_default_health_does_not_enable_text_ablation
+    self.assertFalse(DecisionBridge(MockEngine()).health()['supports_text_only_ablation'])
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'supports_text_only_ablation'
+
+======================================================================
+ERROR: test_explicit_builder_and_validation_allow_true_empty_list (tests.test_image_ablation.TextOnlyContracts.test_explicit_builder_and_validation_allow_true_empty_list)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_image_ablation.py", line 38, in test_explicit_builder_and_validation_allow_true_empty_list
+    request=make_request([],{'previous_action':None},allow_empty_images=True)
+TypeError: make_request() got an unexpected keyword argument 'allow_empty_images'
+
+======================================================================
+ERROR: test_opt_in_http_has_zero_png_paths_and_no_fake_hash (tests.test_image_ablation.TextOnlyContracts.test_opt_in_http_has_zero_png_paths_and_no_fake_hash)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_image_ablation.py", line 50, in test_opt_in_http_has_zero_png_paths_and_no_fake_hash
+    bridge=DecisionBridge(wrapper,allow_text_only=True)
+TypeError: DecisionBridge.__init__() got an unexpected keyword argument 'allow_text_only'
+
+======================================================================
+ERROR: test_missing_text_audit_or_visual_special_token_is_rejected (tests.test_image_ablation.TokenizerAuditContracts.test_missing_text_audit_or_visual_special_token_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_image_ablation.py", line 81, in setUp
+    self.proxy=self.server.TokenizerAudit(Tokenizer())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'visual_lab.server' has no attribute 'TokenizerAudit'
+
+======================================================================
+ERROR: test_official_text_path_clears_stale_multimodal_audit (tests.test_image_ablation.TokenizerAuditContracts.test_official_text_path_clears_stale_multimodal_audit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_image_ablation.py", line 81, in setUp
+    self.proxy=self.server.TokenizerAudit(Tokenizer())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'visual_lab.server' has no attribute 'TokenizerAudit'
+
+======================================================================
+ERROR: test_tokenizer_records_actual_length_zero_vision_tokens_without_changing_batch (tests.test_image_ablation.TokenizerAuditContracts.test_tokenizer_records_actual_length_zero_vision_tokens_without_changing_batch)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_image_ablation.py", line 81, in setUp
+    self.proxy=self.server.TokenizerAudit(Tokenizer())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'visual_lab.server' has no attribute 'TokenizerAudit'
+
+======================================================================
+ERROR: test_truncation_rejected_before_tokenization (tests.test_image_ablation.TokenizerAuditContracts.test_truncation_rejected_before_tokenization)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_image_ablation.py", line 81, in setUp
+    self.proxy=self.server.TokenizerAudit(Tokenizer())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'visual_lab.server' has no attribute 'TokenizerAudit'
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.112s
+
+FAILED (errors=17)
