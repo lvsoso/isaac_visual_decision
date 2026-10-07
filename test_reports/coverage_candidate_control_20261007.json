@@ -1,0 +1,18 @@
+{
+  "method": "stdlib trace / AST statement-line coverage, not branch coverage",
+  "cpu_tests": 22,
+  "real_model_calls": 0,
+  "gpu_simulation_verified": false,
+  "files": {
+    "visual_lab/candidate_control.py": {
+      "statement_lines": 130,
+      "covered_lines": 127,
+      "line_percent": 97.69,
+      "uncovered_lines": [
+        30,
+        38,
+        106
+      ]
+    }
+  }
+}
