@@ -1,5 +1,7 @@
 # Jev单次官方SDK诊断：接口成功，发现confidence精度兼容问题
 
+> **后续策略更新：**用户已要求Jev按SDK examples风格进行基础检查，现采用 [jev_sdk_basic_v1](Jev基础校验策略.md)。原响应离线再检查可通过；本文以下内容与归档审计仍描述诊断当时的严格规则，保留历史，不代表当前会因公式差异拒绝响应。没有新增API调用。
+
 **1次新诊断调用完成，HTTP 200、官方SDK解析成功；项目原校验仍拒绝confidence。旧概率总和错误未重现，不能还原旧正文。**
 
 - [真实返回JSON（完整原始解码正文，286字节）](../test_reports/jev_diagnostic_response_20261007.json)

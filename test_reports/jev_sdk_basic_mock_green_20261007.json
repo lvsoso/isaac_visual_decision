@@ -1,0 +1,402 @@
+{
+  "synthetic_fixture": true,
+  "real_api_calls": 0,
+  "sdk_version": "0.7.2",
+  "cases": {
+    "nonunit_sum": {
+      "mock_calls": 1,
+      "summary": {
+        "kind": "independent_single_jev_sdk_diagnostic",
+        "sdk_version": "0.7.2",
+        "source_request_sha256": "26700b30b63147c7a542b41fb6e7aa61b923fdcebc3afceaaffa113058b4d245",
+        "started_utc": "2026-10-07T07:48:49.903565+00:00",
+        "network_attempts": 1,
+        "automatic_retries": 0,
+        "sdk_call_parsed": true,
+        "sdk_error_class": null,
+        "raw_body_available": true,
+        "normalization_applied": false,
+        "model_had_control": false,
+        "ended_utc": "2026-10-07T07:48:49.906466+00:00",
+        "elapsed_ms": 3.0281040017143823,
+        "response_meta": {
+          "received_utc": "2026-10-07T07:48:49.905632+00:00",
+          "status_code": 200,
+          "headers": {
+            "content-type": "application/json",
+            "x-typesafe-request-id": "CPU-fixture-id"
+          },
+          "request_id": "CPU-fixture-id",
+          "byte_count": 322,
+          "body_sha256": "9ff3f4a292085077306e703f510e715d50a779a8fe89c677b0e865da3ff0009f",
+          "saved_before_sdk_and_project_validation": true,
+          "body_representation": "Exact decoded HTTP response entity supplied to the SDK, not TLS/chunk/compressed-wire bytes"
+        },
+        "choice_audit": {
+          "validation_policy": "jev_sdk_basic_v1",
+          "sum_check_enforced": false,
+          "confidence_formula_enforced": false,
+          "argmax_check_enforced": false,
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 100,
+            "output_tokens": 20
+          },
+          "choice": "pre_grasp",
+          "confidence": 0.0,
+          "probabilities": {
+            "pre_grasp": 0.125,
+            "approach": 0.125,
+            "grasp": 0.125,
+            "lift": 0.125,
+            "transport": 0.125,
+            "lower": 0.125,
+            "release": 0.125,
+            "abort": 0.0
+          },
+          "all_finite": true,
+          "missing_candidates": [],
+          "extra_candidates": [],
+          "out_of_range": {},
+          "probability_sum": 0.875,
+          "probability_sum_decimal": "0.875",
+          "sum_error": -0.125,
+          "project_sum_tolerance": 0.001,
+          "sum_within_project_tolerance": false,
+          "sum_tolerance_scope": "Legacy strict threshold for diagnostic comparison only; not an acceptance gate",
+          "top_probability_ties": [
+            "pre_grasp",
+            "approach",
+            "grasp",
+            "lift",
+            "transport",
+            "lower",
+            "release"
+          ],
+          "selected_is_argmax": true,
+          "expected_confidence": 0.0,
+          "normalization_applied": false,
+          "project_valid": true,
+          "project_error": null,
+          "confidence_formula_error": 0.0
+        },
+        "offline_sdk_parsed": true,
+        "sdk_did_not_change_probabilities": true,
+        "diagnostic_capture_complete": true
+      }
+    },
+    "gzip": {
+      "mock_calls": 1,
+      "summary": {
+        "kind": "independent_single_jev_sdk_diagnostic",
+        "sdk_version": "0.7.2",
+        "source_request_sha256": "26700b30b63147c7a542b41fb6e7aa61b923fdcebc3afceaaffa113058b4d245",
+        "started_utc": "2026-10-07T07:48:49.910746+00:00",
+        "network_attempts": 1,
+        "automatic_retries": 0,
+        "sdk_call_parsed": true,
+        "sdk_error_class": null,
+        "raw_body_available": true,
+        "normalization_applied": false,
+        "model_had_control": false,
+        "ended_utc": "2026-10-07T07:48:49.912977+00:00",
+        "elapsed_ms": 2.3310000033234246,
+        "response_meta": {
+          "received_utc": "2026-10-07T07:48:49.912442+00:00",
+          "status_code": 200,
+          "headers": {
+            "content-type": "application/json",
+            "content-encoding": "gzip",
+            "x-typesafe-request-id": "CPU-fixture-id"
+          },
+          "request_id": "CPU-fixture-id",
+          "byte_count": 324,
+          "body_sha256": "6b5ca45beb13e775f991bfbd8d1ff57e9756dccd587305574590f077f718ec4e",
+          "saved_before_sdk_and_project_validation": true,
+          "body_representation": "Exact decoded HTTP response entity supplied to the SDK, not TLS/chunk/compressed-wire bytes"
+        },
+        "choice_audit": {
+          "validation_policy": "jev_sdk_basic_v1",
+          "sum_check_enforced": false,
+          "confidence_formula_enforced": false,
+          "argmax_check_enforced": false,
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 100,
+            "output_tokens": 20
+          },
+          "choice": "pre_grasp",
+          "confidence": 0.0,
+          "probabilities": {
+            "pre_grasp": 0.125,
+            "approach": 0.125,
+            "grasp": 0.125,
+            "lift": 0.125,
+            "transport": 0.125,
+            "lower": 0.125,
+            "release": 0.125,
+            "abort": 0.125
+          },
+          "all_finite": true,
+          "missing_candidates": [],
+          "extra_candidates": [],
+          "out_of_range": {},
+          "probability_sum": 1.0,
+          "probability_sum_decimal": "1.000",
+          "sum_error": 0.0,
+          "project_sum_tolerance": 0.001,
+          "sum_within_project_tolerance": true,
+          "sum_tolerance_scope": "Legacy strict threshold for diagnostic comparison only; not an acceptance gate",
+          "top_probability_ties": [
+            "pre_grasp",
+            "approach",
+            "grasp",
+            "lift",
+            "transport",
+            "lower",
+            "release",
+            "abort"
+          ],
+          "selected_is_argmax": true,
+          "expected_confidence": 0.0,
+          "normalization_applied": false,
+          "project_valid": true,
+          "project_error": null,
+          "confidence_formula_error": 0.0
+        },
+        "offline_sdk_parsed": true,
+        "sdk_did_not_change_probabilities": true,
+        "diagnostic_capture_complete": true
+      }
+    },
+    "http_error": {
+      "mock_calls": 1,
+      "summary": {
+        "kind": "independent_single_jev_sdk_diagnostic",
+        "sdk_version": "0.7.2",
+        "source_request_sha256": "26700b30b63147c7a542b41fb6e7aa61b923fdcebc3afceaaffa113058b4d245",
+        "started_utc": "2026-10-07T07:48:49.916457+00:00",
+        "network_attempts": 1,
+        "automatic_retries": 0,
+        "sdk_call_parsed": false,
+        "sdk_error_class": "TypeSafeUnprocessableEntityError",
+        "raw_body_available": true,
+        "normalization_applied": false,
+        "model_had_control": false,
+        "ended_utc": "2026-10-07T07:48:49.918580+00:00",
+        "elapsed_ms": 2.225222000561189,
+        "response_meta": {
+          "received_utc": "2026-10-07T07:48:49.918014+00:00",
+          "status_code": 422,
+          "headers": {
+            "content-type": "application/json",
+            "x-typesafe-request-id": "CPU-fixture-id"
+          },
+          "request_id": "CPU-fixture-id",
+          "byte_count": 324,
+          "body_sha256": "6b5ca45beb13e775f991bfbd8d1ff57e9756dccd587305574590f077f718ec4e",
+          "saved_before_sdk_and_project_validation": true,
+          "body_representation": "Exact decoded HTTP response entity supplied to the SDK, not TLS/chunk/compressed-wire bytes"
+        },
+        "choice_audit": {
+          "validation_policy": "jev_sdk_basic_v1",
+          "sum_check_enforced": false,
+          "confidence_formula_enforced": false,
+          "argmax_check_enforced": false,
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 100,
+            "output_tokens": 20
+          },
+          "choice": "pre_grasp",
+          "confidence": 0.0,
+          "probabilities": {
+            "pre_grasp": 0.125,
+            "approach": 0.125,
+            "grasp": 0.125,
+            "lift": 0.125,
+            "transport": 0.125,
+            "lower": 0.125,
+            "release": 0.125,
+            "abort": 0.125
+          },
+          "all_finite": true,
+          "missing_candidates": [],
+          "extra_candidates": [],
+          "out_of_range": {},
+          "probability_sum": 1.0,
+          "probability_sum_decimal": "1.000",
+          "sum_error": 0.0,
+          "project_sum_tolerance": 0.001,
+          "sum_within_project_tolerance": true,
+          "sum_tolerance_scope": "Legacy strict threshold for diagnostic comparison only; not an acceptance gate",
+          "top_probability_ties": [
+            "pre_grasp",
+            "approach",
+            "grasp",
+            "lift",
+            "transport",
+            "lower",
+            "release",
+            "abort"
+          ],
+          "selected_is_argmax": true,
+          "expected_confidence": 0.0,
+          "normalization_applied": false,
+          "project_valid": true,
+          "project_error": null,
+          "confidence_formula_error": 0.0
+        },
+        "offline_sdk_parsed": false,
+        "offline_sdk_error_class": "TypeSafeUnprocessableEntityError",
+        "diagnostic_capture_complete": true
+      }
+    },
+    "non_json": {
+      "mock_calls": 1,
+      "summary": {
+        "kind": "independent_single_jev_sdk_diagnostic",
+        "sdk_version": "0.7.2",
+        "source_request_sha256": "26700b30b63147c7a542b41fb6e7aa61b923fdcebc3afceaaffa113058b4d245",
+        "started_utc": "2026-10-07T07:48:49.921724+00:00",
+        "network_attempts": 1,
+        "automatic_retries": 0,
+        "sdk_call_parsed": false,
+        "sdk_error_class": "TypeSafeAPIResponseValidationError",
+        "raw_body_available": true,
+        "normalization_applied": false,
+        "model_had_control": false,
+        "ended_utc": "2026-10-07T07:48:49.923812+00:00",
+        "elapsed_ms": 2.1865099988644943,
+        "response_meta": {
+          "received_utc": "2026-10-07T07:48:49.923269+00:00",
+          "status_code": 200,
+          "headers": {
+            "content-type": "application/json",
+            "x-typesafe-request-id": "CPU-fixture-id"
+          },
+          "request_id": "CPU-fixture-id",
+          "byte_count": 20,
+          "body_sha256": "ddbb995a8d4234a9ba906e4512d535d7f677dc1ae0b73903b3bcdada754ad5f9",
+          "saved_before_sdk_and_project_validation": true,
+          "body_representation": "Exact decoded HTTP response entity supplied to the SDK, not TLS/chunk/compressed-wire bytes"
+        },
+        "choice_audit_error": "Response JSON does not expose the expected Choice shape",
+        "offline_sdk_parsed": false,
+        "offline_sdk_error_class": "TypeSafeAPIResponseValidationError",
+        "diagnostic_capture_complete": true
+      }
+    },
+    "secret_echo": {
+      "mock_calls": 1,
+      "summary": {
+        "kind": "independent_single_jev_sdk_diagnostic",
+        "sdk_version": "0.7.2",
+        "source_request_sha256": "26700b30b63147c7a542b41fb6e7aa61b923fdcebc3afceaaffa113058b4d245",
+        "started_utc": "2026-10-07T07:48:49.926348+00:00",
+        "network_attempts": 1,
+        "automatic_retries": 0,
+        "sdk_call_parsed": false,
+        "sdk_error_class": "LabError",
+        "raw_body_available": false,
+        "normalization_applied": false,
+        "model_had_control": false,
+        "ended_utc": "2026-10-07T07:48:49.927712+00:00",
+        "elapsed_ms": 1.460906001739204,
+        "diagnostic_capture_complete": false
+      }
+    },
+    "bad_schema": {
+      "mock_calls": 1,
+      "summary": {
+        "kind": "independent_single_jev_sdk_diagnostic",
+        "sdk_version": "0.7.2",
+        "source_request_sha256": "26700b30b63147c7a542b41fb6e7aa61b923fdcebc3afceaaffa113058b4d245",
+        "started_utc": "2026-10-07T07:48:49.929940+00:00",
+        "network_attempts": 1,
+        "automatic_retries": 0,
+        "sdk_call_parsed": false,
+        "sdk_error_class": "TypeSafeAPIResponseValidationError",
+        "raw_body_available": true,
+        "normalization_applied": false,
+        "model_had_control": false,
+        "ended_utc": "2026-10-07T07:48:49.932082+00:00",
+        "elapsed_ms": 2.237164997495711,
+        "response_meta": {
+          "received_utc": "2026-10-07T07:48:49.931469+00:00",
+          "status_code": 200,
+          "headers": {
+            "content-type": "application/json",
+            "x-typesafe-request-id": "CPU-fixture-id"
+          },
+          "request_id": "CPU-fixture-id",
+          "byte_count": 195,
+          "body_sha256": "f3b1325643e63094aae8f249e69c266461e22254632b15a63864db0b82a8812c",
+          "saved_before_sdk_and_project_validation": true,
+          "body_representation": "Exact decoded HTTP response entity supplied to the SDK, not TLS/chunk/compressed-wire bytes"
+        },
+        "choice_audit": {
+          "validation_policy": "jev_sdk_basic_v1",
+          "sum_check_enforced": false,
+          "confidence_formula_enforced": false,
+          "argmax_check_enforced": false,
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 100,
+            "output_tokens": 20
+          },
+          "choice": "pre_grasp",
+          "confidence": 0.0,
+          "probabilities": {},
+          "all_finite": false,
+          "missing_candidates": [
+            "pre_grasp",
+            "approach",
+            "grasp",
+            "lift",
+            "transport",
+            "lower",
+            "release",
+            "abort"
+          ],
+          "extra_candidates": [],
+          "out_of_range": {},
+          "probability_sum": null,
+          "probability_sum_decimal": null,
+          "sum_error": null,
+          "project_sum_tolerance": 0.001,
+          "sum_within_project_tolerance": false,
+          "sum_tolerance_scope": "Legacy strict threshold for diagnostic comparison only; not an acceptance gate",
+          "top_probability_ties": [],
+          "selected_is_argmax": false,
+          "expected_confidence": null,
+          "normalization_applied": false,
+          "project_valid": false,
+          "project_error": "ProtocolError: Probability keys must exactly match the eight action labels"
+        },
+        "offline_sdk_parsed": false,
+        "offline_sdk_error_class": "TypeSafeAPIResponseValidationError",
+        "diagnostic_capture_complete": true
+      }
+    },
+    "oversized": {
+      "mock_calls": 1,
+      "summary": {
+        "kind": "independent_single_jev_sdk_diagnostic",
+        "sdk_version": "0.7.2",
+        "source_request_sha256": "26700b30b63147c7a542b41fb6e7aa61b923fdcebc3afceaaffa113058b4d245",
+        "started_utc": "2026-10-07T07:48:49.936544+00:00",
+        "network_attempts": 1,
+        "automatic_retries": 0,
+        "sdk_call_parsed": false,
+        "sdk_error_class": "LabError",
+        "raw_body_available": false,
+        "normalization_applied": false,
+        "model_had_control": false,
+        "ended_utc": "2026-10-07T07:48:49.938162+00:00",
+        "elapsed_ms": 1.731467003992293,
+        "diagnostic_capture_complete": false
+      }
+    }
+  }
+}

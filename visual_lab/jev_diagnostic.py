@@ -1,4 +1,4 @@
-"""One authorized SDK call with raw evidence capture; never relax replay validation."""
+"""One authorized SDK call with raw evidence capture and nonblocking numeric diagnostics."""
 from __future__ import annotations
 import copy,datetime,hashlib,json,math
 from decimal import Decimal
@@ -6,7 +6,7 @@ from pathlib import Path
 from .audit import write_json
 from .client import MAX_RESPONSE_BYTES
 from .core import ACTIONS,LabError
-from .jev import JEV_MODEL,JEV_URL,verify_jev_response
+from .jev import JEV_MODEL,JEV_URL,JEV_VALIDATION_POLICY,verify_jev_response
 
 SDK_VERSION='0.7.2'
 ORIGINAL_REQUEST_SHA256='26700b30b63147c7a542b41fb6e7aa61b923fdcebc3afceaaffa113058b4d245'
@@ -70,12 +70,14 @@ def audit_choice_response(raw: dict) -> dict:
     decimal_total=str(sum((Decimal(str(v)) for v in probabilities.values()),Decimal(0))) if finite else None
     maximum=max(probabilities.values()) if finite else None
     safe={a:(repr(v) if type(v) is float and not math.isfinite(v) else v) for a,v in probabilities.items()}
-    result={'model':raw.get('model'),'usage':raw.get('usage'),'choice':answer.get('choice'),'confidence':answer.get('confidence'),
+    result={'validation_policy':JEV_VALIDATION_POLICY,'sum_check_enforced':False,'confidence_formula_enforced':False,
+            'argmax_check_enforced':False,'model':raw.get('model'),'usage':raw.get('usage'),'choice':answer.get('choice'),'confidence':answer.get('confidence'),
             'probabilities':safe,'all_finite':finite,'missing_candidates':[a for a in ACTIONS if a not in probabilities],
             'extra_candidates':[a for a in probabilities if a not in ACTIONS],
             'out_of_range':{a:v for a,v in probabilities.items() if type(v) in (int,float) and math.isfinite(v) and not 0<=v<=1},
             'probability_sum':total,'probability_sum_decimal':decimal_total,'sum_error':total-1 if total is not None else None,
             'project_sum_tolerance':.001,'sum_within_project_tolerance':total is not None and abs(total-1)<=.001,
+            'sum_tolerance_scope':'Legacy strict threshold for diagnostic comparison only; not an acceptance gate',
             'top_probability_ties':[a for a in ACTIONS if finite and probabilities.get(a)==maximum],
             'selected_is_argmax':finite and probabilities.get(answer.get('choice'))==maximum,
             'expected_confidence':(maximum-1/len(ACTIONS))/(1-1/len(ACTIONS)) if maximum is not None else None,

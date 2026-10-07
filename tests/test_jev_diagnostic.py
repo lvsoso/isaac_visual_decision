@@ -27,7 +27,7 @@ class DiagnosticTests(unittest.TestCase):
   dirty=payload();dirty['questions']['next_stage']['criteria']=dict(reversed(list(dirty['questions']['next_stage']['criteria'].items())))
   with self.assertRaises(LabError):c.before_send(self.request(body=dirty))
   self.assertEqual(c.attempts,0)
- def test_safe_invalid_probability_body_saved_exact_before_validation(self):
+ def test_safe_nonunit_sum_body_saved_exact_before_validation(self):
   c=self.capture();c.before_send(self.request());r=raw();r['answers']['next_stage']['probabilities']['abort']=0.0;body=json.dumps(r,indent=2).encode()
   c.record_response(200,{'content-type':'application/json','x-typesafe-request-id':'fixture-id','set-cookie':'private','authorization':'CPU-fixture-secret'},body)
   self.assertEqual((self.output/'response.body').read_bytes(),body);meta=json.loads((self.output/'response_meta.json').read_text())

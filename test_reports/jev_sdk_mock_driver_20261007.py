@@ -21,7 +21,7 @@ for case in ['nonunit_sum','gzip','http_error','non_json','secret_echo','bad_sch
  if case in ['secret_echo','oversized']:assert not result['raw_body_available']
  else:assert result['raw_body_available']
  if case=='gzip':assert result['sdk_call_parsed'] and result['offline_sdk_parsed'],'Decoded compressed entity must not be decoded twice'
- if case=='nonunit_sum':assert result['sdk_call_parsed'] and not result['choice_audit']['project_valid'] and result['sdk_did_not_change_probabilities']
+ if case=='nonunit_sum':assert result['sdk_call_parsed'] and result['choice_audit']['project_valid'] and result['sdk_did_not_change_probabilities']
  if case in ['http_error','non_json','bad_schema']:assert not result['sdk_call_parsed']
  results[case]={'mock_calls':len(calls),'summary':result}
 Path(sys.argv[2]).write_text(json.dumps({'synthetic_fixture':True,'real_api_calls':0,'sdk_version':'0.7.2','cases':results},indent=2)+'\n');print('Seven officialSDK MockTransport cases passed; zero real HTTP calls')

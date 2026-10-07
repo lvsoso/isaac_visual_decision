@@ -3,10 +3,11 @@ from __future__ import annotations
 import copy,json,os,time,urllib.error,urllib.request
 from pathlib import Path
 from .client import MAX_RESPONSE_BYTES,ModelAPIError
-from .core import ACTIONS,ProtocolError,parse_decision
+from .core import ACTIONS,Decision,ProtocolError,finite_number
 
 JEV_MODEL='jev-1.13.0'
 JEV_URL='https://api.typesafe.ai/v1/systemone'
+JEV_VALIDATION_POLICY='jev_sdk_basic_v1'
 
 class NoRedirect(urllib.request.HTTPRedirectHandler):
     def redirect_request(self,*args,**kwargs): return None
@@ -18,14 +19,31 @@ def jev_payload(request: dict) -> dict:
     return {'model':JEV_MODEL,'state':copy.deepcopy(request['state']),'questions':copy.deepcopy(request['questions'])}
 
 def verify_jev_response(raw: dict):
-    parsed=parse_decision(raw)
-    if parsed.model!=JEV_MODEL or parsed.mock: raise ProtocolError('Require pinned real Jev model')
-    expected=(max(parsed.probabilities.values())-1/len(ACTIONS))/(1-1/len(ACTIONS))
-    if abs(parsed.confidence-expected)>1e-3: raise ProtocolError('Jev Choice confidence formula mismatch')
+    """Consume vendor fields directly, like SDK examples; no derived-value gates.
+
+    Keep project identity/structure/finite-range/audit guards. Never normalize,
+    reselect the vendor choice or replace confidence. Intern stays strict.
+    """
+    if not isinstance(raw,dict): raise ProtocolError('Response must be a JSON object')
+    meta=raw.get('_bridge',{})
+    if not isinstance(meta,dict): raise ProtocolError('Invalid bridge metadata')
+    if raw.get('model')!=JEV_MODEL or meta.get('is_mock') is True: raise ProtocolError('Require pinned real Jev model')
+    answers=raw.get('answers')
+    answer=answers.get('next_stage') if isinstance(answers,dict) else None
+    if not isinstance(answer,dict) or answer.get('type')!='choice': raise ProtocolError('next_stage must be type=choice')
+    action=answer.get('choice')
+    if action not in ACTIONS: raise ProtocolError('Illegal Jev choice label')
+    probabilities=answer.get('probabilities')
+    if not isinstance(probabilities,dict) or set(probabilities)!=set(ACTIONS):
+        raise ProtocolError('Probability keys must exactly match the eight action labels')
+    values={a:finite_number(probabilities[a],f'probabilities.{a}') for a in ACTIONS}
+    if any(not 0<=v<=1 for v in values.values()): raise ProtocolError('Probabilities must be in [0,1]')
+    confidence=finite_number(answer.get('confidence'),'confidence')
+    if not 0<=confidence<=1: raise ProtocolError('confidence outside [0,1]')
     usage=raw.get('usage',{})
-    if any(type(usage.get(k)) is not int or usage[k]<0 for k in ['input_tokens','output_tokens']):
+    if not isinstance(usage,dict) or any(type(usage.get(k)) is not int or usage[k]<0 for k in ['input_tokens','output_tokens']):
         raise ProtocolError('Jev token usage audit missing or invalid')
-    return parsed
+    return Decision(action,values,confidence,JEV_MODEL,False)
 
 class JevClient:
     backend='jev'
@@ -58,6 +76,7 @@ class JevClient:
             if not isinstance(result.get('models'),list) or not result['models']: raise ProtocolError('TypeSafe model listing missing')
             self.models=[{k:item.get(k) for k in ['name','release_date']} for item in result['models']]
         return {'backend':'jev','model':JEV_MODEL,'endpoint':JEV_URL,'is_mock':False,'supports_text_only':True,
+                'validation_policy':JEV_VALIDATION_POLICY,
                 'busy':False,'requests_completed':self.requests_completed,'http_prediction_attempts':self.attempts,
                 'model_listing':self.models,'counter_scope':'This client only, not vendor-global service count'}
     def predict(self,request):
