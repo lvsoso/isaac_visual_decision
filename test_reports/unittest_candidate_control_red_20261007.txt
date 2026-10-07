@@ -1,0 +1,316 @@
+test_abort_stops_even_shadow_no_retract_or_extra_physics (tests.test_candidate_control.CandidateTests.test_abort_stops_even_shadow_no_retract_or_extra_physics) ... ERROR
+test_api_error_timeout_and_bad_vision_stop_before_next_motion (tests.test_candidate_control.CandidateTests.test_api_error_timeout_and_bad_vision_stop_before_next_motion) ... ERROR
+test_control_executes_model_choice_not_reference_sequence (tests.test_candidate_control.CandidateTests.test_control_executes_model_choice_not_reference_sequence) ... ERROR
+test_control_repeat_budget_is_terminal_no_baseline_fallback (tests.test_candidate_control.CandidateTests.test_control_repeat_budget_is_terminal_no_baseline_fallback) ... ERROR
+test_control_without_admission_never_calls_or_moves (tests.test_candidate_control.CandidateTests.test_control_without_admission_never_calls_or_moves) ... ERROR
+test_gate_cannot_accept_synthetic_or_summary_only_success (tests.test_candidate_control.CandidateTests.test_gate_cannot_accept_synthetic_or_summary_only_success) ... ERROR
+test_pair_gate_rejects_single_color_and_bad_config (tests.test_candidate_control.CandidateTests.test_pair_gate_rejects_single_color_and_bad_config) ... ERROR
+test_phase_timeout_stops_without_retract (tests.test_candidate_control.CandidateTests.test_phase_timeout_stops_without_retract) ... ERROR
+test_physics_changed_during_wait_stops_before_motion (tests.test_candidate_control.CandidateTests.test_physics_changed_during_wait_stops_before_motion) ... ERROR
+test_prompt_is_exact_original_zh_named_relative_without_labels (tests.test_candidate_control.CandidateTests.test_prompt_is_exact_original_zh_named_relative_without_labels) ... ERROR
+test_service_counter_change_refused_before_next_motion (tests.test_candidate_control.CandidateTests.test_service_counter_change_refused_before_next_motion) ... ERROR
+test_shadow_fixed_actions_and_seven_valid_calls (tests.test_candidate_control.CandidateTests.test_shadow_fixed_actions_and_seven_valid_calls) ... ERROR
+test_shadow_wrong_suggestion_does_not_control (tests.test_candidate_control.CandidateTests.test_shadow_wrong_suggestion_does_not_control) ... ERROR
+test_tampered_vision_response_archived_but_not_executed (tests.test_candidate_control.CandidateTests.test_tampered_vision_response_archived_but_not_executed) ... ERROR
+test_wrong_provenance_health_refused (tests.test_candidate_control.CandidateTests.test_wrong_provenance_health_refused) ... ERROR
+
+======================================================================
+ERROR: test_abort_stops_even_shadow_no_retract_or_extra_physics (tests.test_candidate_control.CandidateTests.test_abort_stops_even_shadow_no_retract_or_extra_physics)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 47, in test_abort_stops_even_shadow_no_retract_or_extra_physics
+    self.client.actions=['abort'];r=self.run_episode();self.assertEqual(self.scene.actions,[]);self.assertEqual(r['termination_reason'],'policy_abort');self.assertFalse(r['complete'])
+                                    ~~~~~~~~~~~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 36, in run_episode
+    return module().run_candidate(self.scene,[object(),object()],self.config,'blue',mode,self.log,self.client,admission=admission)
+           ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 13, in module
+    def module():return importlib.import_module('visual_lab.candidate_control')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.candidate_control'
+
+======================================================================
+ERROR: test_api_error_timeout_and_bad_vision_stop_before_next_motion (tests.test_candidate_control.CandidateTests.test_api_error_timeout_and_bad_vision_stop_before_next_motion)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 59, in test_api_error_timeout_and_bad_vision_stop_before_next_motion
+    self.client.fail=True;r=self.run_episode();self.assertEqual(self.scene.actions,[]);self.assertEqual(r['api_attempts'],1);self.assertEqual(r['termination_reason'],'model_api_error')
+                            ~~~~~~~~~~~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 36, in run_episode
+    return module().run_candidate(self.scene,[object(),object()],self.config,'blue',mode,self.log,self.client,admission=admission)
+           ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 13, in module
+    def module():return importlib.import_module('visual_lab.candidate_control')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.candidate_control'
+
+======================================================================
+ERROR: test_control_executes_model_choice_not_reference_sequence (tests.test_candidate_control.CandidateTests.test_control_executes_model_choice_not_reference_sequence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 52, in test_control_executes_model_choice_not_reference_sequence
+    with patch.object(module(),'validate_admission',return_value={'eligible':True}):r=self.run_episode('control',self.root/'proof.json')
+                      ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 13, in module
+    def module():return importlib.import_module('visual_lab.candidate_control')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.candidate_control'
+
+======================================================================
+ERROR: test_control_repeat_budget_is_terminal_no_baseline_fallback (tests.test_candidate_control.CandidateTests.test_control_repeat_budget_is_terminal_no_baseline_fallback)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 56, in test_control_repeat_budget_is_terminal_no_baseline_fallback
+    with patch.object(module(),'validate_admission',return_value={'eligible':True}):r=self.run_episode('control',self.root/'proof.json')
+                      ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 13, in module
+    def module():return importlib.import_module('visual_lab.candidate_control')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.candidate_control'
+
+======================================================================
+ERROR: test_control_without_admission_never_calls_or_moves (tests.test_candidate_control.CandidateTests.test_control_without_admission_never_calls_or_moves)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 49, in test_control_without_admission_never_calls_or_moves
+    r=self.run_episode('control');self.assertEqual(self.scene.actions,[]);self.assertEqual(self.client.calls,[]);self.assertEqual(r['termination_reason'],'protocol_error')
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 36, in run_episode
+    return module().run_candidate(self.scene,[object(),object()],self.config,'blue',mode,self.log,self.client,admission=admission)
+           ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 13, in module
+    def module():return importlib.import_module('visual_lab.candidate_control')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.candidate_control'
+
+======================================================================
+ERROR: test_gate_cannot_accept_synthetic_or_summary_only_success (tests.test_candidate_control.CandidateTests.test_gate_cannot_accept_synthetic_or_summary_only_success)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 77, in test_gate_cannot_accept_synthetic_or_summary_only_success
+    with self.assertRaises(ProtocolError):module().audit_shadow(self.log.root,self.config,module().pinned_health())
+                                          ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 13, in module
+    def module():return importlib.import_module('visual_lab.candidate_control')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.candidate_control'
+
+======================================================================
+ERROR: test_pair_gate_rejects_single_color_and_bad_config (tests.test_candidate_control.CandidateTests.test_pair_gate_rejects_single_color_and_bad_config)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 79, in test_pair_gate_rejects_single_color_and_bad_config
+    with self.assertRaises(ProtocolError):module().write_admission([self.log.root],self.root/'proof.json',self.config,module().pinned_health())
+                                          ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 13, in module
+    def module():return importlib.import_module('visual_lab.candidate_control')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.candidate_control'
+
+======================================================================
+ERROR: test_phase_timeout_stops_without_retract (tests.test_candidate_control.CandidateTests.test_phase_timeout_stops_without_retract)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 65, in test_phase_timeout_stops_without_retract
+    self.scene.fail_action='grasp';r=self.run_episode();self.assertEqual(self.scene.actions,['pre_grasp','approach','grasp']);self.assertEqual(r['termination_reason'],'stage_timeout')
+                                     ~~~~~~~~~~~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 36, in run_episode
+    return module().run_candidate(self.scene,[object(),object()],self.config,'blue',mode,self.log,self.client,admission=admission)
+           ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 13, in module
+    def module():return importlib.import_module('visual_lab.candidate_control')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.candidate_control'
+
+======================================================================
+ERROR: test_physics_changed_during_wait_stops_before_motion (tests.test_candidate_control.CandidateTests.test_physics_changed_during_wait_stops_before_motion)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 63, in test_physics_changed_during_wait_stops_before_motion
+    self.client.predict=dirty;r=self.run_episode();self.assertEqual(self.scene.actions,[]);self.assertEqual(r['termination_reason'],'protocol_error')
+                                ~~~~~~~~~~~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 36, in run_episode
+    return module().run_candidate(self.scene,[object(),object()],self.config,'blue',mode,self.log,self.client,admission=admission)
+           ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 13, in module
+    def module():return importlib.import_module('visual_lab.candidate_control')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.candidate_control'
+
+======================================================================
+ERROR: test_prompt_is_exact_original_zh_named_relative_without_labels (tests.test_candidate_control.CandidateTests.test_prompt_is_exact_original_zh_named_relative_without_labels)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 40, in test_prompt_is_exact_original_zh_named_relative_without_labels
+    self.assertEqual(module().candidate_request(pngs,state,self.config,guidance,'blue'),expected)
+                     ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 13, in module
+    def module():return importlib.import_module('visual_lab.candidate_control')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.candidate_control'
+
+======================================================================
+ERROR: test_service_counter_change_refused_before_next_motion (tests.test_candidate_control.CandidateTests.test_service_counter_change_refused_before_next_motion)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 75, in test_service_counter_change_refused_before_next_motion
+    r=self.run_episode();self.assertEqual(self.scene.actions,[]);self.assertEqual(r['termination_reason'],'protocol_error')
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 36, in run_episode
+    return module().run_candidate(self.scene,[object(),object()],self.config,'blue',mode,self.log,self.client,admission=admission)
+           ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 13, in module
+    def module():return importlib.import_module('visual_lab.candidate_control')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.candidate_control'
+
+======================================================================
+ERROR: test_shadow_fixed_actions_and_seven_valid_calls (tests.test_candidate_control.CandidateTests.test_shadow_fixed_actions_and_seven_valid_calls)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 43, in test_shadow_fixed_actions_and_seven_valid_calls
+    r=self.run_episode();self.assertEqual(self.scene.actions,list(ACTIONS[:-1])+['retract']);self.assertTrue(r['complete']);self.assertEqual(r['shadow_reference_agreement'],7);self.assertFalse(r['model_had_control'])
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 36, in run_episode
+    return module().run_candidate(self.scene,[object(),object()],self.config,'blue',mode,self.log,self.client,admission=admission)
+           ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 13, in module
+    def module():return importlib.import_module('visual_lab.candidate_control')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.candidate_control'
+
+======================================================================
+ERROR: test_shadow_wrong_suggestion_does_not_control (tests.test_candidate_control.CandidateTests.test_shadow_wrong_suggestion_does_not_control)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 45, in test_shadow_wrong_suggestion_does_not_control
+    self.client.actions=['lift']*7;r=self.run_episode();self.assertEqual(self.scene.actions,list(ACTIONS[:-1])+['retract']);self.assertEqual(r['shadow_reference_agreement'],1)
+                                     ~~~~~~~~~~~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 36, in run_episode
+    return module().run_candidate(self.scene,[object(),object()],self.config,'blue',mode,self.log,self.client,admission=admission)
+           ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 13, in module
+    def module():return importlib.import_module('visual_lab.candidate_control')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.candidate_control'
+
+======================================================================
+ERROR: test_tampered_vision_response_archived_but_not_executed (tests.test_candidate_control.CandidateTests.test_tampered_vision_response_archived_but_not_executed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 72, in test_tampered_vision_response_archived_but_not_executed
+    self.client.predict=bad;r=self.run_episode();self.assertEqual(self.scene.actions,[]);self.assertTrue((self.log.root/'responses/decision_001.json').exists());self.assertEqual(r['termination_reason'],'protocol_error')
+                              ~~~~~~~~~~~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 36, in run_episode
+    return module().run_candidate(self.scene,[object(),object()],self.config,'blue',mode,self.log,self.client,admission=admission)
+           ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 13, in module
+    def module():return importlib.import_module('visual_lab.candidate_control')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.candidate_control'
+
+======================================================================
+ERROR: test_wrong_provenance_health_refused (tests.test_candidate_control.CandidateTests.test_wrong_provenance_health_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 68, in test_wrong_provenance_health_refused
+    r=self.run_episode();self.assertEqual(self.scene.actions,[]);self.assertEqual(self.client.calls,[]);self.assertEqual(r['termination_reason'],'protocol_error')
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 36, in run_episode
+    return module().run_candidate(self.scene,[object(),object()],self.config,'blue',mode,self.log,self.client,admission=admission)
+           ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_candidate_control.py", line 13, in module
+    def module():return importlib.import_module('visual_lab.candidate_control')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.candidate_control'
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.080s
+
+FAILED (errors=15)
