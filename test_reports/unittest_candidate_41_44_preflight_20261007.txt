@@ -1,0 +1,161 @@
+test_abort_stops_even_shadow_no_retract_or_extra_physics (tests.test_candidate_control.CandidateTests.test_abort_stops_even_shadow_no_retract_or_extra_physics) ... [shadow/blue] 1/7 proposed=abort; execute=abort
+ok
+test_api_error_timeout_and_bad_vision_stop_before_next_motion (tests.test_candidate_control.CandidateTests.test_api_error_timeout_and_bad_vision_stop_before_next_motion) ... ok
+test_control_executes_model_choice_not_reference_sequence (tests.test_candidate_control.CandidateTests.test_control_executes_model_choice_not_reference_sequence) ... [control/blue] 1/10 proposed=lift; execute=lift
+[control/blue] 2/10 proposed=release; execute=release
+ok
+test_control_repeat_budget_is_terminal_no_baseline_fallback (tests.test_candidate_control.CandidateTests.test_control_repeat_budget_is_terminal_no_baseline_fallback) ... [control/blue] 1/10 proposed=lift; execute=lift
+[control/blue] 2/10 proposed=lift; execute=lift
+[control/blue] 3/10 proposed=lift; execute=lift
+[control/blue] 4/10 proposed=lift; execute=lift
+[control/blue] 5/10 proposed=lift; execute=lift
+[control/blue] 6/10 proposed=lift; execute=lift
+[control/blue] 7/10 proposed=lift; execute=lift
+[control/blue] 8/10 proposed=lift; execute=lift
+[control/blue] 9/10 proposed=lift; execute=lift
+[control/blue] 10/10 proposed=lift; execute=lift
+ok
+test_control_without_admission_never_calls_or_moves (tests.test_candidate_control.CandidateTests.test_control_without_admission_never_calls_or_moves) ... ok
+test_gate_cannot_accept_synthetic_or_summary_only_success (tests.test_candidate_control.CandidateTests.test_gate_cannot_accept_synthetic_or_summary_only_success) ... ok
+test_pair_gate_rejects_single_color_and_bad_config (tests.test_candidate_control.CandidateTests.test_pair_gate_rejects_single_color_and_bad_config) ... ok
+test_phase_timeout_stops_without_retract (tests.test_candidate_control.CandidateTests.test_phase_timeout_stops_without_retract) ... [shadow/blue] 1/7 proposed=pre_grasp; execute=pre_grasp
+[shadow/blue] 2/7 proposed=approach; execute=approach
+[shadow/blue] 3/7 proposed=grasp; execute=grasp
+ok
+test_physics_changed_during_wait_stops_before_motion (tests.test_candidate_control.CandidateTests.test_physics_changed_during_wait_stops_before_motion) ... ok
+test_prompt_is_exact_original_zh_named_relative_without_labels (tests.test_candidate_control.CandidateTests.test_prompt_is_exact_original_zh_named_relative_without_labels) ... ok
+test_service_counter_change_refused_before_next_motion (tests.test_candidate_control.CandidateTests.test_service_counter_change_refused_before_next_motion) ... ok
+test_shadow_fixed_actions_and_seven_valid_calls (tests.test_candidate_control.CandidateTests.test_shadow_fixed_actions_and_seven_valid_calls) ... [shadow/blue] 1/7 proposed=pre_grasp; execute=pre_grasp
+[shadow/blue] 2/7 proposed=approach; execute=approach
+[shadow/blue] 3/7 proposed=grasp; execute=grasp
+[shadow/blue] 4/7 proposed=lift; execute=lift
+[shadow/blue] 5/7 proposed=transport; execute=transport
+[shadow/blue] 6/7 proposed=lower; execute=lower
+[shadow/blue] 7/7 proposed=release; execute=release
+ok
+test_shadow_wrong_suggestion_does_not_control (tests.test_candidate_control.CandidateTests.test_shadow_wrong_suggestion_does_not_control) ... [shadow/blue] 1/7 proposed=lift; execute=pre_grasp
+[shadow/blue] 2/7 proposed=lift; execute=approach
+[shadow/blue] 3/7 proposed=lift; execute=grasp
+[shadow/blue] 4/7 proposed=lift; execute=lift
+[shadow/blue] 5/7 proposed=lift; execute=transport
+[shadow/blue] 6/7 proposed=lift; execute=lower
+[shadow/blue] 7/7 proposed=lift; execute=release
+ok
+test_tampered_vision_response_archived_but_not_executed (tests.test_candidate_control.CandidateTests.test_tampered_vision_response_archived_but_not_executed) ... ok
+test_wrong_provenance_health_refused (tests.test_candidate_control.CandidateTests.test_wrong_provenance_health_refused) ... ok
+test_configuration_or_source_change_refused (tests.test_candidate_admission.AdmissionTests.test_configuration_or_source_change_refused) ... [shadow/blue] 1/7 proposed=pre_grasp; execute=pre_grasp
+[shadow/blue] 2/7 proposed=approach; execute=approach
+[shadow/blue] 3/7 proposed=grasp; execute=grasp
+[shadow/blue] 4/7 proposed=lift; execute=lift
+[shadow/blue] 5/7 proposed=transport; execute=transport
+[shadow/blue] 6/7 proposed=lower; execute=lower
+[shadow/blue] 7/7 proposed=release; execute=release
+[shadow/yellow] 1/7 proposed=pre_grasp; execute=pre_grasp
+[shadow/yellow] 2/7 proposed=approach; execute=approach
+[shadow/yellow] 3/7 proposed=grasp; execute=grasp
+[shadow/yellow] 4/7 proposed=lift; execute=lift
+[shadow/yellow] 5/7 proposed=transport; execute=transport
+[shadow/yellow] 6/7 proposed=lower; execute=lower
+[shadow/yellow] 7/7 proposed=release; execute=release
+ok
+test_duplicate_color_and_mock_service_refused (tests.test_candidate_admission.AdmissionTests.test_duplicate_color_and_mock_service_refused) ... [shadow/blue] 1/7 proposed=pre_grasp; execute=pre_grasp
+[shadow/blue] 2/7 proposed=approach; execute=approach
+[shadow/blue] 3/7 proposed=grasp; execute=grasp
+[shadow/blue] 4/7 proposed=lift; execute=lift
+[shadow/blue] 5/7 proposed=transport; execute=transport
+[shadow/blue] 6/7 proposed=lower; execute=lower
+[shadow/blue] 7/7 proposed=release; execute=release
+[shadow/yellow] 1/7 proposed=pre_grasp; execute=pre_grasp
+[shadow/yellow] 2/7 proposed=approach; execute=approach
+[shadow/yellow] 3/7 proposed=grasp; execute=grasp
+[shadow/yellow] 4/7 proposed=lift; execute=lift
+[shadow/yellow] 5/7 proposed=transport; execute=transport
+[shadow/yellow] 6/7 proposed=lower; execute=lower
+[shadow/yellow] 7/7 proposed=release; execute=release
+ok
+test_false_runtime_or_synthetic_marker_cannot_pass (tests.test_candidate_admission.AdmissionTests.test_false_runtime_or_synthetic_marker_cannot_pass) ... [shadow/blue] 1/7 proposed=pre_grasp; execute=pre_grasp
+[shadow/blue] 2/7 proposed=approach; execute=approach
+[shadow/blue] 3/7 proposed=grasp; execute=grasp
+[shadow/blue] 4/7 proposed=lift; execute=lift
+[shadow/blue] 5/7 proposed=transport; execute=transport
+[shadow/blue] 6/7 proposed=lower; execute=lower
+[shadow/blue] 7/7 proposed=release; execute=release
+[shadow/yellow] 1/7 proposed=pre_grasp; execute=pre_grasp
+[shadow/yellow] 2/7 proposed=approach; execute=approach
+[shadow/yellow] 3/7 proposed=grasp; execute=grasp
+[shadow/yellow] 4/7 proposed=lift; execute=lift
+[shadow/yellow] 5/7 proposed=transport; execute=transport
+[shadow/yellow] 6/7 proposed=lower; execute=lower
+[shadow/yellow] 7/7 proposed=release; execute=release
+ok
+test_pair_evidence_rebuilt_and_hashes_pinned (tests.test_candidate_admission.AdmissionTests.test_pair_evidence_rebuilt_and_hashes_pinned) ... [shadow/blue] 1/7 proposed=pre_grasp; execute=pre_grasp
+[shadow/blue] 2/7 proposed=approach; execute=approach
+[shadow/blue] 3/7 proposed=grasp; execute=grasp
+[shadow/blue] 4/7 proposed=lift; execute=lift
+[shadow/blue] 5/7 proposed=transport; execute=transport
+[shadow/blue] 6/7 proposed=lower; execute=lower
+[shadow/blue] 7/7 proposed=release; execute=release
+[shadow/yellow] 1/7 proposed=pre_grasp; execute=pre_grasp
+[shadow/yellow] 2/7 proposed=approach; execute=approach
+[shadow/yellow] 3/7 proposed=grasp; execute=grasp
+[shadow/yellow] 4/7 proposed=lift; execute=lift
+[shadow/yellow] 5/7 proposed=transport; execute=transport
+[shadow/yellow] 6/7 proposed=lower; execute=lower
+[shadow/yellow] 7/7 proposed=release; execute=release
+ok
+test_png_byte_and_service_counter_tamper_refused (tests.test_candidate_admission.AdmissionTests.test_png_byte_and_service_counter_tamper_refused) ... [shadow/blue] 1/7 proposed=pre_grasp; execute=pre_grasp
+[shadow/blue] 2/7 proposed=approach; execute=approach
+[shadow/blue] 3/7 proposed=grasp; execute=grasp
+[shadow/blue] 4/7 proposed=lift; execute=lift
+[shadow/blue] 5/7 proposed=transport; execute=transport
+[shadow/blue] 6/7 proposed=lower; execute=lower
+[shadow/blue] 7/7 proposed=release; execute=release
+[shadow/yellow] 1/7 proposed=pre_grasp; execute=pre_grasp
+[shadow/yellow] 2/7 proposed=approach; execute=approach
+[shadow/yellow] 3/7 proposed=grasp; execute=grasp
+[shadow/yellow] 4/7 proposed=lift; execute=lift
+[shadow/yellow] 5/7 proposed=transport; execute=transport
+[shadow/yellow] 6/7 proposed=lower; execute=lower
+[shadow/yellow] 7/7 proposed=release; execute=release
+ok
+test_post_admission_event_tamper_refused (tests.test_candidate_admission.AdmissionTests.test_post_admission_event_tamper_refused) ... [shadow/blue] 1/7 proposed=pre_grasp; execute=pre_grasp
+[shadow/blue] 2/7 proposed=approach; execute=approach
+[shadow/blue] 3/7 proposed=grasp; execute=grasp
+[shadow/blue] 4/7 proposed=lift; execute=lift
+[shadow/blue] 5/7 proposed=transport; execute=transport
+[shadow/blue] 6/7 proposed=lower; execute=lower
+[shadow/blue] 7/7 proposed=release; execute=release
+[shadow/yellow] 1/7 proposed=pre_grasp; execute=pre_grasp
+[shadow/yellow] 2/7 proposed=approach; execute=approach
+[shadow/yellow] 3/7 proposed=grasp; execute=grasp
+[shadow/yellow] 4/7 proposed=lift; execute=lift
+[shadow/yellow] 5/7 proposed=transport; execute=transport
+[shadow/yellow] 6/7 proposed=lower; execute=lower
+[shadow/yellow] 7/7 proposed=release; execute=release
+ok
+test_summary_claim_cannot_override_six_of_seven (tests.test_candidate_admission.AdmissionTests.test_summary_claim_cannot_override_six_of_seven) ... [shadow/blue] 1/7 proposed=pre_grasp; execute=pre_grasp
+[shadow/blue] 2/7 proposed=approach; execute=approach
+[shadow/blue] 3/7 proposed=grasp; execute=grasp
+[shadow/blue] 4/7 proposed=lift; execute=lift
+[shadow/blue] 5/7 proposed=transport; execute=transport
+[shadow/blue] 6/7 proposed=lower; execute=lower
+[shadow/blue] 7/7 proposed=release; execute=release
+[shadow/yellow] 1/7 proposed=pre_grasp; execute=pre_grasp
+[shadow/yellow] 2/7 proposed=approach; execute=approach
+[shadow/yellow] 3/7 proposed=grasp; execute=grasp
+[shadow/yellow] 4/7 proposed=lift; execute=lift
+[shadow/yellow] 5/7 proposed=transport; execute=transport
+[shadow/yellow] 6/7 proposed=lower; execute=lower
+[shadow/yellow] 7/7 proposed=release; execute=release
+ok
+test_isaac_launcher_can_add_its_own_libraries_after_empty_prelaunch (tests.test_candidate_launch.LaunchTests.test_isaac_launcher_can_add_its_own_libraries_after_empty_prelaunch) ... ok
+test_launch_only_never_constructs_client_or_creates_run_directory (tests.test_candidate_launch.LaunchTests.test_launch_only_never_constructs_client_or_creates_run_directory) ... ok
+test_prelaunch_declaration_must_be_present_and_empty (tests.test_candidate_launch.LaunchTests.test_prelaunch_declaration_must_be_present_and_empty) ... ok
+test_relative_and_sibling_prefix_paths_are_rejected (tests.test_candidate_launch.LaunchTests.test_relative_and_sibling_prefix_paths_are_rejected) ... ok
+test_root_opt_in_still_required_and_direct_empty_is_allowed (tests.test_candidate_launch.LaunchTests.test_root_opt_in_still_required_and_direct_empty_is_allowed) ... ok
+test_system_python_library_cannot_precede_isaac (tests.test_candidate_launch.LaunchTests.test_system_python_library_cannot_precede_isaac) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 5.617s
+
+OK
