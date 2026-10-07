@@ -1,0 +1,184 @@
+test_all_candidates_and_valid_image_contract (tests.test_factorial.FactorialTests.test_all_candidates_and_valid_image_contract) ... ok
+test_color_does_not_change_text_or_state (tests.test_factorial.FactorialTests.test_color_does_not_change_text_or_state) ... ok
+test_coordinates_only_add_approved_block (tests.test_factorial.FactorialTests.test_coordinates_only_add_approved_block) ... ok
+test_eight_unique_combinations (tests.test_factorial.FactorialTests.test_eight_unique_combinations) ... ok
+test_goal_ground_and_lower_tool_target_are_not_confused (tests.test_factorial.FactorialTests.test_goal_ground_and_lower_tool_target_are_not_confused) ... ok
+test_second_view_preserves_first_image_and_proprioception (tests.test_factorial.FactorialTests.test_second_view_preserves_first_image_and_proprioception) ... ok
+test_view_angles_are_defined_from_world_direction (tests.test_factorial.FactorialTests.test_view_angles_are_defined_from_world_direction) ... ok
+test_whitelist_discards_truth_even_with_coordinates (tests.test_factorial.FactorialTests.test_whitelist_discards_truth_even_with_coordinates) ... ok
+test_api_failure_stops_before_any_motion_without_baseline_fallback (tests.test_jev_shadow.ShadowTests.test_api_failure_stops_before_any_motion_without_baseline_fallback) ... ERROR
+test_factory_matches_previous_english_except_truthful_online_context (tests.test_jev_shadow.ShadowTests.test_factory_matches_previous_english_except_truthful_online_context) ... ERROR
+test_isolated_subprocess_environment_and_budget_without_real_worker (tests.test_jev_shadow.ShadowTests.test_isolated_subprocess_environment_and_budget_without_real_worker) ... ERROR
+test_only_complete_physical_shadow_seven_of_seven_is_eligible (tests.test_jev_shadow.ShadowTests.test_only_complete_physical_shadow_seven_of_seven_is_eligible) ... ERROR
+test_state_change_during_api_stops_before_action (tests.test_jev_shadow.ShadowTests.test_state_change_during_api_stops_before_action) ... ERROR
+test_suggested_abort_never_controls_arm_and_fixed_success_is_not_model_success (tests.test_jev_shadow.ShadowTests.test_suggested_abort_never_controls_arm_and_fixed_success_is_not_model_success) ... ERROR
+test_timeout_is_terminal_and_no_retract (tests.test_jev_shadow.ShadowTests.test_timeout_is_terminal_and_no_retract) ... ERROR
+test_worker_timeout_or_invalid_output_is_safe_and_not_retried (tests.test_jev_shadow.ShadowTests.test_worker_timeout_or_invalid_output_is_safe_and_not_retried) ... ERROR
+test_wrong_backend_or_mock_health_prevents_movement (tests.test_jev_shadow.ShadowTests.test_wrong_backend_or_mock_health_prevents_movement) ... ERROR
+
+======================================================================
+ERROR: test_api_failure_stops_before_any_motion_without_baseline_fallback (tests.test_jev_shadow.ShadowTests.test_api_failure_stops_before_any_motion_without_baseline_fallback)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_shadow.py", line 49, in test_api_failure_stops_before_any_motion_without_baseline_fallback
+    result=module().run_shadow(self.scene,self.config,'blue',self.log,FakeClient(fail=True))
+           ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_shadow.py", line 16, in module
+    def module():return importlib.import_module('visual_lab.jev_shadow')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.jev_shadow'
+
+======================================================================
+ERROR: test_factory_matches_previous_english_except_truthful_online_context (tests.test_jev_shadow.ShadowTests.test_factory_matches_previous_english_except_truthful_online_context)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_shadow.py", line 38, in test_factory_matches_previous_english_except_truthful_online_context
+    actual=module().online_request(fixture.state,fixture.guidance,color);self.assertEqual(actual,expected)
+           ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_shadow.py", line 16, in module
+    def module():return importlib.import_module('visual_lab.jev_shadow')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.jev_shadow'
+
+======================================================================
+ERROR: test_isolated_subprocess_environment_and_budget_without_real_worker (tests.test_jev_shadow.ShadowTests.test_isolated_subprocess_environment_and_budget_without_real_worker)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_shadow.py", line 72, in test_isolated_subprocess_environment_and_budget_without_real_worker
+    client=module().ShadowProcessClient(Path('/fixture/python'),Path('/fixture/key'),self.root/'http',color='blue',timeout=60)
+           ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_shadow.py", line 16, in module
+    def module():return importlib.import_module('visual_lab.jev_shadow')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.jev_shadow'
+
+======================================================================
+ERROR: test_only_complete_physical_shadow_seven_of_seven_is_eligible (tests.test_jev_shadow.ShadowTests.test_only_complete_physical_shadow_seven_of_seven_is_eligible)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_shadow.py", line 68, in test_only_complete_physical_shadow_seven_of_seven_is_eligible
+    self.assertTrue(module().control_gate(result)['eligible'])
+                    ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_shadow.py", line 16, in module
+    def module():return importlib.import_module('visual_lab.jev_shadow')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.jev_shadow'
+
+======================================================================
+ERROR: test_state_change_during_api_stops_before_action (tests.test_jev_shadow.ShadowTests.test_state_change_during_api_stops_before_action)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_shadow.py", line 55, in test_state_change_during_api_stops_before_action
+    self.client.predict=dirty;result=module().run_shadow(self.scene,self.config,'blue',self.log,self.client)
+                                     ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_shadow.py", line 16, in module
+    def module():return importlib.import_module('visual_lab.jev_shadow')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.jev_shadow'
+
+======================================================================
+ERROR: test_suggested_abort_never_controls_arm_and_fixed_success_is_not_model_success (tests.test_jev_shadow.ShadowTests.test_suggested_abort_never_controls_arm_and_fixed_success_is_not_model_success)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_shadow.py", line 42, in test_suggested_abort_never_controls_arm_and_fixed_success_is_not_model_success
+    result=module().run_shadow(self.scene,self.config,'blue',self.log,self.client)
+           ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_shadow.py", line 16, in module
+    def module():return importlib.import_module('visual_lab.jev_shadow')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.jev_shadow'
+
+======================================================================
+ERROR: test_timeout_is_terminal_and_no_retract (tests.test_jev_shadow.ShadowTests.test_timeout_is_terminal_and_no_retract)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_shadow.py", line 58, in test_timeout_is_terminal_and_no_retract
+    self.scene.fail_action='grasp';result=module().run_shadow(self.scene,self.config,'yellow',self.log,self.client)
+                                          ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_shadow.py", line 16, in module
+    def module():return importlib.import_module('visual_lab.jev_shadow')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.jev_shadow'
+
+======================================================================
+ERROR: test_worker_timeout_or_invalid_output_is_safe_and_not_retried (tests.test_jev_shadow.ShadowTests.test_worker_timeout_or_invalid_output_is_safe_and_not_retried)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_shadow.py", line 84, in test_worker_timeout_or_invalid_output_is_safe_and_not_retried
+    client=module().ShadowProcessClient(Path('/fixture/python'),Path('/fixture/key'),self.root/'http',color='blue',timeout=60)
+           ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_shadow.py", line 16, in module
+    def module():return importlib.import_module('visual_lab.jev_shadow')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.jev_shadow'
+
+======================================================================
+ERROR: test_wrong_backend_or_mock_health_prevents_movement (tests.test_jev_shadow.ShadowTests.test_wrong_backend_or_mock_health_prevents_movement)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_shadow.py", line 64, in test_wrong_backend_or_mock_health_prevents_movement
+    log=AuditLog(Path(folder)/'log',{'synthetic_fixture':True});result=module().run_shadow(self.scene,self.config,'blue',log,client);log.close()
+                                                                       ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_shadow.py", line 16, in module
+    def module():return importlib.import_module('visual_lab.jev_shadow')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.jev_shadow'
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.072s
+
+FAILED (errors=9)
