@@ -1,0 +1,436 @@
+test_grasp_excludes_already_closed_fingers (tests.test_action_descriptions.ActionDescriptionTests.test_grasp_excludes_already_closed_fingers) ... ok
+test_history_does_not_mask_or_rewrite_candidate_actions (tests.test_action_descriptions.ActionDescriptionTests.test_history_does_not_mask_or_rewrite_candidate_actions) ... ok
+test_history_is_context_not_a_mandatory_sequence (tests.test_action_descriptions.ActionDescriptionTests.test_history_is_context_not_a_mandatory_sequence) ... ok
+test_joint_reference_is_explained_without_claiming_a_grasp (tests.test_action_descriptions.ActionDescriptionTests.test_joint_reference_is_explained_without_claiming_a_grasp) ... ok
+test_lift_excludes_an_already_elevated_cube (tests.test_action_descriptions.ActionDescriptionTests.test_lift_excludes_an_already_elevated_cube) ... ok
+test_malformed_evidence_or_question_is_rejected (tests.test_action_descriptions.ActionDescriptionTests.test_malformed_evidence_or_question_is_rejected) ... ok
+test_motion_descriptions_have_observable_preconditions_and_exclusions (tests.test_action_descriptions.ActionDescriptionTests.test_motion_descriptions_have_observable_preconditions_and_exclusions) ... ok
+test_request_builder_rejects_non_object_state (tests.test_action_descriptions.ActionDescriptionTests.test_request_builder_rejects_non_object_state) ... ok
+test_request_keeps_all_options_and_original_evidence (tests.test_action_descriptions.ActionDescriptionTests.test_request_keeps_all_options_and_original_evidence) ... ok
+test_auth_401 (tests.test_bridge.BridgeTests.test_auth_401) ... ok
+test_auth_correct (tests.test_bridge.BridgeTests.test_auth_correct) ... ok
+test_client_rejects_chat_endpoint (tests.test_bridge.BridgeTests.test_client_rejects_chat_endpoint) ... ok
+test_engine_failure_500_not_fallback (tests.test_bridge.BridgeTests.test_engine_failure_500_not_fallback) ... ok
+test_health_mock_explicit (tests.test_bridge.BridgeTests.test_health_mock_explicit) ... ok
+test_health_rejects_mock (tests.test_bridge.BridgeTests.test_health_rejects_mock) ... ok
+test_http_round_trip_image_hash (tests.test_bridge.BridgeTests.test_http_round_trip_image_hash) ... ok
+test_invalid_base64_422 (tests.test_bridge.BridgeTests.test_invalid_base64_422) ... ok
+test_lock_busy_503 (tests.test_bridge.BridgeTests.test_lock_busy_503) ... ok
+test_non_png_422 (tests.test_bridge.BridgeTests.test_non_png_422) ... ok
+test_official_engine_requires_explicit_trust (tests.test_bridge.BridgeTests.test_official_engine_requires_explicit_trust) ... ok
+test_temp_png_exists_only_during_inference (tests.test_bridge.BridgeTests.test_temp_png_exists_only_during_inference) ... ok
+test_truncated_png_422 (tests.test_bridge.BridgeTests.test_truncated_png_422) ... ok
+test_default_camera_frames_cube (tests.test_camera_framing.CameraFramingTests.test_default_camera_frames_cube) ... ok
+test_default_camera_frames_goal_outline (tests.test_camera_framing.CameraFramingTests.test_default_camera_frames_goal_outline) ... ok
+test_default_camera_frames_observed_initial_gripper_region (tests.test_camera_framing.CameraFramingTests.test_default_camera_frames_observed_initial_gripper_region) ... ok
+test_abort_cannot_strict_pass (tests.test_core.CoreTests.test_abort_cannot_strict_pass) ... ok
+test_arm_not_forced_to_wait_60 (tests.test_core.CoreTests.test_arm_not_forced_to_wait_60) ... ok
+test_bool_not_number (tests.test_core.CoreTests.test_bool_not_number) ... ok
+test_choice_not_argmax (tests.test_core.CoreTests.test_choice_not_argmax) ... ok
+test_choice_unknown (tests.test_core.CoreTests.test_choice_unknown) ... ok
+test_command_target_z_does_not_pass_ground_test (tests.test_core.CoreTests.test_command_target_z_does_not_pass_ground_test) ... ok
+test_confidence_missing (tests.test_core.CoreTests.test_confidence_missing) ... ok
+test_convergence_wins_at_timeout_frame (tests.test_core.CoreTests.test_convergence_wins_at_timeout_frame) ... ok
+test_extra_request_key_rejected (tests.test_core.CoreTests.test_extra_request_key_rejected) ... ok
+test_gripper_cannot_finish_before_60 (tests.test_core.CoreTests.test_gripper_cannot_finish_before_60) ... ok
+test_gripper_finishes_at_60 (tests.test_core.CoreTests.test_gripper_finishes_at_60) ... ok
+test_ground_height_not_command_height (tests.test_core.CoreTests.test_ground_height_not_command_height) ... ok
+test_impossible_budget_is_rejected (tests.test_core.CoreTests.test_impossible_budget_is_rejected) ... ok
+test_mock_explicitly_accepted (tests.test_core.CoreTests.test_mock_explicitly_accepted) ... ok
+test_mock_rejected_for_real (tests.test_core.CoreTests.test_mock_rejected_for_real) ... ok
+test_nan_position_rejected (tests.test_core.CoreTests.test_nan_position_rejected) ... ok
+test_no_local_image_path_over_http (tests.test_core.CoreTests.test_no_local_image_path_over_http) ... ok
+test_no_release_cannot_pass (tests.test_core.CoreTests.test_no_release_cannot_pass) ... ok
+test_no_remote_image_url (tests.test_core.CoreTests.test_no_remote_image_url) ... ok
+test_no_synthesized_response_shape (tests.test_core.CoreTests.test_no_synthesized_response_shape) ... ok
+test_option_order_preserved (tests.test_core.CoreTests.test_option_order_preserved) ... ok
+test_outside_xy (tests.test_core.CoreTests.test_outside_xy) ... ok
+test_png_size_validation (tests.test_core.CoreTests.test_png_size_validation) ... ok
+test_probability_bad_sum (tests.test_core.CoreTests.test_probability_bad_sum) ... ok
+test_probability_missing_key (tests.test_core.CoreTests.test_probability_missing_key) ... ok
+test_probability_nan (tests.test_core.CoreTests.test_probability_nan) ... ok
+test_reordered_options_rejected (tests.test_core.CoreTests.test_reordered_options_rejected) ... ok
+test_request_contract (tests.test_core.CoreTests.test_request_contract) ... ok
+test_state_has_no_world_truth (tests.test_core.CoreTests.test_state_has_no_world_truth) ... ok
+test_state_not_mutated (tests.test_core.CoreTests.test_state_not_mutated) ... ok
+test_timeout_cannot_strict_pass (tests.test_core.CoreTests.test_timeout_cannot_strict_pass) ... ok
+test_timeout_with_error (tests.test_core.CoreTests.test_timeout_with_error) ... ok
+test_unknown_previous_phase (tests.test_core.CoreTests.test_unknown_previous_phase) ... ok
+test_wrong_magic_rejected (tests.test_core.CoreTests.test_wrong_magic_rejected) ... ok
+test_capture_failure_writes_incomplete_summary (tests.test_factorial.CollectionReplayTests.test_capture_failure_writes_incomplete_summary) ... ok
+test_changed_physics_in_quartet_is_rejected (tests.test_factorial.CollectionReplayTests.test_changed_physics_in_quartet_is_rejected) ... ok
+test_changed_service_metadata_marks_replay_incomplete (tests.test_factorial.CollectionReplayTests.test_changed_service_metadata_marks_replay_incomplete) ... A0B0C1_decision_003: grasp, reference=grasp, 0 ms
+A0B0C0_decision_002: approach, reference=approach, 0 ms
+A0B0C1_decision_002: approach, reference=approach, 0 ms
+A0B0C1_decision_007: release, reference=release, 0 ms
+A0B1C1_decision_002: approach, reference=approach, 0 ms
+A1B0C1_decision_003: grasp, reference=grasp, 0 ms
+A0B1C1_decision_003: grasp, reference=grasp, 0 ms
+A0B1C0_decision_002: approach, reference=approach, 0 ms
+A1B0C0_decision_004: lift, reference=lift, 0 ms
+A1B0C0_decision_005: transport, reference=transport, 0 ms
+A0B1C1_decision_007: release, reference=release, 0 ms
+A1B1C0_decision_005: transport, reference=transport, 0 ms
+A0B1C0_decision_004: lift, reference=lift, 0 ms
+A1B1C0_decision_003: grasp, reference=grasp, 0 ms
+A0B0C1_decision_004: lift, reference=lift, 0 ms
+A0B0C0_decision_004: lift, reference=lift, 0 ms
+A1B1C0_decision_004: lift, reference=lift, 0 ms
+A0B1C0_decision_007: release, reference=release, 0 ms
+A0B1C1_decision_001: pre_grasp, reference=pre_grasp, 0 ms
+A1B1C1_decision_007: release, reference=release, 0 ms
+A0B0C1_decision_001: pre_grasp, reference=pre_grasp, 0 ms
+A1B1C1_decision_006: lower, reference=lower, 0 ms
+A1B0C0_decision_003: grasp, reference=grasp, 0 ms
+A1B0C0_decision_006: lower, reference=lower, 0 ms
+A0B0C0_decision_007: release, reference=release, 0 ms
+A1B0C1_decision_007: release, reference=release, 0 ms
+A0B0C1_decision_006: lower, reference=lower, 0 ms
+A1B0C0_decision_001: pre_grasp, reference=pre_grasp, 0 ms
+A1B1C1_decision_005: transport, reference=transport, 0 ms
+A1B0C1_decision_005: transport, reference=transport, 0 ms
+A0B1C0_decision_006: lower, reference=lower, 0 ms
+A1B0C1_decision_006: lower, reference=lower, 0 ms
+A1B0C1_decision_002: approach, reference=approach, 0 ms
+A1B1C1_decision_003: grasp, reference=grasp, 0 ms
+A0B1C1_decision_004: lift, reference=lift, 0 ms
+A1B0C1_decision_004: lift, reference=lift, 0 ms
+A0B0C0_decision_003: grasp, reference=grasp, 0 ms
+A1B1C0_decision_007: release, reference=release, 0 ms
+A1B1C1_decision_001: pre_grasp, reference=pre_grasp, 0 ms
+A1B1C1_decision_002: approach, reference=approach, 0 ms
+A0B0C0_decision_001: pre_grasp, reference=pre_grasp, 0 ms
+A1B1C0_decision_001: pre_grasp, reference=pre_grasp, 0 ms
+A0B1C0_decision_001: pre_grasp, reference=pre_grasp, 0 ms
+A0B1C0_decision_005: transport, reference=transport, 0 ms
+A1B1C0_decision_006: lower, reference=lower, 0 ms
+A0B0C0_decision_006: lower, reference=lower, 0 ms
+A0B0C1_decision_005: transport, reference=transport, 0 ms
+A1B1C0_decision_002: approach, reference=approach, 0 ms
+A0B1C1_decision_005: transport, reference=transport, 0 ms
+A1B0C0_decision_002: approach, reference=approach, 0 ms
+A0B0C0_decision_005: transport, reference=transport, 0 ms
+A1B0C0_decision_007: release, reference=release, 0 ms
+A0B1C0_decision_003: grasp, reference=grasp, 0 ms
+A0B1C1_decision_006: lower, reference=lower, 0 ms
+A1B0C1_decision_001: pre_grasp, reference=pre_grasp, 0 ms
+A1B1C1_decision_004: lift, reference=lift, 0 ms
+ok
+test_collection_has_one_trajectory_and_four_paired_images_per_state (tests.test_factorial.CollectionReplayTests.test_collection_has_one_trajectory_and_four_paired_images_per_state) ... ok
+test_color_is_restored_on_capture_failure (tests.test_factorial.CollectionReplayTests.test_color_is_restored_on_capture_failure) ... ok
+test_corrupt_actual_processor_audit_is_rejected (tests.test_factorial.CollectionReplayTests.test_corrupt_actual_processor_audit_is_rejected) ... ok
+test_fifty_six_requests_through_real_local_http_with_explicit_mock (tests.test_factorial.CollectionReplayTests.test_fifty_six_requests_through_real_local_http_with_explicit_mock) ... A0B0C1_decision_003: grasp, reference=grasp, 2 ms
+A0B0C0_decision_002: approach, reference=approach, 2 ms
+A0B0C1_decision_002: approach, reference=approach, 2 ms
+A0B0C1_decision_007: release, reference=release, 3 ms
+A0B1C1_decision_002: approach, reference=approach, 2 ms
+A1B0C1_decision_003: grasp, reference=grasp, 2 ms
+A0B1C1_decision_003: grasp, reference=grasp, 2 ms
+A0B1C0_decision_002: approach, reference=approach, 2 ms
+A1B0C0_decision_004: lift, reference=lift, 2 ms
+A1B0C0_decision_005: transport, reference=transport, 2 ms
+A0B1C1_decision_007: release, reference=release, 2 ms
+A1B1C0_decision_005: transport, reference=transport, 2 ms
+A0B1C0_decision_004: lift, reference=lift, 2 ms
+A1B1C0_decision_003: grasp, reference=grasp, 2 ms
+A0B0C1_decision_004: lift, reference=lift, 2 ms
+A0B0C0_decision_004: lift, reference=lift, 2 ms
+A1B1C0_decision_004: lift, reference=lift, 2 ms
+A0B1C0_decision_007: release, reference=release, 2 ms
+A0B1C1_decision_001: pre_grasp, reference=pre_grasp, 2 ms
+A1B1C1_decision_007: release, reference=release, 2 ms
+A0B0C1_decision_001: pre_grasp, reference=pre_grasp, 2 ms
+A1B1C1_decision_006: lower, reference=lower, 2 ms
+A1B0C0_decision_003: grasp, reference=grasp, 2 ms
+A1B0C0_decision_006: lower, reference=lower, 2 ms
+A0B0C0_decision_007: release, reference=release, 2 ms
+A1B0C1_decision_007: release, reference=release, 2 ms
+A0B0C1_decision_006: lower, reference=lower, 2 ms
+A1B0C0_decision_001: pre_grasp, reference=pre_grasp, 2 ms
+A1B1C1_decision_005: transport, reference=transport, 3 ms
+A1B0C1_decision_005: transport, reference=transport, 2 ms
+A0B1C0_decision_006: lower, reference=lower, 2 ms
+A1B0C1_decision_006: lower, reference=lower, 2 ms
+A1B0C1_decision_002: approach, reference=approach, 2 ms
+A1B1C1_decision_003: grasp, reference=grasp, 2 ms
+A0B1C1_decision_004: lift, reference=lift, 2 ms
+A1B0C1_decision_004: lift, reference=lift, 2 ms
+A0B0C0_decision_003: grasp, reference=grasp, 2 ms
+A1B1C0_decision_007: release, reference=release, 2 ms
+A1B1C1_decision_001: pre_grasp, reference=pre_grasp, 2 ms
+A1B1C1_decision_002: approach, reference=approach, 2 ms
+A0B0C0_decision_001: pre_grasp, reference=pre_grasp, 2 ms
+A1B1C0_decision_001: pre_grasp, reference=pre_grasp, 2 ms
+A0B1C0_decision_001: pre_grasp, reference=pre_grasp, 2 ms
+A0B1C0_decision_005: transport, reference=transport, 2 ms
+A1B1C0_decision_006: lower, reference=lower, 2 ms
+A0B0C0_decision_006: lower, reference=lower, 2 ms
+A0B0C1_decision_005: transport, reference=transport, 2 ms
+A1B1C0_decision_002: approach, reference=approach, 2 ms
+A0B1C1_decision_005: transport, reference=transport, 2 ms
+A1B0C0_decision_002: approach, reference=approach, 2 ms
+A0B0C0_decision_005: transport, reference=transport, 2 ms
+A1B0C0_decision_007: release, reference=release, 2 ms
+A0B1C0_decision_003: grasp, reference=grasp, 2 ms
+A0B1C1_decision_006: lower, reference=lower, 2 ms
+A1B0C1_decision_001: pre_grasp, reference=pre_grasp, 2 ms
+A1B1C1_decision_004: lift, reference=lift, 2 ms
+ok
+test_invalidated_gpu_capture_cannot_be_replayed (tests.test_factorial.CollectionReplayTests.test_invalidated_gpu_capture_cannot_be_replayed) ... ok
+test_real_mode_rejects_synthetic_capture_before_output_creation (tests.test_factorial.CollectionReplayTests.test_real_mode_rejects_synthetic_capture_before_output_creation) ... ok
+test_replay_failure_never_skips_or_falls_back (tests.test_factorial.CollectionReplayTests.test_replay_failure_never_skips_or_falls_back) ... ok
+test_single_image_service_is_rejected_before_output_creation (tests.test_factorial.CollectionReplayTests.test_single_image_service_is_rejected_before_output_creation) ... ok
+test_snapshot_path_cannot_escape_source (tests.test_factorial.CollectionReplayTests.test_snapshot_path_cannot_escape_source) ... ok
+test_tampered_image_is_rejected (tests.test_factorial.CollectionReplayTests.test_tampered_image_is_rejected) ... ok
+test_timeout_is_incomplete_and_cannot_be_replayed (tests.test_factorial.CollectionReplayTests.test_timeout_is_incomplete_and_cannot_be_replayed) ... ok
+test_wrong_lower_reference_fails (tests.test_factorial.CollectionReplayTests.test_wrong_lower_reference_fails) ... ok
+test_all_candidates_and_valid_image_contract (tests.test_factorial.FactorialTests.test_all_candidates_and_valid_image_contract) ... ok
+test_color_does_not_change_text_or_state (tests.test_factorial.FactorialTests.test_color_does_not_change_text_or_state) ... ok
+test_coordinates_only_add_approved_block (tests.test_factorial.FactorialTests.test_coordinates_only_add_approved_block) ... ok
+test_eight_unique_combinations (tests.test_factorial.FactorialTests.test_eight_unique_combinations) ... ok
+test_goal_ground_and_lower_tool_target_are_not_confused (tests.test_factorial.FactorialTests.test_goal_ground_and_lower_tool_target_are_not_confused) ... ok
+test_second_view_preserves_first_image_and_proprioception (tests.test_factorial.FactorialTests.test_second_view_preserves_first_image_and_proprioception) ... ok
+test_view_angles_are_defined_from_world_direction (tests.test_factorial.FactorialTests.test_view_angles_are_defined_from_world_direction) ... ok
+test_whitelist_discards_truth_even_with_coordinates (tests.test_factorial.FactorialTests.test_whitelist_discards_truth_even_with_coordinates) ... ok
+test_both_annotators_read_same_render_step (tests.test_factorial.SimExperimentTests.test_both_annotators_read_same_render_step) ... ok
+test_color_only_changes_four_display_attributes (tests.test_factorial.SimExperimentTests.test_color_only_changes_four_display_attributes) ... ok
+test_lower_target_lookup_restores_phase_even_on_error (tests.test_factorial.SimExperimentTests.test_lower_target_lookup_restores_phase_even_on_error) ... ok
+test_existing_report_is_never_overwritten (tests.test_factorial_report.FactorialReportTests.test_existing_report_is_never_overwritten) ... ok
+test_hostile_metadata_does_not_break_out_of_data_script (tests.test_factorial_report.FactorialReportTests.test_hostile_metadata_does_not_break_out_of_data_script) ... ok
+test_incomplete_experiment_cannot_be_reported_as_complete (tests.test_factorial_report.FactorialReportTests.test_incomplete_experiment_cannot_be_reported_as_complete) ... ok
+test_real_mode_cannot_label_mock_results_as_real (tests.test_factorial_report.FactorialReportTests.test_real_mode_cannot_label_mock_results_as_real) ... ok
+test_self_contained_all_images_and_probabilities_with_mock_warning (tests.test_factorial_report.FactorialReportTests.test_self_contained_all_images_and_probabilities_with_mock_warning) ... ok
+test_tampered_image_or_response_refuses_report (tests.test_factorial_report.FactorialReportTests.test_tampered_image_or_response_refuses_report) ... ok
+test_colors_and_configured_physics_are_unchanged (tests.test_goal_visibility.GoalVisibilityTests.test_colors_and_configured_physics_are_unchanged) ... ok
+test_custom_goal_position_is_used_without_a_default_coordinate (tests.test_goal_visibility.GoalVisibilityTests.test_custom_goal_position_is_used_without_a_default_coordinate) ... ok
+test_default_projected_strip_width_exceeds_two_pixels (tests.test_goal_visibility.GoalVisibilityTests.test_default_projected_strip_width_exceeds_two_pixels) ... ok
+test_experiment_color_is_authored_before_first_render (tests.test_goal_visibility.GoalVisibilityTests.test_experiment_color_is_authored_before_first_render) ... ok
+test_missing_cube_fails_before_goal_creation (tests.test_goal_visibility.GoalVisibilityTests.test_missing_cube_fails_before_goal_creation) ... ok
+test_outline_uses_20mm_strips_without_moving_the_goal (tests.test_goal_visibility.GoalVisibilityTests.test_outline_uses_20mm_strips_without_moving_the_goal) ... ok
+test_42_requests_all_frozen_before_inference_and_14_each_image_count (tests.test_image_ablation.ImageReplayContracts.test_42_requests_all_frozen_before_inference_and_14_each_image_count) ... ok
+test_api_failure_stops_without_retry_or_placeholder_image (tests.test_image_ablation.ImageReplayContracts.test_api_failure_stops_without_retry_or_placeholder_image) ... ok
+test_busy_service_refuses_before_output (tests.test_image_ablation.ImageReplayContracts.test_busy_service_refuses_before_output) ... ok
+test_capture_provenance_change_invalidates (tests.test_image_ablation.ImageReplayContracts.test_capture_provenance_change_invalidates) ... ok
+test_changed_health_source_or_frozen_request_invalidates (tests.test_image_ablation.ImageReplayContracts.test_changed_health_source_or_frozen_request_invalidates) ... ok
+test_health_provenance_change_invalidates (tests.test_image_ablation.ImageReplayContracts.test_health_provenance_change_invalidates) ... ok
+test_real_mode_synthetic_and_missing_capability_reject_before_output (tests.test_image_ablation.ImageReplayContracts.test_real_mode_synthetic_and_missing_capability_reject_before_output) ... ok
+test_unexpected_service_request_count_invalidates (tests.test_image_ablation.ImageReplayContracts.test_unexpected_service_request_count_invalidates) ... ok
+test_wrong_actual_image_count_marks_incomplete (tests.test_image_ablation.ImageReplayContracts.test_wrong_actual_image_count_marks_incomplete) ... ok
+test_html_keeps_zero_image_inputs_empty_and_embeds_42_actual_requests (tests.test_image_ablation.ImageReportContracts.test_html_keeps_zero_image_inputs_empty_and_embeds_42_actual_requests) ... ok
+test_report_embedded_metadata_cannot_close_script_or_request_network (tests.test_image_ablation.ImageReportContracts.test_report_embedded_metadata_cannot_close_script_or_request_network) ... ok
+test_report_rejects_synthetic_as_real_incomplete_and_invalidated_runs (tests.test_image_ablation.ImageReportContracts.test_report_rejects_synthetic_as_real_incomplete_and_invalidated_runs) ... ok
+test_bad_image_count_is_not_silently_clamped (tests.test_image_ablation.ImageRequestContracts.test_bad_image_count_is_not_silently_clamped) ... ok
+test_dual_request_matches_27_prompt_and_whitelist_blocks_truth (tests.test_image_ablation.ImageRequestContracts.test_dual_request_matches_27_prompt_and_whitelist_blocks_truth) ... ok
+test_six_cells_only_change_image_list (tests.test_image_ablation.ImageRequestContracts.test_six_cells_only_change_image_list) ... ok
+test_nonempty_image_audit_checks_actual_rgb_grid_path_and_calibration (tests.test_image_ablation.ImageResponseContracts.test_nonempty_image_audit_checks_actual_rgb_grid_path_and_calibration) ... ok
+test_zero_image_real_flags_require_actual_tokenizer_only_evidence (tests.test_image_ablation.ImageResponseContracts.test_zero_image_real_flags_require_actual_tokenizer_only_evidence) ... ok
+test_default_health_does_not_enable_text_ablation (tests.test_image_ablation.TextOnlyContracts.test_default_health_does_not_enable_text_ablation) ... ok
+test_default_still_rejects_empty_images (tests.test_image_ablation.TextOnlyContracts.test_default_still_rejects_empty_images) ... ok
+test_explicit_builder_and_validation_allow_true_empty_list (tests.test_image_ablation.TextOnlyContracts.test_explicit_builder_and_validation_allow_true_empty_list) ... ok
+test_opt_in_http_has_zero_png_paths_and_no_fake_hash (tests.test_image_ablation.TextOnlyContracts.test_opt_in_http_has_zero_png_paths_and_no_fake_hash) ... ok
+test_image_prediction_uses_processor_not_stale_tokenizer_audit (tests.test_image_ablation.TokenizerAuditContracts.test_image_prediction_uses_processor_not_stale_tokenizer_audit) ... ok
+test_missing_text_audit_or_visual_special_token_is_rejected (tests.test_image_ablation.TokenizerAuditContracts.test_missing_text_audit_or_visual_special_token_is_rejected) ... ok
+test_official_text_path_clears_stale_multimodal_audit (tests.test_image_ablation.TokenizerAuditContracts.test_official_text_path_clears_stale_multimodal_audit) ... ok
+test_text_input_length_limit_is_enforced (tests.test_image_ablation.TokenizerAuditContracts.test_text_input_length_limit_is_enforced) ... ok
+test_tokenizer_records_actual_length_zero_vision_tokens_without_changing_batch (tests.test_image_ablation.TokenizerAuditContracts.test_tokenizer_records_actual_length_zero_vision_tokens_without_changing_batch) ... ok
+test_truncation_rejected_before_tokenization (tests.test_image_ablation.TokenizerAuditContracts.test_truncation_rejected_before_tokenization) ... ok
+test_design_and_all_42_requests_are_frozen_and_versioned_before_first_call (tests.test_modality_prompts.ModalityReplayTests.test_design_and_all_42_requests_are_frozen_and_versioned_before_first_call) ... ok
+test_failures_still_stop_without_retries_or_fake_response (tests.test_modality_prompts.ModalityReplayTests.test_failures_still_stop_without_retries_or_fake_response) ... ok
+test_legacy_artifact_tamper_rejects_before_new_model_calls (tests.test_modality_prompts.ModalityReplayTests.test_legacy_artifact_tamper_rejects_before_new_model_calls) ... ok
+test_legacy_same_zero_image_reference_is_saved_separately (tests.test_modality_prompts.ModalityReplayTests.test_legacy_same_zero_image_reference_is_saved_separately) ... ok
+test_unknown_policy_or_busy_service_is_rejected_without_any_call (tests.test_modality_prompts.ModalityReplayTests.test_unknown_policy_or_busy_service_is_rejected_without_any_call) ... ok
+test_html_identifies_matching_prompts_and_preserves_actual_zero_image_inputs (tests.test_modality_prompts.ModalityReportTests.test_html_identifies_matching_prompts_and_preserves_actual_zero_image_inputs) ... ok
+test_report_embeds_legacy_text_inputs_with_mismatch_warning (tests.test_modality_prompts.ModalityReportTests.test_report_embeds_legacy_text_inputs_with_mismatch_warning) ... ok
+test_report_rejects_silent_policy_relabeling (tests.test_modality_prompts.ModalityReportTests.test_report_rejects_silent_policy_relabeling) ... ok
+test_adaptation_does_not_mutate_input_and_rejects_wrong_view_count (tests.test_modality_prompts.ModalityRequestTests.test_adaptation_does_not_mutate_input_and_rejects_wrong_view_count) ... ok
+test_legacy_policy_remains_reproducible_and_unknown_policy_is_rejected (tests.test_modality_prompts.ModalityRequestTests.test_legacy_policy_remains_reproducible_and_unknown_policy_is_rejected) ... ok
+test_private_truth_still_cannot_change_any_modality_request (tests.test_modality_prompts.ModalityRequestTests.test_private_truth_still_cannot_change_any_modality_request) ... ok
+test_shared_state_numbers_task_and_action_context_are_unchanged (tests.test_modality_prompts.ModalityRequestTests.test_shared_state_numbers_task_and_action_context_are_unchanged) ... ok
+test_single_image_metadata_matches_first_camera_and_dual_stays_exact (tests.test_modality_prompts.ModalityRequestTests.test_single_image_metadata_matches_first_camera_and_dual_stays_exact) ... ok
+test_text_only_allows_contextual_estimate_without_claiming_holding_or_forcing_abort (tests.test_modality_prompts.ModalityRequestTests.test_text_only_allows_contextual_estimate_without_claiming_holding_or_forcing_abort) ... ok
+test_text_only_explicitly_declares_no_images_and_no_camera_input (tests.test_modality_prompts.ModalityRequestTests.test_text_only_explicitly_declares_no_images_and_no_camera_input) ... ok
+test_text_only_removes_image_requirements_from_entire_state_questions (tests.test_modality_prompts.ModalityRequestTests.test_text_only_removes_image_requirements_from_entire_state_questions) ... ok
+test_auth_401 (tests.test_multiview.MultiViewBridgeTests.test_auth_401) ... ok
+test_auth_correct (tests.test_multiview.MultiViewBridgeTests.test_auth_correct) ... ok
+test_client_rejects_chat_endpoint (tests.test_multiview.MultiViewBridgeTests.test_client_rejects_chat_endpoint) ... ok
+test_engine_failure_500_not_fallback (tests.test_multiview.MultiViewBridgeTests.test_engine_failure_500_not_fallback) ... ok
+test_health_declares_two_image_limit (tests.test_multiview.MultiViewBridgeTests.test_health_declares_two_image_limit) ... ok
+test_health_mock_explicit (tests.test_multiview.MultiViewBridgeTests.test_health_mock_explicit) ... ok
+test_health_rejects_mock (tests.test_multiview.MultiViewBridgeTests.test_health_rejects_mock) ... ok
+test_http_round_trip_image_hash (tests.test_multiview.MultiViewBridgeTests.test_http_round_trip_image_hash) ... ok
+test_invalid_base64_422 (tests.test_multiview.MultiViewBridgeTests.test_invalid_base64_422) ... ok
+test_lock_busy_503 (tests.test_multiview.MultiViewBridgeTests.test_lock_busy_503) ... ok
+test_non_png_422 (tests.test_multiview.MultiViewBridgeTests.test_non_png_422) ... ok
+test_official_engine_requires_explicit_trust (tests.test_multiview.MultiViewBridgeTests.test_official_engine_requires_explicit_trust) ... ok
+test_second_invalid_image_never_reaches_engine (tests.test_multiview.MultiViewBridgeTests.test_second_invalid_image_never_reaches_engine) ... ok
+test_temp_png_exists_only_during_inference (tests.test_multiview.MultiViewBridgeTests.test_temp_png_exists_only_during_inference) ... ok
+test_third_image_is_rejected (tests.test_multiview.MultiViewBridgeTests.test_third_image_is_rejected) ... ok
+test_truncated_png_422 (tests.test_multiview.MultiViewBridgeTests.test_truncated_png_422) ... ok
+test_two_images_are_processed_in_order_and_cleaned (tests.test_multiview.MultiViewBridgeTests.test_two_images_are_processed_in_order_and_cleaned) ... ok
+test_two_temp_files_are_cleaned_after_engine_failure (tests.test_multiview.MultiViewBridgeTests.test_two_temp_files_are_cleaned_after_engine_failure) ... ok
+test_records_actual_rgb_order_and_grid_without_changing_batch (tests.test_multiview.ProcessorAuditTests.test_records_actual_rgb_order_and_grid_without_changing_batch) ... ok
+test_truncating_processor_call_is_rejected_before_processing (tests.test_multiview.ProcessorAuditTests.test_truncating_processor_call_is_rejected_before_processing) ... ok
+test_adapter_continues_until_near_and_stable (tests.test_near_pose.NearPoseTests.test_adapter_continues_until_near_and_stable) ... ok
+test_adapter_resets_window_when_pose_leaves_tolerance (tests.test_near_pose.NearPoseTests.test_adapter_resets_window_when_pose_leaves_tolerance) ... ok
+test_default_config_records_5mm_and_12_stable_frames (tests.test_near_pose.NearPoseTests.test_default_config_records_5mm_and_12_stable_frames) ... ok
+test_invalid_near_tolerance_is_rejected (tests.test_near_pose.NearPoseTests.test_invalid_near_tolerance_is_rejected) ... ok
+test_invalid_stable_frame_count_is_rejected (tests.test_near_pose.NearPoseTests.test_invalid_stable_frame_count_is_rejected) ... ok
+test_legacy_configs_get_explicit_near_defaults (tests.test_near_pose.NearPoseTests.test_legacy_configs_get_explicit_near_defaults) ... ok
+test_lower_never_reaches_while_19mm_high (tests.test_near_pose.NearPoseTests.test_lower_never_reaches_while_19mm_high) ... ok
+test_near_phase_requires_complete_stable_window (tests.test_near_pose.NearPoseTests.test_near_phase_requires_complete_stable_window) ... ok
+test_near_phases_reject_old_19mm_early_stop (tests.test_near_pose.NearPoseTests.test_near_phases_reject_old_19mm_early_stop) ... ok
+test_other_motion_keeps_original_coarse_tolerance (tests.test_near_pose.NearPoseTests.test_other_motion_keeps_original_coarse_tolerance) ... ok
+test_stable_last_budget_frame_can_reach (tests.test_near_pose.NearPoseTests.test_stable_last_budget_frame_can_reach) ... ok
+test_stable_window_must_fit_phase_budget (tests.test_near_pose.NearPoseTests.test_stable_window_must_fit_phase_budget) ... ok
+test_unstable_last_budget_frame_times_out (tests.test_near_pose.NearPoseTests.test_unstable_last_budget_frame_times_out) ... ok
+test_all_84_inputs_are_saved_before_first_inference_and_never_modified (tests.test_prompt_variants.PromptReplayTests.test_all_84_inputs_are_saved_before_first_inference_and_never_modified) ... ok
+test_busy_service_refused_without_creating_run (tests.test_prompt_variants.PromptReplayTests.test_busy_service_refused_without_creating_run) ... ok
+test_changed_service_provenance_is_incomplete_not_silently_accepted (tests.test_prompt_variants.PromptReplayTests.test_changed_service_provenance_is_incomplete_not_silently_accepted) ... ok
+test_exact_probability_tie_never_counts_reference_as_chosen (tests.test_prompt_variants.PromptReplayTests.test_exact_probability_tie_never_counts_reference_as_chosen) ... ok
+test_existing_directory_is_preserved (tests.test_prompt_variants.PromptReplayTests.test_existing_directory_is_preserved) ... ok
+test_failure_stops_once_with_original_response_and_incomplete_summary (tests.test_prompt_variants.PromptReplayTests.test_failure_stops_once_with_original_response_and_incomplete_summary) ... ok
+test_ordered_image_audit_failure_is_not_counted_as_completed (tests.test_prompt_variants.PromptReplayTests.test_ordered_image_audit_failure_is_not_counted_as_completed) ... ok
+test_request_tampering_is_detected_before_it_is_sent (tests.test_prompt_variants.PromptReplayTests.test_request_tampering_is_detected_before_it_is_sent) ... ok
+test_source_changes_during_replay_invalidate_completed_requests (tests.test_prompt_variants.PromptReplayTests.test_source_changes_during_replay_invalidate_completed_requests) ... ok
+test_synthetic_invalidated_and_single_view_are_rejected_before_inference (tests.test_prompt_variants.PromptReplayTests.test_synthetic_invalidated_and_single_view_are_rejected_before_inference) ... ok
+test_html_embeds_28_original_pngs_all_84_actual_inputs_and_warning (tests.test_prompt_variants.PromptReportTests.test_html_embeds_28_original_pngs_all_84_actual_inputs_and_warning) ... ok
+test_report_rejects_tamper_incomplete_mock_as_real_and_overwrite (tests.test_prompt_variants.PromptReportTests.test_report_rejects_tamper_incomplete_mock_as_real_and_overwrite) ... ok
+test_safe_embedded_metadata_cannot_close_script (tests.test_prompt_variants.PromptReportTests.test_safe_embedded_metadata_cannot_close_script) ... ok
+test_bad_variant_or_nonfinite_geometry_refuses_construction (tests.test_prompt_variants.PromptRequestTests.test_bad_variant_or_nonfinite_geometry_refuses_construction) ... ok
+test_color_identification_only_changes_two_target_sentences (tests.test_prompt_variants.PromptRequestTests.test_color_identification_only_changes_two_target_sentences) ... ok
+test_english_neutral_matches_previous_factorial_request_exactly (tests.test_prompt_variants.PromptRequestTests.test_english_neutral_matches_previous_factorial_request_exactly) ... ok
+test_every_form_keeps_all_candidates_and_does_not_mutate_sources (tests.test_prompt_variants.PromptRequestTests.test_every_form_keeps_all_candidates_and_does_not_mutate_sources) ... ok
+test_relative_format_preserves_question_and_uses_tool_not_cube (tests.test_prompt_variants.PromptRequestTests.test_relative_format_preserves_question_and_uses_tool_not_cube) ... ok
+test_signed_height_negative_and_near_zero_do_not_become_action_labels (tests.test_prompt_variants.PromptRequestTests.test_signed_height_negative_and_near_zero_do_not_become_action_labels) ... ok
+test_translation_preserves_every_numeric_value_machine_id_and_png (tests.test_prompt_variants.PromptRequestTests.test_translation_preserves_every_numeric_value_machine_id_and_png) ... ok
+test_twelve_unique_cells_in_three_frozen_rounds (tests.test_prompt_variants.PromptRequestTests.test_twelve_unique_cells_in_three_frozen_rounds) ... ok
+test_whitelist_blocks_private_truth_and_labels_in_all_forms (tests.test_prompt_variants.PromptRequestTests.test_whitelist_blocks_private_truth_and_labels_in_all_forms) ... ok
+test_api_failure_stops_before_motion (tests.test_runner.RunnerTests.test_api_failure_stops_before_motion) ... ok
+test_automatic_retract_not_a_decision (tests.test_runner.RunnerTests.test_automatic_retract_not_a_decision) ... [baseline] decision 1: proposed=None, execute=pre_grasp
+[baseline] decision 2: proposed=None, execute=approach
+[baseline] decision 3: proposed=None, execute=grasp
+[baseline] decision 4: proposed=None, execute=lift
+[baseline] decision 5: proposed=None, execute=transport
+[baseline] decision 6: proposed=None, execute=lower
+[baseline] decision 7: proposed=None, execute=release
+ok
+test_baseline_no_model (tests.test_runner.RunnerTests.test_baseline_no_model) ... [baseline] decision 1: proposed=None, execute=pre_grasp
+[baseline] decision 2: proposed=None, execute=approach
+[baseline] decision 3: proposed=None, execute=grasp
+[baseline] decision 4: proposed=None, execute=lift
+[baseline] decision 5: proposed=None, execute=transport
+[baseline] decision 6: proposed=None, execute=lower
+[baseline] decision 7: proposed=None, execute=release
+ok
+test_capture_does_not_move (tests.test_runner.RunnerTests.test_capture_does_not_move) ... ok
+test_decision_limit (tests.test_runner.RunnerTests.test_decision_limit) ... [visual] decision 1: proposed=pre_grasp, execute=pre_grasp
+[visual] decision 2: proposed=pre_grasp, execute=pre_grasp
+[visual] decision 3: proposed=pre_grasp, execute=pre_grasp
+ok
+test_html_report_and_csv_generated (tests.test_runner.RunnerTests.test_html_report_and_csv_generated) ... [baseline] decision 1: proposed=None, execute=pre_grasp
+[baseline] decision 2: proposed=None, execute=approach
+[baseline] decision 3: proposed=None, execute=grasp
+[baseline] decision 4: proposed=None, execute=lift
+[baseline] decision 5: proposed=None, execute=transport
+[baseline] decision 6: proposed=None, execute=lower
+[baseline] decision 7: proposed=None, execute=release
+ok
+test_run_directory_never_overwritten (tests.test_runner.RunnerTests.test_run_directory_never_overwritten) ... ok
+test_shadow_does_not_execute_suggested_abort (tests.test_runner.RunnerTests.test_shadow_does_not_execute_suggested_abort) ... [shadow] decision 1: proposed=abort, execute=pre_grasp
+[shadow] decision 2: proposed=abort, execute=approach
+[shadow] decision 3: proposed=abort, execute=grasp
+[shadow] decision 4: proposed=abort, execute=lift
+[shadow] decision 5: proposed=abort, execute=transport
+[shadow] decision 6: proposed=abort, execute=lower
+[shadow] decision 7: proposed=abort, execute=release
+ok
+test_timeout_is_terminal (tests.test_runner.RunnerTests.test_timeout_is_terminal) ... [baseline] decision 1: proposed=None, execute=pre_grasp
+ok
+test_visual_abort_does_not_retract (tests.test_runner.RunnerTests.test_visual_abort_does_not_retract) ... [visual] decision 1: proposed=abort, execute=abort
+ok
+test_arm_command_survives_gripper_preservation (tests.test_sim_commands.SimCommandTests.test_arm_command_survives_gripper_preservation) ... ok
+test_closed_finger_overrides_controller_finger_target (tests.test_sim_commands.SimCommandTests.test_closed_finger_overrides_controller_finger_target) ... ok
+test_controller_without_output_fails_before_physics (tests.test_sim_commands.SimCommandTests.test_controller_without_output_fails_before_physics) ... ok
+test_grasp_holds_arm_and_closes_finger_in_one_write (tests.test_sim_commands.SimCommandTests.test_grasp_holds_arm_and_closes_finger_in_one_write) ... ok
+test_invalid_joint_index_is_rejected (tests.test_sim_commands.SimCommandTests.test_invalid_joint_index_is_rejected) ... ok
+test_mismatched_targets_and_indices_are_rejected (tests.test_sim_commands.SimCommandTests.test_mismatched_targets_and_indices_are_rejected) ... ok
+test_nonfinite_target_is_rejected (tests.test_sim_commands.SimCommandTests.test_nonfinite_target_is_rejected) ... ok
+test_phase_end_reports_commands_and_measured_motion (tests.test_sim_commands.SimCommandTests.test_phase_end_reports_commands_and_measured_motion) ... ok
+test_reordered_controller_indices_keep_their_target_mapping (tests.test_sim_commands.SimCommandTests.test_reordered_controller_indices_keep_their_target_mapping) ... ok
+test_uncommanded_joint_keeps_its_existing_target (tests.test_sim_commands.SimCommandTests.test_uncommanded_joint_keeps_its_existing_target) ... ok
+test_configuration_does_not_change_device_or_step_physics (tests.test_sim_pose_sync.PoseSyncTests.test_configuration_does_not_change_device_or_step_physics) ... ok
+test_cuda_readback_updates_default_ee_and_cube_pose_readers (tests.test_sim_pose_sync.PoseSyncTests.test_cuda_readback_updates_default_ee_and_cube_pose_readers) ... ok
+test_disabled_usd_updates_are_rejected (tests.test_sim_pose_sync.PoseSyncTests.test_disabled_usd_updates_are_rejected) ... ok
+test_initialization_configures_sync_after_device_and_before_scene (tests.test_sim_pose_sync.PoseSyncTests.test_initialization_configures_sync_after_device_and_before_scene) ... ok
+test_still_enabled_fabric_fails_instead_of_using_stale_poses (tests.test_sim_pose_sync.PoseSyncTests.test_still_enabled_fabric_fails_instead_of_using_stale_poses) ... ok
+test_suppressed_readback_is_rejected (tests.test_sim_pose_sync.PoseSyncTests.test_suppressed_readback_is_rejected) ... ok
+test_controller_targets_and_model_finger_state_are_not_rewritten (tests.test_sim_reference.SimReferenceTests.test_controller_targets_and_model_finger_state_are_not_rewritten) ... ok
+test_finger_at_target_does_not_mask_unconverged_controller_tool (tests.test_sim_reference.SimReferenceTests.test_finger_at_target_does_not_mask_unconverged_controller_tool) ... ok
+test_fk_position_is_rotated_and_translated_to_world (tests.test_sim_reference.SimReferenceTests.test_fk_position_is_rotated_and_translated_to_world) ... ok
+test_fk_uses_measured_joints_in_controller_order (tests.test_sim_reference.SimReferenceTests.test_fk_uses_measured_joints_in_controller_order) ... ok
+test_missing_controlled_joint_is_rejected (tests.test_sim_reference.SimReferenceTests.test_missing_controlled_joint_is_rejected) ... ok
+test_nonfinite_fk_position_is_rejected (tests.test_sim_reference.SimReferenceTests.test_nonfinite_fk_position_is_rejected) ... ok
+test_sent_joint_targets_without_measured_motion_cannot_pass (tests.test_sim_reference.SimReferenceTests.test_sent_joint_targets_without_measured_motion_cannot_pass) ... ok
+test_tool_converges_without_comparing_finger_to_tool_target (tests.test_sim_reference.SimReferenceTests.test_tool_converges_without_comparing_finger_to_tool_target) ... ok
+test_closed_window_never_updates (tests.test_sim_timeline.SimTimelineTests.test_closed_window_never_updates) ... ok
+test_paused_without_play_request_still_fails (tests.test_sim_timeline.SimTimelineTests.test_paused_without_play_request_still_fails) ... ok
+test_pending_pause_is_reported_as_timeline_pause (tests.test_sim_timeline.SimTimelineTests.test_pending_pause_is_reported_as_timeline_pause) ... ok
+test_play_request_is_applied_before_playing_guard (tests.test_sim_timeline.SimTimelineTests.test_play_request_is_applied_before_playing_guard) ... ok
+test_playing_without_physics_still_fails (tests.test_sim_timeline.SimTimelineTests.test_playing_without_physics_still_fails) ... ok
+test_pre_grasp_resumes_after_capture_pause (tests.test_sim_timeline.SimTimelineTests.test_pre_grasp_resumes_after_capture_pause) ... ok
+test_recording_resumes_on_the_next_counted_update (tests.test_sim_timeline.SimTimelineTests.test_recording_resumes_on_the_next_counted_update) ... ok
+test_settle_resumes_from_pause_without_extra_updates (tests.test_sim_timeline.SimTimelineTests.test_settle_resumes_from_pause_without_extra_updates) ... ok
+test_absolute_asset_path_cannot_overwrite_source (tests.test_static_factorial.StaticPairTests.test_absolute_asset_path_cannot_overwrite_source) ... ok
+test_any_physical_state_difference_is_rejected (tests.test_static_factorial.StaticPairTests.test_any_physical_state_difference_is_rejected) ... /Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/visual_lab/factorial.py:194: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  b = list(blue.convert("RGB").crop(tuple(roi)).getdata())
+/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/visual_lab/factorial.py:195: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  y = list(yellow.convert("RGB").crop(tuple(roi)).getdata())
+ok
+test_color_validation_fails_when_treatments_have_identical_pixels (tests.test_static_factorial.StaticPairTests.test_color_validation_fails_when_treatments_have_identical_pixels) ... ok
+test_duplicate_asset_destination_is_rejected (tests.test_static_factorial.StaticPairTests.test_duplicate_asset_destination_is_rejected) ... ok
+test_goal_roi_contains_known_center_in_both_views (tests.test_static_factorial.StaticPairTests.test_goal_roi_contains_known_center_in_both_views) ... ok
+test_invalid_static_color_fails_without_live_recoloring (tests.test_static_factorial.StaticPairTests.test_invalid_static_color_fails_without_live_recoloring) ... ok
+test_invalidated_static_source_is_rejected (tests.test_static_factorial.StaticPairTests.test_invalidated_static_source_is_rejected) ... ok
+test_pairing_matches_all_seven_physical_states_and_preserves_pixels (tests.test_static_factorial.StaticPairTests.test_pairing_matches_all_seven_physical_states_and_preserves_pixels) ... ok
+test_pixel_check_rejects_non_gpu_dimensions_in_real_mode (tests.test_static_factorial.StaticPairTests.test_pixel_check_rejects_non_gpu_dimensions_in_real_mode) ... ok
+test_proprioception_difference_is_rejected (tests.test_static_factorial.StaticPairTests.test_proprioception_difference_is_rejected) ... ok
+test_real_pairing_rejects_synthetic_sources (tests.test_static_factorial.StaticPairTests.test_real_pairing_rejects_synthetic_sources) ... ok
+test_source_configuration_difference_is_rejected (tests.test_static_factorial.StaticPairTests.test_source_configuration_difference_is_rejected) ... ok
+test_static_collection_has_no_recoloring (tests.test_static_factorial.StaticPairTests.test_static_collection_has_no_recoloring) ... ok
+test_already_current_does_not_transfer (tests.test_sync_remote.SyncRemoteTests.test_already_current_does_not_transfer) ... Local main:  62710d73164cd9b99582550906bf454ba978c8bb
+Remote main: 62710d73164cd9b99582550906bf454ba978c8bb
+ok
+test_check_only_does_not_prepare_or_transfer (tests.test_sync_remote.SyncRemoteTests.test_check_only_does_not_prepare_or_transfer) ... Remote main is already up to date.
+Local main:  eec691a535f9cff864deef2f58339e418ec50630
+Remote main: 2796858ca4b9d429f29f4389d88df353fab80b1b
+ok
+test_cleanup_cannot_target_user_directory (tests.test_sync_remote.SyncRemoteTests.test_cleanup_cannot_target_user_directory) ... ok
+test_complete_sync_with_local_transport (tests.test_sync_remote.SyncRemoteTests.test_complete_sync_with_local_transport) ... Check only: no bundle transferred and no remote files updated.
+Local main:  eec691a535f9cff864deef2f58339e418ec50630
+Remote main: 2796858ca4b9d429f29f4389d88df353fab80b1b
+Synced and verified remote main: eec691a535f9cff864deef2f58339e418ec50630
+ok
+test_dirty_remote_refuses_update (tests.test_sync_remote.SyncRemoteTests.test_dirty_remote_refuses_update) ... ok
+test_diverged_history_refuses_merge (tests.test_sync_remote.SyncRemoteTests.test_diverged_history_refuses_merge) ... ok
+test_failed_transfer_cleans_staging_without_changing_checkout (tests.test_sync_remote.SyncRemoteTests.test_failed_transfer_cleans_staging_without_changing_checkout) ... Local main:  b05454bbd2e65060881b1b96abd96adc0d18849f
+Remote main: 91f25039c2e42d716c20d9fd23faec81acafa481
+ok
+test_fast_forward_preserves_results_models_and_origin (tests.test_sync_remote.SyncRemoteTests.test_fast_forward_preserves_results_models_and_origin) ... ok
+test_host_options_and_unsafe_paths_are_rejected (tests.test_sync_remote.SyncRemoteTests.test_host_options_and_unsafe_paths_are_rejected) ... ok
+test_ignored_file_collision_is_not_overwritten (tests.test_sync_remote.SyncRemoteTests.test_ignored_file_collision_is_not_overwritten) ... ok
+test_local_dirty_checkout_never_connects (tests.test_sync_remote.SyncRemoteTests.test_local_dirty_checkout_never_connects) ... ok
+test_remote_change_after_prepare_is_not_overwritten (tests.test_sync_remote.SyncRemoteTests.test_remote_change_after_prepare_is_not_overwritten) ... ok
+test_remote_path_is_shell_quoted (tests.test_sync_remote.SyncRemoteTests.test_remote_path_is_shell_quoted) ... ok
+test_untracked_remote_file_is_not_discarded (tests.test_sync_remote.SyncRemoteTests.test_untracked_remote_file_is_not_discarded) ... ok
+test_wrong_branch_and_nested_directory_are_rejected (tests.test_sync_remote.SyncRemoteTests.test_wrong_branch_and_nested_directory_are_rejected) ... ok
+test_ast_contract_validation (tests.test_upstream.UpstreamTests.test_ast_contract_validation) ... ok
+test_main_and_top_level_not_executed (tests.test_upstream.UpstreamTests.test_main_and_top_level_not_executed) ... ok
+test_missing_constructor_argument_fails (tests.test_upstream.UpstreamTests.test_missing_constructor_argument_fails) ... ok
+test_missing_method_fails_early (tests.test_upstream.UpstreamTests.test_missing_method_fails_early) ... ok
+test_missing_path (tests.test_upstream.UpstreamTests.test_missing_path) ... ok
+test_source_layout_discovery (tests.test_upstream.UpstreamTests.test_source_layout_discovery) ... ok
+
+----------------------------------------------------------------------
+Ran 271 tests in 31.546s
+
+OK
