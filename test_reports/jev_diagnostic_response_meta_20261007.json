@@ -1,0 +1,15 @@
+{
+  "received_utc": "2026-10-07T07:36:14.823899+00:00",
+  "status_code": 200,
+  "headers": {
+    "content-type": "application/json",
+    "content-encoding": "gzip",
+    "date": "Wed, 07 Oct 2026 07:36:16 GMT",
+    "x-typesafe-request-id": "req_01a1154aa89d7d86bfcf5496735b1d72"
+  },
+  "request_id": "req_01a1154aa89d7d86bfcf5496735b1d72",
+  "byte_count": 286,
+  "body_sha256": "61850593913d232e506cd387f0cca2fe6510bcb2c005bc8103f76baa228ad5fb",
+  "saved_before_sdk_and_project_validation": true,
+  "body_representation": "Exact decoded HTTP response entity supplied to the SDK, not TLS/chunk/compressed-wire bytes"
+}

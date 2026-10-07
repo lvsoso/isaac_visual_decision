@@ -1,0 +1,70 @@
+{
+  "kind": "independent_single_jev_sdk_diagnostic",
+  "sdk_version": "0.7.2",
+  "source_request_sha256": "26700b30b63147c7a542b41fb6e7aa61b923fdcebc3afceaaffa113058b4d245",
+  "started_utc": "2026-10-07T07:36:14.313452+00:00",
+  "network_attempts": 1,
+  "automatic_retries": 0,
+  "sdk_call_parsed": true,
+  "sdk_error_class": null,
+  "raw_body_available": true,
+  "normalization_applied": false,
+  "model_had_control": false,
+  "ended_utc": "2026-10-07T07:36:14.826168+00:00",
+  "elapsed_ms": 559.2436529987026,
+  "response_meta": {
+    "received_utc": "2026-10-07T07:36:14.823899+00:00",
+    "status_code": 200,
+    "headers": {
+      "content-type": "application/json",
+      "content-encoding": "gzip",
+      "date": "Wed, 07 Oct 2026 07:36:16 GMT",
+      "x-typesafe-request-id": "req_01a1154aa89d7d86bfcf5496735b1d72"
+    },
+    "request_id": "req_01a1154aa89d7d86bfcf5496735b1d72",
+    "byte_count": 286,
+    "body_sha256": "61850593913d232e506cd387f0cca2fe6510bcb2c005bc8103f76baa228ad5fb",
+    "saved_before_sdk_and_project_validation": true,
+    "body_representation": "Exact decoded HTTP response entity supplied to the SDK, not TLS/chunk/compressed-wire bytes"
+  },
+  "choice_audit": {
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 1728,
+      "output_tokens": 79
+    },
+    "choice": "transport",
+    "confidence": 0.55,
+    "probabilities": {
+      "release": 0.0,
+      "approach": 0.03,
+      "grasp": 0.04,
+      "transport": 0.61,
+      "lift": 0.01,
+      "lower": 0.19,
+      "pre_grasp": 0.01,
+      "abort": 0.11
+    },
+    "all_finite": true,
+    "missing_candidates": [],
+    "extra_candidates": [],
+    "out_of_range": {},
+    "probability_sum": 1.0,
+    "probability_sum_decimal": "1.00",
+    "sum_error": 0.0,
+    "project_sum_tolerance": 0.001,
+    "sum_within_project_tolerance": true,
+    "top_probability_ties": [
+      "transport"
+    ],
+    "selected_is_argmax": true,
+    "expected_confidence": 0.5542857142857143,
+    "normalization_applied": false,
+    "project_valid": false,
+    "project_error": "ProtocolError: Jev Choice confidence formula mismatch",
+    "confidence_formula_error": -0.004285714285714226
+  },
+  "offline_sdk_parsed": true,
+  "sdk_did_not_change_probabilities": true,
+  "diagnostic_capture_complete": true
+}
