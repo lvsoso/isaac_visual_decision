@@ -12,3 +12,5 @@ models/
 /events.jsonl
 # Jupyter's generated copies of offline HTML reports; preserve them locally.
 /docs/reports/.ipynb_checkpoints/
+# 阶段总结报告的中文讲解视频（由 tmp/video/build-video.py 生成）。
+!/tmp/video/项目阶段总结讲解.mp4
