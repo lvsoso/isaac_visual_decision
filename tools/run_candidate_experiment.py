@@ -4,7 +4,7 @@ import argparse,datetime,json,os,socket,subprocess,sys,tarfile,time
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from visual_lab.audit import sha256_file,write_json
-from visual_lab.candidate_control import check_health,code_hashes,write_admission,validate_admission
+from visual_lab.candidate_control import audit_shadow,pinned_health,check_health,code_hashes,write_admission,validate_admission
 from visual_lab.client import DecisionClient
 from visual_lab.core import load_config
 from visual_lab.core import ProtocolError
@@ -35,18 +35,38 @@ def verify_gpu_after_episode(baseline,report):
     return {'container_service_pid':baseline['container_service_pid'],'observed_host_gpu_pids':observed,
         'observed_compute_report':report,'only_pinned_model_gpu_process_remains':True}
 
+def admission_directories(plan):
+    return [ROOT/r['run_dir'] for r in plan.get('reused_shadows',[])]+[ROOT/j['run_dir'] for j in plan['runs'] if j['mode']=='shadow']
+
+def verify_reused_shadows(plan,config,health):
+    check_health(health);reused=plan.get('reused_shadows',[])
+    colors=[r['color'] for r in reused]+[j['color'] for j in plan['runs'] if j['mode']=='shadow']
+    if len(colors)!=2 or set(colors)!={'blue','yellow'}:raise ProtocolError('Admission requires exactly one real shadow per color')
+    existing_paths={(ROOT/r['run_dir']).resolve() for r in reused}
+    if any((ROOT/j['run_dir']).resolve() in existing_paths for j in plan['runs']):
+        raise ProtocolError('Never relaunch or overwrite a reused successful shadow')
+    records=[]
+    for record in reused:
+        audited=audit_shadow(ROOT/record['run_dir'],config,health)
+        if audited['color']!=record['color'] or audited['files_sha256']!=record['files_sha256']:
+            raise ProtocolError('Reused shadow color or exact saved-file evidence changed')
+        records.append(audited)
+    return records
+
 def execute(plan_path):
     plan=json.loads(plan_path.read_text());out=ROOT/plan['experiment_dir']
     assert not out.exists(),'Fresh experiment outputs required'
     assert all(not (ROOT/job['run_dir']).exists() for job in plan['runs'])
     assert all(sha256_file(ROOT/name)==h for name,h in plan['source_sha256'].items()),'Frozen source changed'
     assert sha256_file(ROOT/'configs/default.json')==plan['config_sha256']
+    reused=verify_reused_shadows(plan,load_config(ROOT/'configs/default.json'),pinned_health())
     subprocess.run(['git','diff','--quiet'],cwd=ROOT,check=True);subprocess.run(['git','diff','--cached','--quiet'],cwd=ROOT,check=True)
     assert query(['nvidia-smi','--query-compute-apps=pid,process_name','--format=csv,noheader'])=='','GPU busy before launch'
     with socket.socket() as sock:assert sock.connect_ex(('127.0.0.1',8766))!=0,'Loopback model port occupied'
     out.mkdir();life={'kind':'intern_dual_live_authorized_experiment','started_utc':utc(),'plan_sha256':sha256_file(plan_path),
         'git_head':query(['git','-C',str(ROOT),'rev-parse','HEAD']),'gpu_before':query(['nvidia-smi','--query-gpu=name,memory.used','--format=csv,noheader']),
         'gpu_compute_before':'','source_sha256':code_hashes(),'automatic_retries':0,'runs':[],'complete':False,'control_started':False}
+    if reused:life['reused_shadows']=reused
     life_path=out/'lifecycle.json';write_json(life_path,life);service=None;child=None;child_stream=None;service_stream=None
     env=dict(os.environ);env['OMNI_KIT_ALLOW_ROOT']='1';env['LD_LIBRARY_PATH']=''
     env['IVD_ISAAC_PRELAUNCH_LD_LIBRARY_PATH']=env['LD_LIBRARY_PATH']
@@ -70,6 +90,7 @@ def execute(plan_path):
                 if time.monotonic()>deadline:raise
                 time.sleep(1)
         assert health['requests_completed']==0;life['initial_health']=health;write_json(life_path,life)
+        verify_reused_shadows(plan,load_config(ROOT/'configs/default.json'),health)
         baseline_report=query(['nvidia-smi','--query-compute-apps=pid,process_name,used_memory','--format=csv,noheader'])
         life['gpu_service_baseline']=gpu_baseline(baseline_report,container_service_pid=service.pid);write_json(life_path,life)
         for job in plan['runs']:
@@ -77,7 +98,7 @@ def execute(plan_path):
             if job['mode']=='control':
                 if not life.get('admission_created'):
                     try:
-                        proof=write_admission([ROOT/j['run_dir'] for j in plan['runs'] if j['mode']=='shadow'],out/'admission.json',load_config(ROOT/'configs/default.json'),client.health())
+                        proof=write_admission(admission_directories(plan),out/'admission.json',load_config(ROOT/'configs/default.json'),client.health())
                         life['admission_created']=True;life['admission_sha256']=sha256_file(out/'admission.json')
                     except Exception as exc:
                         life['admission_created']=False;life['gate_rejection']=f'{type(exc).__name__}: {exc}';life['complete']=True
@@ -105,7 +126,7 @@ def execute(plan_path):
             record['gpu_after_isaac_verified']=verify_gpu_after_episode(life['gpu_service_baseline'],report);write_json(life_path,life)
         else:life['complete']=True
         life['final_health']=check_health(client.health());life['prediction_calls']=life['final_health']['requests_completed']
-        assert life['prediction_calls']<=34
+        assert life['prediction_calls']<=plan['max_prediction_calls']
     except BaseException as exc:
         life['error']=f'{type(exc).__name__}: {exc}'
     finally:
@@ -122,6 +143,8 @@ def execute(plan_path):
         life.update(ended_utc=utc(),gpu_compute_after=query(['nvidia-smi','--query-compute-apps=pid,process_name,used_memory','--format=csv,noheader']),own_processes_closed=True)
         write_json(life_path,life);archive=out/'evidence.tar.gz'
         with tarfile.open(archive,'w:gz') as t:
+            for record in reused:
+                path=Path(record['directory']);t.add(path,arcname=path.name)
             for record in life['runs']:
                 path=ROOT/record['run_dir']
                 if path.exists():t.add(path,arcname=path.name)

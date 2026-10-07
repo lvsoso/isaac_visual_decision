@@ -1,0 +1,17 @@
+test_changed_extra_file_cannot_be_reused_by_summary_claim (tests.test_candidate_reuse.ReuseTests.test_changed_extra_file_cannot_be_reused_by_summary_claim) ... ok
+test_duplicate_color_or_relaunch_of_successful_shadow_refused (tests.test_candidate_reuse.ReuseTests.test_duplicate_color_or_relaunch_of_successful_shadow_refused) ... ok
+test_existing_two_new_shadows_remain_supported (tests.test_candidate_reuse.ReuseTests.test_existing_two_new_shadows_remain_supported) ... ok
+test_no_model_inference_or_scene_is_used_to_verify_saved_blue (tests.test_candidate_reuse.ReuseTests.test_no_model_inference_or_scene_is_used_to_verify_saved_blue) ... ok
+test_real_blue_reaudited_and_not_in_new_launches (tests.test_candidate_reuse.ReuseTests.test_real_blue_reaudited_and_not_in_new_launches) ... ok
+test_unsupported_color_or_changed_model_source_is_rejected (tests.test_candidate_reuse.ReuseTests.test_unsupported_color_or_changed_model_source_is_rejected) ... ok
+test_any_extra_host_gpu_pid_remains_terminal (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_any_extra_host_gpu_pid_remains_terminal) ... ok
+test_baseline_requires_exactly_one_gpu_process_after_idle_precheck (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_baseline_requires_exactly_one_gpu_process_after_idle_precheck) ... ok
+test_gpu_host_pid_need_not_equal_container_service_pid (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_gpu_host_pid_need_not_equal_container_service_pid) ... ok
+test_lost_or_replaced_model_gpu_process_is_rejected (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_lost_or_replaced_model_gpu_process_is_rejected) ... ok
+test_same_namespace_also_passes_without_special_case (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_same_namespace_also_passes_without_special_case) ... ok
+test_whitespace_order_and_container_pid_are_recorded_separately (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_whitespace_order_and_container_pid_are_recorded_separately) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 3.419s
+
+OK
