@@ -1,0 +1,153 @@
+{
+  "tests": 255,
+  "passed": true,
+  "offline_actual_request_single_factor_checks": 42,
+  "legacy_dual_request_bytes_exact": 14,
+  "legacy_real_response_audit_count": 14,
+  "coverage": [
+    {
+      "function": "image_cells",
+      "covered": 2,
+      "executable": 2,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "image_request",
+      "covered": 7,
+      "executable": 7,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "verify_image_response",
+      "covered": 29,
+      "executable": 29,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "summarize_images",
+      "covered": 26,
+      "executable": 26,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "check_image_reference",
+      "covered": 27,
+      "executable": 30,
+      "percent": 90.0,
+      "uncovered": [
+        104,
+        107,
+        124
+      ]
+    },
+    {
+      "function": "image_source_hashes",
+      "covered": 1,
+      "executable": 1,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "run_image_replay",
+      "covered": 65,
+      "executable": 68,
+      "percent": 95.59,
+      "uncovered": [
+        145,
+        157,
+        158
+      ]
+    },
+    {
+      "function": "build_image_report",
+      "covered": 57,
+      "executable": 63,
+      "percent": 90.48,
+      "uncovered": [
+        29,
+        32,
+        39,
+        41,
+        61,
+        67
+      ]
+    },
+    {
+      "function": "TokenizerAudit.__init__",
+      "covered": 3,
+      "executable": 3,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "TokenizerAudit.__call__",
+      "covered": 9,
+      "executable": 9,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "TokenizerAudit.__getattr__",
+      "covered": 1,
+      "executable": 1,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "OfficialEngine.predict",
+      "covered": 19,
+      "executable": 19,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "DecisionBridge.__init__",
+      "covered": 8,
+      "executable": 8,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "DecisionBridge.health",
+      "covered": 4,
+      "executable": 4,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "DecisionBridge.predict",
+      "covered": 27,
+      "executable": 28,
+      "percent": 96.43,
+      "uncovered": [
+        224
+      ]
+    },
+    {
+      "function": "ProcessorAudit.__call__",
+      "covered": 11,
+      "executable": 11,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "make_request",
+      "covered": 14,
+      "executable": 14,
+      "percent": 100.0,
+      "uncovered": []
+    },
+    {
+      "function": "validate_request",
+      "covered": 23,
+      "executable": 23,
+      "percent": 100.0,
+      "uncovered": []
+    }
+  ],
+  "scope": "Full CPU contracts + offline frozen input construction and audits of existing saved real GPU artifacts; no new model calls, renderer or physics."
+}

@@ -119,6 +119,27 @@ class TokenizerAuditContracts(unittest.TestCase):
         engine=self.engine(predict)
         with self.assertRaisesRegex(ProtocolError,'vision|visual'):engine.predict({'state':{},'images':[]})
 
+    def test_text_input_length_limit_is_enforced(self):
+        def predict(request):self.proxy('text');return MockEngine().predict(request)
+        engine=self.engine(predict);engine.metadata['max_length']=3
+        with self.assertRaisesRegex(ProtocolError,'length'):engine.predict({'state':{},'images':[]})
+
+    def test_image_prediction_uses_processor_not_stale_tokenizer_audit(self):
+        from PIL import Image
+        import hashlib
+        with tempfile.TemporaryDirectory() as tmp:
+            path=Path(tmp)/'image.png';Image.new('RGB',(2,2),'red').save(path)
+            rgb=hashlib.sha256(Image.open(path).convert('RGB').tobytes()).hexdigest()
+            def predict(request):
+                engine.processor_audit.last={'encoding_path':'processor_images','normalized_rgb_sha256s':[rgb],'image_grid_thw':[[1,2,2]],'input_tokens':12}
+                return MockEngine().predict(request)
+            engine=self.engine(predict);self.proxy.last={'stale':'text input'}
+            raw=engine.predict({'state':{},'images':[str(path)]})
+            self.assertEqual(raw['_vision_audit']['encoding_path'],'processor_images')
+            self.assertIsNone(self.proxy.last)
+            engine.engine.predict=lambda request:MockEngine().predict(request)
+            with self.assertRaisesRegex(ProtocolError,'processor'):engine.predict({'state':{},'images':[str(path)]})
+
 
 class ImageRequestContracts(unittest.TestCase):
     def setUp(self):
@@ -214,6 +235,40 @@ class ImageReplayContracts(unittest.TestCase):
         self.client.predict=corrupt;result=self.run_replay()
         self.assertFalse(result['complete']);self.assertEqual(result['api_completed'],1);self.assertIn('request',result['error'].lower())
 
+    def test_busy_service_refuses_before_output(self):
+        original=self.client.health
+        self.client.health=lambda **kw:{**original(**kw),'busy':True}
+        with self.assertRaisesRegex(ProtocolError,'busy'):self.run_replay()
+        self.assertFalse(self.output.exists())
+
+    def test_capture_provenance_change_invalidates(self):
+        predict=self.client.predict;changed=[False]
+        def alter(request):
+            if not changed[0]:
+                changed[0]=True
+                with (self.source/'snapshots.json').open('a') as stream:stream.write('\n')
+            return predict(request)
+        self.client.predict=alter;result=self.run_replay()
+        self.assertFalse(result['complete']);self.assertIn('source',result['error'].lower())
+
+    def test_health_provenance_change_invalidates(self):
+        original=self.client.health;calls=[0]
+        def alter(**kw):
+            calls[0]+=1;health=original(**kw)
+            if calls[0]>1:health['temperature']=9.0
+            return health
+        self.client.health=alter;result=self.run_replay()
+        self.assertFalse(result['complete']);self.assertIn('provenance',result['error'].lower())
+
+    def test_unexpected_service_request_count_invalidates(self):
+        original=self.client.health;calls=[0]
+        def alter(**kw):
+            calls[0]+=1;health=original(**kw)
+            if calls[0]>1:health['requests_completed']+=1
+            return health
+        self.client.health=alter;result=self.run_replay()
+        self.assertFalse(result['complete']);self.assertIn('count',result['error'].lower())
+
 
 class ImageResponseContracts(unittest.TestCase):
     def test_zero_image_real_flags_require_actual_tokenizer_only_evidence(self):
@@ -226,6 +281,23 @@ class ImageResponseContracts(unittest.TestCase):
         with self.assertRaisesRegex(ProtocolError,'vision|visual|token'):a.verify_image_response([],raw,health)
         raw['_vision_audit']['vision_token_counts']={token:0 for token in ['<|vision_start|>','<|vision_end|>','<|image_pad|>','<|video_pad|>']}
         self.assertEqual(a.verify_image_response([],raw,health).action,'pre_grasp')
+
+    def test_nonempty_image_audit_checks_actual_rgb_grid_path_and_calibration(self):
+        import hashlib
+        from PIL import Image
+        a=importlib.import_module('visual_lab.image_ablation')
+        png=encode_rgb_bytes(2,2,bytes([20,30,150]*4))
+        raw=MockEngine().predict({'state':{}});raw['_bridge']={'is_mock':False,'image_count':1,'image_sha256s':[hashlib.sha256(png).hexdigest()],'inference_py_sha256':'CPU-CONTRACT'}
+        raw['calibration']={'temperature':1.0}
+        health={'max_length':8192,'inference_py_sha256':'CPU-CONTRACT','temperature':1.0}
+        with Image.open(io.BytesIO(png)) as image:rgb=hashlib.sha256(image.convert('RGB').tobytes()).hexdigest()
+        raw['_vision_audit']={'encoding_path':'processor_images','input_tokens':100,'normalized_rgb_sha256s':[rgb],'image_grid_thw':[[1,2,2]]}
+        self.assertEqual(a.verify_image_response([png],raw,health).action,'pre_grasp')
+        for key,bad in [('normalized_rgb_sha256s',[]),('image_grid_thw',[]),('encoding_path','tokenizer_only'),('input_tokens',8193)]:
+            altered=copy.deepcopy(raw);altered['_vision_audit'][key]=bad
+            with self.assertRaises(ProtocolError):a.verify_image_response([png],altered,health)
+        raw['calibration']['temperature']=2.0
+        with self.assertRaisesRegex(ProtocolError,'provenance'):a.verify_image_response([png],raw,health)
 
 
 class ImageReportContracts(unittest.TestCase):
@@ -243,6 +315,24 @@ class ImageReportContracts(unittest.TestCase):
         with self.assertRaises(FileExistsError):builder.build_image_report(self.source,self.output,report,allow_mock=True)
         response=next((self.output/'responses').glob('*.json'));response.write_text('{}')
         with self.assertRaisesRegex(LabError,'hash'):builder.build_image_report(self.source,self.output,self.root/'bad.html',allow_mock=True)
+
+    def test_report_embedded_metadata_cannot_close_script_or_request_network(self):
+        self.run_replay();builder=importlib.import_module('tools.make_image_report')
+        path=self.output/'manifest.json';manifest=json.loads(path.read_text());manifest['note']='</script><script>alert(1)</script>&\u2028\u2029';path.write_text(json.dumps(manifest))
+        report=builder.build_image_report(self.source,self.output,self.root/'safe.html',allow_mock=True)
+        text=report.read_text()
+        self.assertNotIn('</script><script>alert',text)
+        self.assertNotRegex(text,r'<(?:script|link)[^>]+(?:src|href)=["\']https?://')
+        data=json.loads(re.search(r'<script id="report-data" type="application/json">(.*?)</script>',text,re.S).group(1))
+        self.assertEqual(data['manifest']['note'],manifest['note'])
+
+    def test_report_rejects_synthetic_as_real_incomplete_and_invalidated_runs(self):
+        self.run_replay();builder=importlib.import_module('tools.make_image_report')
+        with self.assertRaisesRegex(LabError,'mock|synthetic'):builder.build_image_report(self.source,self.output,self.root/'real.html')
+        path=self.output/'summary.json';summary=json.loads(path.read_text());summary['complete']=False;path.write_text(json.dumps(summary))
+        with self.assertRaisesRegex(LabError,'complete'):builder.build_image_report(self.source,self.output,self.root/'partial.html',allow_mock=True)
+        (self.output/'INVALIDATED.json').write_text('{}')
+        with self.assertRaisesRegex(LabError,'Invalidated'):builder.build_image_report(self.source,self.output,self.root/'invalid.html',allow_mock=True)
 
 
 if __name__=='__main__':unittest.main()

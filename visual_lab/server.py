@@ -27,6 +27,7 @@ from .audit import sha256_file
 MAX_BODY = 5 * 1024 * 1024
 MAX_PNG = 3 * 1024 * 1024
 MAX_PIXELS = 4_000_000
+VISION_TOKENS = ('<|vision_start|>', '<|vision_end|>', '<|image_pad|>', '<|video_pad|>')
 
 
 def validate_png(data: str) -> bytes:
@@ -77,7 +78,29 @@ class ProcessorAudit:
         grid = batch.get("image_grid_thw")
         self.last = {"normalized_rgb_sha256s": rgb_hashes,
                      "image_grid_thw": grid.tolist() if grid is not None else [],
-                     "input_tokens": int(batch["input_ids"].shape[-1])}
+                     "input_tokens": int(batch["input_ids"].shape[-1]), "encoding_path": "processor_images"}
+        return batch
+
+
+class TokenizerAudit:
+    """Observe the official no-image branch; never add an image or alter its batch."""
+    def __init__(self, tokenizer):
+        self.tokenizer = tokenizer
+        self.last = None
+        self.vision_ids = {token: tokenizer.convert_tokens_to_ids(token) for token in VISION_TOKENS}
+
+    def __getattr__(self, name):
+        return getattr(self.tokenizer, name)
+
+    def __call__(self, *args, **kwargs):
+        if kwargs.get('truncation'):
+            raise ProtocolError('Tokenizer truncation is forbidden')
+        kwargs['truncation'] = False
+        batch = self.tokenizer(*args, **kwargs)
+        ids = batch['input_ids'].tolist()[0]
+        self.last = {'encoding_path': 'tokenizer_only', 'input_tokens': int(batch['input_ids'].shape[-1]),
+                     'normalized_rgb_sha256s': [], 'image_grid_thw': [],
+                     'vision_token_counts': {token: ids.count(token_id) for token, token_id in self.vision_ids.items()}}
         return batch
 
 
@@ -110,10 +133,14 @@ class OfficialEngine:
             raise ProtocolError("This checkpoint does not expose DecisionEngine.predict(request)")
         self.processor_audit = ProcessorAudit(self.engine.backend.processor)
         self.engine.backend.processor = self.processor_audit
+        # Leave processor.tokenizer untouched so the existing image path is identical.
+        self.tokenizer_audit = TokenizerAudit(self.engine.backend.tokenizer)
+        self.engine.backend.tokenizer = self.tokenizer_audit
         self.metadata = {"is_mock": False, "checkpoint": str(self.checkpoint),
                          "inference_py_sha256": digest, "config_sha256": sha256_file(self.checkpoint / "config.json"),
                          "device": device, "dtype": dtype, "max_length": max_length,
-                          "temperature": getattr(self.engine, "temperature", temperature), "vision_input_audit": True,
+                           "temperature": getattr(self.engine, "temperature", temperature), "vision_input_audit": True,
+                           "text_input_audit": True,
                           "model_files_sha256": {name: sha256_file(self.checkpoint/name) for name in
                               ("config.json", "preprocessor_config.json", "processor_config.json", "tokenizer_config.json",
                                "chat_template.jinja", "DOWNLOAD_RECEIPT.json") if (self.checkpoint/name).is_file()}}
@@ -125,14 +152,19 @@ class OfficialEngine:
             with Image.open(path) as image:
                 expected.append(hashlib.sha256(image.convert("RGB").tobytes()).hexdigest())
         self.processor_audit.last = None
+        self.tokenizer_audit.last = None
         result = self.engine.predict(request)
         audit = self.processor_audit.last
         if expected:
             if not audit or audit["normalized_rgb_sha256s"] != expected or len(audit["image_grid_thw"]) != len(expected):
                 raise ProtocolError("Official processor image count/order does not match the request")
-            if audit["input_tokens"] > self.metadata["max_length"]:
-                raise ProtocolError("Official processor input exceeds the non-truncating length limit")
-            result["_vision_audit"] = copy.deepcopy(audit)
+        else:
+            audit = self.tokenizer_audit.last
+            if not audit or any(audit['vision_token_counts'].values()) or self.processor_audit.last is not None:
+                raise ProtocolError('Official text audit missing or unexpected visual tokens/processor input')
+        if not 0 < audit['input_tokens'] <= self.metadata['max_length']:
+            raise ProtocolError('Official input exceeds the non-truncating length limit')
+        result['_vision_audit'] = copy.deepcopy(audit)
         return result
 
 
@@ -155,9 +187,10 @@ class MockEngine:
 
 
 class DecisionBridge:
-    def __init__(self, engine, token: str | None = None):
+    def __init__(self, engine, token: str | None = None, *, allow_text_only: bool = False):
         self.engine = engine
         self.token = token
+        self.allow_text_only = allow_text_only
         self.lock = threading.Lock()
         self.started = time.monotonic()
         self.requests_completed = 0
@@ -166,11 +199,12 @@ class DecisionBridge:
 
     def health(self) -> dict:
         return {"status": "ok", "bridge_schema": 1, "supports_images": True, "max_images": MAX_IMAGES,
+                "supports_text_only_ablation": self.allow_text_only,
                 "busy": self.lock.locked(), "requests_completed": self.requests_completed,
                 "uptime_seconds": round(time.monotonic() - self.started, 3), **self.source_hashes, **self.engine.metadata}
 
     def predict(self, request: dict) -> dict:
-        validate_request(request)
+        validate_request(request, allow_empty_images=self.allow_text_only)
         images = [validate_png(item["data"]) for item in request["images"]]
         if not self.lock.acquire(blocking=False):
             raise BlockingIOError("GPU is busy; one request is allowed at a time")
@@ -190,7 +224,7 @@ class DecisionBridge:
                     raise ProtocolError("Official engine did not return a dict")
                 result = copy.deepcopy(result)
                 result["_bridge"] = {"bridge_schema": 1, "is_mock": self.engine.metadata["is_mock"],
-                    "image_sha256": hashlib.sha256(images[0]).hexdigest(),
+                    "image_sha256": hashlib.sha256(images[0]).hexdigest() if images else None,
                     "image_sha256s": [hashlib.sha256(raw).hexdigest() for raw in images],
                     "image_count": len(images), "inference_py_sha256": self.engine.metadata.get("inference_py_sha256"),
                     "engine_ms": (time.perf_counter() - start) * 1000}

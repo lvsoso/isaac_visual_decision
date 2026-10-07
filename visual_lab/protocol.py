@@ -34,9 +34,9 @@ INSTRUCTIONS = (
 )
 
 
-def make_request(png_bytes: bytes | list[bytes], state: dict) -> dict:
+def make_request(png_bytes: bytes | list[bytes], state: dict, *, allow_empty_images: bool = False) -> dict:
     images = png_bytes if isinstance(png_bytes, list) else [png_bytes]
-    if not 1 <= len(images) <= MAX_IMAGES:
+    if not (0 if allow_empty_images else 1) <= len(images) <= MAX_IMAGES:
         raise ProtocolError("Expected one or two current PNG images")
     for image in images:
         if not isinstance(image, bytes) or not image.startswith(b"\x89PNG\r\n\x1a\n"):
@@ -53,7 +53,7 @@ def make_request(png_bytes: bytes | list[bytes], state: dict) -> dict:
     return result
 
 
-def validate_request(request: dict) -> None:
+def validate_request(request: dict, *, allow_empty_images: bool = False) -> None:
     if not isinstance(request, dict) or set(request) != {"state", "images", "questions"}:
         raise ProtocolError("This bridge accepts exactly state, images, questions")
     if not isinstance(request["state"], dict):
@@ -71,7 +71,7 @@ def validate_request(request: dict) -> None:
     except (KeyError, TypeError) as exc:
         raise ProtocolError("Malformed decision schema") from exc
     images = request["images"]
-    if not isinstance(images, list) or not 1 <= len(images) <= MAX_IMAGES:
+    if not isinstance(images, list) or not (0 if allow_empty_images else 1) <= len(images) <= MAX_IMAGES:
         raise ProtocolError("This bridge requires one or two current RGB images")
     for item in images:
         if not isinstance(item, dict) or set(item) != {"type", "data"} or item["type"] != "image/png" or not isinstance(item["data"], str):

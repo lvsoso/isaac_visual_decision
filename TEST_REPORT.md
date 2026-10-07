@@ -192,3 +192,13 @@ ffmpeg 的真实 Isaac 视频编码未执行；本次没有提供真实相机截
 - 最终完整 **228/228 CPU测试通过**，12个所选函数行覆盖最低81.82%，HTML生成器96.23%；归档真实84响应HTML离线重建逐字节一致，见 `unittest_prompt_final_20261006.txt` / `coverage_prompt_final_20261006.json`。推理前输入核查及合成HTML浏览器验证单独保留，不冒充正式GPU结果。
 - [新的离线HTML](docs/reports/prompt_language_spatial_20261006.html) 内嵌28原图与84完整输入/响应；真实Chrome桌面1440px / 窄屏500px每套462项交互检查通过，84单元格与实际state/PNG、全部14配对、两个原始平局、CSV/JSON导出及主题有效。截图目视检查通过；原图自然尺寸640×480，无全局横向溢出。CLI完成DOM/截图后仍需有界清理自己的测试进程，未称干净退出；见 `prompt_html_browser_real_20261006.json`。合成夹具两套459项另见 `prompt_html_browser_synthetic_20261006.json`，明确不是模型质量证据。
 - 结果及方法见 [提示表达对照结果](docs/提示表达对照结果.md)。本轮固定六种文案和顺序后没有按响应改词；只是已观察过的单一场景七个相关状态，不是84个独立任务、泛化显著性或自主抓放成功率。即使中文空间描述两色均7/7，也不自动运行visual / 扩展独立场景。
+
+### 无图 / 单图 / 双图：实现验证，正式GPU推理待执行
+
+- 用户确认执行图片删除诊断。修改前main / origin/main=`224df70`且工作区干净；先固定 [42次设计](plans/image-ablation.md) 和18项新测试，实际RED为17项缺少实验API / tokenizer审计 / 重放及报告实现、1项默认无图拒绝通过，原输出归档 `unittest_image_ablation_red_20261006.txt`，测试与计划已提交推送 `b31d954`。
+- GREEN实现显式 `--allow-text-only-ablation` 实验服务；make_request / validate_request / 默认bridge仍拒绝空图片，仿真流程未变。实验请求仅删除 `images` 为0/1/2张原PNG，固定中文明确颜色 / 空间描述及全部state/questions，包括原相机文字。无黑图或占位图，无私有方块真值 / 参考动作入state，无机器人控制。
+- 已检查固定官方inference.py：无图分支调用tokenizer，有图调用processor。只增加审计代理，不改官方源码、模板或张量；无图核验完整token数、0视觉特殊token / 0RGB / 0grid。有图保持原processor.tokenizer，新增缓存清空保证不会把前次图像审计当作无图证据。新HTTP集成测试证明无图内部路径为空、response图片计数0 / 哈希为空，默认接口仍拒绝。
+- 追加9项边界 / 安全合同，捕获并修正新HTML的嵌入JSON转义缺失：27项中1项真实RED，随后全部GREEN；两次RED原始输出均保留。最终完整 **255/255 CPU测试通过**，18个所选请求 / 审计 / 重放 / 报告函数行覆盖最低90.00%，非模型或全工程覆盖；生成器90.48%。见 `unittest_image_ablation_full_20261006.txt` / `coverage_image_ablation_20261006.json`。
+- 本地构造42份真实冻结输入，同一颜色 / 阶段的state/questions逐字不变，0/1/2图各14份；14份双图请求与27批次 `zh_named_relative` 文件逐字节一致，旧14份真实响应离线审计通过。这是推理前输入核查，不是新的模型调用，见 `image_input_review_20261006.json`。
+- 新离线HTML用显式mock响应 / 旧原PNG夹具验证：Chrome桌面1440px / 窄屏500px每套397项交互检查通过，42格、六配对的全部七阶段、0/1/2图片精确导出、无图页不出现img、完整概率、主题和CSV有效。目视检查通过，无全局横向溢出；CLI完成DOM/截图后有界清理自己的进程，未宣称干净退出。见 `image_html_browser_synthetic_20261006.json`，明确不是模型质量证据。
+- 本节截至实现提交只验证CPU合同、保存工件离线审计和报告展示；**42次正式真实推理尚未执行**。原8765模型服务已停止、GPU空闲；准备以独立环境 / loopback8766启动实验专用服务，实验结束仅清理本轮自建进程，不运行新的Isaac / 物理 / 相机。

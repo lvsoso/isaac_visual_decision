@@ -19,6 +19,7 @@ def main():
     p.add_argument("--host", default="127.0.0.1")
     p.add_argument("--port", type=int, default=8765)
     p.add_argument("--mock", action="store_true", help="NO MODEL: protocol fixture, forbidden by real simulator modes")
+    p.add_argument("--allow-text-only-ablation", action="store_true", help="EXPERIMENT ONLY: allow empty images; default simulator bridge still requires RGB")
     a = p.parse_args()
     token = os.getenv("DECISION_API_TOKEN")
     if a.host not in {"127.0.0.1", "localhost"} and not token:
@@ -30,7 +31,7 @@ def main():
     engine = MockEngine() if a.mock else OfficialEngine(a.checkpoint, trust_model_code=a.trust_model_code,
         expected_sha=a.expected_inference_sha256, device=a.device, dtype=a.dtype,
         max_length=a.max_length, temperature=a.temperature)
-    bridge = DecisionBridge(engine, token)
+    bridge = DecisionBridge(engine, token, allow_text_only=a.allow_text_only_ablation)
     server = make_http_server(a.host, a.port, bridge)
     print(json.dumps(bridge.health(), ensure_ascii=False, indent=2), flush=True)
     print(f"Listening on http://{a.host}:{server.server_port}; one inference at a time", flush=True)
