@@ -1,0 +1,28 @@
+{
+  "method": "stdlib trace / selected AST statement-lines, not branch/full-driver coverage",
+  "cpu_tests": 7,
+  "real_model_calls": 0,
+  "gpu_scene_verified_by_tests": false,
+  "files": {
+    "tools/run_candidate_experiment.py": {
+      "selected_functions": [
+        "gpu_baseline",
+        "gpu_pids",
+        "verify_gpu_after_episode"
+      ],
+      "statement_lines": 14,
+      "covered_lines": 14,
+      "line_percent": 100.0,
+      "uncovered_lines": []
+    },
+    "test_reports/candidate_control_auditor_20261007.py": {
+      "selected_functions": [
+        "render"
+      ],
+      "statement_lines": 15,
+      "covered_lines": 15,
+      "line_percent": 100.0,
+      "uncovered_lines": []
+    }
+  }
+}

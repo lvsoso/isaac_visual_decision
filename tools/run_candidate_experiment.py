@@ -7,10 +7,33 @@ from visual_lab.audit import sha256_file,write_json
 from visual_lab.candidate_control import check_health,code_hashes,write_admission,validate_admission
 from visual_lab.client import DecisionClient
 from visual_lab.core import load_config
+from visual_lab.core import ProtocolError
 
 ROOT=Path(__file__).resolve().parents[1]
 def utc():return datetime.datetime.now(datetime.timezone.utc).isoformat()
 def query(args):return subprocess.run(args,capture_output=True,text=True,check=True).stdout.strip()
+
+def gpu_pids(report):
+    pids=[]
+    for line in report.splitlines():
+        value=line.split(',',1)[0].strip()
+        if not value.isdecimal() or int(value)<=0:raise ProtocolError('GPU process report has an invalid host PID')
+        pids.append(int(value))
+    if len(set(pids))!=len(pids):raise ProtocolError('Duplicate GPU process host PID')
+    return sorted(pids)
+
+def gpu_baseline(report,*,container_service_pid):
+    host_pids=gpu_pids(report)
+    if len(host_pids)!=1:raise ProtocolError('Require exactly one model GPU process after an idle precheck')
+    return {'container_service_pid':container_service_pid,'host_gpu_pids':host_pids,'initial_compute_report':report,
+        'accounting':'NVML host PID identity pinned after only our service starts; never compare to container namespace PID'}
+
+def verify_gpu_after_episode(baseline,report):
+    observed=gpu_pids(report)
+    if observed!=baseline['host_gpu_pids']:
+        raise ProtocolError(f'GPU process identities changed: expected host PIDs {baseline["host_gpu_pids"]}, observed {observed}')
+    return {'container_service_pid':baseline['container_service_pid'],'observed_host_gpu_pids':observed,
+        'observed_compute_report':report,'only_pinned_model_gpu_process_remains':True}
 
 def execute(plan_path):
     plan=json.loads(plan_path.read_text());out=ROOT/plan['experiment_dir']
@@ -47,6 +70,8 @@ def execute(plan_path):
                 if time.monotonic()>deadline:raise
                 time.sleep(1)
         assert health['requests_completed']==0;life['initial_health']=health;write_json(life_path,life)
+        baseline_report=query(['nvidia-smi','--query-compute-apps=pid,process_name,used_memory','--format=csv,noheader'])
+        life['gpu_service_baseline']=gpu_baseline(baseline_report,container_service_pid=service.pid);write_json(life_path,life)
         for job in plan['runs']:
             assert all(sha256_file(ROOT/name)==h for name,h in plan['source_sha256'].items()),'Source changed during experiment'
             if job['mode']=='control':
@@ -75,8 +100,9 @@ def execute(plan_path):
             assert returncode==0 and record.get('summary',{}).get('complete') and record['summary']['strict_success'],'First failed episode stops remaining launches; no fallback or retry'
             assert record['service_count_after']-before==record['summary']['api_completed']==record['summary']['api_attempts']
             assert record['summary']['api_attempts']<=job['max_decisions']
-            active=query(['nvidia-smi','--query-compute-apps=pid','--format=csv,noheader']).splitlines()
-            assert active==[str(service.pid)],'Unexpected extra GPU process after own Isaac exit'
+            report=query(['nvidia-smi','--query-compute-apps=pid,process_name,used_memory','--format=csv,noheader'])
+            record['gpu_compute_after_isaac_exit']=report;write_json(life_path,life)
+            record['gpu_after_isaac_verified']=verify_gpu_after_episode(life['gpu_service_baseline'],report);write_json(life_path,life)
         else:life['complete']=True
         life['final_health']=check_health(client.health());life['prediction_calls']=life['final_health']['requests_completed']
         assert life['prediction_calls']<=34

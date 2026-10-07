@@ -1,0 +1,16 @@
+test_any_extra_host_gpu_pid_remains_terminal (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_any_extra_host_gpu_pid_remains_terminal) ... ok
+test_baseline_requires_exactly_one_gpu_process_after_idle_precheck (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_baseline_requires_exactly_one_gpu_process_after_idle_precheck) ... ok
+test_gpu_host_pid_need_not_equal_container_service_pid (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_gpu_host_pid_need_not_equal_container_service_pid) ... ok
+test_lost_or_replaced_model_gpu_process_is_rejected (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_lost_or_replaced_model_gpu_process_is_rejected) ... ok
+test_same_namespace_also_passes_without_special_case (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_same_namespace_also_passes_without_special_case) ... ok
+test_whitespace_order_and_container_pid_are_recorded_separately (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_whitespace_order_and_container_pid_are_recorded_separately) ... ok
+test_run_label_does_not_become_last_details_label_on_second_stage (tests.test_candidate_report_labels.ReportLabelTests.test_run_label_does_not_become_last_details_label_on_second_stage) ... ok
+test_blue_real_seven_of_seven_not_pair_admission_or_control (tests.test_candidate_41_evidence.Candidate41EvidenceTests.test_blue_real_seven_of_seven_not_pair_admission_or_control) ... ok
+test_changed_saved_request_is_rejected (tests.test_candidate_41_evidence.Candidate41EvidenceTests.test_changed_saved_request_is_rejected) ... ok
+test_summary_claim_cannot_make_six_of_seven_eligible (tests.test_candidate_41_evidence.Candidate41EvidenceTests.test_summary_claim_cannot_make_six_of_seven_eligible) ... ok
+test_tied_lower_choice_is_official_not_reselected (tests.test_candidate_41_evidence.Candidate41EvidenceTests.test_tied_lower_choice_is_official_not_reselected) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 1.568s
+
+OK

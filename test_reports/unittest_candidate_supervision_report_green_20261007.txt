@@ -1,0 +1,16 @@
+test_any_extra_host_gpu_pid_remains_terminal (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_any_extra_host_gpu_pid_remains_terminal) ... ok
+test_baseline_requires_exactly_one_gpu_process_after_idle_precheck (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_baseline_requires_exactly_one_gpu_process_after_idle_precheck) ... ok
+test_gpu_host_pid_need_not_equal_container_service_pid (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_gpu_host_pid_need_not_equal_container_service_pid) ... ok
+test_lost_or_replaced_model_gpu_process_is_rejected (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_lost_or_replaced_model_gpu_process_is_rejected) ... ok
+test_same_namespace_also_passes_without_special_case (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_same_namespace_also_passes_without_special_case) ... ok
+test_whitespace_order_and_container_pid_are_recorded_separately (tests.test_candidate_gpu_supervision.GPUSupervisionTests.test_whitespace_order_and_container_pid_are_recorded_separately) ... ok
+test_run_label_does_not_become_last_details_label_on_second_stage (tests.test_candidate_report_labels.ReportLabelTests.test_run_label_does_not_become_last_details_label_on_second_stage) ... ok
+test_changed_template_version_or_budget_is_rejected (tests.test_candidate_frozen_plan.FrozenPlanTests.test_changed_template_version_or_budget_is_rejected) ... ok
+test_explicit_new_plan_is_verified_without_replacing_old_plan (tests.test_candidate_frozen_plan.FrozenPlanTests.test_explicit_new_plan_is_verified_without_replacing_old_plan) ... ok
+test_new_plan_cannot_be_reported_as_old_aborted_batch (tests.test_candidate_frozen_plan.FrozenPlanTests.test_new_plan_cannot_be_reported_as_old_aborted_batch) ... ok
+test_zero_prediction_no_scene_no_control_and_deterministic_report (tests.test_candidate_startup_evidence.StartupEvidenceTests.test_zero_prediction_no_scene_no_control_and_deterministic_report) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.019s
+
+OK

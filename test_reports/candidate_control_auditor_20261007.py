@@ -114,7 +114,7 @@ def render(payload,report):
             page.append('</div><table><tr><th>八候选</th><th>原始模型概率</th></tr>')
             for action in ACTIONS:page.append(f'<tr><td>{action}</td><td>{repr(row["probabilities"][action])}</td></tr>')
             page.append('</table>')
-            for title,key in [('实际双图输入','request'),('原始服务响应','response'),('物理执行结果','phase_outcome'),('等待期间私有快照，仅作审计','private_frozen_state')]:page.append(f'<details><summary>{title}</summary><pre>{esc(row[key])}</pre></details>')
+            for detail_title,key in [('实际双图输入','request'),('原始服务响应','response'),('物理执行结果','phase_outcome'),('等待期间私有快照，仅作审计','private_frozen_state')]:page.append(f'<details><summary>{detail_title}</summary><pre>{esc(row[key])}</pre></details>')
             page.append('</section>')
     page.append(f'<details><summary>准入／进程／冻结计划</summary><pre>{esc({k:payload[k] for k in ["lifecycle","plan"]})}</pre></details></body></html>')
     report.write_text('\n'.join(page))
