@@ -1,0 +1,188 @@
+test_design_and_all_42_requests_are_frozen_and_versioned_before_first_call (tests.test_modality_prompts.ModalityReplayTests.test_design_and_all_42_requests_are_frozen_and_versioned_before_first_call) ... ERROR
+test_failures_still_stop_without_retries_or_fake_response (tests.test_modality_prompts.ModalityReplayTests.test_failures_still_stop_without_retries_or_fake_response) ... ERROR
+test_legacy_artifact_tamper_rejects_before_new_model_calls (tests.test_modality_prompts.ModalityReplayTests.test_legacy_artifact_tamper_rejects_before_new_model_calls) ... ERROR
+test_legacy_same_zero_image_reference_is_saved_separately (tests.test_modality_prompts.ModalityReplayTests.test_legacy_same_zero_image_reference_is_saved_separately) ... ERROR
+test_unknown_policy_or_busy_service_is_rejected_without_any_call (tests.test_modality_prompts.ModalityReplayTests.test_unknown_policy_or_busy_service_is_rejected_without_any_call) ... ERROR
+test_html_identifies_matching_prompts_and_preserves_actual_zero_image_inputs (tests.test_modality_prompts.ModalityReportTests.test_html_identifies_matching_prompts_and_preserves_actual_zero_image_inputs) ... ERROR
+test_report_embeds_legacy_text_inputs_with_mismatch_warning (tests.test_modality_prompts.ModalityReportTests.test_report_embeds_legacy_text_inputs_with_mismatch_warning) ... ERROR
+test_report_rejects_silent_policy_relabeling (tests.test_modality_prompts.ModalityReportTests.test_report_rejects_silent_policy_relabeling) ... ERROR
+test_adaptation_does_not_mutate_input_and_rejects_wrong_view_count (tests.test_modality_prompts.ModalityRequestTests.test_adaptation_does_not_mutate_input_and_rejects_wrong_view_count) ... ERROR
+test_legacy_policy_remains_reproducible_and_unknown_policy_is_rejected (tests.test_modality_prompts.ModalityRequestTests.test_legacy_policy_remains_reproducible_and_unknown_policy_is_rejected) ... ERROR
+test_private_truth_still_cannot_change_any_modality_request (tests.test_modality_prompts.ModalityRequestTests.test_private_truth_still_cannot_change_any_modality_request) ... ERROR
+test_shared_state_numbers_task_and_action_context_are_unchanged (tests.test_modality_prompts.ModalityRequestTests.test_shared_state_numbers_task_and_action_context_are_unchanged) ... ERROR
+test_single_image_metadata_matches_first_camera_and_dual_stays_exact (tests.test_modality_prompts.ModalityRequestTests.test_single_image_metadata_matches_first_camera_and_dual_stays_exact) ... ERROR
+test_text_only_allows_contextual_estimate_without_claiming_holding_or_forcing_abort (tests.test_modality_prompts.ModalityRequestTests.test_text_only_allows_contextual_estimate_without_claiming_holding_or_forcing_abort) ... ERROR
+test_text_only_explicitly_declares_no_images_and_no_camera_input (tests.test_modality_prompts.ModalityRequestTests.test_text_only_explicitly_declares_no_images_and_no_camera_input) ... ERROR
+test_text_only_removes_image_requirements_from_entire_state_questions (tests.test_modality_prompts.ModalityRequestTests.test_text_only_removes_image_requirements_from_entire_state_questions) ... ERROR
+
+======================================================================
+ERROR: test_design_and_all_42_requests_are_frozen_and_versioned_before_first_call (tests.test_modality_prompts.ModalityReplayTests.test_design_and_all_42_requests_are_frozen_and_versioned_before_first_call)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_modality_prompts.py", line 95, in test_design_and_all_42_requests_are_frozen_and_versioned_before_first_call
+    self.client.predict=predict;result=self.run_replay()
+                                       ~~~~~~~~~~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_modality_prompts.py", line 82, in run_replay
+    with contextlib.redirect_stdout(io.StringIO()):return run_image_replay(self.source,self.output,self.client,prompt_policy=POLICY,allow_mock=True)
+                                                          ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: run_image_replay() got an unexpected keyword argument 'prompt_policy'
+
+======================================================================
+ERROR: test_failures_still_stop_without_retries_or_fake_response (tests.test_modality_prompts.ModalityReplayTests.test_failures_still_stop_without_retries_or_fake_response)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_modality_prompts.py", line 109, in test_failures_still_stop_without_retries_or_fake_response
+    result=self.run_replay();self.assertFalse(result['complete']);self.assertEqual(result['api_completed'],0)
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_modality_prompts.py", line 82, in run_replay
+    with contextlib.redirect_stdout(io.StringIO()):return run_image_replay(self.source,self.output,self.client,prompt_policy=POLICY,allow_mock=True)
+                                                          ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: run_image_replay() got an unexpected keyword argument 'prompt_policy'
+
+======================================================================
+ERROR: test_legacy_artifact_tamper_rejects_before_new_model_calls (tests.test_modality_prompts.ModalityReplayTests.test_legacy_artifact_tamper_rejects_before_new_model_calls)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_modality_prompts.py", line 128, in test_legacy_artifact_tamper_rejects_before_new_model_calls
+    with self.assertRaisesRegex(LabError,'hash'):run_image_replay(self.source,self.output,self.client,prompt_policy=POLICY,legacy_reference=legacy,allow_mock=True)
+                                                 ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: run_image_replay() got an unexpected keyword argument 'prompt_policy'
+
+======================================================================
+ERROR: test_legacy_same_zero_image_reference_is_saved_separately (tests.test_modality_prompts.ModalityReplayTests.test_legacy_same_zero_image_reference_is_saved_separately)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_modality_prompts.py", line 119, in test_legacy_same_zero_image_reference_is_saved_separately
+    with contextlib.redirect_stdout(io.StringIO()):result=run_image_replay(self.source,self.output,self.client,prompt_policy=POLICY,legacy_reference=legacy,allow_mock=True)
+                                                          ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: run_image_replay() got an unexpected keyword argument 'prompt_policy'
+
+======================================================================
+ERROR: test_unknown_policy_or_busy_service_is_rejected_without_any_call (tests.test_modality_prompts.ModalityReplayTests.test_unknown_policy_or_busy_service_is_rejected_without_any_call)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_modality_prompts.py", line 104, in test_unknown_policy_or_busy_service_is_rejected_without_any_call
+    with self.assertRaisesRegex(ProtocolError,'policy'):run_image_replay(self.source,self.output,self.client,prompt_policy='guess',allow_mock=True)
+                                                        ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: run_image_replay() got an unexpected keyword argument 'prompt_policy'
+
+======================================================================
+ERROR: test_html_identifies_matching_prompts_and_preserves_actual_zero_image_inputs (tests.test_modality_prompts.ModalityReportTests.test_html_identifies_matching_prompts_and_preserves_actual_zero_image_inputs)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_modality_prompts.py", line 138, in test_html_identifies_matching_prompts_and_preserves_actual_zero_image_inputs
+    self.run_replay();builder=importlib.import_module('tools.make_image_report')
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_modality_prompts.py", line 82, in run_replay
+    with contextlib.redirect_stdout(io.StringIO()):return run_image_replay(self.source,self.output,self.client,prompt_policy=POLICY,allow_mock=True)
+                                                          ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: run_image_replay() got an unexpected keyword argument 'prompt_policy'
+
+======================================================================
+ERROR: test_report_embeds_legacy_text_inputs_with_mismatch_warning (tests.test_modality_prompts.ModalityReportTests.test_report_embeds_legacy_text_inputs_with_mismatch_warning)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_modality_prompts.py", line 154, in test_report_embeds_legacy_text_inputs_with_mismatch_warning
+    with contextlib.redirect_stdout(io.StringIO()):run_image_replay(self.source,self.output,self.client,prompt_policy=POLICY,legacy_reference=legacy,allow_mock=True)
+                                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: run_image_replay() got an unexpected keyword argument 'prompt_policy'
+
+======================================================================
+ERROR: test_report_rejects_silent_policy_relabeling (tests.test_modality_prompts.ModalityReportTests.test_report_rejects_silent_policy_relabeling)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_modality_prompts.py", line 148, in test_report_rejects_silent_policy_relabeling
+    self.run_replay();builder=importlib.import_module('tools.make_image_report')
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_modality_prompts.py", line 82, in run_replay
+    with contextlib.redirect_stdout(io.StringIO()):return run_image_replay(self.source,self.output,self.client,prompt_policy=POLICY,allow_mock=True)
+                                                          ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: run_image_replay() got an unexpected keyword argument 'prompt_policy'
+
+======================================================================
+ERROR: test_adaptation_does_not_mutate_input_and_rejects_wrong_view_count (tests.test_modality_prompts.ModalityRequestTests.test_adaptation_does_not_mutate_input_and_rejects_wrong_view_count)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_modality_prompts.py", line 70, in test_adaptation_does_not_mutate_input_and_rejects_wrong_view_count
+    mod=importlib.import_module('visual_lab.modality_prompts')
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.modality_prompts'
+
+======================================================================
+ERROR: test_legacy_policy_remains_reproducible_and_unknown_policy_is_rejected (tests.test_modality_prompts.ModalityRequestTests.test_legacy_policy_remains_reproducible_and_unknown_policy_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_modality_prompts.py", line 61, in test_legacy_policy_remains_reproducible_and_unknown_policy_is_rejected
+    explicit=image_request(self.pngs,self.state,self.views,self.guidance,{'color':'blue','views':0},prompt_policy='legacy_deletion')
+TypeError: image_request() got an unexpected keyword argument 'prompt_policy'
+
+======================================================================
+ERROR: test_private_truth_still_cannot_change_any_modality_request (tests.test_modality_prompts.ModalityRequestTests.test_private_truth_still_cannot_change_any_modality_request)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_modality_prompts.py", line 67, in test_private_truth_still_cannot_change_any_modality_request
+    for count in range(3):self.assertEqual(self.request('blue',count,dirty),self.request('blue',count))
+                                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_modality_prompts.py", line 23, in request
+    return image_request(self.pngs,state or self.state,self.views,self.guidance,{'color':color,'views':count},prompt_policy=POLICY)
+TypeError: image_request() got an unexpected keyword argument 'prompt_policy'
+
+======================================================================
+ERROR: test_shared_state_numbers_task_and_action_context_are_unchanged (tests.test_modality_prompts.ModalityRequestTests.test_shared_state_numbers_task_and_action_context_are_unchanged)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_modality_prompts.py", line 47, in test_shared_state_numbers_task_and_action_context_are_unchanged
+    new=self.request(color,count)
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_modality_prompts.py", line 23, in request
+    return image_request(self.pngs,state or self.state,self.views,self.guidance,{'color':color,'views':count},prompt_policy=POLICY)
+TypeError: image_request() got an unexpected keyword argument 'prompt_policy'
+
+======================================================================
+ERROR: test_single_image_metadata_matches_first_camera_and_dual_stays_exact (tests.test_modality_prompts.ModalityRequestTests.test_single_image_metadata_matches_first_camera_and_dual_stays_exact)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_modality_prompts.py", line 53, in test_single_image_metadata_matches_first_camera_and_dual_stays_exact
+    single=self.request('blue',1)
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_modality_prompts.py", line 23, in request
+    return image_request(self.pngs,state or self.state,self.views,self.guidance,{'color':color,'views':count},prompt_policy=POLICY)
+TypeError: image_request() got an unexpected keyword argument 'prompt_policy'
+
+======================================================================
+ERROR: test_text_only_allows_contextual_estimate_without_claiming_holding_or_forcing_abort (tests.test_modality_prompts.ModalityRequestTests.test_text_only_allows_contextual_estimate_without_claiming_holding_or_forcing_abort)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_modality_prompts.py", line 38, in test_text_only_allows_contextual_estimate_without_claiming_holding_or_forcing_abort
+    q=self.request('yellow',0)['questions']['next_stage'];text=q['instructions']
+      ~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_modality_prompts.py", line 23, in request
+    return image_request(self.pngs,state or self.state,self.views,self.guidance,{'color':color,'views':count},prompt_policy=POLICY)
+TypeError: image_request() got an unexpected keyword argument 'prompt_policy'
+
+======================================================================
+ERROR: test_text_only_explicitly_declares_no_images_and_no_camera_input (tests.test_modality_prompts.ModalityRequestTests.test_text_only_explicitly_declares_no_images_and_no_camera_input)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_modality_prompts.py", line 26, in test_text_only_explicitly_declares_no_images_and_no_camera_input
+    request=self.request('blue',0)
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_modality_prompts.py", line 23, in request
+    return image_request(self.pngs,state or self.state,self.views,self.guidance,{'color':color,'views':count},prompt_policy=POLICY)
+TypeError: image_request() got an unexpected keyword argument 'prompt_policy'
+
+======================================================================
+ERROR: test_text_only_removes_image_requirements_from_entire_state_questions (tests.test_modality_prompts.ModalityRequestTests.test_text_only_removes_image_requirements_from_entire_state_questions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_modality_prompts.py", line 33, in test_text_only_removes_image_requirements_from_entire_state_questions
+    request=self.request('blue',0);text=json.dumps({'state':request['state'],'questions':request['questions']},ensure_ascii=False)
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_modality_prompts.py", line 23, in request
+    return image_request(self.pngs,state or self.state,self.views,self.guidance,{'color':color,'views':count},prompt_policy=POLICY)
+TypeError: image_request() got an unexpected keyword argument 'prompt_policy'
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.599s
+
+FAILED (errors=16)
