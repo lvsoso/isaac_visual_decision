@@ -34,7 +34,7 @@ class JevClient:
                     token if token is not None else os.getenv('TYPESAFE_API_KEY'))
         if not self.token or '\n' in self.token or '\r' in self.token: raise ProtocolError('Require TypeSafe API key without line breaks')
         if timeout<=0: raise ProtocolError('Require positive HTTP timeout')
-        self.timeout=timeout;self.requests_completed=0;self.attempts=0;self.models=None
+        self.timeout=timeout;self.requests_completed=0;self.attempts=0;self.models=None;self.last_response=None
         self.opener=urllib.request.build_opener(urllib.request.ProxyHandler({}),NoRedirect())
     def _request(self,url,data=None):
         payload=json.dumps(data,ensure_ascii=False,allow_nan=False).encode() if data is not None else None
@@ -61,6 +61,8 @@ class JevClient:
                 'busy':False,'requests_completed':self.requests_completed,'http_prediction_attempts':self.attempts,
                 'model_listing':self.models,'counter_scope':'This client only, not vendor-global service count'}
     def predict(self,request):
+        self.last_response=None
         data=jev_payload(request);self.attempts+=1;start=time.perf_counter();raw=self._request(JEV_URL,data)
+        self.last_response=copy.deepcopy(raw)  # Safe JSON only: _request rejects secret echoes.
         verify_jev_response(raw);self.requests_completed+=1
         return raw,(time.perf_counter()-start)*1000

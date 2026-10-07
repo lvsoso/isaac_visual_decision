@@ -102,7 +102,13 @@ def run_binding_replay(source: Path,reference: Path,output: Path,client,*,langua
             for job in order:
                 name=job['name']
                 if sha256_file(output/'requests'/(name+'.json'))!=hashes[name]: raise LabError('Frozen request hash changed')
-                raw,latency=client.predict(json.loads((output/'requests'/(name+'.json')).read_text()));write_json(output/'responses'/(name+'.json'),raw)
+                try:
+                    raw,latency=client.predict(json.loads((output/'requests'/(name+'.json')).read_text()))
+                except Exception:
+                    failed=getattr(client,'last_response',None)
+                    if failed is not None:write_json(output/'responses'/(name+'.json'),failed)
+                    raise
+                write_json(output/'responses'/(name+'.json'),raw)
                 if jev:
                     from .jev import verify_jev_response
                     parsed=verify_jev_response(raw)
