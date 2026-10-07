@@ -1,13 +1,13 @@
 """All42transports must be fixed before the first inference, CPU fixtures only."""
 import contextlib,importlib,io,json,unittest
 from unittest.mock import Mock
-from tests.test_goal_binding import BindingReplayTests
+from tests import test_goal_binding as fixtures
 from visual_lab.core import LabError
 
 class TextFreezeTests(unittest.TestCase):
- setUp=BindingReplayTests.setUp
- tearDown=BindingReplayTests.tearDown
- reference=BindingReplayTests.reference
+ setUp=fixtures.BindingReplayTests.setUp
+ tearDown=fixtures.BindingReplayTests.tearDown
+ reference=fixtures.BindingReplayTests.reference
  def test_freezes42requests_three_groups_and_actual_body_hashes(self):
   m=importlib.import_module('tools.freeze_text_study');ref=self.reference();frozen=self.root/'freeze'
   result=m.freeze_text_study(self.source,ref,frozen,allow_mock=True)

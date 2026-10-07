@@ -49,6 +49,8 @@ class JevClient:
         try: result=json.loads(raw)
         except (ValueError,UnicodeDecodeError): raise ModelAPIError('TypeSafe returned invalid JSON') from None
         if not isinstance(result,dict): raise ModelAPIError('TypeSafe response is not an object')
+        if self.token in json.dumps(result,ensure_ascii=False):
+            raise ModelAPIError('TypeSafe response contains private authentication data; body omitted')
         return result
     def health(self,*,allow_mock=False):
         if self.models is None:

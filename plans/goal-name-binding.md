@@ -1,4 +1,4 @@
-# 无图目标名称绑定：独立14次重测
+# 无图目标名称绑定与英文Jev：三组共42次
 
 用户确认只重测无图。修改前main / origin/main=`b9a0da5`，工作区干净；先提交本设计和实际RED测试再实现。
 
@@ -10,7 +10,7 @@
 
 ## Jev分离安排
 
-用户明确Jev是TypeSafe System One，不支持图片，并要求英文task、状态说明、instructions与criteria。官方接口为 `POST https://api.typesafe.ai/v1/systemone`，需要 `TYPESAFE_API_KEY`。当前本机和远端均未检测到该环境变量，用户选择仓库外密钥文件方式，尚待具体路径。不得保存密钥或Authorization到工件。
+用户明确Jev是TypeSafe System One，不支持图片，并要求英文task、状态说明、instructions与criteria。官方接口为 `POST https://api.typesafe.ai/v1/systemone`，需要 `TYPESAFE_API_KEY`。用户已提供仓库外本机 / 远端密钥路径，认证模型列表GET成功；不代表推理成功。不得保存密钥或Authorization到工件。
 
 Jev英文输入须另行冻结，采用同一数值 / 信息边界，不补真值；model使用明确版本，不使用浮动latest冒充固定版本。Jev confidence并不等于最高候选概率，不能套用Intern的confidence校验或温度。官网“无类型错误”不等于任务决策正确；速度 / 校准宣传不作为本实验事实。
 
@@ -19,3 +19,7 @@ Jev英文输入须另行冻结，采用同一数值 / 信息边界，不补真�
 中文旧→中文新是单字段名称绑定对照；中文新→英文Intern含翻译因素；英文Intern→英文Jev是语言匹配模型 / 接口对照，不比较两者confidence为同一指标，也不声称已检验Jev的概率校准。三组API失败立即停止，不自动重试。API key不写仓库 / 请求JSON / 日志 / headers工件，禁止认证跟随重定向，错误仅保留状态码 / 类别，不保留可能回显密钥的响应正文。HTML完整归档实际请求 / 概率 / confidence来源，CPU与两种真实模型证据分开。
 
 资料：https://typesafe.ai/blog/introducing-system-one-models-and-jev 、https://docs.typesafe.ai/introduction/quickstart 、https://docs.typesafe.ai/confidence 。
+
+## 首次推理前全组门禁
+
+`tools/freeze_text_study.py` 先保存中文 / 英文Intern / 英文Jev共42份canonical请求和42份不含认证的wire正文、文件SHA256、实际客户端JSON编码正文SHA256、全部顺序与实现SHA256。分组顺序固定为中文Intern、英文Intern、英文Jev；每组两色七状态以同一固定种子交错。每次发送前比对全组预冻结输入与正文哈希，不仅依赖分组自身冻结。中文批次30、英文Intern31、英文Jev32，均不覆盖旧工件；一个组失败不继续后续组、不重试。运行时间取真实UTC，文件名20261006只是沿用实验标识，可能在2026-10-07执行。

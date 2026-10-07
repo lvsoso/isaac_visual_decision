@@ -1,0 +1,55 @@
+{
+  "method": "stdlib trace with AST statement-line denominators; not branch coverage; CLI entrypoints untested",
+  "tests_run": 24,
+  "passed": true,
+  "files": {
+    "visual_lab/goal_binding.py": {
+      "statement_lines": 120,
+      "covered_lines": 110,
+      "line_percent": 91.67,
+      "uncovered_lines": [
+        31,
+        44,
+        47,
+        80,
+        85,
+        92,
+        93,
+        108,
+        151,
+        152
+      ]
+    },
+    "visual_lab/text_english.py": {
+      "statement_lines": 22,
+      "covered_lines": 22,
+      "line_percent": 100.0,
+      "uncovered_lines": []
+    },
+    "visual_lab/jev.py": {
+      "statement_lines": 42,
+      "covered_lines": 42,
+      "line_percent": 100.0,
+      "uncovered_lines": []
+    },
+    "tools/make_text_study_report.py": {
+      "statement_lines": 30,
+      "covered_lines": 27,
+      "line_percent": 90.0,
+      "uncovered_lines": [
+        39,
+        40,
+        41
+      ]
+    },
+    "tools/freeze_text_study.py": {
+      "statement_lines": 27,
+      "covered_lines": 25,
+      "line_percent": 92.59,
+      "uncovered_lines": [
+        44,
+        45
+      ]
+    }
+  }
+}
