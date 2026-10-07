@@ -1,0 +1,128 @@
+test_translation_has_no_cjk_and_retains_numeric_evidence_and_labels (tests.test_jev_text.EnglishTests.test_translation_has_no_cjk_and_retains_numeric_evidence_and_labels) ... ERROR
+test_confidence_formula_is_not_top_probability_and_ties_preserved (tests.test_jev_text.JevTests.test_confidence_formula_is_not_top_probability_and_ties_preserved) ... ERROR
+test_http_error_does_not_leak_key_or_response_body_and_never_retries (tests.test_jev_text.JevTests.test_http_error_does_not_leak_key_or_response_body_and_never_retries) ... ERROR
+test_https_fixed_host_no_redirect_and_single_call (tests.test_jev_text.JevTests.test_https_fixed_host_no_redirect_and_single_call) ... ERROR
+test_missing_key_and_non_json_responses_are_not_fabricated (tests.test_jev_text.JevTests.test_missing_key_and_non_json_responses_are_not_fabricated) ... ERROR
+test_payload_removes_empty_images_only_and_pins_model (tests.test_jev_text.JevTests.test_payload_removes_empty_images_only_and_pins_model) ... ERROR
+test_wrong_model_bad_candidates_or_usage_are_rejected (tests.test_jev_text.JevTests.test_wrong_model_bad_candidates_or_usage_are_rejected) ... ERROR
+
+======================================================================
+ERROR: test_translation_has_no_cjk_and_retains_numeric_evidence_and_labels (tests.test_jev_text.EnglishTests.test_translation_has_no_cjk_and_retains_numeric_evidence_and_labels)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_text.py", line 13, in test_translation_has_no_cjk_and_retains_numeric_evidence_and_labels
+    from visual_lab.goal_binding import binding_request
+ModuleNotFoundError: No module named 'visual_lab.goal_binding'
+
+======================================================================
+ERROR: test_confidence_formula_is_not_top_probability_and_ties_preserved (tests.test_jev_text.JevTests.test_confidence_formula_is_not_top_probability_and_ties_preserved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_text.py", line 33, in test_confidence_formula_is_not_top_probability_and_ties_preserved
+    answer=mod().verify_jev_response(self.raw());self.assertEqual(answer.action,'abort');self.assertEqual(answer.confidence,0.0)
+           ~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_text.py", line 8, in mod
+    def mod():return importlib.import_module('visual_lab.jev')
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.jev'
+
+======================================================================
+ERROR: test_http_error_does_not_leak_key_or_response_body_and_never_retries (tests.test_jev_text.JevTests.test_http_error_does_not_leak_key_or_response_body_and_never_retries)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_text.py", line 52, in test_http_error_does_not_leak_key_or_response_body_and_never_retries
+    client=mod().JevClient(token='CPU-fixture-secret');client.opener=Mock();client.opener.open.side_effect=urllib.error.HTTPError('https://api.typesafe.ai',401,'bad',{},io.BytesIO(b'CPU-fixture-secret'))
+           ~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_text.py", line 8, in mod
+    def mod():return importlib.import_module('visual_lab.jev')
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.jev'
+
+======================================================================
+ERROR: test_https_fixed_host_no_redirect_and_single_call (tests.test_jev_text.JevTests.test_https_fixed_host_no_redirect_and_single_call)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_text.py", line 45, in test_https_fixed_host_no_redirect_and_single_call
+    client=mod().JevClient(token='CPU-fixture-secret');client.opener=Mock()
+           ~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_text.py", line 8, in mod
+    def mod():return importlib.import_module('visual_lab.jev')
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.jev'
+
+======================================================================
+ERROR: test_missing_key_and_non_json_responses_are_not_fabricated (tests.test_jev_text.JevTests.test_missing_key_and_non_json_responses_are_not_fabricated)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_text.py", line 56, in test_missing_key_and_non_json_responses_are_not_fabricated
+    with self.assertRaises(ProtocolError):mod().JevClient(token='')
+                                          ~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_text.py", line 8, in mod
+    def mod():return importlib.import_module('visual_lab.jev')
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.jev'
+
+======================================================================
+ERROR: test_payload_removes_empty_images_only_and_pins_model (tests.test_jev_text.JevTests.test_payload_removes_empty_images_only_and_pins_model)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_text.py", line 28, in test_payload_removes_empty_images_only_and_pins_model
+    original=self.request();saved=copy.deepcopy(original);body=mod().jev_payload(original)
+                                                               ~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_text.py", line 8, in mod
+    def mod():return importlib.import_module('visual_lab.jev')
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.jev'
+
+======================================================================
+ERROR: test_wrong_model_bad_candidates_or_usage_are_rejected (tests.test_jev_text.JevTests.test_wrong_model_bad_candidates_or_usage_are_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_text.py", line 43, in test_wrong_model_bad_candidates_or_usage_are_rejected
+    with self.assertRaises(ProtocolError):mod().verify_jev_response(bad)
+                                          ~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_jev_text.py", line 8, in mod
+    def mod():return importlib.import_module('visual_lab.jev')
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.jev'
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.005s
+
+FAILED (errors=7)

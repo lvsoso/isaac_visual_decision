@@ -1,0 +1,215 @@
+test_busy_service_rejected_before_call (tests.test_goal_binding.BindingReplayTests.test_busy_service_rejected_before_call) ... ERROR
+test_changed_service_count_or_request_invalidates (tests.test_goal_binding.BindingReplayTests.test_changed_service_count_or_request_invalidates) ... ERROR
+test_exact14_requests_frozen_before_first_call (tests.test_goal_binding.BindingReplayTests.test_exact14_requests_frozen_before_first_call) ... ERROR
+test_failure_stops_without_retry (tests.test_goal_binding.BindingReplayTests.test_failure_stops_without_retry) ... ERROR
+test_reference_tamper_rejected_before_any_new_call (tests.test_goal_binding.BindingReplayTests.test_reference_tamper_rejected_before_any_new_call) ... ERROR
+test_report_embeds14_actual_empty_requests_and_pair_probabilities (tests.test_goal_binding.BindingReportTests.test_report_embeds14_actual_empty_requests_and_pair_probabilities) ... ERROR
+test_report_rejects_synthetic_as_real_and_changed_response (tests.test_goal_binding.BindingReportTests.test_report_rejects_synthetic_as_real_and_changed_response) ... ERROR
+test_no_geometry_truth_or_new_action_conditions (tests.test_goal_binding.BindingRequestTests.test_no_geometry_truth_or_new_action_conditions) ... ERROR
+test_only_one_description_prefix_changes (tests.test_goal_binding.BindingRequestTests.test_only_one_description_prefix_changes) ... ERROR
+test_rejects_wrong_color_task_images_and_missing_description (tests.test_goal_binding.BindingRequestTests.test_rejects_wrong_color_task_images_and_missing_description) ... ERROR
+
+======================================================================
+ERROR: test_busy_service_rejected_before_call (tests.test_goal_binding.BindingReplayTests.test_busy_service_rejected_before_call)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_goal_binding.py", line 65, in test_busy_service_rejected_before_call
+    with self.assertRaises(ProtocolError):self.replay(ref)
+                                          ~~~~~~~~~~~^^^^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_goal_binding.py", line 44, in replay
+    with contextlib.redirect_stdout(io.StringIO()):return module().run_binding_replay(self.source,reference,self.output,self.client,allow_mock=True)
+                                                          ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_goal_binding.py", line 8, in module
+    def module():return importlib.import_module('visual_lab.goal_binding')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.goal_binding'
+
+======================================================================
+ERROR: test_changed_service_count_or_request_invalidates (tests.test_goal_binding.BindingReplayTests.test_changed_service_count_or_request_invalidates)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_goal_binding.py", line 73, in test_changed_service_count_or_request_invalidates
+    self.client.predict=corrupt;result=self.replay(ref);self.assertFalse(result['complete']);self.assertEqual(result['api_completed'],1)
+                                       ~~~~~~~~~~~^^^^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_goal_binding.py", line 44, in replay
+    with contextlib.redirect_stdout(io.StringIO()):return module().run_binding_replay(self.source,reference,self.output,self.client,allow_mock=True)
+                                                          ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_goal_binding.py", line 8, in module
+    def module():return importlib.import_module('visual_lab.goal_binding')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.goal_binding'
+
+======================================================================
+ERROR: test_exact14_requests_frozen_before_first_call (tests.test_goal_binding.BindingReplayTests.test_exact14_requests_frozen_before_first_call)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_goal_binding.py", line 52, in test_exact14_requests_frozen_before_first_call
+    self.client.predict=predict;result=self.replay(ref)
+                                       ~~~~~~~~~~~^^^^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_goal_binding.py", line 44, in replay
+    with contextlib.redirect_stdout(io.StringIO()):return module().run_binding_replay(self.source,reference,self.output,self.client,allow_mock=True)
+                                                          ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_goal_binding.py", line 8, in module
+    def module():return importlib.import_module('visual_lab.goal_binding')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.goal_binding'
+
+======================================================================
+ERROR: test_failure_stops_without_retry (tests.test_goal_binding.BindingReplayTests.test_failure_stops_without_retry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_goal_binding.py", line 62, in test_failure_stops_without_retry
+    result=self.replay(ref);self.assertFalse(result['complete']);self.assertEqual(result['api_completed'],0);self.client.predict.assert_called_once()
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_goal_binding.py", line 44, in replay
+    with contextlib.redirect_stdout(io.StringIO()):return module().run_binding_replay(self.source,reference,self.output,self.client,allow_mock=True)
+                                                          ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_goal_binding.py", line 8, in module
+    def module():return importlib.import_module('visual_lab.goal_binding')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.goal_binding'
+
+======================================================================
+ERROR: test_reference_tamper_rejected_before_any_new_call (tests.test_goal_binding.BindingReplayTests.test_reference_tamper_rejected_before_any_new_call)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_goal_binding.py", line 58, in test_reference_tamper_rejected_before_any_new_call
+    with self.assertRaisesRegex(LabError,'hash'):self.replay(ref)
+                                                 ~~~~~~~~~~~^^^^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_goal_binding.py", line 44, in replay
+    with contextlib.redirect_stdout(io.StringIO()):return module().run_binding_replay(self.source,reference,self.output,self.client,allow_mock=True)
+                                                          ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_goal_binding.py", line 8, in module
+    def module():return importlib.import_module('visual_lab.goal_binding')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.goal_binding'
+
+======================================================================
+ERROR: test_report_embeds14_actual_empty_requests_and_pair_probabilities (tests.test_goal_binding.BindingReportTests.test_report_embeds14_actual_empty_requests_and_pair_probabilities)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_goal_binding.py", line 81, in test_report_embeds14_actual_empty_requests_and_pair_probabilities
+    ref=self.reference();self.replay(ref);out=self.root/'report.html';module().build_binding_report(self.source,self.output,out,allow_mock=True)
+                         ~~~~~~~~~~~^^^^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_goal_binding.py", line 44, in replay
+    with contextlib.redirect_stdout(io.StringIO()):return module().run_binding_replay(self.source,reference,self.output,self.client,allow_mock=True)
+                                                          ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_goal_binding.py", line 8, in module
+    def module():return importlib.import_module('visual_lab.goal_binding')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.goal_binding'
+
+======================================================================
+ERROR: test_report_rejects_synthetic_as_real_and_changed_response (tests.test_goal_binding.BindingReportTests.test_report_rejects_synthetic_as_real_and_changed_response)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_goal_binding.py", line 87, in test_report_rejects_synthetic_as_real_and_changed_response
+    ref=self.reference();self.replay(ref)
+                         ~~~~~~~~~~~^^^^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_goal_binding.py", line 44, in replay
+    with contextlib.redirect_stdout(io.StringIO()):return module().run_binding_replay(self.source,reference,self.output,self.client,allow_mock=True)
+                                                          ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_goal_binding.py", line 8, in module
+    def module():return importlib.import_module('visual_lab.goal_binding')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.goal_binding'
+
+======================================================================
+ERROR: test_no_geometry_truth_or_new_action_conditions (tests.test_goal_binding.BindingRequestTests.test_no_geometry_truth_or_new_action_conditions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_goal_binding.py", line 22, in test_no_geometry_truth_or_new_action_conditions
+    old=self.old();new=module().binding_request(old,'yellow');self.assertEqual(new['questions'],old['questions'])
+                       ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_goal_binding.py", line 8, in module
+    def module():return importlib.import_module('visual_lab.goal_binding')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.goal_binding'
+
+======================================================================
+ERROR: test_only_one_description_prefix_changes (tests.test_goal_binding.BindingRequestTests.test_only_one_description_prefix_changes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_goal_binding.py", line 16, in test_only_one_description_prefix_changes
+    old=self.old(color);saved=copy.deepcopy(old);new=module().binding_request(old,color)
+                                                     ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_goal_binding.py", line 8, in module
+    def module():return importlib.import_module('visual_lab.goal_binding')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.goal_binding'
+
+======================================================================
+ERROR: test_rejects_wrong_color_task_images_and_missing_description (tests.test_goal_binding.BindingRequestTests.test_rejects_wrong_color_task_images_and_missing_description)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_goal_binding.py", line 28, in test_rejects_wrong_color_task_images_and_missing_description
+    with self.assertRaises(ProtocolError):module().binding_request(old,'blue')
+                                          ~~~~~~^^
+  File "/Users/Zhuanz/Documents/zb/share-2026-10-03/2/isaac_visual_decision/tests/test_goal_binding.py", line 8, in module
+    def module():return importlib.import_module('visual_lab.goal_binding')
+                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'visual_lab.goal_binding'
+
+----------------------------------------------------------------------
+Ran 10 tests in 1.346s
+
+FAILED (errors=10)
